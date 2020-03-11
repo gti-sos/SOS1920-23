@@ -8,6 +8,8 @@ app.get("/cool",(request,response) => {
 	response.send("<html>"+cool()+"</html>");
 });
 
-app.listen(80);
+app.listen(80, () =>{
+	console.log("server ready");
+});
 
-console.log("server ready");
+console.log("Starting server...");
