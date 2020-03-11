@@ -9,5 +9,5 @@ app.get("/cool",(request,response) => {
 });
 
 app.listen(80);
-npm install
+
 console.log("server ready");
