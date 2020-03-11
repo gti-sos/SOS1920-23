@@ -11,7 +11,7 @@ app.get("/time",(request,response)=>{
 	response.send("<html>"+hora_actual+":"+minu+"</html>");
 });
 
-<html>Estoy probando el servidor en la nube</html>
+
 
 app.listen(port, () => {
 	console.log("server ready");
