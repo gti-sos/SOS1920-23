@@ -1,23 +1,16 @@
+const cool = require("cool-ascii-faces");
 const express = require("express");
 
-var app = express();		//Servidor web
-var fecha = new Date();
-var hora_actual = fecha.getHours();
-var minu = fecha.getMinutes();
-
+var app = express();
 var port = process.env.PORT || 80;
+app.use("/",express.static("./public"));
 
-app.get("/time",(request,response)=>{
-	response.send("<html>"+hora_actual+":"+minu+"</html>");
+app.get("/cool",(request,response) => {
+	response.send("<html>"+cool()+"</html>");
 });
 
-<html>Estoy probando el servidor en la nube</html>
-
-app.listen(port, () => {
+app.listen(port, () =>{
 	console.log("server ready");
-
 });
-	
 
-
-console.log("Starting Server......");
+console.log("Starting server...");
