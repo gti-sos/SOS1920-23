@@ -9,7 +9,7 @@ app.get("/cool",(request,response) => {
 	response.send("<html>"+cool()+"</html>");
 });
 
-app.listen(80, () =>{
+app.listen(port, () =>{
 	console.log("server ready");
 });
 
