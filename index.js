@@ -8,7 +8,7 @@ var minu = fecha.getMinutes();
 var port = process.env.PORT || 80;
 
 app.get("/time",(request,response)=>{
-	response.send("<html>"+hora_actual+":"+minu+"</html>");
+	response.send("<html>"+hora_actual+":"+minu+"</html>", "<html>Hola, hago cambios en el servidor</html>");
 });
 
 
