@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 
 var app = express();
 var port = process.env.PORT || 80;
-app.use(bodyParser.json());
+app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automáticamente
 app.use("/",express.static("./public"));
 
 var contacts = [
