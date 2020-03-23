@@ -26,11 +26,13 @@ app.post(BASE_API_URL+"/contacts",(req,res) =>{
 
 });
 
-app.get("/cool",(request,response) => {
-	response.send("<html>"+cool()+"</html>");
-});
+
 //API Alejandro
-var offworks = [
+// GET LOADINITIALDATA
+app.get(BASE_API_URL+"/offworks/loadInitialData", (req,res) => {
+    
+    
+    var offworks = [
 	{	community : "Andalucia",
 		year:  2007,
 		accident: 6878,
@@ -44,6 +46,15 @@ var offworks = [
 		numberzone: 1750
 	},
 ];
+    
+    if(offworks.length >=1){
+        res.status(400).send("There is already created");
+    }else{
+        offworks = initial_sales;
+        res.send(JSON.stringify(offworks, null, 2));
+    }
+});
+
 
 // GET OFFWORKS
 
