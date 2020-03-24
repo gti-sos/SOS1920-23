@@ -159,19 +159,19 @@ app.put(BASE_API_URL + "/offworks-stats/:community", (req,res)=>{
 	
 //POST OFFWORKS/XXX
 app.post(BASE_API_URL + "/offworks-stats/:community", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+    res.status(401).send("NOT ALLOWED");
 });
 app.post(BASE_API_URL + "/offworks-stats/:community/:year", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+    res.status(401).send("NOT ALLOWED");
 });
 app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+    res.status(401).send("NOT ALLOWED");
 });
 app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident/:sick", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+    res.status(401).send("NOT ALLOWED");
 });
 app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident/:sick/:numberzone", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+    res.status(401).send("NOT ALLOWED");
 });
 // DELETE OFFWORKS/XXX
 
