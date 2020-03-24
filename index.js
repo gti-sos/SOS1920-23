@@ -51,7 +51,7 @@ app.get(BASE_API_URL+"/offworks-stats/loadInitialData", (req,res) => {
 	];
     
     if(offworks_stats.length >=1){
-        res.status(400).send("There is already created");
+        res.status(200).send("There is already created");
     }else{
         //offworks_stats = offworks_stats;
         res.send(JSON.stringify(offworks_stats, null, 2));
