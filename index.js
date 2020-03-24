@@ -30,7 +30,20 @@ app.get("/cool",(request,response) => {
 	response.send("<html>"+cool()+"</html>");
 });
 //API Alejandro
-var offworks_stats = [];
+var offworks_stats = [
+	{	community : "Andalucia",
+		year:  2007,
+		accident: 6878,
+		sick: 29.1,
+		numberzone: 804},
+	{
+		community : "Aragon",
+		year:  2007,
+		accident: 5251,
+		sick: 323.4,
+		numberzone: 1750
+	}
+];
 // GET LOADINITIALDATA
 app.get(BASE_API_URL+"/offworks-stats/loadInitialData", (req,res) => {
     
