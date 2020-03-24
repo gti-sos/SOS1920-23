@@ -47,8 +47,8 @@ app.get(BASE_API_URL+"/offworks-stats/loadInitialData", (req,res) => {
 		accident: 5251,
 		sick: 323.4,
 		numberzone: 1750
-	},
-];
+	}
+	];
     
     if(offworks_stats.length >=1){
         res.status(400).send("There is already created");
@@ -66,7 +66,7 @@ app.get(BASE_API_URL + "/offworks-stats", (req,res) =>{
 	}else{
 		res.send(JSON.stringify(offworks_stats,null,2));
 	}
-
+});
 // POST OFFWORKS
 app.post(BASE_API_URL + "/offworks-stats",(req,res) =>{
     
