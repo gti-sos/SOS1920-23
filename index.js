@@ -30,11 +30,12 @@ app.get("/cool",(request,response) => {
 	response.send("<html>"+cool()+"</html>");
 });
 //API Alejandro
+var offworks_stats=[];
 // GET LOADINITIALDATA
 app.get(BASE_API_URL+"/offworks-stats/loadInitialData", (req,res) => {
     
     
-    var offworks_stats = [
+    offworks_stats = [
 	{	community : "Andalucia",
 		year:  2007,
 		accident: 6878,
@@ -171,16 +172,16 @@ app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident/:sick/:numbe
 });
 // DELETE OFFWORKS/XXX
 
-app.delete(BASE_API_URL+"/contacts/community", (req,res)=>{
+app.delete(BASE_API_URL+"/offworks-stats/community", (req,res)=>{
 	
 	var community = req.params.community;
 	
-	var filteredOffworks = offworks.filter((c) => {
+	var filteredOffworks = offworks_stats.filter((c) => {
 		return (c.community != community);
 	});
 	
 	
-	if(filteredOffworks.length < offworks.length){
+	if(filteredOffworks.length < offworks_stats.length){
 		offworks_stats = filteredOffworks;
 		res.sendStatus(200);
 	}else{
@@ -203,8 +204,6 @@ app.delete(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
     }else{
         res.status(404).send("NOT FOUND");
     }
-    
-    
 });
 //GET OFFWORK COMMUNITY or YEAR
 app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
@@ -218,9 +217,7 @@ app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
 		res.send(JSON.stringify(filteredOffworks,null,2));
 	}else{
 		res.status(404).send("NO DATA IN THIS COMMUNITY OR YEAR");
-	}
-	
-	
+	}	
 });
 //API Joserra
 
