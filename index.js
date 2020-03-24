@@ -123,6 +123,7 @@ app.delete(BASE_API_URL+"/contacts/community", (req,res)=>{
 //API Joserra
 
 //API Antonio
+//GET
 
 app.listen(port, () =>{
 	console.log("server ready");
