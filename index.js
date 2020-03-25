@@ -83,42 +83,14 @@ app.get(BASE_API_URL + "/offworks-stats", (req,res) =>{
 // POST OFFWORKS
 app.post(BASE_API_URL + "/offworks-stats",(req,res) =>{
     
+	var data = req.body;
 	
-    var newOffworks = req.body;
-	
-	
-	var keysOffwork = Object.keys(newOffworks);
-	
-	
-	var keysObject = ["community","year","accident","sick","numberzone"];
-	
-	
-	var keysTrue = false;
-	
-	
-	if(JSON.stringify(keysOffwork)==JSON.stringify(keysObject)){
-		keysTrue = true;
+	if((data == "") || (data.community == null)){
+		res.sendStatus(400); //Codigo 400(BAD REQUEST)
+	} else {
+		offworks_stats.push(data); 	
+		res.sendStatus(201); //Codigo 201(CREATED)
 	}
-	
-	
-    var filteredSales = offworks_stats.filter((c)=>{
-        return (c.community == newOffworks.community && c.year == newOffworks.year);
-    });
-	
-    if(keysOffwork.length==0){ // Si el body está vacio
-        res.status(400).send("NOT CREATED"); 
-    }else if(keysTrue==false){ // Si los campos no son correctos
-		res.status(400).send("THIS FIELD DONT EXIST");
-	}else if(newOffworks.community==null || newOffworks.year==null || newOffworks.accident==null ||
-			newOffworks.sick==null || newOffworks.numberzone==null){ 
-		res.status(400).send("DONT BE NULL");
-	}else if(filteredSales.length>=1){ 
-        res.status(400).send("THE OFFWORK ALREADY EXIST");
-    }
-    else { // Crea el dato
-        offworks_stats.push(newOffworks);     
-        res.status(201).send("CREATED OFFWORK");
-    }
 });
 // PUT OFFWORK
 app.put(BASE_API_URL+"/offworks-stats", (req,res)=>{
