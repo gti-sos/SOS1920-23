@@ -150,20 +150,29 @@ app.get(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
 
 // PUT OFFWORKS/XXX
 app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
+	
+	
     var community=req.params.community;
     
     var data=req.body;
     
-    if(community!=data.community){
-        res.status(400).send("NOT MATCH");
-    }else{
-        var filteredOffworks = offworks_stats.filter((c) => {
-        return (c.community != community );
-        });      
-        offworks_stats = filteredOffworks;
-        //filteredOffworks.push(data);
-        res.status(200).send("UPDATED");
-    }
+    if(community == data.community){
+	var filteredOffworks = offworks_stats.filter((c) => {
+		return (!(c.community == community));
+	});
+	
+	if(!(filteredOffworks == offworks_stats)){
+		offworks_stats = filteredOffworks;
+	if((data == "") || (data.community == null)){
+		res.sendStatus(400,"BAD REQUEST");
+	} else {
+		offworks_stats.push(data); 	
+		res.sendStatus(201,"UPDATED");
+	}} else{
+		res.sendStatus(400,"BAD REQUEST");
+	}}else{
+		res.sendStatus(400,"BAD REQUEST");	
+	}
 });
 	
 //POST OFFWORKS/XXX
