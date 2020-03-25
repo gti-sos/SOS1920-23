@@ -210,17 +210,18 @@ app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
 //API Antonio
 
 var fires = [
-	{	community: "andalucia",
+	{
+		community: "andalucia",
 		year: 2007,
-		accident: 6878,
-		sick: 29.1,
-		numberzone: 804},
+		total_fire: 819,
+		forest_area: 6296.75,
+		non_forest_area: 3282.53},
 	{
 		community: "aragon",
 		year: 2007,
-		accident: 5251,
-		sick: 323.4,
-		numberzone: 1750
+		total_fire: 415,
+		forest_area: 1860.38,
+		non_forest_area: 611.51
 	}
 ];
 //GET LOADINITIALDATA
