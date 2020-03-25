@@ -66,7 +66,7 @@ app.get(BASE_API_URL+"/offworks-stats/loadInitialData", (req,res) => {
     if(offworks_stats.length >=1){
         res.status(200).send("There is already created");
     }else{
-        //offworks_stats = offworks_stats;
+        
         res.send(JSON.stringify(offworks_stats, null, 2));
     }
 });
@@ -209,37 +209,58 @@ app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
 
 //API Antonio
 
+var fires = [
+	{	community: "andalucia",
+		year: 2007,
+		accident: 6878,
+		sick: 29.1,
+		numberzone: 804},
+	{
+		community: "aragon",
+		year: 2007,
+		accident: 5251,
+		sick: 323.4,
+		numberzone: 1750
+	}
+];
 //GET LOADINITIALDATA
 app.get(BASE_API_URL+"/fires-stats/loadInitialData", (req,res) => {
 	
-	var fires = [
+	fires = [
 	{
-		community:"andalucia",
-		year:2007,
-		total_fire:819,
-		forest_area:6296.75,
-		non_forest_area:3282.53},
+		community: "andalucia",
+		year: 2007,
+		total_fire: 819,
+		forest_area: 6296.75,
+		non_forest_area: 3282.53},
 	{
-		community:"aragon",
-		year:2007,
-		total_fire:415,
-		forest_area:1860.38,
-		non_forest_area:611.51
+		community: "aragon",
+		year: 2007,
+		total_fire: 415,
+		forest_area: 1860.38,
+		non_forest_area: 611.51
 	}
 		
 ];
 	    if(fires.length >=1){
-        res.status(400).send("THERE IS ALREADY CREATED");
+        	res.status(200).send("THERE IS ALREADY CREATED");
     }
 		else{
-        //fires = initial_sales;
-        res.send(JSON.stringify(fires, null, 2));
+        
+        	res.send(JSON.stringify(fires, null, 2));
     }
+	
+});
 
 //GET fires-stats
-app.get(BASE_API_URL+"/fires-stats",(req,res)  =>{
+app.get(BASE_API_URL+ "/fires-stats" ,(req,res)  =>{
+	if(fires.length == 0){
+		res.status(400).send("THERE IS NO DATA")
+	}	
+	else{
 		res.send(JSON.stringify(fires, null, 2));
-		console.log("Data sent:"+JSON.stringify(fires, null, 2));
+	}
+	
 });
 
 
@@ -344,7 +365,7 @@ app.delete(BASE_API_URL+"/fires-stats", (req, res) =>{
 		   res.sendStatus(200); //Envio el codigo de respuesta 200(OK) si se ha hecho correctamente el borrado del array.
 	});
 
-});
+
 
 
 
