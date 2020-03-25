@@ -161,7 +161,7 @@ app.put(BASE_API_URL +"/offworks-stats/:community/:year",(req,res)=>{
         return (c.community != community && c.year != year );
         });      
         offworks_stats = filteredOffworks;
-        filteredOffworks.push(data);
+        offworks_stats.push(data);
         res.status(200).send("UPDATED");
     }
 });
