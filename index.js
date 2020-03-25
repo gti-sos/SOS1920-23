@@ -149,15 +149,15 @@ app.get(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
 });
 
 // PUT OFFWORKS/XXX
-app.put(BASE_API_URL +"/offworks-stats/:community/",(req,res)=>{
+app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
     var community = req.params.community;
 	var body = req.body;
-	var filteredfires = fires.filter((c) => {
+	var filteredOffworks = offworks_stats.filter((c) => {
 		return (c.community == community);
 	});
 	
-	if(filteredfires.length==1){
-		var updateData = fires.map((f) => {
+	if(filteredOffworks.length==1){
+		var updateData = offworks_stats.map((f) => {
 			var upData = f;
 			if(f.community == community){
 				for(var p in body){
@@ -167,7 +167,7 @@ app.put(BASE_API_URL +"/offworks-stats/:community/",(req,res)=>{
 			return(updateData);
 		});
 		
-		fires.push = updateData;
+		offworks_stats.push = updateData;
 		res.sendStatus(200);	//Recurso encontrado y modificado
 	}
 	else{
