@@ -172,7 +172,7 @@ app.post(BASE_API_URL + "/offworks-stats/:community", (req,res)=>{
 });
 // DELETE OFFWORKS/XXX
 
-app.delete(BASE_API_URL+"/offworks-stats/community", (req,res)=>{
+app.delete(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
 	
 	var community = req.params.community;
 	
@@ -183,7 +183,7 @@ app.delete(BASE_API_URL+"/offworks-stats/community", (req,res)=>{
 	
 	if(filteredOffworks.length < offworks_stats.length){
 		offworks_stats = filteredOffworks;
-		res.sendStatus(200);
+		res.status(200).send("DELETED OFFWORK");
 	}else{
 		res.sendStatus(404,"CONTACT NOT FOUND");
 	}	
