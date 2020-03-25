@@ -158,7 +158,7 @@ app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
         res.status(400).send("NOT MATCH");
     }else{
         var filteredOffworks = offworks_stats.filter((c) => {
-        return (c.community == community);
+        return (c.community != community);
         });      
         offworks_stats = filteredOffworks;
         offworks_stats.push(data);
