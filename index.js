@@ -160,8 +160,8 @@ app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
         var filteredOffworks = offworks_stats.filter((c) => {
         return (c.community != community );
         });      
-        //filteredOffworks = filteredOffworks;
-        filteredOffworks.push(data);
+        offworks_stats = filteredOffworks;
+        //filteredOffworks.push(data);
         res.status(200).send("UPDATED");
     }
 });
