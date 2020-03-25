@@ -226,6 +226,7 @@ app.put(BASE_API_URL+"/fires-stats/:community", (req, res) =>{
                 fires.non_forest_area == non_forest_area;
             }
         };
+		res.send("UPDATED!")
         res.json(fires);
     } else {
 		res.sendStatus(404, "Resource not found")
