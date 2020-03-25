@@ -149,19 +149,19 @@ app.get(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
 });
 
 // PUT OFFWORKS/XXX
-app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
+app.put(BASE_API_URL +"/offworks-stats/:community/:year",(req,res)=>{
     var community=req.params.community;
-    
+    var year=req.params.year;
     var data=req.body;
     
     if(community!=data.community){
         res.status(400).send("NOT MATCH");
     }else{
         var filteredOffworks = offworks_stats.filter((c) => {
-        return (c.community != community );
+        return (c.community != community && c.year != year );
         });      
         offworks_stats = filteredOffworks;
-        //filteredOffworks.push(data);
+        filteredOffworks.push(data);
         res.status(200).send("UPDATED");
     }
 });
