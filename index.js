@@ -173,7 +173,7 @@ app.post(BASE_API_URL+"/fires-stats",(req,res) => {
 	}
 });
 	
-//GET fires-stats/XXX
+//GET fires-stats/XXXX
 app.get(BASE_API_URL+"/fires-stats/:community", (req, res) =>{
 	
 	var community = req.params.community;
