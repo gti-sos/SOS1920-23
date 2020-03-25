@@ -131,13 +131,13 @@ app.delete(BASE_API_URL+"/offworks-stats",(req,res) =>{
 });
 // GET OFFWORKS/XXX
 
-app.get(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
+app.get(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
 	
 	var community = req.params.community;
 	var year = req.params.year;
 	
 	var filteredOffworks = offworks_stats.filter((c) => {
-		return (c.community == community && c.year == year);
+		return (c.community == community);
 	});
 	
 	
@@ -149,41 +149,25 @@ app.get(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
 });
 
 // PUT OFFWORKS/XXX
-app.put(BASE_API_URL +"/offworks-stats/:community/:year",(req,res)=>{
+app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
     var community=req.params.community;
-    var year=req.params.year;
     
     var data=req.body;
     
-    if(community!=data.community||year!=data.year){
+    if(community!=data.community){
         res.status(400).send("NOT MATCH");
     }else{
-        var filteredOffworks = sales.filter((c) => {
-        return (c.province != province || c.year != year);
+        var filteredOffworks = offworks_stats.filter((c) => {
+        return (c.community != community );
         });      
         //filteredOffworks = filteredOffworks;
         filteredOffworks.push(data);
         res.status(200).send("UPDATED");
     }
 });
-app.put(BASE_API_URL + "/offworks-stats/:community", (req,res)=>{
-	res.status(400).send("INVALID URL");
-});
 	
 //POST OFFWORKS/XXX
 app.post(BASE_API_URL + "/offworks-stats/:community", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
-});
-app.post(BASE_API_URL + "/offworks-stats/:community/:year", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
-});
-app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
-});
-app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident/:sick", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
-});
-app.post(BASE_API_URL + "/offworks-stats/:community/:year/:accident/:sick/:numberzone", (req,res)=>{
     res.status(405).send("NOT ALLOWED");
 });
 // DELETE OFFWORKS/XXX
@@ -204,23 +188,7 @@ app.delete(BASE_API_URL+"/offworks-stats/community", (req,res)=>{
 		res.sendStatus(404,"CONTACT NOT FOUND");
 	}	
 });
-// DELETE OFFWORKS/XXX/--
-app.delete(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
-    
-    var community = req.params.community;
-    var year = req.params.year;
-    
-    var filteredOffworks = offworks_stats.filter((c) => {
-        return (c.community != community || c.year != year);
-    });
-    
-    if(filteredOffworks.length < offworks_stats.length){
-        //filteredOffworks = filteredOffworks;
-        res.status(200).send("DELETED OFFWORK");
-    }else{
-        res.status(404).send("NOT FOUND");
-    }
-});
+
 //GET OFFWORK COMMUNITY or YEAR
 app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
 	var param = req.params.param;
