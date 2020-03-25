@@ -205,10 +205,146 @@ app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
 });
 //API Joserra
 
+
+
 //API Antonio
 
+//GET LOADINITIALDATA
+app.get(BASE_API_URL+"/fires-stats/loadInitialData", (req,res) => {
+	
+	var fires = [
+	{
+		community:"andalucia",
+		year:2007,
+		total_fire:819,
+		forest_area:6296.75,
+		non_forest_area:3282.53},
+	{
+		community:"aragon",
+		year:2007,
+		total_fire:415,
+		forest_area:1860.38,
+		non_forest_area:611.51
+	}
+		
+];
+	    if(fires.length >=1){
+        res.status(400).send("There is already created");
+    }
+		else{
+        //fires = initial_sales;
+        res.send(JSON.stringify(fires, null, 2));
+    }
+
+//GET fires-stats
+app.get(BASE_API_URL+"/fires-stats",(req,res)  =>{
+		res.send(JSON.stringify(fires, null, 2));
+		console.log("Data sent:"+JSON.stringify(fires, null, 2));
+});
+
+
+//POST fires-stats
+
+app.post(BASE_API_URL+"/fires-stats",(req,res) => {
+	
+	var newFire = req.body;
+	
+	if((newFire == "") || (newFire.community == null)){
+		res.sendStatus(400,"BAD REQUEST");
+	} else {
+		fires.push(newFire); 	
+		res.sendStatus(201,"CREATED");
+	}
+});
+	
+//GET fires-stats/XXXX
+app.get(BASE_API_URL+"/fires-stats/:community", (req, res) =>{
+	
+	var community = req.params.community;
+	
+	var filteredfires = fires.filter((f) => { //Filter va iterando y devolviendo todos los elementos del array, y comprueba que cumplen una determinada condicion
+		return (f.community == community);
+	
+});
+	if(filteredfires.length >= 1){
+		res.send(filteredfires[0]); //Devuelve el primer elemento del array
+	}
+	else{
+		res.sendStatus(404, "FIRE NOT FOUND");
+	}
+									 
+});
+	
+//DELETE fires-stats/XXXX
+app.delete(BASE_API_URL+"/fires-stats/:community", (req, res) => {
+	var community = req.params.community;
+	
+	var filteredfires = fires.filter((f) => { //Filter va iterando y devolviendo todos los elementos del array, y comprueba que los nombres de las comunidades son distintos
+		return (f.community != community);
+
+});
+	if(filteredfires.length < fires.length){
+		fires = filteredfires;
+		res.sendStatus(200);
+		
+	}
+	else{
+		res.sendStatus(404, "FIRE NOT FOUND");
+	}
+});
+
+	
+//PUT fires-stats/XXXX
+
+app.put(BASE_API_URL+"/fires-stats/:community", (req, res) =>{
+	
+	const community = req.params.community; //Guardo el identificador para el recurso que queremos modificar
+    const { year, total_fire, forest_area, non_forest_area } = req.body;
+    if (community && year && total_fire && forest_area && non_forest_area) {
+        for(const community in fires) { //Recorro el arreglo de incendios y obtengo un solo incendio y una comunidad
+            if (fires.community == community) { //Si la comunidad que estoy recorriendo es igual a la que le paso por parámetro
+				//Modifica los siguientes datos
+                fires.year == year;
+                fires.total_fire == total_fire;
+                fires.forest_area == forest_area;
+                fires.non_forest_area == non_forest_area;
+            }
+        };
+		res.send("UPDATED!")
+        res.json(fires);
+    } else {
+		res.sendStatus(404, "Resource not found")
+    }
+
+
+});
+	
+//POST FIRES/XXXX (Esto debe de dar un error de método no permitido)
+ app.post(BASE_API_URL+"/fires-stats/:community",(req,res) =>{
+    	res.sendStatus(405,"Method Not Allowed");
+    });
+
+//PUT FIRES (Esto debe de dar un error de método no permitido)
+
+app.put(BASE_API_URL+"/fires-stats", (req, res)=>{
+		res.sendStatus(405,"Method Not Allowed");
+	});
+	
+//DELETE FIRES
+
+app.delete(BASE_API_URL+"/fires-stats", (req, res) =>{
+		   fires = [];	//Creo un array vacio
+		   res.sendStatus(200, "OK"); //Envio el codigo de respuesta 200 si se ha hecho correctamente el borrado del array.
+	});
+
+});
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.listen(port, () =>{
 	console.log("server ready");
 });
 
 console.log("Starting server...");
+	
