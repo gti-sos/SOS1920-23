@@ -2,12 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 
-
-
 var app = express();
 var port = process.env.PORT || 80;
+
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
 app.use('/', express.static('./public'));
+
+app.get("/cool",(request,response) => {
+	response.send("<html>"+cool()+"</html>");
+});
+
+
 
 var contacts = [
 	{	name : "peter",
@@ -331,12 +336,6 @@ app.post(BASE_API_URL + "/cigarretes-sales/:community", (req,res)=>{
 });
 
 
-
-
-app.get("/cool",(request,response) => {
-	response.send("<html>"+cool()+"</html>");
-
-
   
   
 //API Antonio
@@ -485,3 +484,5 @@ app.listen(port, () => {
 	console.log('server ready');
 });
 
+console.log("Starting server...");
+	
