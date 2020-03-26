@@ -1,6 +1,5 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-
+const express = require('express');
+const bodyParser = require('body-parser');
 
 var app = express();
 var port = process.env.PORT || 80;
@@ -8,19 +7,19 @@ var port = process.env.PORT || 80;
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
 app.use('/', express.static('./public'));
 
-app.get("/cool",(request,response) => {
-	response.send("<html>"+cool()+"</html>");
+app.get('/cool', (request, response) => {
+	response.send('<html>' + cool() + '</html>');
 });
 
-
-
 var contacts = [
-	{	name : "peter",
-		phone:  123456	},
 	{
-		name: "pablo",
-		phone: 7896
+		name: 'peter',
+		phone: 123456
 	},
+	{
+		name: 'pablo',
+		phone: 7896
+	}
 ];
 
 const BASE_API_URL = '/api/v1';
@@ -36,7 +35,6 @@ app.post(BASE_API_URL + '/contacts', (req, res) => {
 app.get('/cool', (request, response) => {
 	response.send('<html>' + cool() + '</html>');
 });
- 
 
 //API Alejandro
 var offworks_stats = [
@@ -110,56 +108,54 @@ app.delete(BASE_API_URL + '/offworks-stats', (req, res) => {
 	res.sendStatus(200, 'OK');
 });
 // GET OFFWORKS/XXX/--
-app.get(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
-	
+app.get(BASE_API_URL + '/offworks-stats/:community/:year', (req, res) => {
 	var community = req.params.community;
 	var year = req.params.year;
-	
-	var filteredOffworks = offworks_stats.filter((c) => {
-		return (c.community == community && c.year == year);
+
+	var filteredOffworks = offworks_stats.filter(c => {
+		return c.community == community && c.year == year;
 	});
-	
-	
-	if(filteredOffworks.length >= 1){
+
+	if (filteredOffworks.length >= 1) {
 		res.send(filteredOffworks[0]);
-	}else{
-		res.sendStatus(404,"OFFWORK NOT FOUND");
+	} else {
+		res.sendStatus(404, 'OFFWORK NOT FOUND');
 	}
 });
 // PUT OFFWORKS/XXX
 app.put(BASE_API_URL + '/offworks-stats/:community/:year', (req, res) => {
-	var community=req.params.community;
-    var year=req.params.year;
-    
-    var data=req.body;
-    
-    var filteredOffworks = offworks_stats.filter((c)=>{
-                return (c.community == community && c.year == year);
-            })
-            
-            if(filteredOffworks.length == 0){
-                res.sendStatus(404,"NOT FOUND");
-            }else{
-                   var filteredOffworks2 = offworks_stats.filter(c => {
-					return c.community != community|| c.year != year;
-					});
-                    
-                    if((data == "") || (data.community == null) || (data.year == null)){
-                		res.sendStatus(400,"BAD REQUEST");
-                	} else {
-						offworks_stats = filteredOffworks2;
-                		filteredOffworks2.push(data); 	
-                		res.sendStatus(200,"OK");
-                	}
-            }
+	var community = req.params.community;
+	var year = req.params.year;
+
+	var data = req.body;
+
+	var filteredOffworks = offworks_stats.filter(c => {
+		return c.community == community && c.year == year;
+	});
+
+	if (filteredOffworks.length == 0) {
+		res.sendStatus(404, 'NOT FOUND');
+	} else {
+		var filteredOffworks2 = offworks_stats.filter(c => {
+			return c.community != community || c.year != year;
+		});
+
+		if (data == '' || data.community == null || data.year == null) {
+			res.sendStatus(400, 'BAD REQUEST');
+		} else {
+			offworks_stats = filteredOffworks2;
+			filteredOffworks2.push(data);
+			res.sendStatus(200, 'OK');
+		}
+	}
 });
 
 //POST OFFWORKS/XXX
 app.post(BASE_API_URL + '/offworks-stats/:community', (req, res) => {
 	res.status(405).send('NOT ALLOWED');
 });
-app.post(BASE_API_URL + '/offworks-stats/:community/:year', (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+app.post(BASE_API_URL + '/offworks-stats/:community/:year', (req, res) => {
+	res.status(405).send('NOT ALLOWED');
 });
 // DELETE OFFWORKS/XXX
 
@@ -178,21 +174,20 @@ app.delete(BASE_API_URL + '/offworks-stats/:community', (req, res) => {
 	}
 });
 // DELETE OFFWORKS/XXX/--
-app.delete(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
-    
-    var community = req.params.community;
-    var year = req.params.year;
-    
-    var filteredOffworks = offworks_stats.filter((c) => {
-        return (c.community != community || c.year != year);
-    });
-    
-    if(filteredOffworks.length < offworks_stats.length){
-        offworks_stats = filteredOffworks;
-        res.status(200).send("DELETED OFFWORK");
-    }else{
-        res.status(404).send("NOT FOUND");
-    }
+app.delete(BASE_API_URL + '/offworks-stats/:community/:year', (req, res) => {
+	var community = req.params.community;
+	var year = req.params.year;
+
+	var filteredOffworks = offworks_stats.filter(c => {
+		return c.community != community || c.year != year;
+	});
+
+	if (filteredOffworks.length < offworks_stats.length) {
+		offworks_stats = filteredOffworks;
+		res.status(200).send('DELETED OFFWORK');
+	} else {
+		res.status(404).send('NOT FOUND');
+	}
 });
 //GET OFFWORK COMMUNITY or YEAR
 app.get(BASE_API_URL + '/offworks-stats/:param', (req, res) => {
@@ -211,110 +206,94 @@ app.get(BASE_API_URL + '/offworks-stats/:param', (req, res) => {
 //API JOSERRA
 var cigarretes = [
 	{
-		community: "andalucia",
+		community: 'andalucia',
 		year: 2007,
 		cigarrete_sale: 812,
 		first_variation: -41.7,
 		second_variation: -49.6
-		
 	},
 	{
-		community: "aragon",
+		community: 'aragon',
 		year: 2007,
 		cigarrete_sale: 132,
 		first_variation: -32.1,
 		second_variation: -38.5
-		
 	}
-	
-	
 ];
 
 //GET LOADINITIALDATA
 
-
-
-app.get(BASE_API_URL+"/cigarretes-sales/loadInitialData",(req,res)  =>{
-	 cigarretes = [
-	{
-		community: "andalucia",
-		year: 2007,
-		cigarrete_sale: 812,
-		first_variation: -41.7,
-		second_variation: -49.6
-		
-	},
-	{
-		community: "aragon",
-		year: 2007,
-		cigarrete_sale: 132,
-		first_variation: -32.1,
-		second_variation: -38.5
-		
-	}
-	
-	
-];
-	if(cigarretes.length >= 1){
-		res.status(200).send("There is already created");
-	}else{
+app.get(BASE_API_URL + '/cigarretes-sales/loadInitialData', (req, res) => {
+	cigarretes = [
+		{
+			community: 'andalucia',
+			year: 2007,
+			cigarrete_sale: 812,
+			first_variation: -41.7,
+			second_variation: -49.6
+		},
+		{
+			community: 'aragon',
+			year: 2007,
+			cigarrete_sale: 132,
+			first_variation: -32.1,
+			second_variation: -38.5
+		}
+	];
+	if (cigarretes.length >= 1) {
+		res.status(200).send('There is already created');
+	} else {
 		cigarretes = initial_sales;
-		res.send(JSON.stringify(cigarretes,null,2));
+		res.send(JSON.stringify(cigarretes, null, 2));
 	}
-
-
 });
 //GET CIGARRETES
 
-app.get(BASE_API_URL+"/cigarretes-sales",(req,res)  =>{
-	
-		res.send(JSON.stringify(cigarretes,null,2));
-	console.log("Data send:"+JSON.stringify(cigarretes,null,2));
+app.get(BASE_API_URL + '/cigarretes-sales', (req, res) => {
+	res.send(JSON.stringify(cigarretes, null, 2));
+	console.log('Data send:' + JSON.stringify(cigarretes, null, 2));
 });
 
 // POST CIGARRETES
-app.post(BASE_API_URL+"/cigarretes-sales",(req,res) =>{
+app.post(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 	var newCigarrete = req.body;
-		if((newCigarrete == "") || newCigarrete.community == null){
-		res.sendStatus(400,"BAD REQUEST");
-	
-}else{
+	if (newCigarrete == '' || newCigarrete.community == null) {
+		res.sendStatus(400, 'BAD REQUEST');
+	} else {
 		cigarretes.push(newCigarrete);
-		res.sendStatus(201,"CREATED");
-}
-
+		res.sendStatus(201, 'CREATED');
+	}
 });
 
 //DELETE CIGARRETES
-app.delete(BASE_API_URL+"/cigarretes-sales",(req,res) =>{	
+app.delete(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 	cigarretes = [];
-	res.sendStatus(200, "OK");
+	res.sendStatus(200, 'OK');
 });
 
 //GET CIGARRETES/XXX
 
-app.get(BASE_API_URL+"/cigarretes-sales/:community",(req,res)=>{
+app.get(BASE_API_URL + '/cigarretes-sales/:community', (req, res) => {
 	var community = req.params.community;
-	var filteredCigarretes = cigarretes.filter((c) => {
-		return (c.community == community);
+	var filteredCigarretes = cigarretes.filter(c => {
+		return c.community == community;
 	});
-	
-	if (filteredCigarretes.length >=1){
+
+	if (filteredCigarretes.length >= 1) {
 		res.send(filteredCigarretes[0]);
-	}else{
-		res.sendStatus(404,"Contact Not Found");
+	} else {
+		res.sendStatus(404, 'Contact Not Found');
 	}
-										  
 });
 //PUT CIGARRETES
-app.put(BASE_API_URL+"/cigarretes-sales", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
-	});
-	
+app.put(BASE_API_URL + '/cigarretes-sales', (req, res) => {
+	res.status(405).send('NOT ALLOWED');
+});
+
 //PUT CIGARRETES/XXX
-app.put(BASE_API_URL +"/cigarretes-sales/:community",(req,res)=>{
-    var community=req.params.community;
-    var body = req.body;
+app.put(BASE_API_URL + '/cigarretes-sales/:community', (req, res) => {
+	var community = req.params.community;
+	var body = req.body;
 	var filteredCigarretes = cigarretes.filter(c => {
 		return c.community == community;
 	});
@@ -333,38 +312,31 @@ app.put(BASE_API_URL +"/cigarretes-sales/:community",(req,res)=>{
 		cigarretes.push = updateData;
 		res.sendStatus(200);
 	} else {
-		res.sendStatus(404); 
+		res.sendStatus(404);
 	}
-   
-});	
+});
 
 //DELETE CIGARRETES/XXX
-app.delete(BASE_API_URL+"/cigarretes-sales/:community",(req,res)=>{
+app.delete(BASE_API_URL + '/cigarretes-sales/:community', (req, res) => {
 	var community = req.params.community;
 
-	var filteredCigarretes = cigarretes.filter((c) => {
-		return (c.community != community);
+	var filteredCigarretes = cigarretes.filter(c => {
+		return c.community != community;
 	});
-	
-	if (filteredCigarretes.length < cigarretes.length){
+
+	if (filteredCigarretes.length < cigarretes.length) {
 		cigarretes = filteredCigarretes;
 		res.sendStatus(200);
-	
-	}else{
-		res.sendStatus(404,"Community Not Found");
+	} else {
+		res.sendStatus(404, 'Community Not Found');
 	}
-										  
-	
 });
 
 //POST CIGARRETES/XXX
-app.post(BASE_API_URL + "/cigarretes-sales/:community", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+app.post(BASE_API_URL + '/cigarretes-sales/:community', (req, res) => {
+	res.status(405).send('NOT ALLOWED');
 });
 
-
-  
-  
 //API Antonio
 
 var fires = [
@@ -503,7 +475,6 @@ app.put(BASE_API_URL + '/fires-stats', (req, res) => {
 app.delete(BASE_API_URL + '/fires-stats', (req, res) => {
 	fires = []; //Creo un array vacio
 	res.sendStatus(200); //Envio el codigo de respuesta 200(OK) si se ha hecho correctamente el borrado del array.
-
 });
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -511,5 +482,4 @@ app.listen(port, () => {
 	console.log('server ready');
 });
 
-console.log("Starting server...");
-	
+console.log('Starting server...');
