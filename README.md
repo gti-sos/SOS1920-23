@@ -6,3 +6,8 @@ https://documenter.getpostman.com/view/10846961/SzYUY1CH
 
 API DE Antonio Cabello Linares, colección desarrollada sobre entorno de Heroku y Goorm:
 https://documenter.getpostman.com/view/10637537/SzYUY17o
+
+API DE José Ramón Pérez Trigos, colección desarrollada sobre entorno de Heroku y Goorm:
+https://documenter.getpostman.com/view/10860459/SzYUa1hq
+
+
