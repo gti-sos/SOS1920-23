@@ -1,14 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-=======
-const express = require('express');
-const bodyParser = require('body-parser');
 
 
 var app = express();
 var port = process.env.PORT || 80;
+
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
 app.use('/', express.static('./public'));
+
+app.get("/cool",(request,response) => {
+	response.send("<html>"+cool()+"</html>");
+});
+
+
 
 var contacts = [
 	{	name : "peter",
@@ -200,7 +204,7 @@ var cigarretes = [
 ];
 
 //GET LOADINITIALDATA
-const BASE_API_URL = "/api/v2/joserra";
+
 
 
 app.get(BASE_API_URL+"/cigarretes-sales/loadInitialData",(req,res)  =>{
@@ -258,7 +262,7 @@ app.post(BASE_API_URL+"/cigarretes-sales",(req,res) =>{
 app.delete(BASE_API_URL+"/cigarretes-sales",(req,res) =>{	
 	cigarretes = [];
 	res.sendStatus(200, "OK");
-
+});
 
 //GET CIGARRETES/XXX
 
@@ -331,12 +335,6 @@ app.post(BASE_API_URL + "/cigarretes-sales/:community", (req,res)=>{
     res.status(405).send("NOT ALLOWED");
 });
 
-
-
-
-app.get("/cool",(request,response) => {
-	response.send("<html>"+cool()+"</html>");
-=======
 
   
   
@@ -487,3 +485,4 @@ app.listen(port, () => {
 });
 
 console.log("Starting server...");
+	
