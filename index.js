@@ -1,143 +1,114 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
 
 var app = express();
 var port = process.env.PORT || 80;
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
-app.use("/",express.static("./public"));
+app.use('/', express.static('./public'));
 
 var contacts = [
-	{	name : "peter",
-		phone:  123456	},
 	{
-		name: "pablo",
-		phone: 7896
+		name: 'peter',
+		phone: 123456
 	},
+	{
+		name: 'pablo',
+		phone: 7896
+	}
 ];
 
-const BASE_API_URL = "/api/v1";
+const BASE_API_URL = '/api/v1';
 
-app.get(BASE_API_URL+"/contacts",(req,res)  =>{
-		res.send(JSON.stringify(contacts,null,2));
+app.get(BASE_API_URL + '/contacts', (req, res) => {
+	res.send(JSON.stringify(contacts, null, 2));
 });
-app.post(BASE_API_URL+"/contacts",(req,res) =>{
-		contacts.push(req.body);
-		res.sendStatus(201,"CREATED");
-
+app.post(BASE_API_URL + '/contacts', (req, res) => {
+	contacts.push(req.body);
+	res.sendStatus(201, 'CREATED');
 });
 
-app.get("/cool",(request,response) => {
-	response.send("<html>"+cool()+"</html>");
+app.get('/cool', (request, response) => {
+	response.send('<html>' + cool() + '</html>');
 });
 //API Alejandro
 var offworks_stats = [
-	{	community : "Andalucia",
-		year:  2007,
+	{
+		community: 'Andalucia',
+		year: 2007,
 		accident: 6878,
 		sick: 29.1,
-		numberzone: 804},
+		numberzone: 804
+	},
 	{
-		community : "Aragon",
-		year:  2007,
+		community: 'Aragon',
+		year: 2007,
 		accident: 5251,
 		sick: 323.4,
 		numberzone: 1750
 	}
 ];
 // GET LOADINITIALDATA
-app.get(BASE_API_URL+"/offworks-stats/loadInitialData", (req,res) => {
-    
-    
-    offworks_stats = [
-	{	community : "Andalucia",
-		year:  2007,
-		accident: 6878,
-		sick: 29.1,
-		numberzone: 804},
-	{
-		community : "Aragon",
-		year:  2007,
-		accident: 5251,
-		sick: 323.4,
-		numberzone: 1750
-	}
+app.get(BASE_API_URL + '/offworks-stats/loadInitialData', (req, res) => {
+	offworks_stats = [
+		{
+			community: 'Andalucia',
+			year: 2007,
+			accident: 6878,
+			sick: 29.1,
+			numberzone: 804
+		},
+		{
+			community: 'Aragon',
+			year: 2007,
+			accident: 5251,
+			sick: 323.4,
+			numberzone: 1750
+		}
 	];
-    
-    if(offworks_stats.length >=1){
-        res.status(200).send("There is already created");
-    }else{
-        //offworks_stats = offworks_stats;
-        res.send(JSON.stringify(offworks_stats, null, 2));
-    }
+
+	if (offworks_stats.length >= 1) {
+		res.status(200).send('There is already created');
+	} else {
+		res.send(JSON.stringify(offworks_stats, null, 2));
+	}
 });
 
-
 // GET OFFWORKS
-app.get(BASE_API_URL + "/offworks-stats", (req,res) =>{
-	if(offworks_stats.length == 0){
-		res.status(400).send("There is no data stored");
-	}else{
-		res.send(JSON.stringify(offworks_stats,null,2));
+app.get(BASE_API_URL + '/offworks-stats', (req, res) => {
+	if (offworks_stats.length == 0) {
+		res.status(400).send('There is no data stored');
+	} else {
+		res.send(JSON.stringify(offworks_stats, null, 2));
 	}
 });
 // POST OFFWORKS
-app.post(BASE_API_URL + "/offworks-stats",(req,res) =>{
-    
-	//Objeto a crear
-    var newOffworks = req.body;
-	
-	//Array de las keys del objeto que se quiere crear. Ex: ["community","year","accident","sick","numberzone"]
-	var keysOffwork = Object.keys(newOffworks);
-	
-	//Array de las keys que debe tener el objeto.
-	var keysObject = ["community","year","accident","sick","numberzone"];
-	
-	//True: Las claves son correctas || False:Las claves son incorrectas
-	var keysTrue = false;
-	
-	//Comprobamos que las keys son correctas
-	if(JSON.stringify(keysOffwork)==JSON.stringify(keysObject)){
-		keysTrue = true;
+app.post(BASE_API_URL + '/offworks-stats', (req, res) => {
+	var data = req.body;
+
+	if (data == '' || data.community == null) {
+		res.sendStatus(400);
+	} else {
+		offworks_stats.push(data);
+		res.sendStatus(201);
 	}
-	
-	//filteredSales almacenara si hay algun dato ya con la provincia y el año que queremos añadir
-    var filteredSales = offworks_stats.filter((c)=>{
-        return (c.community == newOffworks.community && c.year == newOffworks.year);
-    });
-	
-    if(keysOffwork.length==0){ // Si el body está vacio
-        res.status(400).send("NOT CREATED"); 
-    }else if(keysTrue==false){ // Si los campos no son correctos
-		res.status(400).send("THIS FIELD DONT EXIST");
-	}else if(newOffworks.community==null || newOffworks.year==null || newOffworks.accident==null ||
-			newOffworks.sick==null || newOffworks.numberzone==null){ // Algun valor null
-		res.status(400).send("DONT BE NULL");
-	}else if(filteredSales.length>=1){ // Ya existe un dato para esa provincia y ese año
-        res.status(400).send("THE OFFWORK ALREADY EXIST");
-    }
-    else { // Crea el dato
-        offworks_stats.push(newOffworks);     
-        res.status(201).send("CREATED OFFWORK");
-    }
 });
 // PUT OFFWORK
-app.put(BASE_API_URL+"/offworks-stats", (req,res)=>{
-    res.status(405).send("NOT ALLOWED");
+app.put(BASE_API_URL + '/offworks-stats', (req, res) => {
+	res.status(405).send('NOT ALLOWED');
 });
 // DELETE OFFWORKS
-app.delete(BASE_API_URL+"/offworks-stats",(req,res) =>{	
+app.delete(BASE_API_URL + '/offworks-stats', (req, res) => {
 	offworks_stats = [];
-	res.sendStatus(200, "OK");
+	res.sendStatus(200, 'OK');
 });
-// GET OFFWORKS/XXX
-
-app.get(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
+// GET OFFWORKS/XXX/--
+app.get(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
 	
 	var community = req.params.community;
 	var year = req.params.year;
 	
 	var filteredOffworks = offworks_stats.filter((c) => {
-		return (c.community == community);
+		return (c.community == community && c.year == year);
 	});
 	
 	
@@ -147,77 +118,234 @@ app.get(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
 		res.sendStatus(404,"OFFWORK NOT FOUND");
 	}
 });
-
 // PUT OFFWORKS/XXX
-app.put(BASE_API_URL +"/offworks-stats/:community",(req,res)=>{
-	
-	
-    var community=req.params.community;
+app.put(BASE_API_URL + '/offworks-stats/:community/:year', (req, res) => {
+	var community=req.params.community;
+    var year=req.params.year;
     
     var data=req.body;
     
-    if(community == data.community){
-	var filteredOffworks = offworks_stats.filter((c) => {
-		return (!(c.community == community));
-	});
-	
-	if(!(filteredOffworks == offworks_stats)){
-		offworks_stats = filteredOffworks;
-	if((data == "") || (data.community == null)){
-		res.sendStatus(400,"BAD REQUEST");
-	} else {
-		offworks_stats.push(data); 	
-		res.sendStatus(201,"UPDATED");
-	}} else{
-		res.sendStatus(400,"BAD REQUEST");
-	}}else{
-		res.sendStatus(400,"BAD REQUEST");	
-	}
+    var filteredOffworks = offworks_stats.filter((c)=>{
+                return (c.community == community && c.year == year);
+            })
+            
+            if(filteredOffworks.length == 0){
+                res.sendStatus(404,"NOT FOUND");
+            }else{
+                   var filteredOffworks2 = offworks_stats.filter(c => {
+					return c.community != community|| c.year != year;
+					});
+                    
+                    if((data == "") || (data.community == null) || (data.year == null)){
+                		res.sendStatus(400,"BAD REQUEST");
+                	} else {
+						offworks_stats = filteredOffworks2;
+                		filteredOffworks2.push(data); 	
+                		res.sendStatus(200,"OK");
+                	}
+            }
 });
-	
+
 //POST OFFWORKS/XXX
-app.post(BASE_API_URL + "/offworks-stats/:community", (req,res)=>{
+app.post(BASE_API_URL + '/offworks-stats/:community', (req, res) => {
+	res.status(405).send('NOT ALLOWED');
+});
+app.post(BASE_API_URL + '/offworks-stats/:community/:year', (req,res)=>{
     res.status(405).send("NOT ALLOWED");
 });
 // DELETE OFFWORKS/XXX
 
-app.delete(BASE_API_URL+"/offworks-stats/:community", (req,res)=>{
-	
+app.delete(BASE_API_URL + '/offworks-stats/:community', (req, res) => {
 	var community = req.params.community;
-	
-	var filteredOffworks = offworks_stats.filter((c) => {
-		return (c.community != community);
-	});
-	
-	
-	if(filteredOffworks.length < offworks_stats.length){
-		offworks_stats = filteredOffworks;
-		res.status(200).send("DELETED OFFWORK");
-	}else{
-		res.sendStatus(404,"CONTACT NOT FOUND");
-	}	
-});
 
-//GET OFFWORK COMMUNITY or YEAR
-app.get(BASE_API_URL + "/offworks-stats/:param", (req,res)=>{
-	var param = req.params.param;
-	
-	var filteredOffworks = offworks_stats.filter((c)=>{
-		return (c.community==param || c.year == param);
+	var filteredOffworks = offworks_stats.filter(c => {
+		return c.community != community;
 	});
-	
-	if(filteredOffworks.length >= 1){
-		res.send(JSON.stringify(filteredOffworks,null,2));
-	}else{
-		res.status(404).send("NO DATA IN THIS COMMUNITY OR YEAR");
-	}	
+
+	if (filteredOffworks.length < offworks_stats.length) {
+		offworks_stats = filteredOffworks;
+		res.status(200).send('DELETED OFFWORK');
+	} else {
+		res.sendStatus(404, 'OFFWORK NOT FOUND');
+	}
+});
+// DELETE OFFWORKS/XXX/--
+app.delete(BASE_API_URL+"/offworks-stats/:community/:year", (req,res)=>{
+    
+    var community = req.params.community;
+    var year = req.params.year;
+    
+    var filteredOffworks = offworks_stats.filter((c) => {
+        return (c.community != community || c.year != year);
+    });
+    
+    if(filteredOffworks.length < offworks_stats.length){
+        offworks_stats = filteredOffworks;
+        res.status(200).send("DELETED OFFWORK");
+    }else{
+        res.status(404).send("NOT FOUND");
+    }
+});
+//GET OFFWORK COMMUNITY or YEAR
+app.get(BASE_API_URL + '/offworks-stats/:param', (req, res) => {
+	var param = req.params.param;
+
+	var filteredOffworks = offworks_stats.filter(c => {
+		return c.community == param || c.year == param;
+	});
+
+	if (filteredOffworks.length >= 1) {
+		res.send(JSON.stringify(filteredOffworks, null, 2));
+	} else {
+		res.status(404).send('NO DATA IN THIS COMMUNITY OR YEAR');
+	}
 });
 //API Joserra
 
 //API Antonio
 
-app.listen(port, () =>{
-	console.log("server ready");
+var fires = [
+	{
+		community: 'andalucia',
+		year: 2007,
+		total_fire: 819,
+		forest_area: 6296.75,
+		non_forest_area: 3282.53
+	},
+	{
+		community: 'aragon',
+		year: 2007,
+		total_fire: 415,
+		forest_area: 1860.38,
+		non_forest_area: 611.51
+	}
+];
+//GET LOADINITIALDATA
+app.get(BASE_API_URL + '/fires-stats/loadInitialData', (req, res) => {
+	fires = [
+		{
+			community: 'andalucia',
+			year: 2007,
+			total_fire: 819,
+			forest_area: 6296.75,
+			non_forest_area: 3282.53
+		},
+		{
+			community: 'aragon',
+			year: 2007,
+			total_fire: 415,
+			forest_area: 1860.38,
+			non_forest_area: 611.51
+		}
+	];
+	if (fires.length >= 1) {
+		res.status(200).send('THERE IS ALREADY CREATED');
+	} else {
+		res.send(JSON.stringify(fires, null, 2));
+	}
 });
 
-console.log("Starting server...");
+//GET fires-stats
+app.get(BASE_API_URL + '/fires-stats', (req, res) => {
+	if (fires.length == 0) {
+		res.status(400).send('THERE IS NO DATA');
+	} else {
+		res.send(JSON.stringify(fires, null, 2));
+	}
+});
+
+//POST fires-stats
+
+app.post(BASE_API_URL + '/fires-stats', (req, res) => {
+	var newFire = req.body;
+
+	if (newFire == '' || newFire.community == null) {
+		res.sendStatus(400); //Codigo 400(BAD REQUEST)
+	} else {
+		fires.push(newFire);
+		res.sendStatus(201); //Codigo 201(CREATED)
+	}
+});
+
+//GET fires-stats/XXXX
+app.get(BASE_API_URL + '/fires-stats/:community', (req, res) => {
+	var community = req.params.community;
+
+	var filteredfires = fires.filter(f => {
+		//Filter va iterando y devolviendo todos los elementos del array, y comprueba que cumplen una determinada condicion
+		return f.community == community;
+	});
+	if (filteredfires.length >= 1) {
+		res.send(filteredfires[0]); //Devuelve el primer elemento del array
+	} else {
+		res.sendStatus(404); //FIRE-DATA NOT FOUND
+	}
+});
+
+//DELETE fires-stats/XXXX
+app.delete(BASE_API_URL + '/fires-stats/:community', (req, res) => {
+	var community = req.params.community;
+
+	var filteredfires = fires.filter(f => {
+		//Filter va iterando y devolviendo todos los elementos del array, y comprueba que los nombres de las comunidades son distintos
+		return f.community != community;
+	});
+	if (filteredfires.length < fires.length) {
+		fires = filteredfires;
+		res.sendStatus(200); //Codigo 200(OK), recurso eliminado correctamente
+	} else {
+		res.sendStatus(404); //FIRE DATA NOT FOUND
+	}
+});
+
+//PUT fires-stats/XXXX
+
+app.put(BASE_API_URL + '/fires-stats/:community', (req, res) => {
+	var community = req.params.community;
+	var body = req.body;
+	var filteredfires = fires.filter(c => {
+		return c.community == community;
+	});
+
+	if (filteredfires.length == 1) {
+		var updateData = fires.map(f => {
+			var upData = f;
+			if (f.community == community) {
+				for (var p in body) {
+					upData[p] = body[p];
+				}
+			}
+			return updateData;
+		});
+
+		fires.push = updateData;
+		res.sendStatus(200); //Recurso encontrado y modificado
+	} else {
+		res.sendStatus(404); //Recurso no encontrado
+	}
+});
+
+//POST FIRES/XXXX (Esto debe de dar un error de método no permitido)
+app.post(BASE_API_URL + '/fires-stats/:community', (req, res) => {
+	res.sendStatus(405); //Method not allowed
+});
+
+//PUT FIRES (Esto debe de dar un error de método no permitido)
+
+app.put(BASE_API_URL + '/fires-stats', (req, res) => {
+	res.sendStatus(405); //Method Not Allowed
+});
+
+//DELETE FIRES
+
+app.delete(BASE_API_URL + '/fires-stats', (req, res) => {
+	fires = []; //Creo un array vacio
+	res.sendStatus(200); //Envio el codigo de respuesta 200(OK) si se ha hecho correctamente el borrado del array.
+});
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+app.listen(port, () => {
+	console.log('server ready');
+});
+
+console.log('Starting server...');
