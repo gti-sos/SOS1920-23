@@ -203,6 +203,11 @@ app.get(BASE_API_URL + '/offworks-stats/:param', (req, res) => {
 		res.status(404).send('NO DATA IN THIS COMMUNITY OR YEAR');
 	}
 });
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 //API JOSERRA
 var cigarretes = [
 	{
@@ -337,6 +342,10 @@ app.post(BASE_API_URL + '/cigarretes-sales/:community', (req, res) => {
 	res.status(405).send('NOT ALLOWED');
 });
 
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 //API Antonio
 
 var fires = [
@@ -379,6 +388,7 @@ app.get(BASE_API_URL + '/fires-stats/loadInitialData', (req, res) => {
 		res.send(JSON.stringify(fires, null, 2));
 	}
 });
+//-----------------------------------------------------------------------------------------------
 
 //GET fires-stats
 app.get(BASE_API_URL + '/fires-stats', (req, res) => {
@@ -388,6 +398,7 @@ app.get(BASE_API_URL + '/fires-stats', (req, res) => {
 		res.send(JSON.stringify(fires, null, 2));
 	}
 });
+//-----------------------------------------------------------------------------------------------
 
 //POST fires-stats
 
@@ -401,6 +412,7 @@ app.post(BASE_API_URL + '/fires-stats', (req, res) => {
 		res.sendStatus(201); //Codigo 201(CREATED)
 	}
 });
+//-----------------------------------------------------------------------------------------------
 
 //GET fires-stats/XXXX
 app.get(BASE_API_URL + '/fires-stats/:community', (req, res) => {
@@ -416,6 +428,7 @@ app.get(BASE_API_URL + '/fires-stats/:community', (req, res) => {
 		res.sendStatus(404); //FIRE-DATA NOT FOUND
 	}
 });
+//-----------------------------------------------------------------------------------------------
 
 //DELETE fires-stats/XXXX
 app.delete(BASE_API_URL + '/fires-stats/:community', (req, res) => {
@@ -432,6 +445,7 @@ app.delete(BASE_API_URL + '/fires-stats/:community', (req, res) => {
 		res.sendStatus(404); //FIRE DATA NOT FOUND
 	}
 });
+//-----------------------------------------------------------------------------------------------
 
 //PUT fires-stats/XXXX
 
@@ -459,17 +473,49 @@ app.put(BASE_API_URL + '/fires-stats/:community', (req, res) => {
 		res.sendStatus(404); //Recurso no encontrado
 	}
 });
+//-----------------------------------------------------------------------------------------------
+
+// PUT fires-stats/XXX/XXX
+app.put(BASE_API_URL + '/fires-stats/:community/:year', (req, res) => {
+	var community = req.params.community;
+	var year = req.params.year;
+
+	var data = req.body;
+
+	var filteredFires = fires_stats.filter(c => {
+		return c.community == community && c.year == year;
+	});
+
+	if (filteredFires.length == 0) {
+		res.sendStatus(404, 'NOT FOUND');
+	} else {
+		var filteredFires2 = fires_stats.filter(c => {
+			return c.community != community || c.year != year;
+		});
+
+		if (data == '' || data.community == null || data.year == null) {
+			res.sendStatus(400, 'BAD REQUEST');
+		} else {
+			Fires_stats = filteredFires2;
+			filteredFires2.push(data);
+			res.sendStatus(200, 'OK');
+		}
+	}
+});
+//-----------------------------------------------------------------------------------------------
 
 //POST FIRES/XXXX (Esto debe de dar un error de método no permitido)
 app.post(BASE_API_URL + '/fires-stats/:community', (req, res) => {
 	res.sendStatus(405); //Method not allowed
 });
+//-----------------------------------------------------------------------------------------------
 
 //PUT FIRES (Esto debe de dar un error de método no permitido)
 
 app.put(BASE_API_URL + '/fires-stats', (req, res) => {
 	res.sendStatus(405); //Method Not Allowed
 });
+//-----------------------------------------------------------------------------------------------
 
 //DELETE FIRES
 app.delete(BASE_API_URL + '/fires-stats', (req, res) => {
