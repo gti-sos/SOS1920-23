@@ -474,7 +474,7 @@ app.put(BASE_API_URL + '/fires-stats/:community', (req, res) => {
 	}
 });
 //-----------------------------------------------------------------------------------------------
-
+/*
 // PUT fires-stats/XXX/XXX
 app.put(BASE_API_URL + '/fires-stats/:community/:year', (req, res) => {
 	var community = req.params.community;
@@ -503,7 +503,7 @@ app.put(BASE_API_URL + '/fires-stats/:community/:year', (req, res) => {
 	}
 });
 //-----------------------------------------------------------------------------------------------
-
+*/
 //POST FIRES/XXXX (Esto debe de dar un error de método no permitido)
 app.post(BASE_API_URL + '/fires-stats/:community', (req, res) => {
 	res.sendStatus(405); //Method not allowed
