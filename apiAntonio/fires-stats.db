@@ -1,2 +1,30 @@
-{"community":"aragon","year":2007,"total_fire":415,"forest_area":1860.38,"non_forest_area":611.51,"_id":"8IwDIrSSpjXBZvwz"}
-{"community":"andalucia","year":2007,"total_fire":819,"forest_area":6296.75,"non_forest_area":3282.53,"_id":"8cf2wTI58DQSgSrB"}
+{"community":"andalucia","year":2007,"total_fire":819,"forest_area":6296.75,"non_forest_area":3282.53,"_id":"0CzrPc1l14QaOfI0"}
+{"community":"aragon","year":2007,"total_fire":415,"forest_area":1860.38,"non_forest_area":611.51,"_id":"RfJ1T4ZDFjF4ZZJh"}
+{"community":"comunidad valenciana","year":2007,"total_fire":375,"forest_area":8224.69,"non_forest_area":1847.42,"_id":"QHHh2ooX1kdSzy0l"}
+{"community":"canarias","year":2007,"total_fire":139,"forest_area":35758.62,"non_forest_area":1815.86,"_id":"7ARTEKpvXYYgoP63"}
+{"community":"andalucia","year":2008,"total_fire":776,"forest_area":2895.02,"non_forest_area":675.85,"_id":"Tq92eeYbZS5bMS9W"}
+{"community":"asturias","year":2008,"total_fire":1083,"forest_area":2690.31,"non_forest_area":0,"_id":"lkKjLaFxsj8hO4O1"}
+{"community":"aragon","year":2008,"total_fire":415,"forest_area":2601.04,"non_forest_area":611.51,"_id":"c0xdb6sLjzH7AGBs"}
+{"community":"comunidad valenciana","year":2008,"total_fire":375,"forest_area":9861.3,"non_forest_area":1847.42,"_id":"uFbrDCIIPstrIuZz"}
+{"community":"canarias","year":2008,"total_fire":133,"forest_area":426.05,"non_forest_area":1815.86,"_id":"wq1kwVgsCHpqvq2s"}
+{"community":"asturias","year":2007,"total_fire":1083,"forest_area":2690.31,"non_forest_area":0,"_id":"vs9xiwejrIdDABgu"}
+{"community":"aragon","year":2007,"total_fire":0,"forest_area":1860.38,"non_forest_area":611.51,"_id":"RfJ1T4ZDFjF4ZZJh"}
+{"$$deleted":true,"_id":"lkKjLaFxsj8hO4O1"}
+{"$$deleted":true,"_id":"0CzrPc1l14QaOfI0"}
+{"$$deleted":true,"_id":"7ARTEKpvXYYgoP63"}
+{"$$deleted":true,"_id":"QHHh2ooX1kdSzy0l"}
+{"$$deleted":true,"_id":"RfJ1T4ZDFjF4ZZJh"}
+{"$$deleted":true,"_id":"Tq92eeYbZS5bMS9W"}
+{"$$deleted":true,"_id":"c0xdb6sLjzH7AGBs"}
+{"$$deleted":true,"_id":"uFbrDCIIPstrIuZz"}
+{"$$deleted":true,"_id":"vs9xiwejrIdDABgu"}
+{"$$deleted":true,"_id":"wq1kwVgsCHpqvq2s"}
+{"community":"andalucia","year":2007,"total_fire":819,"forest_area":6296.75,"non_forest_area":3282.53,"_id":"xFxp1soznsCi4eHb"}
+{"community":"aragon","year":2007,"total_fire":415,"forest_area":1860.38,"non_forest_area":611.51,"_id":"6Ga2C26UXHZEPWgN"}
+{"community":"comunidad valenciana","year":2007,"total_fire":375,"forest_area":8224.69,"non_forest_area":1847.42,"_id":"x04h6iH0QGrCODID"}
+{"community":"canarias","year":2007,"total_fire":139,"forest_area":35758.62,"non_forest_area":1815.86,"_id":"Lf6nPWTMuLoq6aXP"}
+{"community":"andalucia","year":2008,"total_fire":776,"forest_area":2895.02,"non_forest_area":675.85,"_id":"JPnOukcaPkEbRDz9"}
+{"community":"asturias","year":2008,"total_fire":1083,"forest_area":2690.31,"non_forest_area":0,"_id":"QJZZag6RN1EJ6og2"}
+{"community":"aragon","year":2008,"total_fire":415,"forest_area":2601.04,"non_forest_area":611.51,"_id":"srd6BOkwmCSoUWTx"}
+{"community":"comunidad valenciana","year":2008,"total_fire":375,"forest_area":9861.3,"non_forest_area":1847.42,"_id":"z19sBohmW1IzPqWK"}
+{"community":"canarias","year":2008,"total_fire":133,"forest_area":426.05,"non_forest_area":1815.86,"_id":"3auD8qw7h3qcDzCv"}
