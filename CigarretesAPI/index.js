@@ -111,13 +111,19 @@ app.get(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 // POST CIGARRETES
 app.post(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 	var newCigarrete = req.body;
-	if (newCigarrete == '' || newCigarrete.community == null || newCigarrete.community == ""|| newCigarrete.year == null ||newCigarrete.year==""|| newCigarrete.cigarrete_sale == null || newCigarrete.cigarrete_sale==""|| newCigarrete.first_variation == null||newCigarrete.first_variation=="" || newCigarrete.second_variation==""||newCigarrete.second_variation == null) {
+	db.find({community: newCigarrete.community , year:newCigarrete.year},(err,cigarretes) =>{
+	if(cigarretes.length>0){
+		res.status(409).send("The resource already exists");
+	}
+	else if ((newCigarrete == '' || newCigarrete.community == null || newCigarrete.community == ""|| newCigarrete.year == null ||newCigarrete.year==""|| newCigarrete.cigarrete_sale == null || newCigarrete.cigarrete_sale==""|| newCigarrete.first_variation == null||newCigarrete.first_variation=="" || newCigarrete.second_variation==""||newCigarrete.second_variation == null)) {
 		res.sendStatus(400, 'BAD REQUEST');
 	} else {
 		db.insert(newCigarrete);
 		res.sendStatus(201, 'CREATED');
 	}
 });
+});
+
 
 //DELETE CIGARRETES
 app.delete(BASE_API_URL + '/cigarretes-sales', (req, res) => {
