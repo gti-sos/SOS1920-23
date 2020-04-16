@@ -95,7 +95,7 @@ app.get(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 			
 			
 			if(cigarretes.length < 1){	
-				res.status(400).send("Bad Request");
+				res.status(404).send("Data not found");
 				console.log("Failure to make the request");
 			}
 			else {	
@@ -131,7 +131,7 @@ app.delete(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 	res.sendStatus(200, 'OK');
 });
 
-//GET CIGARRETES/XXX
+//GET CIGARRETES/XXX/YYYY
 
 app.get(BASE_API_URL + '/cigarretes-sales/:community/:year', (req, res) => {
 	var searchCommunity = req.params.community;
@@ -154,7 +154,7 @@ app.put(BASE_API_URL + '/cigarretes-sales', (req, res) => {
 	res.status(405).send('NOT ALLOWED');
 });
 
-//PUT CIGARRETES/XXX
+//PUT CIGARRETES/XXX/YYYY
 app.put(BASE_API_URL + '/cigarretes-sales/:community/:year', (req, res) => {
 	var searchCommunity = req.params.community;
 	var searchYear= parseInt(req.params.year);
@@ -169,7 +169,7 @@ app.put(BASE_API_URL + '/cigarretes-sales/:community/:year', (req, res) => {
 	
 });
 
-//DELETE CIGARRETES/XXX
+//DELETE CIGARRETES/XXX/YYYY
 app.delete(BASE_API_URL + '/cigarretes-sales/:community/:year', (req, res) => {
 	var searchCommunity = req.params.community;
 	var searchYear= parseInt(req.params.year);
@@ -187,7 +187,7 @@ app.delete(BASE_API_URL + '/cigarretes-sales/:community/:year', (req, res) => {
 	
 
 
-//POST CIGARRETES/XXX
+//POST CIGARRETES/XXX/YYYY
 app.post(BASE_API_URL + '/cigarretes-sales/:community/:year', (req, res) => {
 	res.status(405).send('NOT ALLOWED');
 });
