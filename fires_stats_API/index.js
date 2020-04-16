@@ -3,8 +3,7 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
 
 const dataStore = require('nedb');	//Importacion base de datos nedb
 const path = require('path');	//Importacion mnodulo path
-const dbFileNameFires = path.join(__dirname , "fires-stats.db");	//constante ruta de archivos de base de datos
-const bodyParser = require('body-parser');	//Importacion modulo body-parser	
+const dbFileNameFires = path.join(__dirname , "fires-stats.db");	//constante ruta de archivos de base de datos	
 const BASE_API_URL = '/api/v1';	//Definimos la url por defecto
 
 const dbFires = new dataStore({	//Declaro la constante para usar mi base de datos

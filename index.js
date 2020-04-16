@@ -9,7 +9,7 @@ const port = process.env.PORT || 80;	//constante port para la utilizacion del pu
 //const dbFileNameFires = path.join(__dirname , "fires-stats.db");	//constante ruta de archivos de base de datos
 
 //Llamada constantes de APIs
-const apiAntonio = require(path.join(__dirname , "apiAntonio"));	//Importación modulo API de Antonio
+const apiAntonio = require(path.join(__dirname , "fires_stats_API"));	//Importación modulo API de Antonio
 apiAntonio(app);
 //API Alejandro
 const offworks_stats_API = require(path.join(__dirname,"offworks_stats_API"));
@@ -18,11 +18,6 @@ offworks_stats_API(app);
 
 //--------------------------------------------------------------------------------
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require("path");
-var app = express();
-var port = process.env.PORT || 80;
 
 
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
@@ -44,7 +39,7 @@ var contacts = [
 		phone: 7896
 	}
 ];
-=======
+
 
 
 const BASE_API_URL = '/api/v1';
@@ -52,9 +47,6 @@ const BASE_API_URL = '/api/v1';
 
 //------------------------------------------------------------------------------------
 
-//API Alejandro
-const offworks_stats_API = require(path.join(__dirname,"offworks_stats_API"));
-offworks_stats_API(app);
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
