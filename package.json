@@ -1,24 +1,25 @@
 {
-  "name": "f02",
-  "version": "0.0.0",
-  "description": "Modulos para f02",
+  "name": "sos1920-l09",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "node index"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gti-sos/SOS1920-23.git"
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "rollup": "^1.20.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "svelte": "^3.0.0"
   },
-  "author": "antoniocl11",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gti-sos/SOS1920-23/issues"
-  },
-  "homepage": "https://github.com/gti-sos/SOS1920-23#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cool-ascii-faces": "^1.3.4",
     "express": "^4.17.1",
     "nedb": "^1.8.0"
