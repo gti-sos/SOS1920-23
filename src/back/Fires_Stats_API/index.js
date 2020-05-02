@@ -15,11 +15,11 @@ app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรก
     //API Antonio
     
 //------------------------------------------------------------------------------------------------------------------------
-console.log("Registering Fires-Stats API...");
+console.log("Registering Fires-Stats API.......");
 
-db.find({}, (err, fires) =>{
-    if(contacts.length == 0){
-        db.insert([
+dbFires.find({}, (err, fires) =>{
+    if(fires.length == 0){
+        dbFires.insert([
                 {//En el 2007 falta asturias que se usa para las pruebas del postman
 		community: 'andalucia',
 		year: 2007,
@@ -91,7 +91,7 @@ db.find({}, (err, fires) =>{
     }
 
     else{
-        console.log("Loaded DB with" + fires.length + "fires_stats");
+        console.log("Loaded DB with " + fires.length + " fires_stats");
     }
 });
 
