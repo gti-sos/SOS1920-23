@@ -23,7 +23,8 @@ CigarretesAPI(app);
 
 
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
-app.use('/', express.static('./public'));
+//app.use('/', express.static('./public')); Para que salga el public principal de html
+app.use('/', express.static('./svelte_app/src/App.svelte'));
 
 
 app.get('/cool', (request, response) => {
