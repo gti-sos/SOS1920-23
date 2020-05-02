@@ -18,8 +18,10 @@ CigarretesAPI(app);
 
 //--------------------------------------------------------------------------------
 
-//probandooooooooooooooooooooo
+//Backend Antonio
+const back = require("./src/back");
 
+back(app);
 
 
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
@@ -29,8 +31,6 @@ app.use('/', express.static('./public')); //Para que salga el public principal d
 app.get('/cool', (request, response) => {
 	response.send('<html>' + cool() + '</html>');
 });
-
-
 
 
 
@@ -48,25 +48,11 @@ var contacts = [
 ];
 
 
-
 const BASE_API_URL = '/api/v1';
 
 
-//------------------------------------------------------------------------------------
-
-
-
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.listen(port, () => {
-	console.log('server ready');
+	console.log('server ready on port 80');
 });
 
 console.log('Starting server...');

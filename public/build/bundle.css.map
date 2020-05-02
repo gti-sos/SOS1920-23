@@ -6,9 +6,9 @@
     "..\\..\\MyContentTable.svelte"
   ],
   "sourcesContent": [
-    "<script>\n\timport MyContentTable from './MyContentTable.svelte';\n\texport let name;\n</script>\n\n<main>\n\t<h1>Hola {name}!!!</h1>\n\t<input bind:value={name}>\n\t<MyContentTable />\n</main>\n\n<style>\n\tmain {\n\t\ttext-align: center;\n\t\tpadding: 1em;\n\t\tmax-width: 240px;\n\t\tmargin: 0 auto;\n\t}\n\n\th1 {\n\t\tcolor: #ff3e00;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 4em;\n\t\tfont-weight: 100;\n\t}\n\n\t@media (min-width: 640px) {\n\t\tmain {\n\t\t\tmax-width: none;\n\t\t}\n\t}\n</style>",
-    "<script>\n\n</script>\n\n<main>\n\t<table>\n\t\t<tr>\n\t\t\t<td>My cell</td>\n\t\t</tr>\n\t</table>\n</main>\n\n<style>\n\ttable {\n\t\tborder: 1px solid black;\n\t}\n</style>"
+    "<script>\r\n\timport MyContentTable from './MyContentTable.svelte';\r\n\texport let name;\r\n</script>\r\n\r\n<main>\r\n\t<h1>Hola {name}!!!</h1>\r\n\t<input bind:value={name}>\r\n\t<MyContentTable />\r\n</main>\r\n\r\n<style>\r\n\tmain {\r\n\t\ttext-align: center;\r\n\t\tpadding: 1em;\r\n\t\tmax-width: 240px;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n\th1 {\r\n\t\tcolor: #ff3e00;\r\n\t\ttext-transform: uppercase;\r\n\t\tfont-size: 4em;\r\n\t\tfont-weight: 100;\r\n\t}\r\n\r\n\t@media (min-width: 640px) {\r\n\t\tmain {\r\n\t\t\tmax-width: none;\r\n\t\t}\r\n\t}\r\n</style>",
+    "<script>\r\n\r\n</script>\r\n\r\n<main>\r\n\t<table>\r\n\t\t<tr>\r\n\t\t\t<td>My cell</td>\r\n\t\t</tr>\r\n\t</table>\r\n</main>\r\n\r\n<style>\r\n\ttable {\r\n\t\tborder: 1px solid black;\r\n\t}\r\n</style>"
   ],
   "names": [],
-  "mappings": "AAYC,IAAI,eAAC,CAAC,AACL,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,AACf,CAAC,AAED,EAAE,eAAC,CAAC,AACH,KAAK,CAAE,OAAO,CACd,cAAc,CAAE,SAAS,CACzB,SAAS,CAAE,GAAG,CACd,WAAW,CAAE,GAAG,AACjB,CAAC,AAED,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AAC1B,IAAI,eAAC,CAAC,AACL,SAAS,CAAE,IAAI,AAChB,CAAC,AACF,CAAC;ACjBD,KAAK,eAAC,CAAC,AACN,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,AACxB,CAAC"
+  "mappings": "AAYC,IAAI,cAAC,CAAC,AACL,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,AACf,CAAC,AAED,EAAE,cAAC,CAAC,AACH,KAAK,CAAE,OAAO,CACd,cAAc,CAAE,SAAS,CACzB,SAAS,CAAE,GAAG,CACd,WAAW,CAAE,GAAG,AACjB,CAAC,AAED,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AAC1B,IAAI,cAAC,CAAC,AACL,SAAS,CAAE,IAAI,AAChB,CAAC,AACF,CAAC;ACjBD,KAAK,cAAC,CAAC,AACN,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,AACxB,CAAC"
 }
