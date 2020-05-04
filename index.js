@@ -54,7 +54,7 @@ const BASE_API_URL = '/api/v1';
 
 
 app.listen(port, () => {
-	console.log('server ready on port 80');
+	console.log('server ready on port 12345');
 });
 
 console.log('Starting server...');

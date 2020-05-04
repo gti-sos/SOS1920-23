@@ -1,12 +1,8 @@
 {
   "version": 3,
   "file": "bundle.css",
-  "sources": [
-    "..\\..\\FiresStatsTable.svelte"
-  ],
-  "sourcesContent": [
-    "<script>\r\n\r\n</script>\r\n\r\n<main>\r\n\t<table>\r\n\t\t<thead>\r\n\t\t\t<tr>\r\n\t\t\t\t<td>ID</td>\r\n\t\t\t\t<td>Community</td>\r\n\t\t\t\t<td>Year</td>\r\n\t\t\t\t<td>Total Fire</td>\r\n\t\t\t\t<td>Forest Area</td>\r\n\t\t\t\t<td>Non Forest Area</td>\r\n\t\t\t</tr>\r\n\t\t</thead>\r\n\r\n\t\t<tbody>\r\n\t\t\t<tr>\r\n\t\t\t\t<td>My cell</td>\r\n\t\t\t\t<td>My cell</td>\r\n\t\t\t\t<td>My cell</td>\r\n\t\t\t\t<td>My cell</td>\r\n\t\t\t\t<td>My cell</td>\r\n\t\t\t\t<td>My cell</td>\r\n\t\t\t</tr>\r\n\t\t</tbody>\r\n\r\n\t\t\r\n\t</table>\r\n</main>\r\n\r\n\r\n<style>\r\n\ttable{\r\n\t\tborder: 1px;\r\n\t}\r\n</style>\r\n\r\n"
-  ],
+  "sources": [],
+  "sourcesContent": [],
   "names": [],
-  "mappings": "AAkCC,mBAAK,CAAC,AACL,MAAM,CAAE,GAAG,AACZ,CAAC"
+  "mappings": ""
 }
