@@ -49,6 +49,14 @@
 
 	}
 
+	async function deleteFire(community, year) {
+        const res = await fetch("/api/v1/fires-stats/" + community + "/" + year, {
+            method: "DELETE"
+        }).then(function (res) {
+            getFires();
+        });
+    }
+
 
 </script>
 
@@ -86,12 +94,12 @@
 
 				<tr>
 
-					<td>{fire.community}</td>
+					<td><a href="#/fires/{fire.community}">{fire.community}</td>
 					<td>{fire.year}</td>
 					<td>{fire.total_fire}</td>
 					<td>{fire.forest_area}</td>
 					<td>{fire.non_forest_area}</td>
-					<td><Button color="danger" outline>Delete</Button></td>
+					<td><Button color="danger" outline on:click="{deleteFire(fire.community)}">Delete</Button></td>
 				</tr>
 				{/each}
 			</tbody>
