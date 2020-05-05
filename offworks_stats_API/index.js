@@ -56,13 +56,8 @@ module.exports = function(app) {
 				});
 				if (offworks_stats.length >= 1) {
 					console.log('Recurso encontrado');
-					if (offworks_stats.length == 1) {
-						res.send(JSON.stringify(offworks_stats[0], null, 2));
-						console.log('Data sent: ' + JSON.stringify(offworks_stats, null, 2));
-					} else {
-						res.send(JSON.stringify(offworks_stats, null, 2));
-						console.log('Data sent: ' + JSON.stringify(offworks_stats, null, 2));
-					}
+					res.send(JSON.stringify(offworks_stats, null, 2));
+					console.log('Data sent: ' + JSON.stringify(offworks_stats, null, 2));
 				} else {
 					console.log('ERROR. No se encuentra el recurso.');
 					res.sendStatus(404, 'NOT FOUND');
@@ -221,12 +216,7 @@ module.exports = function(app) {
 					offworks_stats.forEach(c => {
 						delete c._id;
 					});
-
-					if (offworks_stats.length == 1) {
-						res.send(JSON.stringify(offworks_stats[0], null, 2));
-					} else {
-						res.send(JSON.stringify(offworks_stats, null, 2));
-					}
+					res.send(JSON.stringify(offworks_stats, null, 2));
 				} else if (offworks_stats.length == 0) {
 					res.sendStatus(404, 'NOT FOUND');
 				}
@@ -240,12 +230,7 @@ module.exports = function(app) {
 					offworks_stats.forEach(c => {
 						delete c._id;
 					});
-
-					if (offworks_stats.length == 1) {
-						res.send(JSON.stringify(offworks_stats[0], null, 2));
-					} else {
-						res.send(JSON.stringify(offworks_stats, null, 2));
-					}
+					res.send(JSON.stringify(offworks_stats, null, 2));
 				} else if (offworks_stats.length == 0) {
 					res.sendStatus(404, 'NOT FOUND');
 				}
