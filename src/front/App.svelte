@@ -17,15 +17,15 @@
 
 	//Import archivos API Fires
 	import FiresStatsTable from './Fires_Stats_API/FiresStatsTable.svelte';
-	import EditFire from './Fires_Stats_API/EditFiresStats.svelte';
+	import EditFiresStats from './Fires_Stats_API/EditFiresStats.svelte';
 
 
 	const routes = {
 		"/" : Home,
 		
 
-		"/fires-stats-info" : FiresStatsTable,
-		"/fires-stats-info/:community" : EditFire,
+		"/fires-stats" : FiresStatsTable,
+		"/fires-stats/:community/:year" : EditFiresStats,
 
 		"*" : NotFound
 	}
@@ -35,7 +35,7 @@
 
 
 <main>
-	<h1>Select an API</h1>
+	<h1>API</h1>
 	<Router {routes} />
 	
 </main>
