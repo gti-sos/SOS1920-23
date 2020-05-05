@@ -6,12 +6,13 @@
 
 
 	let fires = [];
+
 	let newFire = {
 		community:"",
-		year:"",
-		total_fire:"",
-		forest_area:"",
-		non_forest_area:""
+		year: 0,
+		total_fire:0.0,
+		forest_area:0.0,
+		non_forest_area:0.0
 	};
 
 
@@ -23,7 +24,7 @@
 		
 //Await bloquea la instruccion, hasta que res tenga un valor
 		if(res.ok){
-			console.log("OK:");
+			console.log("OK");
 			const json = await res.json();
 			fires = json;
 			console.log("Received " + fires.length + " fires.");
@@ -87,19 +88,21 @@
 					<td><input bind:value="{newFire.total_fire}"></td>
 					<td><input bind:value="{newFire.forest_area}"></td>
 					<td><input bind:value="{newFire.non_forest_area}"></td>
-					<td><Button color="primary" outline on:click={insertFire}>Insert</Button></td>
+					<td><Button color="primary" outline on:click={insertFire}>Insertar</Button></td>
 				</tr>
 
 				{#each fires as fire}
 
 				<tr>
 
-					<td><a href="#/fires/{fire.community}">{fire.community}</td>
+					<td>
+						<a href="#/fires-stats/{fire.community}/{fire.year}">{fire.community}
+					</td>
 					<td>{fire.year}</td>
 					<td>{fire.total_fire}</td>
 					<td>{fire.forest_area}</td>
 					<td>{fire.non_forest_area}</td>
-					<td><Button color="danger" outline on:click="{deleteFire(fire.community)}">Delete</Button></td>
+					<td><Button color="danger" outline on:click="{deleteFire(fire.community)}">Eliminar</Button></td>
 				</tr>
 				{/each}
 			</tbody>
