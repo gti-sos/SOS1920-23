@@ -2,12 +2,9 @@
 
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
 	
-</script>
 
-<main>
-	
-	<CigarretesTable />
-</main>
+
+
 
 
 	import Router from 'svelte-spa-router';
@@ -28,7 +25,7 @@
 		"/fires-stats-info/:community" : EditFire,
 
 		"*" : NotFound
-	}
+	};
 
 
 </script>
