@@ -3,7 +3,13 @@ const bodyParser = require('body-parser');	//Importacion modulo body-parser
 //const dataStore = require('nedb');	//Importacion base de datos nedb
 const path = require('path');	//Importacion mnodulo path
 
-const app = express();	//constante app para la utilizacion de express
+const back = require("./src/back/CigarretesAPI");
+const app = express();
+app.use(bodyParser.json());
+back(app);	//constante app para la utilizacion de express
+
+
+	
 const port = process.env.PORT || 12345;	//constante port para la utilizacion del puerto 80 u otro.
 //const dbFileNameFires = path.join(__dirname , "fires-stats.db");	//constante ruta de archivos de base de datos
 

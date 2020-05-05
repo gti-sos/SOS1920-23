@@ -1,4 +1,15 @@
 <script>
+
+	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
+	
+</script>
+
+<main>
+	
+	<CigarretesTable />
+</main>
+
+
 	import Router from 'svelte-spa-router';
 
 	import Home from './Home.svelte';
@@ -28,3 +39,4 @@
 	<Router {routes} />
 	
 </main>
+
