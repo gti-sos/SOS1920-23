@@ -14,6 +14,7 @@ export default {
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
+	
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
