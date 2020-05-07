@@ -27,7 +27,7 @@ CigarretesAPI(app);
 //--------------------------------------------------------------------------------
 
 //Backend Antonio
-const backAnt = require("./src/back/Fires_Stats_API");
+const backAnt = require("./src/back/Fires_Stats_API/v2");
 
 backAnt(app);
 
