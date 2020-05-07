@@ -32,7 +32,7 @@
 
 
 <main>
-	<h1>API</h1>
+	
 	<Router {routes} />
 	
 </main>
