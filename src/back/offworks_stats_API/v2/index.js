@@ -18,15 +18,15 @@ module.exports = function(app) {
 		{community: 'Asturias',year: 2007,accident: 6322,sick: 159.5,numberzone: 600},
 		{community: 'Canarias',year: 2007,accident: 6469,sick: 14.7,numberzone: 116},
 		{community: 'Cantabria',year: 2007,accident: 5392,sick: 29.1,numberzone: 303},
-		{community: 'Castilla la Mancha',year: 2007,accident: 7575,sick: 107,numberzone: 1005},
-		{community: 'Castilla y Leon',year: 2007,accident: 5683,sick: 59.1,numberzone: 431},
+		{community: 'Castilla-la-Mancha',year: 2007,accident: 7575,sick: 107,numberzone: 1005},
+		{community: 'Castilla-y-Leon',year: 2007,accident: 5683,sick: 59.1,numberzone: 431},
 		{community: 'Cataluña',year: 2007,accident: 5693,sick: 112.7,numberzone: 3470},
 		{community: 'Andalucia',year: 2008,accident: 5835,sick: 32.9,numberzone: 866},
 		{community: 'Aragon',year: 2008,accident: 4766,sick: 325.8,numberzone: 1677},
 		{community: 'Canarias',year: 2008,accident: 5659,sick: 22.3,numberzone: 165},
 		{community: 'Cantabria',year: 2008,accident: 4981,sick: 176,numberzone: 397},
-		{community: 'Castilla la Mancha',year: 2008,accident: 6487,sick: 105.9,numberzone: 974},
-		{community: 'Castilla y Leon',year: 2008,accident: 5274,sick: 61.4,numberzone: 437}
+		{community: 'Castilla-la-Mancha',year: 2008,accident: 6487,sick: 105.9,numberzone: 974},
+		{community: 'Castilla-y-Leon',year: 2008,accident: 5274,sick: 61.4,numberzone: 437}
 	];
 	// GET LOADINITIALDATA
 	app.get(BASE_API_URL + '/offworks-stats/loadInitialData', (req, res) => {
@@ -104,7 +104,7 @@ module.exports = function(app) {
 				res.sendStatus(400, 'BAD REQUEST');
 			} else {
 				db.find(
-					{ community: newData.community, year: newData.year },
+					{ community: newData.community.replace(" ", "-"), year: newData.year },
 					(err, offworks_stats) => {
 						if (offworks_stats.length > 0) {
 							res.sendStatus(409, 'ALREADY EXISTS');

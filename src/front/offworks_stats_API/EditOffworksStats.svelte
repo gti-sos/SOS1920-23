@@ -80,8 +80,8 @@ import {onMount} from "svelte";
 				</thead>
 				<tbody>
 					<tr>
-						<td><Input type="text" bind:value="{updatedCommunity}"/></td>
-						<td><Input type="number" bind:value="{updatedYear}"/></td>                    
+						<td>{updatedCommunity.replace("-", " ")}</td>
+						<td>{updatedYear}</td>                    
 						<td><Input type="number" bind:value="{updatedAccident}"/></td>
 						<td><Input type="number" bind:value="{updatedSick}"/></td>
 						<td><Input type="number" bind:value="{updatedNumberZone}"/></td>
