@@ -17,7 +17,8 @@
 		[offworks-stats](https://documenter.getpostman.com/view/10846961/SzYUY1CH) 
 
 	- API DE Antonio Cabello Linares, colección desarrollada sobre entorno de HEROKU: 	
-		[fires-stats](https://documenter.getpostman.com/view/10637537/Szf3aVeY)
+		[fires-stats(V1)](https://documenter.getpostman.com/view/10637537/SzmcbKDu)
+    [fires-stats(V2)](https://documenter.getpostman.com/view/10637537/Szf3aVeY)
 
 	- API DE José Ramón Pérez Trigos, colección desarrollada sobre entorno de Heroku y Goorm: 	
 		[cigarretes-sales](https://documenter.getpostman.com/view/10860459/SzYUa1hq)

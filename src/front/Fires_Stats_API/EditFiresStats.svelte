@@ -1,29 +1,32 @@
 <script>
     import Table from "sveltestrap/src/Table.svelte";
     import Button from  "sveltestrap/src/Button.svelte";
+    
 
     import { pop } from "svelte-spa-router"
     
     import { onMount } from "svelte";
 
     export let params = {}; //Para los parametro en la url de cada recurso
-
+    
     let fire = {};
     
 
     let updatedCommunity = "";
+    
     let updatedYear = 0;
     let updatedtotal_fire = 0.0;
     let updatedforest_area = 0.0;
     let updatednon_forest_area = 0.0;
 
-    let errorMsg = "";
+    let msgExito ="";
+    let msgError = "";
 
     onMount(getFire);
 
     async function getFire(){
 		console.log("Fetching fire");
-		const res = await fetch("/api/v1/fires-stats/"+params.community+"/"+params.year);
+		const res = await fetch("/api/v2/fires-stats/"+params.community+"/"+params.year);
 		
 //Await bloquea la instruccion, hasta que res tenga un valor
 
@@ -39,12 +42,18 @@
             
             
 			console.log("Received fire.");
-		}
+        }
+       
 
-		else{
-            errorMsg = res.status + ": " + res.statusText;
-			console.log("ERROR!" + errorMsg);
-		}
+		else if(res.status==404){
+            msgError = "Elemento no encontrado";
+			console.log("ERROR!" + msgError);
+        }
+        
+        else if(res.status==400){
+            msgError = "Error al actualizar, revise los campos";
+            console.log(msgError);
+        }
 	}
 
 
@@ -52,7 +61,7 @@
 
         console.log("Updating fire..." + JSON.stringify(params.community));
 
-        const res = await fetch("/api/v1/fires-stats/"+params.community+"/"+params.year, {
+        const res = await fetch("/api/v2/fires-stats/"+params.community+"/"+params.year, {
             method: "PUT",
             body: JSON.stringify({
                 community: params.community,
@@ -66,29 +75,43 @@
             }
         }).then(function (res) {
             getFire();
-        });
-    }
+            if(res.status==200){
+                window.alert("Recurso actualizado");
+            }
+            
+            else if(res.status==400){
+                msgError = "Error al actualizar, revise los campos";
+                console.log(msgError);
+            }
+            
+        }
+        )};
+           
+    
+
+    
 
 
 </script>
 
 
 <main> 
-    <h3>Editando datos de la comunidad <strong>{params.community}</strong> en el año <strong>{params.year}</strong></h3>
+    <h3>Editando datos de la comunidad <strong>{params.community.replace("-", " ")}</strong> en el año <strong>{params.year}</strong></h3>
 
 {#await fire}	
 		Loading fire ...
 {:then fire}
+
 		<Table bordered>
 			<thead>
 				<tr>
 
-					<th>Community</th>
-					<th>Year</th>
-					<th>Total Fire</th>
-					<th>Forest Area</th>
-					<th>Non Forest Area</th>
-					<th>Actions</th>
+					<th>Comunidad</th>
+					<th>Año</th>
+					<th>Incendios Totales</th>
+					<th>Área Forestal</th>
+					<th>Área no Forestal</th>
+					<th>Acción</th>
 				</tr>
 			</thead>
 
@@ -96,23 +119,26 @@
 
 				<tr>
 
-					<td>{updatedCommunity}</td>
+					<td>{updatedCommunity.replace("-", " ")}</td>
 					<td>{updatedYear}</td>
-					<td><input type="number" bind:value="{updatedtotal_fire}"></td>
-					<td><input type="number" bind:value="{updatedforest_area}"></td>
-					<td><input type="number" bind:value="{updatednon_forest_area}"></td>
-					<td><Button color="primary" outline on:click={updateFire}>Actualizar</Button></td>
+                <td><input id="editaIncendio" type="number" bind:value="{updatedtotal_fire}" ></td>
+					<td><input type="number" bind:value="{updatedforest_area}" ></td>
+					<td><input type="number" bind:value="{updatednon_forest_area}" ></td>
+					<td><Button color="primary" outline  on:click={updateFire}>Actualizar &#x2714;</Button></td>
 				</tr>
 
+                
+                    <!--onclick="location.href='/#/fires-stats'"-->
+                   
+                
 
 			</tbody>
 
 		
         </Table>
+        
     {/await}
-    {#if errorMsg}
-    <p style="color: red;">Error: {errorMsg}</p>
-    {/if}
-        <Button outline color="secondary" on:click="{pop}">Atrás</Button>
+    <div>{#if msgExito}<h5 style="color: green;  text-align: center;">{msgExito}</h5>{/if}  {#if msgError}<h5 style="color: red; text-align: center;">Error: {msgError}</h5>{/if}</div>
+        <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
     <!--Pop hace la misma funcion que darle hacia atrás en el navegador-->
 </main>  
