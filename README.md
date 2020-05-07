@@ -9,9 +9,9 @@
 - **Repository**: [gti-sos/SOS1920-23](https://github.com/gti-sos/SOS1920-23)
 - **URL**: [http://sos1920-23.herokuapp.com](http://sos1920-23.herokuapp.com)
 -  **APIs**:
-    - [https://sos1920-23.herokuapp.com/api/v2/fires-stats](https://sos1920-23.herokuapp.com/#/fires-stats) (developed by [Antonio Cabello Linares](https://github.com/antoniocl11))
-    - [https://sos1920-23.herokuapp.com/api/v2/cigarretes-sales](https://sos1920-23.herokuapp.com/#/cigarretes-sales) (developed by [José Ramón Pérez Trigos](https://github.com/joserra123))
-    - [https://sos1920-23.herokuapp.com/api/v1/offworks-stats](https://sos1920-23.herokuapp.com/#/offworks-stats) (developed by [Alejandro Rodriguez Gomez](https://github.com/alegrandoi))
+    - [Fires-Stats](https://sos1920-23.herokuapp.com/#/fires-stats) (developed by [Antonio Cabello Linares](https://github.com/antoniocl11))
+    - [Cigarretes-Sales](https://sos1920-23.herokuapp.com/#/cigarretes-sales) (developed by [José Ramón Pérez Trigos](https://github.com/joserra123))
+    - [Offworks-Stats](https://sos1920-23.herokuapp.com/#/offworks-stats) (developed by [Alejandro Rodriguez Gomez](https://github.com/alegrandoi))
 
 -  **Postman Documentation**:
 	- API de Alejandro Rodríguez Gómez la colección desarrollada sobre el entorno de HEROKU 
