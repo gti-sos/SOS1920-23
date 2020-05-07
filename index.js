@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');	//Importacion modulo body-parser
 //const dataStore = require('nedb');	//Importacion base de datos nedb
 const path = require('path');	//Importacion mnodulo path
 
-const back = require("./src/back/CigarretesAPI");
+const back = require("./src/back/CigarretesAPI/v2");
 const app = express();
 app.use(bodyParser.json());
 back(app);	//constante app para la utilizacion de express
