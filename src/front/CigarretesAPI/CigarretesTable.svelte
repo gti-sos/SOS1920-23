@@ -30,8 +30,8 @@
 	let offset = 0;
 	let limit = 10;
 	let paginaActual = 1;
-	let masDatos = true;
 	let paginaSiguiente = true;
+	
 	let siguienteJson = 0;
 	onMount(paginationCigarretes);
 
@@ -49,10 +49,10 @@
 			cigarretes = json;
 			console.log("Received " + cigarretes.length + " cigarretes-sales.");
 			if(siguienteJson.length == 0){
-					masDatos == false;	//no hay mas datos
+					paginaSiguiente == false;	//no hay mas datos
 				}
 				else{
-					masDatos == true;	//si hay mas datos
+					paginaSiguiente == true;	//si hay mas datos
 				}
 				console.log("Received " + cigarretes.length + " cigarretes.");
 		}else if(res.status==404){
@@ -268,12 +268,14 @@
 		</Table>
 
 	{/await}
+
 	<Pagination float="center">
+		{#if paginaActual !=1}
 		<PaginationItem class="{paginaActual == 1 ? 'disabled' : ''}">
 			<PaginationLink previous href="#/cigarretes-sales" on:click="{() => incOffset(-1)}" /><!--Botón página anterior-->
 		</PaginationItem>
 
-		{#if paginaActual !=1} <!--Si al cargar la página actual no es la 1, que se vaya para la 1-->
+		 <!--Si al cargar la página actual no es la 1, que se vaya para la 1-->
 		<PaginationItem>
 			<PaginationLink href ="#/cigarretes-sales" on:click="{() => incOffset(-1)}">{paginaActual -1}</PaginationLink>
 		</PaginationItem>
@@ -287,12 +289,12 @@
 		<PaginationItem>
 			<PaginationLink href="#/cigarretes-sales" on:click="{() => incOffset(1)}">{paginaActual + 1}</PaginationLink>
 		</PaginationItem>
-		{/if}
+		
 
 		<PaginationItem class="{paginaSiguiente ? '' : 'disabled'}">
 			<PaginationLink next href="#/cigarretes-sales" on:click="{() => incOffset(1)}"/><!--Botón siguiente página-->
 		</PaginationItem>
-
+		{/if}
 		
 		
 	</Pagination>
