@@ -63,7 +63,7 @@ import {onMount} from "svelte";
 	
 	</script>
 	<main>
-		<h3 style="text-align: center;">Editar <strong>{params.community} - {params.year}</strong></h3>
+		<h3 style="text-align: center;">Editar <strong>{params.community.replace("-", " ")} - {params.year}</strong></h3>
 	{#await offwork}
 		Loading offworks...
 	{:then offwork}
