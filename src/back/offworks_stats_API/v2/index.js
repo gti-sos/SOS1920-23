@@ -104,7 +104,7 @@ module.exports = function(app) {
 				res.sendStatus(400, 'BAD REQUEST');
 			} else {
 				db.find(
-					{ community: newData, year: newData.year },
+					{ community: newData.community, year: newData.year },
 					(err, offworks_stats) => {
 						if (offworks_stats.length > 0) {
 							res.sendStatus(409, 'ALREADY EXISTS');
