@@ -10,7 +10,7 @@
 -  **APIs**:
     - [https://sos1920-23.herokuapp.com/api/v1/fires-stats](https://sos1920-23.herokuapp.com/api/v1/fires-stats) (developed by [Antonio Cabello Linares](https://github.com/antoniocl11))
     - [https://sos1920-23.herokuapp.com/api/v1/cigarretes-sales](https://sos1920-23.herokuapp.com/api/v1/cigarretes-sales) (developed by [José Ramón Pérez Trigos](https://github.com/joserra123))
-    - [https://sos1920-23.herokuapp.com/api/v1/offworks-stats](https://sos1920-23.herokuapp.com/api/v1/offworks-stats) (developed by [Alejandro Rodriguez Gomez](https://github.com/alegrandoi))
+    - [https://sos1920-23.herokuapp.com/api/v2/offworks-stats](https://sos1920-23.herokuapp.com/api/v2/offworks-stats) (developed by [Alejandro Rodriguez Gomez](https://github.com/alegrandoi))
 
 -  **Postman Documentation**:
 	- API de Alejandro Rodríguez Gómez la colección desarrollada sobre el entorno de HEROKU 
