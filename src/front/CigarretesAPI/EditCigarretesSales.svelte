@@ -91,11 +91,11 @@
 			<thead>
 				<tr>
 
-					<th>Community</th>
-					<th>Year</th>
-					<th>cigarrete sale</th>
-					<th>First variation</th>
-					<th>Second variation</th>
+					<th>Comunidad</th>
+					<th>Año</th>
+					<th>Venta de paquetes</th>
+					<th>Primera variacion</th>
+					<th>Segunda variacion</th>
 				</tr>
 			</thead>
 
