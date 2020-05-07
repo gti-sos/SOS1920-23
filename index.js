@@ -18,8 +18,6 @@ const port = process.env.PORT || 12345;	//constante port para la utilizacion del
 //apiAntonio(app);
 
 //API Alejandro
-const backAle = require("./src/back/offworks_stats_API/v2");
-backAle(app);
 const offworks_stats_API = require(path.join(__dirname,"offworks_stats_API"));
 offworks_stats_API(app);
 //API Joserra
@@ -29,7 +27,7 @@ CigarretesAPI(app);
 //--------------------------------------------------------------------------------
 
 //Backend Antonio
-const backAnt = require("./src/back/Fires_Stats_API/v2");
+const backAnt = require("./src/back/Fires_Stats_API");
 
 backAnt(app);
 
