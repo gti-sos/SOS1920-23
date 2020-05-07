@@ -22,6 +22,7 @@
     [fires-stats(V2)](https://documenter.getpostman.com/view/10637537/Szf3aVeY)
 
 	- API DE José Ramón Pérez Trigos, colección desarrollada sobre entorno de Heroku y Goorm: 	
-		[cigarretes-sales](https://documenter.getpostman.com/view/10860459/SzYUa1hq)
+		[cigarretes-sales(v2)](https://documenter.getpostman.com/view/10860459/SzYUa1hq)
+		[cigarretes-sales(v1)](https://documenter.getpostman.com/view/10860459/Szme4J8s)
 
 
