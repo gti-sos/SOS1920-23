@@ -180,6 +180,11 @@
 		}
 		
 	}
+	async function sumOffset(value){
+		offset += value;
+		actualPag += value;
+		getOffworksPag();
+	}
 
 </script>
 
