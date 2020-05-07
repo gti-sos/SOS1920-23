@@ -13,7 +13,7 @@
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
 	//Import archivos API Cigarretes Sales
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
-	import EditCigarretesTable from './CigarretesAPI/EditCigarretesTable.svelte';
+	import EditCigarretesSales from './CigarretesAPI/EditCigarretesSales.svelte';
 
 	const routes = {
 		"/" : Home,
@@ -26,7 +26,7 @@
 		"/offworks-stats/:community/:year" : EditOffworksStats,
 		
 		"/cigarretes-sales" : CigarretesTable,
-		"/cigarretes-sales/:community/:year" : EditCigarretesTable,
+		"/cigarretes-sales/:community/:year" : EditCigarretesSales,
 		
 		
 		"*" : NotFound
