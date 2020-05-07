@@ -51,7 +51,7 @@
         }
         
         else if(res.status==400){
-            msgError = "Error al actualizar, revise los campos";
+            msgError = "Revise los campos";
             console.log(msgError);
         }
 	}
@@ -80,7 +80,7 @@
             }
             
             else if(res.status==400){
-                msgError = "Error al actualizar, revise los campos";
+                msgError = "Revise los campos";
                 console.log(msgError);
             }
             
@@ -138,7 +138,7 @@
         </Table>
         
     {/await}
-    <div>{#if msgExito}<h5 style="color: green;  text-align: center;">{msgExito}</h5>{/if}  {#if msgError}<h5 style="color: red; text-align: center;">Error: {msgError}</h5>{/if}</div>
+    <div>{#if msgExito}<h5 style="color: green;  text-align: center;">Exito: {msgExito}</h5>{/if}  {#if msgError}<h5 style="color: red; text-align: center;">Error: {msgError}</h5>{/if}</div>
         <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
     <!--Pop hace la misma funcion que darle hacia atrás en el navegador-->
 </main>  

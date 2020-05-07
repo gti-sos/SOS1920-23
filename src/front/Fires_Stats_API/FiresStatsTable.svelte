@@ -24,13 +24,17 @@
 	let limit = 10; //Por defecto que muestre 10
 	let offset = 0;
 	let pagActual = 1; //Que por defecto muestre la primera página 
-	let masDatos = true;
+	let pagSiguiente = true;
+	let conjCommunity = [];
+	let conjYears = [];
+	let numJson = 0;
 	
 
-	//elementos para búsqueda
+	//Elementos para búsqueda
 	let anyo ="";
 	let comunidad="";
 	
+	//Variables mensajes de error
 	let msgError = "";
 	let msgExito = "";
 
@@ -40,31 +44,34 @@
 		console.log("Getting Fires...");
 
 		const res = await fetch("api/v2/fires-stats?offset="+ limit * offset + "&limit=" + limit );
-		const siguiente = await fetch("/api/v2/fires-stats?offset=" + limit * offset + "&limit=" + limit);
+		
 
-		if(res.status == 200 && siguiente.status ==200){
-			
+		if(res.ok){
 			console.log("OK");
 			const json = await res.json();
-			const siguienteJson = await siguiente.json();
 			fires = json;
-				if(siguienteJson.length == 0){
-					masDatos == false;	//no hay mas datos
+			numJson = json.length;
+			
+
+				if(json.length == 0){
+					pagSiguiente == false;	//no hay mas datos
 				}
 				else{
-					masDatos == true;	//si hay mas datos
+					pagSiguiente == true;	//si hay mas datos
 				}
 				console.log("Received " + fires.length + " fires.");
 		}
 		
-		else{
+		else if(res.status==404){
 			console.log("Error al obtener la página");
-			
+			pagSiguiente = false;
+			//Mensaje para cuando se borra todo
+			msgExito = "Todos los elementos eliminados"
 		}
 		
 	}
 
-
+	
 	function incOffset(value){
 		
 		offset += value;
@@ -72,7 +79,7 @@
 		paginationFires();
 	}
 
-	
+	//Implementada para comunidad y año
 	async function busqueda(comunidad,anyo){
 		
 		console.log("Searching an specific Item...");
@@ -97,7 +104,7 @@
 					}
 
 					else{
-						msgError = "Error: No se ha podido encontrar el elemento "+ "'"+comunidad+ "'" + ", tal vez hayas olvidado el guión para los nombres compuestos";
+						msgError = "No se ha podido encontrar el elemento "+ "'"+comunidad+ "'" + ", tal vez haya olvidado el guión para los nombres compuestos";
 						console.log("Error!")
 					}
 		}
@@ -114,7 +121,7 @@
 					}
 
 					else{
-						msgError = "Error: No se ha podido encontrar el elemento " +"'"+anyo +"'" ;
+						msgError = "No se ha podido encontrar el elemento " +"'"+anyo +"'" ;
 						console.log("Error!")
 					}
 		}
@@ -131,7 +138,7 @@
 					}
 
 					else{
-						msgError = "Error: No se ha podido encontrar el elemento "+"'"+comunidad+ "'"+ " " + "'"+anyo +"'" + ", tal vez hayas olvidado el guión para los nombres compuestos";
+						msgError = "No se ha podido encontrar el elemento "+"'"+comunidad+ "'"+ " " + "'"+anyo +"'" + ", tal vez haya olvidado el guión para los nombres compuestos";
 						console.log("Error!")
 					}
 					}
@@ -140,7 +147,7 @@
 	}
 
 	
-	//funcion para insertar un elemento
+	//Funcion para insertar un elemento
 	async function insertFire(){
 		console.log("Inserting fires...");
 		const res = await fetch("/api/v2/fires-stats", {
@@ -160,14 +167,14 @@
 				}
 
 				else if(res.status == 409){
-					window.alert( "El elemento que desea añadir ya existe");
+					window.alert("El elemento que desea añadir ya existe");
 				}
 			
 		}); 
 
 
 	}
-	//funcion para eliminar un elemento concreto
+	//Funcion para eliminar un elemento concreto
 	async function deleteFire(community, year) {
 		console.log("Deleting specific resource...");
         const res = await fetch("/api/v2/fires-stats/" + community + "/" + year, {
@@ -175,10 +182,10 @@
 			
         }).then(function (res) {
 			paginationFires();
-			msgExito = "Eliminado con éxito";
+			msgExito = "Recurso eliminado";
         });
     }
-	//funcion para eliminar todos los elementos existentes
+	//Funcion para eliminar todos los elementos existentes
 	async function deleteAllResources(){
 		console.log("Deleting all resources...");
 		const res = await fetch("/api/v2/fires-stats" ,{
@@ -195,7 +202,7 @@
 
 		});
     }
-	//funcion para cargar elementos iniciales
+	//Funcion para cargar elementos iniciales
 	async function loadInitialData(){
 		console.log("Loading initial fires...");
 		const res = await fetch("/api/v2/fires-stats/loadInitialData",{
@@ -228,8 +235,8 @@
 					<td><Input placeholder="Introduce Comunidad" bind:value="{comunidad}"/></td>
 					<td><Input type="number" placeholder="Introduce Año" bind:value="{anyo}"/></td>
 					<td><Button color="secondary" outline on:click={busqueda(comunidad,anyo)}>Buscar &#x2315;</Button></td>
-					<td>{#if msgError}<p style="color: red; border: solid; text-align: center;">{msgError}</p>{/if} 
-						{#if msgExito}<p style="color: green;border: solid; text-align: center;">{msgExito}</p>{/if}</td>
+					<td>{#if msgError}<p style="color: red; border: solid; text-align: center; width: 50%; margin: 0 0;">Error: {msgError}</p>{/if} 
+						{#if msgExito}<p style="color: green;border: solid; text-align: center;">Exito: {msgExito}</p>{/if}</td>
 				</tr>
 				<tr>
 					
@@ -275,7 +282,7 @@
 				{/each}
 				<tr>
 					<td><Button color="danger"  onClick="location.reload()" on:click={deleteAllResources}>Eliminar Todos</Button></td>
-					<td><Button color="secondary" on:click={loadInitialData}>Cargar elementos</Button></td>
+					<td><Button color="secondary" onClick="location.reload()" on:click={loadInitialData}>Cargar elementos</Button></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -290,13 +297,15 @@
 
 	{/await}
 
-	<Pagination float="center">
-		<PaginationItem class="{pagActual == 1 ? 'disabled' : ''}">
-			<PaginationLink previous href="#/fires-stats" on:click="{() => incOffset(-1)}" /><!--Botón página anterior-->
+	<Pagination style="padding-left:40%;">
+		{#if pagActual !=1} <!--Si al cargar la página no es la 1, que se vaya para la 1-->
+		<PaginationItem class="{pagActual === 1 ? 'disabled' : ''}">
+			<PaginationLink previous href="#/fires-stats" on:click="{() => incOffset(-1)}" /><!--Botón página anterior, 
+																			si estás en la 1 no existe este botón-->
 		</PaginationItem>
 
-		{#if pagActual !=1} <!--Si al cargar la página actual no es la 1, que se vaya para la 1-->
-		<PaginationItem>
+		
+		<PaginationItem><!--Cuando retroceda disminuya el número de página-->
 			<PaginationLink href ="#/fires-stats" on:click="{() => incOffset(-1)}">{pagActual -1}</PaginationLink>
 		</PaginationItem>
 		{/if}
@@ -305,24 +314,17 @@
 			<PaginationLink href="#/fires-stats">{pagActual}</PaginationLink>
 		</PaginationItem>
 
-		{#if masDatos==true}
-		<PaginationItem>
+		{#if pagSiguiente && numJson >= 10}
+		<PaginationItem><!--Cuando avance aumente el numero de pagina pero solo si hay mas de 10 datos, si hubiera solo 10, 
+										se quedaria en la pagina 1 mostrando los 10 datos-->
 			<PaginationLink href="#/fires-stats" on:click="{() => incOffset(1)}">{pagActual + 1}</PaginationLink>
 		</PaginationItem>
-		{/if}
-
-		{#if masDatos==false}
-		<PaginationItem class="{masDatos ? '' : 'disabled'}">
-			<PaginationLink href="#/fires-stats" on:click="{() => incOffset(0)}">{pagActual + 1}</PaginationLink>
-		</PaginationItem>
-		{/if}
-
 		
 
-		<PaginationItem class="{masDatos ? '' : 'disabled'}">
+		<PaginationItem class="{pagSiguiente ? '' : 'disabled'}">
 			<PaginationLink next href="#/fires-stats" on:click="{() => incOffset(1)}"/><!--Botón siguiente página-->
 		</PaginationItem>
-
+		{/if}
 		
 		
 	</Pagination>
