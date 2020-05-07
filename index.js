@@ -62,5 +62,5 @@ const BASE_API_URL = '/api/v1';
 app.listen(port, () => {
 	console.log('server ready on port ' + port);
 });
-
+//Cargando servidor
 console.log('Starting server...');
