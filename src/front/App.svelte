@@ -1,12 +1,5 @@
 <script>
 
-	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
-	
-
-
-
-
-
 	import Router from 'svelte-spa-router';
 
 	import Home from './Home.svelte';
@@ -18,6 +11,9 @@
 	//Import archivos API offworks
 	import OffworksStatsTable from './offworks_stats_API/OffworksStatsTable.svelte';
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
+	//Import archivos API Cigarretes Sales
+	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
+	import EditCigarretesTable from './CigarretesAPI/EditCigarretesTable.svelte';
 
 	const routes = {
 		"/" : Home,
@@ -28,6 +24,11 @@
 		
 		"/offworks-stats" : OffworksStatsTable,
 		"/offworks-stats/:community/:year" : EditOffworksStats,
+		
+		"/cigarretes-sales" : CigarretesTable,
+		"/cigarretes-sales/:community/:year" : EditCigarretesTable,
+		
+		
 		"*" : NotFound
 	};
 
