@@ -1,23 +1,23 @@
 {"community":"Cantabria","year":2008,"accident":4981,"sick":176,"numberzone":397,"_id":"0qOnXv53m4aCcO28"}
+{"community":"aaaa","year":13,"accident":10,"sick":10,"numberzone":9,"_id":"5NIxZo0JFs10Jdt9"}
 {"community":"Castilla la Mancha","year":2007,"accident":7575,"sick":107,"numberzone":1005,"_id":"5bw6SNxYBmHKxngJ"}
 {"community":"Asturias","year":2007,"accident":6322,"sick":159.5,"numberzone":600,"_id":"9ckzbFO5PX87dmnL"}
 {"community":"Cataluña","year":2007,"accident":5693,"sick":112.7,"numberzone":3470,"_id":"CxGTgi6pkcSGieQk"}
 {"community":"Andalucia","year":2007,"accident":6878,"sick":29.1,"numberzone":804,"_id":"DGzEaOmw5gUy7Qfu"}
+{"community":"aa","year":3,"accident":3,"sick":3,"numberzone":3,"_id":"EAznvTbUcqWFR0Ti"}
 {"community":"Andalucia","year":2008,"accident":5835,"sick":32.9,"numberzone":866,"_id":"MMV84NRdzwS23jMq"}
 {"community":"Aragon","year":2008,"accident":4766,"sick":325.8,"numberzone":1677,"_id":"MwHMWSA2pJUSPFzT"}
 {"community":"Cantabria","year":2007,"accident":5392,"sick":29.1,"numberzone":303,"_id":"SdxyTy5uRFw0IrHQ"}
+{"community":"aaaa","year":11,"accident":10,"sick":10,"numberzone":9,"_id":"WbxLY5hg9eJntP6q"}
+{"community":"aaaa","year":12,"accident":10,"sick":10,"numberzone":9,"_id":"WucPax8sXmj3Nt4x"}
 {"community":"Aragon","year":2007,"accident":5251,"sick":323.4,"numberzone":1750,"_id":"Zas2Qa1BZhij7pgf"}
 {"community":"Castilla y Leon","year":2008,"accident":5274,"sick":61.4,"numberzone":437,"_id":"edmITfU3hGqzmfxO"}
+{"community":"aaaa","year":10,"accident":10,"sick":10,"numberzone":9,"_id":"mwQAlDKMgtQbykeJ"}
 {"community":"Castilla la Mancha","year":2008,"accident":6487,"sick":105.9,"numberzone":974,"_id":"o66RdQgDgX2yuH7e"}
+{"community":"aaaa","year":14,"accident":10,"sick":10,"numberzone":9,"_id":"obkQLF8c5YWDLZuJ"}
+{"community":"aaaa","year":8,"accident":10,"sick":10,"numberzone":9,"_id":"quoEArpwOvpBTqgj"}
+{"community":"aaaa","year":9,"accident":10,"sick":10,"numberzone":9,"_id":"rSZ7eRBAIakRTn5a"}
 {"community":"Castilla y Leon","year":2007,"accident":5683,"sick":59.1,"numberzone":431,"_id":"vMlp9vwpVnJ1XNnj"}
 {"community":"Canarias","year":2008,"accident":5659,"sick":22.3,"numberzone":165,"_id":"ws24N9toGI4tkG6F"}
 {"community":"Canarias","year":2007,"accident":6469,"sick":14.7,"numberzone":116,"_id":"zVenNu4J9Gdrzjbb"}
-{"community":"aa","year":3,"accident":3,"sick":3,"numberzone":3,"_id":"EAznvTbUcqWFR0Ti"}
 {"community":"aaa","year":7,"accident":10,"sick":10,"numberzone":9,"_id":"zdBQlCIrysXRtt86"}
-{"community":"aaaa","year":8,"accident":10,"sick":10,"numberzone":9,"_id":"quoEArpwOvpBTqgj"}
-{"community":"aaaa","year":9,"accident":10,"sick":10,"numberzone":9,"_id":"rSZ7eRBAIakRTn5a"}
-{"community":"aaaa","year":10,"accident":10,"sick":10,"numberzone":9,"_id":"mwQAlDKMgtQbykeJ"}
-{"community":"aaaa","year":11,"accident":10,"sick":10,"numberzone":9,"_id":"WbxLY5hg9eJntP6q"}
-{"community":"aaaa","year":12,"accident":10,"sick":10,"numberzone":9,"_id":"WucPax8sXmj3Nt4x"}
-{"community":"aaaa","year":13,"accident":10,"sick":10,"numberzone":9,"_id":"5NIxZo0JFs10Jdt9"}
-{"community":"aaaa","year":14,"accident":10,"sick":10,"numberzone":9,"_id":"obkQLF8c5YWDLZuJ"}
