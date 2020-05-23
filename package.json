@@ -1,11 +1,12 @@
 {
-  "name": "sos1920-l09",
+  "name": "sos1920-l14",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "test" : "npx newman run tests/fires-stats-api-test.postman_collection.json",
     "start": "node index"
   },
   "devDependencies": {
