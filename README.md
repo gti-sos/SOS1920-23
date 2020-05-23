@@ -1,5 +1,7 @@
 ## SOS1920-23
 
+[![Build Status](https://travis-ci.org/gti-sos/SOS1920-23.svg?branch=master)](https://travis-ci.org/gti-sos/SOS1920-23)
+
 - **Team**
   - [Antonio Cabello Linares](https://github.com/antoniocl11)
   - [José Ramón Pérez Trigos](https://github.com/joserra123)
