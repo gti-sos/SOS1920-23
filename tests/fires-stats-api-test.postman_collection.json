@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "ff41d325-2ede-489a-a8c2-ba6935b98cc5",
+		"name": "fires-stats-api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get fires-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f9fb7a8-79c8-4e75-a757-65a06adbb0ab",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Test para comprobar que los datos devueltos no están vacios",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});",
+							"",
+							"/*Para comprobar que se ha recibido el número correcto de elementos*/",
+							"pm.test(\"API Working\", function(){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(22);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"host": [
+						"http://localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
