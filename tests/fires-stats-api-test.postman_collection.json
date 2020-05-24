@@ -1,10 +1,48 @@
 {
 	"info": {
-		"_postman_id": "ff41d325-2ede-489a-a8c2-ba6935b98cc5",
-		"name": "fires-stats-api-test",
+		"_postman_id": "8f3c06b5-611b-4736-9e17-81e73932b6c8",
+		"name": "SOS1920_23_F04_ANTONIO_V2 SandBox",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "get fires-stats (loadInitialData)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b8cb804-53da-4f9c-aeb4-25bc35ae120e",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "get fires-stats",
 			"event": [
@@ -22,14 +60,7 @@
 							"pm.test(\"Non-empty Data\", function () {",
 							"    var jsonData = pm.response.json();   ",
 							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
-							"});",
-							"",
-							"/*Para comprobar que se ha recibido el número correcto de elementos*/",
-							"pm.test(\"API Working\", function(){",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(22);",
-							"});",
-							""
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -40,9 +71,1140 @@
 				"header": [],
 				"url": {
 					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
 					"host": [
-						"http://localhost:12345"
+						"localhost"
 					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post fires-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eb4f003-2b55-4003-a738-a454ba6222ce",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 201(CREATED) al realizar la peticion",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"community\":\"andalucia\",\r\n\t\t\"year\":2009,\r\n\t\t\"total_fire\":585,\r\n\t\t\"forest_area\":2674.31,\r\n\t\t\"non_forest_area\":321\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post fires-stats (El recurso ya existe)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "711aba11-ce9b-4b27-9f3e-b5b26db0b3b8",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 400(BadRequest) al realizar la peticion",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"community\":\"asturias\",\r\n\t\t\"year\":2007,\r\n\t\t\"total_fire\":1083,\r\n\t\t\"forest_area\":2690.31,\r\n\t\t\"non_forest_area\":0\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post fires-stats (Fallo en algún campo o vacío)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "320d6edd-49e1-4772-b82a-cc0757e8759e",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 400(BAD REQUEST) al realizar la peticion",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"community\":\"\",\r\n\t\t\"year\":2007,\r\n\t\t\"total_fire\":1083,\r\n\t\t\"forest_area\":2690.31,\r\n\t\t\"non_forest_area\":0\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/:community",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cb51fb4-0817-4c2f-b89c-a23efef9b1c8",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Test para comprobar que los datos devueltos no están vacios",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/asturias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"asturias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/:community/:year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fe6e1c2-79b0-4cf7-982c-72bb39a79ee1",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//Test para comprobar que contiene la propiedad community",
+							"pm.test(\"It has property Community\", function () {",
+							"    var jsonData = pm.response.json()",
+							"    pm.expect(jsonData).to.have.property('community');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/asturias/2008",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"asturias",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/:community/:year (Fallo al encontrar el objeto)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8156fca-0f51-45fb-995e-790455ba288c",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 404(Not found) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/roma/2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"roma",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put fires-stats/:community/:year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e487f8fc-f187-4ed5-8607-e1b828975b14",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"community\": \"aragon\",\r\n\"year\": 2007,\r\n\"total_fire\": 0,\r\n\"forest_area\": 1860.38,\r\n\"non_forest_area\": 611.51\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/aragon/2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"aragon",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put fires-stats/:community/:year (Fallo campo erróneo)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac8119b1-d6dd-45ff-ba17-7d6d70686cfc",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 400(Bad Request) al realizar la peticion",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"community\": \"\",\r\n\"year\": 2007,\r\n\"total_fire\": 0,\r\n\"forest_area\": 1860.38,\r\n\"non_forest_area\": 611.51\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/aragon/2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"aragon",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put fires-stats/:community/:year (Fallo al encontrar el dato)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e022c3e8-540d-4266-a859-9f8094e3e866",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 404(Not Found) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"community\": \"pisa\",\r\n\"year\": 2007,\r\n\"total_fire\": 0,\r\n\"forest_area\": 1860.38,\r\n\"non_forest_area\": 611.51\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/pisa/2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"pisa",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete fires-stats/:community/:year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97eb1526-804a-4498-927f-df46b1fde5d6",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/asturias/2008",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"asturias",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete fires-stats/:community/:year (Fallo al encontrar el recurso)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "02675cca-6e39-476d-a788-a6692df518d5",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 404(Not Found) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/roma/2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"roma",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/asturias (BÚSQUEDA)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "930be98f-e74e-485c-8591-1826dc3950a8",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//Test para comprobar que los datos devueltos no están vacios",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats?community=andalucia&year=2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					],
+					"query": [
+						{
+							"key": "community",
+							"value": "andalucia"
+						},
+						{
+							"key": "total_fire",
+							"value": "819",
+							"disabled": true
+						},
+						{
+							"key": "forest_area",
+							"value": "1860.38",
+							"disabled": true
+						},
+						{
+							"key": "non_forest_area",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2007"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/asturias (BÚSQUEDA) (Fallo al encontrar el recurso)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b904c83a-e46d-456a-9fda-bce2795c9629",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 404(Not Found) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats?community=roma&year=2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					],
+					"query": [
+						{
+							"key": "community",
+							"value": "roma"
+						},
+						{
+							"key": "year",
+							"value": "2007"
+						},
+						{
+							"key": "total_fire",
+							"value": "819",
+							"disabled": true
+						},
+						{
+							"key": "forest_area",
+							"value": "1860.38",
+							"disabled": true
+						},
+						{
+							"key": "non_forest_area",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/asturias (BÚSQUEDA Y PAGINACIÓN)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "769e494c-2c6e-4325-9605-0e325c33d322",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//Test para comprobar que los datos devueltos no están vacios",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats?community=aragon&limit=2&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					],
+					"query": [
+						{
+							"key": "community",
+							"value": "aragon"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "year",
+							"value": "2008",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats/asturias (BÚSQUEDA Y PAGINACIÓN) Dato erróneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "71f0246a-700d-4b86-a38a-b0a221518e08",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 404(Not Found) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats?community=andorra&limit=2&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					],
+					"query": [
+						{
+							"key": "community",
+							"value": "andorra"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "year",
+							"value": "2008",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats (PAGINACION) Obtiene los 2 primeros a partir del segundo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "94c46239-2b70-41cb-ab9d-42094f87bc63",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Test para comprobar que los datos devueltos no están vacios",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats?limit=2&offset=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get fires-stats (PAGINACION) Dato no encontrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e69ff195-368d-4bf6-980d-a685e3d6408c",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats?limit=0&offset=2500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "0"
+						},
+						{
+							"key": "offset",
+							"value": "2500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post fires-stats/andalucia (Method not allowed)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9eea58e9-d449-4b92-bc73-7e658db41d01",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 405(METHOD NOT ALLOWED) al realizar la peticion",
+							"pm.test(\"Status code is 405, method not allowed\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"community\":\"PruebaPost\",\r\n\t\t\"year\":2007,\r\n\t\t\"total_fire\":415,\r\n\t\t\"forest_area\":1860.38,\r\n\t\t\"non_forest_area\":611.51\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats/andalucia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats",
+						"andalucia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put fires-stats (Method not allowed)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04b69cbe-0dd9-482e-be90-ca5729dccf53",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 405(METHOD NOT ALLOWED) al realizar la peticion",
+							"pm.test(\"Status code is 405, method not allowed\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"community\":\"aragon\",\r\n\t\t\"year\":2007,\r\n\t\t\"total_fire\":420,\r\n\t\t\"forest_area\":1860.38,\r\n\t\t\"non_forest_area\":611.51\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete fires-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d72742a1-9f40-459e-ac69-c9976053560e",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 200(OK) al realizar la peticion",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"api",
+						"v2",
+						"fires-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete fires-stats (Datos no encontrados)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7bef7515-ce2f-4173-a42d-1ec582650252",
+						"exec": [
+							"//Test para comprobar que se devuelve el codigo 404(Not Found) al realizar la peticion",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:12345/api/v2/fires-stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
 					"path": [
 						"api",
 						"v2",

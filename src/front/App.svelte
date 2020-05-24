@@ -8,7 +8,7 @@
 	//Import archivos API Fires
 	import FiresStatsTable from './Fires_Stats_API/FiresStatsTable.svelte';
 	import EditFiresStats from './Fires_Stats_API/EditFiresStats.svelte';
-	import GraphFiresStats from './Fires_Stats_API/GraphFiresStats.svelte';
+	import GraphFiresStats from './Fires_Stats_API/analytics/GraphFiresStats.svelte';
 	//Import archivos API offworks
 	import OffworksStatsTable from './offworks_stats_API/OffworksStatsTable.svelte';
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';

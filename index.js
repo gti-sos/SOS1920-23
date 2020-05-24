@@ -1,19 +1,20 @@
 const express = require('express');	//Importacion modulo express
 const bodyParser = require('body-parser');	//Importacion modulo body-parser
 //const dataStore = require('nedb');	//Importacion base de datos nedb
-const path = require('path');	//Importacion mnodulo path
+const path = require('path');	//Importacion modulo path
+const cors = require('cors');
 
 const back = require("./src/back/CigarretesAPI/v2");
 const app = express();
 app.use(bodyParser.json());
 back(app);	//constante app para la utilizacion de express
 
+app.use(cors()); //Para importar la cabeceras de CORS y que puedan acceder a las APIs
 
-	
 const port = process.env.PORT || 12345;	//constante port para la utilizacion del puerto 80 u otro.
 //const dbFileNameFires = path.join(__dirname , "fires-stats.db");	//constante ruta de archivos de base de datos
 
-//Llamada constantes de APIs
+//Llamada constantes de APIs 
 //const apiAntonio = require(path.join(__dirname , "fires_stats_API"));	//Importación modulo API de Antonio
 //apiAntonio(app);
 
@@ -36,29 +37,6 @@ backAnt(app);
 
 app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
 app.use('/', express.static('./public')); //Para que salga el public principal de html
-
-
-app.get('/cool', (request, response) => {
-	response.send('<html>' + cool() + '</html>');
-});
-
-
-
-//Api Ejemplo contactos ------------------------------------------------------------
-
-var contacts = [
-	{
-		name: 'peter',
-		phone: 123456
-	},
-	{
-		name: 'pablo',
-		phone: 7896
-	}
-];
-
-
-const BASE_API_URL = '/api/v1';
 
 
 app.listen(port, () => {
