@@ -16,7 +16,7 @@
     - [Offworks-Stats](https://sos1920-23.herokuapp.com/#/offworks-stats) (developed by [Alejandro Rodriguez Gomez](https://github.com/alegrandoi))
 
 -  **Postman Documentation**:
-	- API de Alejandro Rodríguez Gómez la colección desarrollada sobre el entorno de HEROKU 
+	- API de Alejandro Rodríguez Gómez la colección desarrollada sobre el entorno de HEROKU: 
 		[offworks-stats(v1)](https://documenter.getpostman.com/view/10846961/SzYUY1CH) 
 		[offworks-stats(v2)](https://documenter.getpostman.com/view/10846961/Szme4JHe) 
 
