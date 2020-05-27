@@ -1,7 +1,7 @@
 {
   "name": "sos1920-l14",
   "version": "1.0.0",
-  "engines":{
+  "engines": {
     "node": "12.16.x"
   },
   "description": "",
