@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/gti-sos/SOS1920-23.svg?branch=master)](https://travis-ci.org/gti-sos/SOS1920-23)
 [![Coverage Status](https://coveralls.io/repos/github/gti-sos/SOS1920-23/badge.svg?branch=master)](https://coveralls.io/github/gti-sos/SOS1920-23?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/isa-group/oss-wizard/badge.svg)](https://snyk.io/test/github/isa-group/oas-wizard)
+[![Known Vulnerabilities](https://snyk.io/test/github/isa-group/oas-wizard/badge.svg)](https://snyk.io/test/github/isa-group/oas-wizard)
 - **Team**
   - [Antonio Cabello Linares](https://github.com/antoniocl11)
   - [José Ramón Pérez Trigos](https://github.com/joserra123)
