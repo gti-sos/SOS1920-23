@@ -1,0 +1,1147 @@
+{
+	"info": {
+		"_postman_id": "a3579f48-9c8d-47f6-a919-ac3d0a405604",
+		"name": "SOS1920-23-Alejandro v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get offwork/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/loadInitialData",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork (Baleares/2007) Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"comm\": \"Baleares\",\r\n\t\"year\":  2007,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork (Baleares/2007) Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"community\": \"\",\r\n\t\"year\":  2007,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork (Baleares/2007)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"community\": \"Baleares\",\r\n\t\"year\":  2007,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork (Baleares/2007) Conflict",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"community\": \"Baleares\",\r\n\t\"year\":  2007,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork/Baleares/2007",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"It has property Community\", function () {",
+							"    var jsonData = pm.response.json()",
+							"    pm.expect(jsonData).to.have.property('community');",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares/2007",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork/Baleares/2000 (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares/2000",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork (Baleares/2008)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"community\": \"Baleares\",\r\n\t\"year\":  2008,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork/Baleares",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork/Melilla (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "909dfd29-2788-4834-926a-0109cbba2fff",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Melilla",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Melilla"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete offworks/Baleares/2007",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e4c4f7c-c007-4ca2-aa2b-1a336a672a54",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares/2007",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete offworks/Baleares/2007 Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e4c4f7c-c007-4ca2-aa2b-1a336a672a54",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares/2007",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"There are more than 1 contact\", function () {",
+							"    var jsonData=pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put offwork/Andalucia/2002 Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4492af18-ae84-44f3-9566-0964bfdaec5e",
+						"exec": [
+							"pm.test(\"The community or the year not found\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"community\": \"Andalucia\",\r\n\"year\": 2002,\r\n\"accident\": 6879,\r\n\"sick\": 39.1,\r\n\"numberzone\": 830\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Andalucia/2002",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Andalucia",
+						"2002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"There are more than 1 contact\", function () {",
+							"    var jsonData=pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put offwork/Andalucia/2007",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4492af18-ae84-44f3-9566-0964bfdaec5e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"community\": \"Andalucia\",\r\n\"year\": 2007,\r\n\"accident\": 6879,\r\n\"sick\": 39.1,\r\n\"numberzone\": 830\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Andalucia/2007",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Andalucia",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offwork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"There are more than 1 contact\", function () {",
+							"    var jsonData=pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offworks-stats?limit=2&offset=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats?imit=2&offset=1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					],
+					"query": [
+						{
+							"key": "imit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offworks-stats?imit=10&offset=10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats?imit=10&offset=10",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					],
+					"query": [
+						{
+							"key": "imit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offworks-stats?imit=100&offset=10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats?imit=30&offset=20",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					],
+					"query": [
+						{
+							"key": "imit",
+							"value": "30"
+						},
+						{
+							"key": "offset",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get offworks-stats?community=Baleares&limit=2&offset=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc7af03-d9bf-41f6-89a8-111e864c6f00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats?community=Baleares&limit=1&offset=0",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					],
+					"query": [
+						{
+							"key": "community",
+							"value": "Baleares"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork/Baleares",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d04ad5e5-72de-4332-8a9f-569c4ea26886",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"community\": \"Baleares\",\r\n\t\"year\":  2007,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post offwork/Baleares/2007",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d04ad5e5-72de-4332-8a9f-569c4ea26886",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n\t\"community\": \"Baleares\",\r\n\t\"year\":  2007,\r\n\t\"accident\": 6878,\r\n\t\"sick\": 29.1,\r\n\t\"numberzone\": 804\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats/Baleares/2007",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats",
+						"Baleares",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put offwork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0e1af0b6-08dc-4a59-b010-2db77ba127bd",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete offwork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fd74e011-139f-4810-8af4-8fbb039c86bf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/offworks-stats",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"offworks-stats"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3147536c-1084-44b2-ab09-fac32fb0b156",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6994231f-d3c3-4345-818b-e5560772bf99",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ea1973e2-dab5-4bca-acf6-e7ab203222ea",
+			"key": "BASE_URL",
+			"value": "https://sos1920-23.herokuapp.com",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
