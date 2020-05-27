@@ -1,0 +1,1006 @@
+{
+	"info": {
+		"_postman_id": "f1478f9c-0fa1-47b7-8ab0-f6e5ab7d138b",
+		"name": "cigarretes-sales",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cargar base datos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49ad666c-6c36-49f2-ab77-c7a1c90bc558",
+						"exec": [
+							"pm.test(\"Charged correctly\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:12345/api/v2/loadInitialData",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cigarretes(con querys)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1dafecc-4d49-414e-90a8-2b58eac0e6ab",
+						"exec": [
+							"pm.test(\"Correctly searched\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"There are more than 1 community\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales?community=Asturias",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "community",
+							"value": "Asturias"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cigarretes(con querys) ,fallo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1dafecc-4d49-414e-90a8-2b58eac0e6ab",
+						"exec": [
+							"pm.test(\"Data Not Found\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales?community=2007&community=sevilla",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					],
+					"query": [
+						{
+							"key": "community",
+							"value": "2007"
+						},
+						{
+							"key": "community",
+							"value": "sevilla"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Cigarretes/Community/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d893ed2c-e04f-4554-bbe6-69d0df8fe99c",
+						"exec": [
+							"pm.test(\"Searched correctly\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Aragon/2007",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"Aragon",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Cigarretes/Community/year (fallo)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d893ed2c-e04f-4554-bbe6-69d0df8fe99c",
+						"exec": [
+							"pm.test(\"Data Not found\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Aragon/2021",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"Aragon",
+						"2021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cigarretes(con querys, paginacion)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1dafecc-4d49-414e-90a8-2b58eac0e6ab",
+						"exec": [
+							"pm.test(\"Correctly searched\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Non-empty Data\", function () {",
+							"    var jsonData = pm.response.json();   ",
+							"    pm.expect(jsonData).to.have.lengthOf.above(0);  ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales?limit=4&year=2007&offset=1",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "year",
+							"value": "2007"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cigarretes(con querys, paginacion) fallo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1dafecc-4d49-414e-90a8-2b58eac0e6ab",
+						"exec": [
+							"pm.test(\"Data Not found\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales?year=2008&limit=2",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2008"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cigarretes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1dafecc-4d49-414e-90a8-2b58eac0e6ab",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"There are more than 1 community\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.lengthOf.above(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post cigarretes/Community/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53c8fd95-c213-4515-a0a2-1512a4970a6f",
+						"exec": [
+							"pm.test(\"Not allowed\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\r\n\"year\": 2008\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/aragon/2008",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"aragon",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post cigarretes(fallo)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39056eab-44c3-4d21-a95e-3e1cd81c624d",
+						"exec": [
+							"pm.test(\"Bad Request\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\r\n\"community\": \"extremadura\",\r\n\"year\": 2007,\r\n\"cigarrete_sale\": \"\",\r\n\"first_variation\": -30.0,\r\n\"second_variation\": -38.6\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post cigarretes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2dc05761-37f2-43e3-8231-6d4de4ee8bb3",
+						"exec": [
+							"pm.test(\"Created\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\r\n\"community\": \"xxxx\",\r\n\"year\": 2007,\r\n\"cigarrete_sale\": 98,\r\n\"first_variation\": -30.0,\r\n\"second_variation\": -38.6\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post cigarretes ( si ya existe)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2dc05761-37f2-43e3-8231-6d4de4ee8bb3",
+						"exec": [
+							"pm.test(\"Conflict , the resource already exists\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\r\n\"community\": \"Aragon\",\r\n\"year\": 2007,\r\n\"cigarrete_sale\": 132,\r\n\"first_variation\": -32.1,\r\n\"second_variation\": -38.5\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put Cigarretes/Community/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61938c11-7700-45a7-83a0-8d68139f822f",
+						"exec": [
+							"pm.test(\"Changed correctly\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n\t\n{\n\"community\": \"Andalucia\",\n\"year\": 2007,\n\"cigarrete_sale\": 500,\n\"first_variation\": -32.1,\n\"second_variation\": -38.5\n}\n\t\n\n\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Andalucia/2007",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"Andalucia",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put Cigarretes/Community/year (fallo en los datos)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61938c11-7700-45a7-83a0-8d68139f822f",
+						"exec": [
+							"pm.test(\"Bad Request\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n\t\n{\n\"community\": \"\",\n\"year\": 2007,\n\"cigarrete_sale\": 500,\n\"first_variation\": -32.1,\n\"second_variation\": -38.5\n}\n\t\n\n\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Andalucia/2007",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"Andalucia",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put Cigarretes/Community/year (fallo)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61938c11-7700-45a7-83a0-8d68139f822f",
+						"exec": [
+							"pm.test(\"Bad Request\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n\t\n{\n\"community\": \"aragon\",\n\"year\": 2007,\n\"cigarrete_sale\": \"132\",\n\"first_variation\": -32.3,\n\"second_variation\": -30\n}\n\t\n\n\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/aragon/2008",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"aragon",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put Cigarretes(Not allowed)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98ec60fd-8d10-4ee8-8ee9-c6db4addbbbb",
+						"exec": [
+							"pm.test(\"Not Allowed\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Cigarretes/Community(fallo)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73a776e5-ccac-4985-b5bf-cafbb943fb84",
+						"exec": [
+							"pm.test(\"Not Found\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/andalucia/2008",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"andalucia",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Cigarretes/Community/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73a776e5-ccac-4985-b5bf-cafbb943fb84",
+						"exec": [
+							"pm.test(\"Removed\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Andalucia/2007",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales",
+						"Andalucia",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Cigarretes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c149a76-52b1-4e92-93a6-debfcbfb91c9",
+						"exec": [
+							"pm.test(\"Removed all\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:12345/api/v2/cigarretes-sales",
+					"host": [
+						"localhost:12345"
+					],
+					"path": [
+						"api",
+						"v2",
+						"cigarretes-sales"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e9f2e36e-caf4-4360-aa10-52fa920820db",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "17ed992f-e6a4-4426-a9f0-20cb080068aa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

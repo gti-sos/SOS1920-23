@@ -17,7 +17,10 @@
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
 	//Import archivos API Cigarretes Sales
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
+	import GraphCigarretesSales from './CigarretesAPI/analytics/GraphCigarretesSales.svelte';
 	import EditCigarretesSales from './CigarretesAPI/EditCigarretesSales.svelte';
+	import ChartCigarretesSales from './CigarretesAPI/analytics/ChartCigarretesSales.svelte';
+
 
 	const routes = {
 		"/" : Home,
@@ -35,8 +38,8 @@
 		
 		"/cigarretes-sales" : CigarretesTable,
 		"/cigarretes-sales/:community/:year" : EditCigarretesSales,
-		
-		
+		"/graph-cigarretes-sales" : GraphCigarretesSales,
+		"/chart-cigarretes-sales" : ChartCigarretesSales,
 		"*" : NotFound
 	};
 
