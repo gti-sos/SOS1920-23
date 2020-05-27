@@ -1,7 +1,7 @@
 ## SOS1920-23
 
 [![Build Status](https://travis-ci.org/gti-sos/SOS1920-23.svg?branch=master)](https://travis-ci.org/gti-sos/SOS1920-23)
-
+[![Coverage Status](https://coveralls.io/repos/github/gti-sos/SOS1920-23/badge.svg?branch=master)](https://coveralls.io/github/gti-sos/SOS1920-23?branch=master)
 - **Team**
   - [Antonio Cabello Linares](https://github.com/antoniocl11)
   - [José Ramón Pérez Trigos](https://github.com/joserra123)
