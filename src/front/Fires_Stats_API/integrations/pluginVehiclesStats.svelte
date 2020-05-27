@@ -105,6 +105,74 @@
 });
         
     }
+
+    async function fires_stats(){
+
+ let Datos = [];
+
+        const res = await fetch("api/v2/fires-stats");
+        Datos = await res.json();
+
+    
+        let comunidad = Datos.filter((Datos)=> Datos.year===2007).map((Datos) => Datos.community);
+        let fires = Datos.filter((Datos)=> Datos.year===2007).map((Datos)=> Datos.total_fire);
+        let forest = Datos.filter((Datos) => Datos.year===2007).map((Datos) => Datos.forest_area);
+        let noForest = Datos.filter((Datos) => Datos.year===2007).map((Datos) => Datos.non_forest_area);
+
+    Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Área forestal y no forestal por ccaa'
+            },
+            subtitle: {
+                text: 'Fuente: <a href="https://www.mapa.gob.es/es/desarrollo-rural/estadisticas/incendios-decenio-2006-2015_tcm30-511095.pdf">gob.es</a>'
+            },
+            xAxis: {
+            categories: comunidad,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Número de incendios, área forestal y no forestal en hctreas'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                {
+                name: 'Incendios Totales',
+                type: 'column',
+                data: fires
+
+            }, 
+            {
+                name: 'Área forestal(Hectáreas)',
+                type: 'column',
+                data: forest
+
+            }, {
+                name: 'Área no forestal(Hectáreas)',
+                type: 'column',
+                data: noForest
+
+            }
+            ]
+});
+    } 
+
 </script>
 
 <svelte:head>
@@ -125,6 +193,8 @@
                         Esta API muestra información acerca de las ventas acumuladas por países y ventas anuales de coches eléctricos a nivel internacional
                 </p>	
         </figure>
+        <p><Button  on:click={fires_stats}>Ver Datos API Fires-Stats</Button></p>
+        <Button  onClick="location.reload()">Ver Datos API Plugin-Vehicles-Stats</Button>
 		<Table bordered>
 			<thead>
 				<tr>
