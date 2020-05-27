@@ -8,9 +8,21 @@
 	import PaginationLink from "sveltestrap/src/PaginationLink.svelte";
 	import FormGroup from "sveltestrap/src/FormGroup.svelte";
 	import Input from "sveltestrap/src/Input.svelte";
+	
+	/*Menu*/
+import {
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownToggle
+  } from 'sveltestrap';
 
+  let isOpen = false;
+	/*-----------------------------------------------*/
 
 	let fires = [];
+
+	
 
 	let newFire = {
 		community:"",
@@ -221,7 +233,7 @@
 		{#await fires}	
 			Loading fires ...
 		{:then fires}
-		<h3>API de estadísticas de incendios en España</h3>
+		<h3 style="display:block;text-align:center;">API de estadísticas de incendios en España</h3>
 
 		<p>
 			Página {pagActual}
@@ -237,6 +249,18 @@
 					<td><Button color="secondary" outline on:click={busqueda(comunidad,anyo)}>Buscar &#x2315;</Button></td>
 					<td>{#if msgError}<p style="color: red; border: solid; text-align: center; width: 50%; margin: 0 0;">Error: {msgError}</p>{/if} 
 						{#if msgExito}<p style="color: green;border: solid; text-align: center;">Exito: {msgExito}</p>{/if}</td>
+					<!--<td><Button outline color="secondary" href="#/graph-fires-stats">Gráficas</Button></td>-->
+					<td>
+					<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)}>
+						<DropdownToggle outline caret>Gráficas</DropdownToggle>
+						<DropdownMenu>
+							<DropdownItem href="#/graph-highchart">HighChart</DropdownItem>
+							<DropdownItem href="#/graph-chartjs">Chart.js</DropdownItem>
+							
+							
+						</DropdownMenu>
+						</Dropdown>
+					</td>
 				</tr>
 				<tr>
 					

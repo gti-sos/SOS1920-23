@@ -27,12 +27,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/loadInitialData",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/loadInitialData",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -70,12 +71,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -115,12 +117,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -161,12 +164,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -207,12 +211,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -263,12 +268,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/asturias",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/asturias",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -317,12 +323,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/asturias/2008",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/asturias/2008",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -367,12 +374,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/roma/2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/roma/2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -414,12 +422,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/aragon/2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/aragon/2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -461,12 +470,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/aragon/2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/aragon/2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -508,12 +518,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/pisa/2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/pisa/2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -555,12 +566,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/asturias/2008",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/asturias/2008",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -602,12 +614,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/roma/2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/roma/2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -657,12 +670,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats?community=andalucia&year=2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats?community=andalucia&year=2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -730,12 +744,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats?community=roma&year=2007",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats?community=roma&year=2007",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -808,12 +823,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats?community=aragon&limit=2&offset=0",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats?community=aragon&limit=2&offset=0",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -876,12 +892,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats?community=andorra&limit=2&offset=0",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats?community=andorra&limit=2&offset=0",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -949,12 +966,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats?limit=2&offset=2",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats?limit=2&offset=2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -1008,12 +1026,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats?limit=0&offset=2500",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats?limit=0&offset=2500",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -1063,12 +1082,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats/andalucia",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats/andalucia",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -1109,12 +1129,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -1154,12 +1175,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
@@ -1199,12 +1221,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:12345/api/v2/fires-stats",
-					"protocol": "http",
+					"raw": "https://sos1920-23.herokuapp.com/api/v2/fires-stats",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sos1920-23",
+						"herokuapp",
+						"com"
 					],
-					"port": "12345",
 					"path": [
 						"api",
 						"v2",
