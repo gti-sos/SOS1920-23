@@ -8,7 +8,10 @@
 	//Import archivos API Fires
 	import FiresStatsTable from './Fires_Stats_API/FiresStatsTable.svelte';
 	import EditFiresStats from './Fires_Stats_API/EditFiresStats.svelte';
-	import GraphFiresStats from './Fires_Stats_API/analytics/GraphFiresStats.svelte';
+	import GraphHighchart from './Fires_Stats_API/analytics/HighChart.svelte';
+	import Chartjs from './Fires_Stats_API/analytics/Chartjs.svelte';
+	import integrations from './Fires_Stats_API/integrations/integrations.svelte';
+	import pluginVehiclesStats from './Fires_Stats_API/integrations/pluginVehiclesStats.svelte'; 
 	//Import archivos API offworks
 	import OffworksStatsTable from './offworks_stats_API/OffworksStatsTable.svelte';
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
@@ -24,8 +27,11 @@
 		
 
 		"/fires-stats" : FiresStatsTable,
-		"/graph-fires-stats" : GraphFiresStats,
+		"/graph-highchart" : GraphHighchart,
+		"/graph-chartjs" : Chartjs,
 		"/fires-stats/:community/:year" : EditFiresStats,
+		"/fires-stats/integrations" : integrations,
+		"/integrations/plugin-vehicles-stats" : pluginVehiclesStats,
 		
 		"/offworks-stats" : OffworksStatsTable,
 		"/offworks-stats/:community/:year" : EditOffworksStats,
