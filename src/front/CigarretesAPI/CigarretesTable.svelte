@@ -237,7 +237,7 @@
 							<DropdownToggle outline caret>Gráficas</DropdownToggle>
 							<DropdownMenu>
 								<DropdownItem href="#/graph-cigarretes-sales">HighChart</DropdownItem>
-								<DropdownItem href="#/graph-chartjs">Chart.js</DropdownItem>
+								<DropdownItem href="#/chart-cigarretes-sales">Chart.js</DropdownItem>
 			
 			
 							</DropdownMenu>
@@ -275,9 +275,7 @@
 					<td><Button outline color="danger" on:click="{deleteCigarretes(cigarrete.community,cigarrete.year)}">Borrar</Button></td>
 				</tr>
 				{/each}
-				<tr>
-					<td><button outline color="primary" href= "">Pulse para ver la gráfica</button></td>
-				</tr>
+				
 				<tr>
 					<td><Button outline color="primary" onclick="location.reload()" on:click={loadInitialData}>Inicializar</Button></td>
                     <td></td>

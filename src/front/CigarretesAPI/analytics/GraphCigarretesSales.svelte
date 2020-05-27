@@ -1,4 +1,8 @@
 <script>
+    import {
+        pop
+    } from "svelte-spa-router";
+    import Button from "sveltestrap/src/Button.svelte";
 async function loadGraph(){
 
 
@@ -44,7 +48,7 @@ Highcharts.chart('container', {
 </svelte:head>
 
 <main>
-    
+    <Button outline color="secondary" on:click="{pop}">Volver</Button><br>
    
     <figure class="highcharts-figure">
         <div id="container"></div>
