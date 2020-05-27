@@ -7,6 +7,7 @@
 	import Pagination from "sveltestrap/src/Pagination.svelte";
 	import PaginationItem from "sveltestrap/src/PaginationItem.svelte";
 	import PaginationLink from "sveltestrap/src/PaginationLink.svelte";
+	
 	let errorMsg = "";
 	let exitoMsg = "";
 
@@ -34,6 +35,16 @@
 	
 	let siguienteJson = 0;
 	onMount(paginationCigarretes);
+
+	import {
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownToggle
+  } from 'sveltestrap';
+
+  let isOpen = false;
+
 
 	async function paginationCigarretes(){
 		console.log("Fetching cigarretes sales...");
@@ -199,7 +210,7 @@
 		<p>
 			Estás en la página: {paginaActual}
 		</p>
-
+		
 		<FormGroup style="width: 15%;"> 
 			<Input placeholder="Introduce la comunidad" name="community" id="community" bind:value="{searchCommunity}">
 			</Input>
@@ -221,6 +232,17 @@
 					<th>Venta de paquetes</th>
 					<th>Primera variacion</th>
 					<th>Segunda variacion</th>
+					<th>
+						<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)}>
+							<DropdownToggle outline caret>Gráficas</DropdownToggle>
+							<DropdownMenu>
+								<DropdownItem href="#/graph-cigarretes-sales">HighChart</DropdownItem>
+								<DropdownItem href="#/graph-chartjs">Chart.js</DropdownItem>
+			
+			
+							</DropdownMenu>
+							</Dropdown>
+						</th>
 					
 				</tr>
 			</thead>
@@ -239,6 +261,7 @@
 
 				{#each cigarretes as cigarrete}
 
+
 				<tr>
 
 					
@@ -252,7 +275,9 @@
 					<td><Button outline color="danger" on:click="{deleteCigarretes(cigarrete.community,cigarrete.year)}">Borrar</Button></td>
 				</tr>
 				{/each}
-				
+				<tr>
+					<td><button outline color="primary" href= "">Pulse para ver la gráfica</button></td>
+				</tr>
 				<tr>
 					<td><Button outline color="primary" onclick="location.reload()" on:click={loadInitialData}>Inicializar</Button></td>
                     <td></td>
@@ -266,6 +291,7 @@
 
 		
 		</Table>
+		
 
 	{/await}
 
