@@ -37,7 +37,7 @@
 
 <h4>Integraciones:</h4>
 
-<p><Button type="button" color="info" onclick="window.location.href='#/fires-stats/integrations'"> Integraciones Fires Stats </Button></p>
+<p><Button type="button" color="info" onclick="window.location.href='#/fires-stats-integrations/integrations'"> Integraciones Fires Stats </Button></p>
 
 <h4>Gráfica Grupal:</h4>
 

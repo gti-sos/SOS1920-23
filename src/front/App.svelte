@@ -30,8 +30,8 @@
 		"/graph-highchart" : GraphHighchart,
 		"/graph-chartjs" : Chartjs,
 		"/fires-stats/:community/:year" : EditFiresStats,
-		"/fires-stats/integrations" : integrations,
-		"/integrations/plugin-vehicles-stats" : pluginVehiclesStats,
+		"/fires-stats-integrations/integrations" : integrations,
+		"/fires-stats-integrations/integrations/plugin-vehicles-stats" : pluginVehiclesStats,
 		
 		"/offworks-stats" : OffworksStatsTable,
 		"/offworks-stats/:community/:year" : EditOffworksStats,

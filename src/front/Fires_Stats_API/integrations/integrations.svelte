@@ -14,7 +14,7 @@
 <h4>Apis de Compañeros: </h4>
 
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Estadísticas Emigración</Button></p>
-    <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/plugin-vehicles-stats'">Ventas Coches Eléctricos</Button></p>
+    <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats-integrations/integrations/plugin-vehicles-stats'">Ventas Coches Eléctricos</Button></p>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Importaciones EEUU</Button></p>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Hospitalized Stats</Button></p>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Exportación de Libros</Button></p>
