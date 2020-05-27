@@ -7,7 +7,7 @@
   - [José Ramón Pérez Trigos](https://github.com/joserra123)
   - [Alejandro Rodriguez Gomez](https://github.com/alegrandoi)
 - **Project description**: Nuestras fuentes de información esta orientadas a analizar los incendios forestales en el territorio español(total por CCAA) y superficie forestal y no forestal por CCAA,  indices de incidencia de accidentes
- en jornada con baja(por 100.000 trabajadores), por enfermedad(incidencia x 100000 ocupados) y por numero de partes comunicados y volumen de ventas de cigarrillos(millones de cajetillas de 20 cigarrillos) por Comunidad Autónoma
+ en jornada con baja(por 100.000 trabajadores), por enfermedad(incidencia x 100000 ocupados) y por numero de partes comunicados y volumen de ventas de cigarrillos(millones de cajetillas de 20 cigarrillos) por Comunidad Autónoma.
 - **Repository**: [gti-sos/SOS1920-23](https://github.com/gti-sos/SOS1920-23)
 - **URL**: [http://sos1920-23.herokuapp.com](http://sos1920-23.herokuapp.com)
 -  **APIs**:
