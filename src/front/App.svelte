@@ -15,6 +15,9 @@
 	//Import archivos API offworks
 	import OffworksStatsTable from './offworks_stats_API/OffworksStatsTable.svelte';
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
+	import GraphOffworksStats from './offworks_stats_API/analytics/GraphOffworksStats.svelte';
+	import RGraphOffworksStats from './offworks_stats_API/analytics/RGraphOffworksStats.svelte';
+	import integrationsA from './offworks_stats_API/integrations/integrations.svelte';
 	//Import archivos API Cigarretes Sales
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
 	import GraphCigarretesSales from './CigarretesAPI/analytics/GraphCigarretesSales.svelte';
@@ -35,6 +38,9 @@
 		
 		"/offworks-stats" : OffworksStatsTable,
 		"/offworks-stats/:community/:year" : EditOffworksStats,
+		"/graph-offworks-stats" : GraphOffworksStats,
+		"/Rgraph-offworks-stats" : RGraphOffworksStats,
+		"/offworks-stats-integrations/integrations" : integrationsA,
 		
 		"/cigarretes-sales" : CigarretesTable,
 		"/cigarretes-sales/:community/:year" : EditCigarretesSales,

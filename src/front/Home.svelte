@@ -17,7 +17,7 @@
 		
 <p><Button type="button" color="info" onclick="window.location.href='#/cigarretes-sales'"> API de estadísticas de venta de tabaco en España</Button></p>
 
-<p><Button type="button" color="info" onclick="window.location.href='#/offworks-stats'"> API de accidentes en España </Button></p>
+<p><Button type="button" color="info" onclick="window.location.href='#/offworks-stats'"> API de bajas laborales en España </Button></p>
 
 <h4>Gráficos Estadísticos:</h4>
 <td>
@@ -30,7 +30,9 @@
 							
 						</DropdownMenu>
 						</Dropdown>
-	</td>
+</td>
+<p><Button type="button" color="white" style="color:rgb(40, 83, 53);border-color:brown;margin-top: 5%;" onclick="window.location.href='#/graph-offworks-stats'"> Grafica HighChart de bajas laborales en España </Button></p>
+<p><Button type="button" color="white" style="color:rgb(40, 83, 53);border-color:brown;" onclick="window.location.href='#/Rgraph-offworks-stats'"> Grafica Rgraph de bajas laborales en España </Button></p>
 
 
 	
@@ -38,6 +40,7 @@
 <h4>Integraciones:</h4>
 
 <p><Button type="button" color="info" onclick="window.location.href='#/fires-stats-integrations/integrations'"> Integraciones Fires Stats </Button></p>
+<p><Button type="button" color="info" onclick="window.location.href='#/offworks-stats-integrations/integrations'"> Integraciones Offworks Stats </Button></p>
 
 <h4>Gráfica Grupal:</h4>
 
