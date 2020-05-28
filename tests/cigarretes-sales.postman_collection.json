@@ -198,7 +198,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:12345/api/v2/cigarretes-sales/Andalucia/2030",
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Aragon/2030",
 					"host": [
 						"localhost:12345"
 					],
@@ -206,7 +206,7 @@
 						"api",
 						"v2",
 						"cigarretes-sales",
-						"Andalucia",
+						"Aragon",
 						"2030"
 					]
 				}
