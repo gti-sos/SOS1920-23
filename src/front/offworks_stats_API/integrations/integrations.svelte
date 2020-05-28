@@ -13,9 +13,9 @@
     <p><Button type="button" color="success" onclick="window.location.href='#/offworks-stats'"> API 2 Externa</Button></p>
 <h4>Apis de Compañeros: </h4>
 
-    <!--<p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Estadísticas Emigración</Button></p>
-    <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats-integrations/integrations/plugin-vehicles-stats'">Ventas Coches Eléctricos</Button></p>
-    <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Importaciones EEUU</Button></p>
+    <p><Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/basketIntegration'">Estadísticas baloncesto</Button></p>
+    <p><Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/drivingLicensesIntegration'">Estadisticas licencias de conducir</Button></p>
+    <!--<p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Importaciones EEUU</Button></p>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Hospitalized Stats</Button></p>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Exportación de Libros</Button></p>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats/integrations/#'">Consumo de Azúcar</Button></p>
