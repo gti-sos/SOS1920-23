@@ -13,7 +13,6 @@
         let enfermos = [];
         let numZonas = [];
         let cont=0;
-
         const resData = await fetch("api/v2/offworks-stats");
         MyData = await resData.json();
 
@@ -24,7 +23,7 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007&&cont<5) {
+            if (data.year == 2007) {// && cont<5
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
@@ -33,32 +32,28 @@
             }
         });
         let dataExt = [];
-        let countries = [];
+        let provinces = [];
         let years = [];
-        let points = [];
-        let threepoints = [];
-        let rebounds = [];
-        const resDataExt = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        let travellers = [];
+        let overnightstays = [];
+        let averagestays = [];
+        const resDataExt = await fetch("https://sos1920-02.herokuapp.com/api/v2/rural-tourism-stats");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            /*let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
+            let province = data.province;
+            let yearss = data.year;
+            let traveller = data["traveller"];
+            let overnightstay = data["overnightstay"];
+            let averagestay = data["averagestay"];
             
-            if (data.year == 2007) {
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-            }*/
-            countries.push(data.country);
-            years.push(data.year);
-            points.push(data["points"]);
-            threepoints.push(data["threepoints"]);
-            rebounds.push(data["rebounds"]);
+            if (data.year == 2016) {
+                provinces.push(province);
+                travellers.push(traveller);
+                overnightstays.push(overnightstay);
+                averagestays.push(averagestay);
+            }
+            
         });
 
         Highcharts.chart('container', {
@@ -66,11 +61,11 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermedades-Puntos-Triples-Rebotes'
+                text: 'Comunidades-Accidentes-Viajeros-Noches-Porcentaje'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y BasketApi',
+                text: 'Integracion offworksApi y ruralTourismApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -103,17 +98,17 @@
             },
 
             series: [{
-                name: 'puntos',
-                data: points
+                name: 'viajeros',
+                data: travellers
             }, {
-                name: "triples",
-                data: threepoints
+                name: "noches",
+                data: overnightstays
             }, {
-                name: "rebotes",
-                data: rebounds
+                name: "porcentaje quedadas",
+                data: averagestays
             }, {
-                name: "baja por enfermedad",
-                data: enfermos
+                name: "baja por accidente",
+                data: accidentes
             }],
             responsive: {
                 rules: [{
@@ -136,7 +131,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        const res = await fetch("https://sos1920-02.herokuapp.com/api/v2/rural-tourism-stats");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -163,32 +158,32 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            Relación de las Comunidades en el año 2007 entre accidentes laborales y
+            viajeros,noches y porcetaje quedadas en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
     {#await getApi}
-		Loading basket-stats ...
+		Loading ppas ...
 	{:then getApi}
     <Table bordered>
         <thead>
             <tr>
-                <th>Pais</th>
+                <th>Provincia</th>
                 <th>Año</th>
-                <th>Puntos</th>
-                <th>triples</th>
-                <th>rebotes</th>
+                <th>Viajeros</th>
+                <th>Noches</th>
+                <th>Porcentaje quedadas</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
-                    <td>{datoApi.country}</td>
+                    <td>{datoApi.province}</td>
                     <td>{datoApi.year}</td>
-                    <td>{datoApi['points']}</td>
-                    <td>{datoApi['threepoints']}</td>
-                    <td>{datoApi['rebounds']}</td>
+                    <td>{datoApi['traveller']}</td>
+                    <td>{datoApi['overnightstay']}</td>
+                    <td>{datoApi['averagestay']}</td>
 				</tr>
 				{/each}
 			</tbody>
