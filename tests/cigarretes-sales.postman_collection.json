@@ -179,7 +179,7 @@
 						"id": "d893ed2c-e04f-4554-bbe6-69d0df8fe99c",
 						"exec": [
 							"pm.test(\"Searched correctly\", function() {",
-							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.status(404);",
 							"});",
 							""
 						],
@@ -198,7 +198,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:12345/api/v2/cigarretes-sales/Aragon/2007",
+					"raw": "localhost:12345/api/v2/cigarretes-sales/Aragon/2030",
 					"host": [
 						"localhost:12345"
 					],
@@ -207,7 +207,7 @@
 						"v2",
 						"cigarretes-sales",
 						"Aragon",
-						"2007"
+						"2030"
 					]
 				}
 			},
