@@ -11,7 +11,13 @@
 	import GraphHighchart from './Fires_Stats_API/analytics/HighChart.svelte';
 	import Chartjs from './Fires_Stats_API/analytics/Chartjs.svelte';
 	import integrations from './Fires_Stats_API/integrations/integrations.svelte';
-	import pluginVehiclesStats from './Fires_Stats_API/integrations/pluginVehiclesStats.svelte'; 
+	import pluginVehiclesStats from './Fires_Stats_API/integrations/pluginVehiclesStats.svelte';
+	import emigrantsStats from './Fires_Stats_API/integrations/emigrantsStats.svelte';
+	import notHospitalizedStats from './Fires_Stats_API/integrations/notHospitalizedStats.svelte';
+	import importsStats from './Fires_Stats_API/integrations/importsStats.svelte';
+	import bookExportsStats from './Fires_Stats_API/integrations/bookExportsStats.svelte';
+	import sugarConsumeStats from './Fires_Stats_API/integrations/sugarConsumeStats.svelte';
+	import drugOffencesStats from './Fires_Stats_API/integrations/drugOffencesStats.svelte';
 	//Import archivos API offworks
 	import OffworksStatsTable from './offworks_stats_API/OffworksStatsTable.svelte';
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
@@ -40,6 +46,12 @@
 		"/fires-stats/:community/:year" : EditFiresStats,
 		"/fires-stats-integrations/integrations" : integrations,
 		"/fires-stats-integrations/integrations/plugin-vehicles-stats" : pluginVehiclesStats,
+		"/fires-stats-integrations/integrations/emigrant-stats" : emigrantsStats,
+		"/fires-stats-integrations/integrations/not-hosp-stats": notHospitalizedStats,
+		"/fires-stats-integrations/integrations/imports": importsStats,
+		"/fires-stats-integrations/integrations/book-exports":bookExportsStats,
+		"/fires-stats-integrations/integrations/sugar-consume":sugarConsumeStats,
+		"/fires-stats-integrations/integrations/drug-offences": drugOffencesStats,
 		
 		"/offworks-stats" : OffworksStatsTable,
 		"/offworks-stats/:community/:year" : EditOffworksStats,

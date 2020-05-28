@@ -1,3 +1,4 @@
 node_modules
 public/build
 src/back/offworks_stats_API/v2/offworks_stats.db
+src/back/Fires_Stats_API/v2/fires-stats.db
