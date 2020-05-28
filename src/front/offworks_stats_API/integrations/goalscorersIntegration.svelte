@@ -52,7 +52,7 @@
             //if (data.year == 2019) {
                 countrys.push(country);
                 names.push(name);
-                goals.push(goals);
+                goals.push(goal);
                 matches.push(matche);
                 teams.push(team);
             //}
