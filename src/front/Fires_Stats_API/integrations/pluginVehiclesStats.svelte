@@ -13,8 +13,9 @@
     let countries = [];
     let pevStock = [];
     let annualSale = [];
+    let comunidades = [];
 
-    async function getPluginVehicles(){
+async function getPluginVehicles(){
         console.log("Fetching plugin vehicles..");
         const res = await fetch(url);
         if(res.ok){
@@ -28,150 +29,91 @@
             console.log("Error");
         }
     }
+    
 
-    async function loadGraph(){
-
-
-        let Datos=[];
-        const res = await fetch(url);
-        Datos = await res.json();
-        console.log("Loading Chart...");
+async function loadGraph(){
         
-        
-        
-        Datos.forEach((data) => {
-            let country = data.country;
-            let p = data["pev-stock"];
-            let a = data["annual-sale"];
-            
-            
-            if (data.year == 2018) {
-                countries.push(country);
-                pevStock.push(p);
-                annualSale.push(a);
-                
-            }
-        });
-        
-        
-        
-        let country = Datos.map((Datos)=> Datos.country);
-        let pev_stock = Datos.map((Datos) =>Datos.stock);
-        let annual_sale = Datos.map((Datos) =>Datos.sale);
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Ventas anuales y cumulo de ventas de coches eléctricos'
-            },
-            xAxis: {
-            categories: countries,
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Unidades vendidas'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} unidades</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Ventas Acumuladas',
-                type: 'column',
-                data: pevStock
-
-            }, {
-                name: 'Ventas Anuales',
-                type: 'column',
-                data: annualSale
-
-            }
-            ]
-});
-        
-    }
-
-    async function fires_stats(){
-
- let Datos = [];
+        let Datos = [];
 
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-    
-        let comunidad = Datos.filter((Datos)=> Datos.year===2007).map((Datos) => Datos.community);
-        let fires = Datos.filter((Datos)=> Datos.year===2007).map((Datos)=> Datos.total_fire);
-        let forest = Datos.filter((Datos) => Datos.year===2007).map((Datos) => Datos.forest_area);
-        let noForest = Datos.filter((Datos) => Datos.year===2007).map((Datos) => Datos.non_forest_area);
-
-    Highcharts.chart('container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Área forestal y no forestal por ccaa'
-            },
-            subtitle: {
-                text: 'Fuente: <a href="https://www.mapa.gob.es/es/desarrollo-rural/estadisticas/incendios-decenio-2006-2015_tcm30-511095.pdf">gob.es</a>'
-            },
-            xAxis: {
-            categories: comunidad,
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Número de incendios, área forestal y no forestal en hctreas'
+        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Cumulo_Ventas", "Ventas_Anuales"];
+        let valores = [];
+        let valor ={};
+        
+        Datos.forEach((data) =>{
+            if(data.year==2007){
+                valor = {
+                    name: data.community + " (" + data.year + ")",
+                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0]
                 }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [
-                {
-                name: 'Incendios Totales',
-                type: 'column',
-                data: fires
-
-            }, 
-            {
-                name: 'Área forestal(Hectáreas)',
-                type: 'column',
-                data: forest
-
-            }, {
-                name: 'Área no forestal(Hectáreas)',
-                type: 'column',
-                data: noForest
-
+                valores.push(valor);
             }
-            ]
-});
-    } 
+        });
+       
+        let Datos2=[];
+        const res2 = await fetch(url);
+        Datos2 = await res2.json();
+
+    Datos2.forEach((data2)=>{
+        valor = {
+            name: data2.country + " (" + data2.year + ")",
+            data: [0,0,0,data2['pev-stock'], data2['annual-sale']]
+        }
+        valores.push(valor);
+    });
+
+        console.log("Loading Chart...");
+
+        
+    
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Integración API PluginStatsVehicles con FiresStats'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: items,
+            crosshair: true,
+            
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+            
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                formatter: function(){
+                    return this.value;
+                }
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            shared: true
+        },
+        series: valores
+    });
+    }
+
+
 
 </script>
 
@@ -193,8 +135,7 @@
                         Esta API muestra información acerca de las ventas acumuladas por países y ventas anuales de coches eléctricos a nivel internacional
                 </p>	
         </figure>
-        <p><Button  on:click={fires_stats}>Ver Datos API Fires-Stats</Button></p>
-        <Button  onClick="location.reload()">Ver Datos API Plugin-Vehicles-Stats</Button>
+        
 		<Table bordered>
 			<thead>
 				<tr>
