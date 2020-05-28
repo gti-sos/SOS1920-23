@@ -25,11 +25,11 @@ module.exports = function(app) {
         req.pipe(request(url)).pipe(res);
 	});
 
-	var api2 = 'https://sos1920-26.herokuapp.com'; 
-	var paths2='/api/v3/goalscorers';
+	var api3 = 'https://sos1920-26.herokuapp.com'; 
+	var paths3='/api/v3/goalscorers';
 	
-	app.use(paths2, function(req, res) {
-        var url = api2 + req.baseUrl + req.url;
+	app.use(paths3, function(req, res) {
+        var url = api3 + req.baseUrl + req.url;
         console.log('piped: ' + req.baseUrl + req.url);
         req.pipe(request(url)).pipe(res);
 	});
