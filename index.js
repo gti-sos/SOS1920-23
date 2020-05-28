@@ -4,10 +4,10 @@ const bodyParser = require('body-parser');	//Importacion modulo body-parser
 const path = require('path');	//Importacion modulo path
 const cors = require('cors');
 
-const back = require("./src/back/CigarretesAPI/v2");
+
 const app = express();
 app.use(bodyParser.json());
-back(app);	//constante app para la utilizacion de express
+	//constante app para la utilizacion de express
 
 app.use(cors()); //Para importar la cabeceras de CORS y que puedan acceder a las APIs
 
@@ -24,6 +24,8 @@ backAle(app);
 //const offworks_stats_API = require(path.join(__dirname,"offworks_stats_API"));
 //offworks_stats_API(app);
 //API Joserra
+const back = require("./src/back/CigarretesAPI/v2");
+back(app);
 const CigarretesAPI = require(path.join(__dirname,"CigarretesAPI"));
 CigarretesAPI(app);
 
