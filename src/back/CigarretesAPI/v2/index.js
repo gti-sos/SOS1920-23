@@ -7,6 +7,174 @@ const db = new dataStore({
 filename: dbFileName,
 autoload: true
 });
+db.find({}, (err, cigarretes) =>{
+	if(cigarretes.length == 0){
+		db.insert([
+			{
+				community: 'Andalucia',
+				year: 2007,
+				cigarrete_sale: 812,
+				first_variation: -4.9,
+				second_variation: -47
+			},
+			{
+				community: 'Aragon',
+				year: 2007,
+				cigarrete_sale: 132,
+				first_variation: -2.9,
+				second_variation: -36.3
+			},
+			{
+				community: 'Asturias',
+				year: 2007,
+				cigarrete_sale: 98,
+				first_variation: -9.2,
+				second_variation: -32.6
+			},
+			{
+				community: 'Islas Baleares',
+				year: 2007,
+				cigarrete_sale: 179,
+				first_variation: -12.2,
+				second_variation: -46.3
+			},
+			{
+				community: 'Cantabria',
+				year: 2007,
+				cigarrete_sale: 56,
+				first_variation: -6.6,
+				second_variation: -33.9
+			},
+			{
+				community: 'Castilla y Leon',
+				year: 2007,
+				cigarrete_sale: 221,
+				first_variation: -7.5,
+				second_variation: -34.8
+			},
+			{
+				community: 'Castilla la Mancha',
+				year: 2007,
+				cigarrete_sale: 193,
+				first_variation: 2.1,
+				second_variation: -35.2
+			},
+			{
+				community: 'Cataluña',
+				year: 2007,
+				cigarrete_sale: 844,
+				first_variation: 4.1,
+				second_variation: -41.7
+			},
+			{
+				community: 'Comunidad Valenciana',
+				year: 2007,
+				cigarrete_sale: 569,
+				first_variation: -5.4,
+				second_variation: -43.7
+			},
+			{
+				community: 'Extremadura',
+				year: 2007,
+				cigarrete_sale: 107,
+				first_variation: -5.3,
+				second_variation: -33.6
+			},
+			{
+				community: 'Galicia',
+				year: 2007,
+				cigarrete_sale: 220,
+				first_variation: -5.9,
+				second_variation: -34
+			},
+			{
+				community: 'Madrid',
+				year: 2007,
+				cigarrete_sale: 530,
+				first_variation: -9.8,
+				second_variation: -33.5
+			},
+			{
+				community: 'Murcia',
+				year: 2007,
+				cigarrete_sale: 152,
+				first_variation: 1.3,
+				second_variation: -38.8
+			},
+			{
+				community: 'Navarra',
+				year: 2007,
+				cigarrete_sale: 89,
+				first_variation: 11.25,
+				second_variation: -35.9
+			},
+			{
+				community: 'Pais Vasco',
+				year: 2007,
+				cigarrete_sale: 228,
+				first_variation: 3.6,
+				second_variation: -38.5
+			},
+			{
+				community: 'La Rioja',
+				year: 2007,
+				cigarrete_sale: 26,
+				first_variation: -7.1,
+				second_variation: -34.6
+			},
+			{
+				community: 'Andalucia',
+				year: 2009,
+				cigarrete_sale: 738,
+				first_variation: -13.5,
+				second_variation: -41.7
+			},
+			{
+				community: 'Aragon',
+				year: 2009,
+				cigarrete_sale: 124,
+				first_variation: -8.8,
+				second_variation: -32.5
+			},
+		
+			{
+				community: 'Asturias',
+				year: 2009,
+				cigarrete_sale: 95,
+				first_variation: -12.0,
+				second_variation: -30.5
+			},
+			{
+				community: 'Islas Baleares',
+				year: 2009,
+				cigarrete_sale: 143,
+				first_variation: -29.9,
+				second_variation: -32.8
+			},
+			{
+				community: 'Cantabria',
+				year: 2009,
+				cigarrete_sale: 54,
+				first_variation: -6.6,
+				second_variation: -31.4
+			},
+			{
+				community: 'Castilla y Leon',
+				year: 2009,
+				cigarrete_sale: 213,
+				first_variation: -7.5,
+				second_variation: -32.3
+			}
+		
+	
+		]) 
+	}
+
+	else{
+		console.log("Loaded DB with " + cigarretes.length + " cigarretes");
+	}
+});
+
 	console.log("Registering cigarretes api");
 		console.log("OK");
 var initialCigarretes = [

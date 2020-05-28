@@ -23,6 +23,9 @@
 	import GraphCigarretesSales from './CigarretesAPI/analytics/GraphCigarretesSales.svelte';
 	import EditCigarretesSales from './CigarretesAPI/EditCigarretesSales.svelte';
 	import ChartCigarretesSales from './CigarretesAPI/analytics/ChartCigarretesSales.svelte';
+	import pluginTrafficAccidents from './CigarretesAPI/integrations/pluginTrafficAccidents.svelte';
+	import pluginGCE from './CigarretesAPI/integrations/pluginGCE.svelte';
+
 
 
 	const routes = {
@@ -46,6 +49,8 @@
 		"/cigarretes-sales/:community/:year" : EditCigarretesSales,
 		"/graph-cigarretes-sales" : GraphCigarretesSales,
 		"/chart-cigarretes-sales" : ChartCigarretesSales,
+		"/cigarretes-sales-integrations/integrations/pluginTrafficAccidents" : pluginTrafficAccidents,
+		"/cigarretes-sales-integrations/integrations/pluginGCE" :pluginGCE,
 		"*" : NotFound
 	};
 
