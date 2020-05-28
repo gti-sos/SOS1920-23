@@ -6,22 +6,22 @@
     import Button from "sveltestrap/src/Button.svelte";
     
     
-        const url = "api/v1/gce";
+        const url = "https://sos1920-09.herokuapp.com/api/v2/renewable-sources-stats";
     
-        onMount(getPluginGCE);
+        onMount(getPluginRenewable);
         let plugins = [];
        
         
     
-        async function getPluginGCE(){
+        async function getPluginRenewable(){
     
-            console.log("Fetching plugin traffic_accidents..");
+            console.log("Fetching plugin renewable..");
             const res = await fetch(url);
             if(res.ok){
                 console.log("ok");
                 const json = await res.json();
                 plugins = json;
-                console.log("Received "+ plugins.length + " plugin GCE");
+                console.log("Received "+ plugins.length + " plugin renewable");
             }
     
             else{
@@ -31,24 +31,21 @@
         
         async function loadGraph(){
     
-    
-       
-    
             const res1 = await fetch("api/v2/cigarretes-sales");
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Energia hidroeléctrica","Energia solar","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Porcentaje total","Porcentaje energía hidroeléctrica","Venta de paquetes de tabaco","Primera variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
-           
+            
             valor={
                 name: d.country,
-                data: [d.gce_country,d.gce_per_capita,0,0],
+                data: [d['percentage-hydropower-total'],d['percentage-hydropower-total'],0,0]
             }
             valores.push(valor);
-            
+        
         });
         datos2.forEach((d2) => {
             if(d2.year==2007){
@@ -68,7 +65,7 @@
         type: 'column'
     },
     title: {
-        text: 'Integración grupo 28'
+        text: 'Integración grupo 9'
     },
     
     xAxis: {
@@ -105,13 +102,13 @@
     
     <main>
     
-        {#await getPluginGCE}
-            Loading plugin-gce.. ...
-        {:then getPluginGCE}
+        {#await getPluginRenewable}
+            Loading plugin-natality ...
+        {:then getPluginRenewable}
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre .
+                            Esta API muestra información sobre las diferentes fuentes de energías renovables en diversos paises del mundo.
                     </p>	
             </figure>
            
@@ -121,8 +118,8 @@
                     <tr>
                         <th>Pais</th>
                         <th>Año</th>
-                        <th>GCE pais</th>
-                        <th>GCE por capital</th>
+                        <th>Porcentaje total</th>
+                        <th>Porcentaje energía hidroeléctrica</th>
                         
     
                     </tr>
@@ -132,8 +129,8 @@
                     <tr>
                         <td>{plugin.country}</td>
                         <td>{plugin.year}</td>
-                        <td>{plugin['gce_country']}</td>
-                        <td>{plugin['gce_per_capita']}</td>
+                        <td>{plugin['percentage-re-total']}</td>
+                        <td>{plugin['percentage-hydropower-total']}</td>
                         
     
     

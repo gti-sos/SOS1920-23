@@ -25,6 +25,12 @@
 	import ChartCigarretesSales from './CigarretesAPI/analytics/ChartCigarretesSales.svelte';
 	import pluginTrafficAccidents from './CigarretesAPI/integrations/pluginTrafficAccidents.svelte';
 	import pluginGCE from './CigarretesAPI/integrations/pluginGCE.svelte';
+	import pluginFoodImports from './CigarretesAPI/integrations/pluginFoodImports.svelte';
+	import pluginElectricity from './CigarretesAPI/integrations/pluginElectricity.svelte';
+	import pluginNatality from './CigarretesAPI/integrations/pluginNatality.svelte';
+	import pluginRenewable from './CigarretesAPI/integrations/pluginRenewable.svelte';
+	import pluginLife from './CigarretesAPI/integrations/pluginLife.svelte';
+
 
 
 
@@ -51,6 +57,11 @@
 		"/chart-cigarretes-sales" : ChartCigarretesSales,
 		"/cigarretes-sales-integrations/integrations/pluginTrafficAccidents" : pluginTrafficAccidents,
 		"/cigarretes-sales-integrations/integrations/pluginGCE" :pluginGCE,
+		"/cigarretes-sales-integrations/integrations/pluginFoodImports" : pluginFoodImports,
+		"/cigarretes-sales-integrations/integrations/pluginElectricity" : pluginElectricity,
+		"/cigarretes-sales-integrations/integrations/pluginNatality" : pluginNatality,
+		"/cigarretes-sales-integrations/integrations/pluginRenewable" : pluginRenewable,
+		"/cigarretes-sales-integrations/integrations/pluginLife" : pluginLife,
 		"*" : NotFound
 	};
 
