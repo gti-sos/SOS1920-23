@@ -6,14 +6,14 @@
     import Button from "sveltestrap/src/Button.svelte";
     
     
-        const url = "api/v1/gce";
+        const url = "api/v2/electricity-produced-stats";
     
-        onMount(getPluginGCE);
+        onMount(getPluginElectricity);
         let plugins = [];
        
         
     
-        async function getPluginGCE(){
+        async function getPluginElectricity(){
     
             console.log("Fetching plugin traffic_accidents..");
             const res = await fetch(url);
@@ -21,7 +21,7 @@
                 console.log("ok");
                 const json = await res.json();
                 plugins = json;
-                console.log("Received "+ plugins.length + " plugin GCE");
+                console.log("Received "+ plugins.length + " plugins electricitys");
             }
     
             else{
@@ -44,8 +44,8 @@
         datos.forEach((d) => {
            
             valor={
-                name: d.country,
-                data: [d.gce_country,d.gce_per_capita,0,0],
+                name: d.state,
+                data: [d.hydro,d.coal,0,0],
             }
             valores.push(valor);
             
@@ -68,7 +68,7 @@
         type: 'column'
     },
     title: {
-        text: 'Integración grupo 28'
+        text: 'Integración grupo 8'
     },
     
     xAxis: {
@@ -105,13 +105,13 @@
     
     <main>
     
-        {#await getPluginGCE}
-            Loading plugin-gce.. ...
-        {:then getPluginGCE}
+        {#await getPluginElectricity}
+            Loading plugin-electricity ...
+        {:then getPluginElectricity}
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre .
+                            Esta API muestra información sobre las diferentes fuentes de energía en estados de EEUU.
                     </p>	
             </figure>
            
@@ -119,10 +119,10 @@
             <Table bordered>
                 <thead>
                     <tr>
-                        <th>Pais</th>
+                        <th>Estado</th>
                         <th>Año</th>
-                        <th>GCE pais</th>
-                        <th>GCE por capital</th>
+                        <th>Energia hidroeléctrica</th>
+                        <th>Energia solar</th>
                         
     
                     </tr>
@@ -130,10 +130,10 @@
                 <tbody>
                     {#each plugins as plugin}
                     <tr>
-                        <td>{plugin.country}</td>
+                        <td>{plugin.state}</td>
                         <td>{plugin.year}</td>
-                        <td>{plugin['gce_country']}</td>
-                        <td>{plugin['gce_per_capita']}</td>
+                        <td>{plugin['hydro']}</td>
+                        <td>{plugin['solar']}</td>
                         
     
     
