@@ -26,6 +26,11 @@
 	import integrationsA from './offworks_stats_API/integrations/integrations.svelte';
 	import basketIntegration from './offworks_stats_API/integrations/basketIntegration.svelte';
 	import drivingLicensesIntegration from './offworks_stats_API/integrations/drivingLicensesIntegration.svelte';
+	import ppasIntegration from './offworks_stats_API/integrations/ppasIntegration.svelte';
+	import ruralTourismIntegration from './offworks_stats_API/integrations/ruralTourismIntegration.svelte';
+	import nuclearEnergyIntegration from './offworks_stats_API/integrations/nuclearEnergyIntegration.svelte';
+	import indiceMasaIntegration from './offworks_stats_API/integrations/indiceMasaIntegration.svelte';
+	import goalscorersIntegration from './offworks_stats_API/integrations/goalscorersIntegration.svelte';
 	//Import archivos API Cigarretes Sales
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
 	import GraphCigarretesSales from './CigarretesAPI/analytics/GraphCigarretesSales.svelte';
@@ -60,6 +65,11 @@
 		"/offworks-stats-integrations/integrations" : integrationsA,
 		"/offworks-stats-integrations/integrations/basketIntegration" : basketIntegration,
 		"/offworks-stats-integrations/integrations/drivingLicensesIntegration" : drivingLicensesIntegration,
+		"/offworks-stats-integrations/integrations/ppasIntegration" : ppasIntegration,
+		"/offworks-stats-integrations/integrations/ruralTourismIntegration" : ruralTourismIntegration,
+		"/offworks-stats-integrations/integrations/nuclearEnergyIntegration" : nuclearEnergyIntegration,
+		"/offworks-stats-integrations/integrations/indiceMasaIntegration" : indiceMasaIntegration,
+		"/offworks-stats-integrations/integrations/goalscorersIntegration" : goalscorersIntegration,
 		
 		"/cigarretes-sales" : CigarretesTable,
 		"/cigarretes-sales/:community/:year" : EditCigarretesSales,
