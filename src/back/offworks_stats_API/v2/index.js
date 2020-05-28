@@ -4,13 +4,31 @@ module.exports = function(app) {
 	const dataStore = require('nedb');
 	const path = require('path');
 	const dbFileName = path.join(__dirname, 'offworks_stats.db');
+	const BASE_API_URL = '/api/v2';
+	const request = require('request');
+	
+	var api1 = 'https://sos1920-21.herokuapp.com'; 
+	var paths1='/api/v2/driving-licenses';
+	
+	app.use(paths1, function(req, res) {
+        var url = api1 + req.baseUrl + req.url;
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+	});
+
+	var api2 = 'https://sos1920-28.herokuapp.com'; 
+	var paths2='/api/v1/ppas';
+	
+	app.use(paths2, function(req, res) {
+        var url = api2 + req.baseUrl + req.url;
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+	});
 
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true
 	});
-	
-	const BASE_API_URL = '/api/v2';
 
 	var offworks_stats = [
 		{community: 'Andalucia',year: 2007,accident: 6878,sick: 29.1,numberzone: 804},
