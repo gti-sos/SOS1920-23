@@ -19,6 +19,7 @@
 
 <p><Button type="button" color="info" onclick="window.location.href='#/offworks-stats'"> API de bajas laborales en España </Button></p>
 
+
 <h4>Gráficos Estadísticos:</h4>
 <td>
 					<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)}>
@@ -47,15 +48,15 @@
 <p><Button type="button" color="white" style="color:rgb(40, 83, 53);border-color:brown;" onclick="window.location.href='#/Rgraph-offworks-stats'"> Grafica Rgraph de bajas laborales en España </Button></p>
 
 
-	
-
 <h4>Integraciones:</h4>
 
-<p><Button type="button" color="info" onclick="window.location.href='#/fires-stats-integrations/integrations'"> Integraciones Fires Stats </Button></p>
-<p><Button type="button" color="info" onclick="window.location.href='#/offworks-stats-integrations/integrations'"> Integraciones Offworks Stats </Button></p>
-<p><Button type="button" color="info" onclick="window.location.href='#/cigarretes-sales-integrations/integrations'"> Integraciones cigarretes-sales </Button></p>
+<p><Button type="button" color="info" onclick="window.location.href='#/Integrations'"> Integraciones</Button></p>
 
 
 <h4>Gráfica Grupal:</h4>
 
-<p><Button type="button" color="warning" onclick="window.location.href='#/analytics'"> Estadística Grupal </Button></p>
+<p><Button type="button" color="warning" onclick="window.location.href='#/Analytics'"> Estadística Grupal </Button></p>
+
+<h4>Videos explicativos:</h4>
+
+<p><Button type="button" color="warning" onclick="window.location.href='#/About'"> Videos apis </Button></p>
