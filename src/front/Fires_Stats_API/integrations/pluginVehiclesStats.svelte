@@ -38,7 +38,7 @@ async function loadGraph(){
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Cumulo_Ventas", "Ventas_Anuales"];
+        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Cumulo de Ventas", "Ventas Anuales"];
         let valores = [];
         let valor ={};
         
@@ -81,15 +81,8 @@ async function loadGraph(){
         xAxis: {
             categories: items,
             crosshair: true,
-            
+            tickmarkPlacement: 'on',
             type: 'category',
-            labels: {
-                rotation: -45,
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
             
         },
         yAxis: {
@@ -107,7 +100,18 @@ async function loadGraph(){
             enabled: false
         },
         tooltip: {
-            shared: true
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+        },
+        plotOptions: {
+            column:{
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
         },
         series: valores
     });
@@ -125,7 +129,7 @@ async function loadGraph(){
     <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 <main>
-
+<Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
 	{#await getPluginVehicles}
 		Loading plugin-vehicles-stats ...
 	{:then getPluginVehicles}
@@ -143,6 +147,7 @@ async function loadGraph(){
 					<th>Año</th>
 					<th>Ventas Acumuladas</th>
 					<th>Ventas anuales</th>
+                    <th>Ventas cada 1000 personas</th>
 
 				</tr>
 			</thead>
@@ -153,13 +158,17 @@ async function loadGraph(){
                     <td>{plugin.year}</td>
                     <td>{plugin['pev-stock']}</td>
                     <td>{plugin['annual-sale']}</td>
+                    <td>{plugin['cars-per-1000']}</td>
 
 				</tr>
 				{/each}
 			</tbody>
 		</Table>
 	{/await}
+
+
 	
 </main>
 
  <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
+

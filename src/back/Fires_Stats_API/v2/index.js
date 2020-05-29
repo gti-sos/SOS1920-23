@@ -1,6 +1,6 @@
 module.exports = function (app){	//Funcion creada para la exportacion al archivo de ejecucion princpal del servidor
 	
-
+    const request = require('request');
     const dataStore = require('nedb');	//Importacion base de datos nedb
     const path = require('path');	//Importacion mnodulo path
     const dbFileNameFires = path.join(__dirname , "fires-stats.db");	//constante ruta de archivos de base de datos	
@@ -10,6 +10,26 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
                         filename: dbFileNameFires,
                         autoload: true
     });	
+
+    //Implementacion de Proxy para acceder a la API Emigrants Stats
+    var api1 = 'https://sos1920-07.herokuapp.com'; 
+	var paths1='/api/v2/imports';
+	
+	app.use(paths1, function(req, res) {
+        var url = api1 + req.baseUrl + req.url;
+        console.log('Proxy with: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+    });
+    
+    //Implementacion de Proxy para acceder a la API Not hospitalized Stats
+    var api2 = 'https://sos1920-06.herokuapp.com'; 
+	var paths2='/api/v2/not-hospitalized-stats';
+	
+	app.use(paths2, function(req, res) {
+        var url = api2 + req.baseUrl + req.url;
+        console.log('Proxy with: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+	});
         
     app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
         //API Antonio

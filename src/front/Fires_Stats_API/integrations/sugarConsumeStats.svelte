@@ -25,17 +25,112 @@ async function getSugarConsume(){
     }
 }
 
+async function loadGraph(){
+        
+        let Datos = [];
+
+        const res = await fetch("api/v2/fires-stats");
+        Datos = await res.json();
+
+        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Consumo de Azúcar", "Población"];
+        let valores = [];
+        let valor ={};
+        
+        Datos.forEach((data) =>{
+            if(data.year==2007){
+                valor = {
+                    name: data.community + " (" + data.year + ")",
+                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0]
+                }
+                valores.push(valor);
+            }
+        });
+       
+        let Datos2=[];
+        const res2 = await fetch(url);
+        Datos2 = await res2.json();
+
+    Datos2.forEach((data2)=>{
+        valor = {
+            name: data2.country + " (" + data2.year + ")",
+            data: [0,0,0,data2.sugarconsume, data2.poblacion]
+        }
+        valores.push(valor);
+    });
+
+        console.log("Loading Chart...");
+
+        
+    
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Integración API PluginStatsVehicles con FiresStats'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: items,
+            crosshair: true,
+            tickmarkPlacement: 'on',
+            type: 'category',
+            
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                formatter: function(){
+                    return this.value;
+                }
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+        },
+        plotOptions: {
+            column:{
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: valores
+    });
+    }
+
+
 </script>
 
-<main>
+<svelte:head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+</svelte:head>
 
+<main>
+<Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
 	{#await getSugarConsume}
 		Loading sugar consume stats...
 	{:then getSugarConsume}
 		<figure class="highcharts-figure">
             <div id="container"></div>
                 <p class="highcharts-description">
-                        Esta API muestra la cantidad de consumo de azucar en distintos países y continentes, así como su porcentaje de diabetes y la poblacion. 
+                        Esta gráfica muestra los incendios forestales en el territorio español, con sus áreas forestales y no forestales, junto con el consumo de azúcar en varios países así como la población en ellos. 
                 </p>	
         </figure>
         

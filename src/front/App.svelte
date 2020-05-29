@@ -4,6 +4,9 @@
 
 	import Home from './Home.svelte';
 	import NotFound from './NotFound.svelte';
+	import Integrations from './Integrations.svelte';
+	import Analytics from './Analytics.svelte';
+	import About from './About.svelte';
 
 	//Import archivos API Fires
 	import FiresStatsTable from './Fires_Stats_API/FiresStatsTable.svelte';
@@ -38,7 +41,9 @@
 
 	const routes = {
 		"/" : Home,
-		
+		"/analytics": Analytics,
+		"/integrations": Integrations,
+		"/about": About,
 
 		"/fires-stats" : FiresStatsTable,
 		"/graph-highchart" : GraphHighchart,
