@@ -1,22 +1,22 @@
-{"community":"Andalucia","year":2007,"cigarrete_sale":812,"first_variation":-4.9,"second_variation":-47,"_id":"SZTxD5g3Qp9kJrQt"}
-{"community":"Aragon","year":2007,"cigarrete_sale":132,"first_variation":-2.9,"second_variation":-36.3,"_id":"aeVbWU5PHtbp3DCE"}
-{"community":"Asturias","year":2007,"cigarrete_sale":98,"first_variation":-9.2,"second_variation":-32.6,"_id":"Vnb9gIU79HYHPEog"}
-{"community":"Islas Baleares","year":2007,"cigarrete_sale":179,"first_variation":-12.2,"second_variation":-46.3,"_id":"eg0D29tBFRkWuQRJ"}
-{"community":"Cantabria","year":2007,"cigarrete_sale":56,"first_variation":-6.6,"second_variation":-33.9,"_id":"ngtj8csFadMhqfww"}
-{"community":"Castilla y Leon","year":2007,"cigarrete_sale":221,"first_variation":-7.5,"second_variation":-34.8,"_id":"LzGP8UFm30KVjo8P"}
-{"community":"Castilla la Mancha","year":2007,"cigarrete_sale":193,"first_variation":2.1,"second_variation":-35.2,"_id":"pud0rehH7yFbsbc8"}
-{"community":"Cataluña","year":2007,"cigarrete_sale":844,"first_variation":4.1,"second_variation":-41.7,"_id":"JQw4e9OWTFwmZsKB"}
-{"community":"Comunidad Valenciana","year":2007,"cigarrete_sale":569,"first_variation":-5.4,"second_variation":-43.7,"_id":"fBpgv7vcby3C079Z"}
-{"community":"Extremadura","year":2007,"cigarrete_sale":107,"first_variation":-5.3,"second_variation":-33.6,"_id":"inY1TXtHPbtO1m7k"}
-{"community":"Galicia","year":2007,"cigarrete_sale":220,"first_variation":-5.9,"second_variation":-34,"_id":"3U66wlaoOx7v3N1V"}
 {"community":"Madrid","year":2007,"cigarrete_sale":530,"first_variation":-9.8,"second_variation":-33.5,"_id":"0kHE7EV8B2yPSusu"}
-{"community":"Murcia","year":2007,"cigarrete_sale":152,"first_variation":1.3,"second_variation":-38.8,"_id":"fdsB8DXgvwGqoiZd"}
 {"community":"Navarra","year":2007,"cigarrete_sale":89,"first_variation":11.25,"second_variation":-35.9,"_id":"25E2SZZbiIFn3zTv"}
-{"community":"Pais Vasco","year":2007,"cigarrete_sale":228,"first_variation":3.6,"second_variation":-38.5,"_id":"kEva7ULNuXTvPXXh"}
-{"community":"La Rioja","year":2007,"cigarrete_sale":26,"first_variation":-7.1,"second_variation":-34.6,"_id":"PbkAuBBbUIQPSlXw"}
-{"community":"Andalucia","year":2009,"cigarrete_sale":738,"first_variation":-13.5,"second_variation":-41.7,"_id":"y3LncxcD1Fd1FRU0"}
-{"community":"Aragon","year":2009,"cigarrete_sale":124,"first_variation":-8.8,"second_variation":-32.5,"_id":"FMknRt0OVOLsmV3Y"}
+{"community":"Galicia","year":2007,"cigarrete_sale":220,"first_variation":-5.9,"second_variation":-34,"_id":"3U66wlaoOx7v3N1V"}
 {"community":"Asturias","year":2009,"cigarrete_sale":95,"first_variation":-12,"second_variation":-30.5,"_id":"9tBOj4SCatcZgIwC"}
-{"community":"Islas Baleares","year":2009,"cigarrete_sale":143,"first_variation":-29.9,"second_variation":-32.8,"_id":"v9VY6ShWh0qRKQHl"}
+{"community":"Aragon","year":2009,"cigarrete_sale":124,"first_variation":-8.8,"second_variation":-32.5,"_id":"FMknRt0OVOLsmV3Y"}
+{"community":"Cataluña","year":2007,"cigarrete_sale":844,"first_variation":4.1,"second_variation":-41.7,"_id":"JQw4e9OWTFwmZsKB"}
+{"community":"Castilla y Leon","year":2007,"cigarrete_sale":221,"first_variation":-7.5,"second_variation":-34.8,"_id":"LzGP8UFm30KVjo8P"}
+{"community":"La Rioja","year":2007,"cigarrete_sale":26,"first_variation":-7.1,"second_variation":-34.6,"_id":"PbkAuBBbUIQPSlXw"}
+{"community":"Andalucia","year":2007,"cigarrete_sale":812,"first_variation":-4.9,"second_variation":-47,"_id":"SZTxD5g3Qp9kJrQt"}
+{"community":"Asturias","year":2007,"cigarrete_sale":98,"first_variation":-9.2,"second_variation":-32.6,"_id":"Vnb9gIU79HYHPEog"}
+{"community":"Aragon","year":2007,"cigarrete_sale":132,"first_variation":-2.9,"second_variation":-36.3,"_id":"aeVbWU5PHtbp3DCE"}
+{"community":"Islas Baleares","year":2007,"cigarrete_sale":179,"first_variation":-12.2,"second_variation":-46.3,"_id":"eg0D29tBFRkWuQRJ"}
 {"community":"Cantabria","year":2009,"cigarrete_sale":54,"first_variation":-6.6,"second_variation":-31.4,"_id":"enbNuaVejYAb9uXI"}
+{"community":"Comunidad Valenciana","year":2007,"cigarrete_sale":569,"first_variation":-5.4,"second_variation":-43.7,"_id":"fBpgv7vcby3C079Z"}
+{"community":"Murcia","year":2007,"cigarrete_sale":152,"first_variation":1.3,"second_variation":-38.8,"_id":"fdsB8DXgvwGqoiZd"}
+{"community":"Extremadura","year":2007,"cigarrete_sale":107,"first_variation":-5.3,"second_variation":-33.6,"_id":"inY1TXtHPbtO1m7k"}
+{"community":"Pais Vasco","year":2007,"cigarrete_sale":228,"first_variation":3.6,"second_variation":-38.5,"_id":"kEva7ULNuXTvPXXh"}
+{"community":"Cantabria","year":2007,"cigarrete_sale":56,"first_variation":-6.6,"second_variation":-33.9,"_id":"ngtj8csFadMhqfww"}
+{"community":"Castilla la Mancha","year":2007,"cigarrete_sale":193,"first_variation":2.1,"second_variation":-35.2,"_id":"pud0rehH7yFbsbc8"}
+{"community":"Islas Baleares","year":2009,"cigarrete_sale":143,"first_variation":-29.9,"second_variation":-32.8,"_id":"v9VY6ShWh0qRKQHl"}
+{"community":"Andalucia","year":2009,"cigarrete_sale":738,"first_variation":-13.5,"second_variation":-41.7,"_id":"y3LncxcD1Fd1FRU0"}
 {"community":"Castilla y Leon","year":2009,"cigarrete_sale":213,"first_variation":-7.5,"second_variation":-32.3,"_id":"z9giFduNbXNBtLls"}
