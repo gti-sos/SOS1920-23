@@ -34,6 +34,17 @@ module.exports = function(app) {
         req.pipe(request(url)).pipe(res);
 	});
 
+	var api3 = 'https://corona.lmao.ninja'; 
+	var paths3='/v2/countries';
+	
+	app.use(paths3, function(req, res) {
+        var url = api3 + req.baseUrl + req.url;
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+	});
+
+	
+
 	const db = new dataStore({
 		filename: dbFileName,
 		autoload: true

@@ -8,7 +8,7 @@
 
 <h3>Integraciones </h3>
 <h4>Apis Externas: </h4>
-    <p><Button type="button" color="success" onclick="window.location.href='#/offworks-stats'">Api 1 Externa</Button></p>
+    <p><Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/apiExterna1Integration'">Api 1 Externa(covid19)</Button></p>
 		
     <p><Button type="button" color="success" onclick="window.location.href='#/offworks-stats'"> API 2 Externa</Button></p>
 <h4>Apis de Compañeros: </h4>

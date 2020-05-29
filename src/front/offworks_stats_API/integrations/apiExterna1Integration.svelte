@@ -13,6 +13,7 @@
         let enfermos = [];
         let numZonas = [];
         let cont=0;
+
         const resData = await fetch("api/v2/offworks-stats");
         MyData = await resData.json();
 
@@ -23,40 +24,41 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007) {// && cont<5
+            if (data.year == 2007) {
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
                 numZonas.push(num);
-                cont++;
+                //cont++;
             }
         });
         let dataExt = [];
-        let countrys = [];
-        let names = [];
-        let debut = [];
-        let goals = [];
-        let matches = [];
-        let teams = [];
-        const resDataExt = await fetch("/api/v3/goalscorers");
+        let countries = [];
+        let casess = [];
+        let actives = [];
+        let testss = [];
+        //let recovereds = [];
+        const resDataExt = await fetch("/v2/countries");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            let country = data.place;
-            let debut = data.debut;
-            let name = data["name"];
-            let goal = data["goals"];
-            let matche = data["matches"];
-            let team = data["teams"];
+            let countrie = data.country;
+            let cases = data["cases"];
+            let active = data["active"];
+            let tests = data["tests"];
+            //let recovered = data["recovered"];
             
-            //if (data.year == 2019) {
-                countrys.push(country);
-                names.push(name);
-                goals.push(goal);
-                matches.push(matche);
-                teams.push(team);
-            //}
-            
+            if (cont<=7) {
+                countries.push(countrie);
+                casess.push(cases);
+                actives.push(active);
+                testss.push(tests);
+                cont++;
+            }
+            //countries.push(data.Id);
+            //years.push(data["Cod_IOE"]);
+            //points.push(data["Nombre"]);
+            //threepoints.push(data["Codigo"]);
         });
 
         Highcharts.chart('container', {
@@ -64,18 +66,18 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermos-Goles-Partidos-Equipos'
+                text: 'Comunidades-Accidentes-Casos-Activos-Tests'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y goalscoreApi',
+                text: 'Integracion offworksApi y CoronalmaoNinjaApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
 
             yAxis: {
                 title: {
-                    text: 'Numero de en decenas'
+                    text: 'Numero en decenas'
 
                 },
 
@@ -101,17 +103,17 @@
             },
 
             series: [{
-                name: 'Goles',
-                data: goals
+                name: 'Casos',
+                data: casess
             }, {
-                name: "Partidos",
-                data: matches
+                name: "Casos activos",
+                data: actives
             }, {
-                name: "Equipos",
-                data: teams
+                name: "Test realizados",
+                data: testss
             }, {
-                name: "baja por enfermedad",
-                data: enfermos
+                name: "baja por accidente",
+                data: accidentes
             }],
             responsive: {
                 rules: [{
@@ -134,7 +136,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("/api/v3/goalscorers");
+        const res = await fetch("/v2/countries");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -162,33 +164,35 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            goles,partidos y equipos en Comunidades Autonomas.
+            casos,casos activos y tests en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
     {#await getApi}
-		Loading ppas ...
+		Loading basket-stats ...
 	{:then getApi}
     <Table bordered>
         <thead>
             <tr>
-                <th>Nombre</th>
                 <th>Pais</th>
-                <th>Debut</th>
-                <th>Goles</th>
-                <th>Partidos</th>
-                <th>Equipos</th>
+                <th>Casos</th>
+                <th>Casos hoy</th>
+                <th>tests</th>
+                <th>activos</th>
+                <th>muertes</th>
+                <th>recuperados</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
-                    <td>{datoApi.name}</td>
                     <td>{datoApi.country}</td>
-                    <td>{datoApi.debut}</td>
-                    <td>{datoApi['goals']}</td>
-                    <td>{datoApi['matches']}</td>
-                    <td>{datoApi['teams']}</td>
+                    <td>{datoApi['cases']}</td>
+                    <td>{datoApi['todayCases']}</td>
+                    <td>{datoApi['tests']}</td>
+                    <td>{datoApi['active']}</td>
+                    <td>{datoApi['deaths']}</td>
+                    <td>{datoApi['recovered']}</td>
 				</tr>
 				{/each}
 			</tbody>
