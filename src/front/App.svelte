@@ -4,6 +4,10 @@
 
 	import Home from './Home.svelte';
 	import NotFound from './NotFound.svelte';
+	import Integrations from './Integrations.svelte';
+	import Analytics from './Analytics.svelte';
+	import About from './About.svelte';
+
 
 	//Import archivos API Fires
 	import FiresStatsTable from './Fires_Stats_API/FiresStatsTable.svelte';
@@ -31,6 +35,7 @@
 	import nuclearEnergyIntegration from './offworks_stats_API/integrations/nuclearEnergyIntegration.svelte';
 	import indiceMasaIntegration from './offworks_stats_API/integrations/indiceMasaIntegration.svelte';
 	import goalscorersIntegration from './offworks_stats_API/integrations/goalscorersIntegration.svelte';
+	import apiExterna1Integration from './offworks_stats_API/integrations/apiExterna1Integration.svelte';
 	//Import archivos API Cigarretes Sales
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
 	import GraphCigarretesSales from './CigarretesAPI/analytics/GraphCigarretesSales.svelte';
@@ -49,7 +54,9 @@
 
 	const routes = {
 		"/" : Home,
-		
+		"/analytics": Analytics,
+		"/integrations": Integrations,
+		"/about": About,
 
 		"/fires-stats" : FiresStatsTable,
 		"/graph-highchart" : GraphHighchart,
@@ -76,6 +83,7 @@
 		"/offworks-stats-integrations/integrations/nuclearEnergyIntegration" : nuclearEnergyIntegration,
 		"/offworks-stats-integrations/integrations/indiceMasaIntegration" : indiceMasaIntegration,
 		"/offworks-stats-integrations/integrations/goalscorersIntegration" : goalscorersIntegration,
+		"/offworks-stats-integrations/integrations/apiExterna1Integration" : apiExterna1Integration,
 		
 		"/cigarretes-sales" : CigarretesTable,
 		"/cigarretes-sales/:community/:year" : EditCigarretesSales,
