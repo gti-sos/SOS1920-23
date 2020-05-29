@@ -4,7 +4,7 @@
 	import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
 
-    const url = "https://sos1920-30.herokuapp.com/api/v3/sugarconsume";
+    const url = "https://sos1920-05.herokuapp.com/api/v1/books-exports";
 
     onMount(getBookExports);
 
@@ -23,10 +23,109 @@ async function getBookExports(){
         console.log("Error");
     }
 }
-/*No muestra los datos*/
+/*NO MUESTRA LOS DATOOOS*/
+
+
+async function loadGraph(){
+        
+        let Datos = [];
+
+        const res = await fetch("api/v2/fires-stats");
+        Datos = await res.json();
+
+        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Exportación Libros", "Exportación Editorial", "Exportación Sector Gráfico"];
+        let valores = [];
+        let valor ={};
+        
+        Datos.forEach((data) =>{
+            if(data.year==2007){
+                valor = {
+                    name: data.community + " (" + data.year + ")",
+                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0,0]
+                }
+                valores.push(valor);
+            }
+        });
+       
+        let Datos2=[];
+        const res2 = await fetch(url);
+        Datos2 = await res2.json();
+
+        Datos2.forEach((data2)=>{
+            valor = {
+                name: data2.country + " (" + data2.year + ")",
+                data: [0,0,0,data2.exp_book,data2.exp_editorial, data2.exp_graphic_sector]
+            }
+            valores.push(valor);
+        });
+
+        console.log("Loading Chart...");
+
+        
+    
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Integración API Book Exports con FiresStats'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: items,
+            crosshair: true,
+            tickmarkPlacement: 'on',
+            type: 'category',
+            
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            },
+            labels: {
+                formatter: function(){
+                    return this.value;
+                }
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+        },
+        plotOptions: {
+             column:{
+                pointPadding: 0.2,
+                borderWidth: 0
+            },
+          
+        },
+        series: valores
+    });
+    }
+
+
 </script>
 
+<svelte:head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+</svelte:head>
+
 <main>
+<Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
 
 	{#await getBookExports}
 		Loading books exports stats ...
@@ -54,9 +153,9 @@ async function getBookExports(){
 				<tr>
                     <td>{exp.country}</td>
                     <td>{exp.year}</td>
-                    <td>{exp["exp_book"]}</td>
-                    <td>{exp["exp_editorial"]}</td>
-                    <td>{exp["exp_graphic_sector"]}</td>
+                    <td>{exp.exp_book}</td>
+                    <td>{exp.exp_editorial}</td>
+                    <td>{exp.exp_graphic_sector}</td>
 
 				</tr>
 				{/each}

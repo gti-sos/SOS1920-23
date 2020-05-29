@@ -8,7 +8,6 @@
     DropdownMenu,
     DropdownToggle
   } from 'sveltestrap';
-
   let isOpen = false;
 </script>
 
