@@ -13,7 +13,6 @@
         let enfermos = [];
         let numZonas = [];
         let cont=0;
-
         const resData = await fetch("api/v2/offworks-stats");
         MyData = await resData.json();
 
@@ -24,7 +23,7 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007&&cont<5) {
+            if (data.year == 2007&& cont<7) {// && cont<5
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
@@ -33,32 +32,28 @@
             }
         });
         let dataExt = [];
-        let countries = [];
+        let countrys = [];
         let years = [];
-        let points = [];
-        let threepoints = [];
-        let rebounds = [];
-        const resDataExt = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        let oilconsumptions = [];
+        let ocoalconsumptions = [];
+        let nuclearenergyconsumptions = [];
+        const resDataExt = await fetch("https://sos1920-09.herokuapp.com/api/v2/oil-coal-nuclear-energy-consumption-stats");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            /*let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
+            let country = data.country;
+            let yearss = data.year;
+            let oilconsumption = data["oil-consumption"];
+            let ocoalconsumption = data["coal-consumption"];
+            let nuclearenergyconsumption = data["nuclear-energy-consumption"];
             
-            if (data.year == 2007) {
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-            }*/
-            countries.push(data.country);
-            years.push(data.year);
-            points.push(data["points"]);
-            threepoints.push(data["threepoints"]);
-            rebounds.push(data["rebounds"]);
+            if (data.year == 2016) {
+                countrys.push(country);
+                oilconsumptions.push(oilconsumption);
+                ocoalconsumptions.push(ocoalconsumption);
+                nuclearenergyconsumptions.push(nuclearenergyconsumption);
+            }
+            
         });
 
         Highcharts.chart('container', {
@@ -66,11 +61,11 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermedades-Puntos-Triples-Rebotes'
+                text: 'Comunidades-Enfermos-Aceite-Carbon-Energia Nuclear'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y BasketApi',
+                text: 'Integracion offworksApi y nuclearEnergyApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -103,14 +98,14 @@
             },
 
             series: [{
-                name: 'puntos',
-                data: points
+                name: 'Consumo aceite',
+                data: oilconsumptions
             }, {
-                name: "triples",
-                data: threepoints
+                name: "Consumo carbon",
+                data: ocoalconsumptions
             }, {
-                name: "rebotes",
-                data: rebounds
+                name: "Consumo energia nuclear",
+                data: nuclearenergyconsumptions
             }, {
                 name: "baja por enfermedad",
                 data: enfermos
@@ -136,7 +131,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        const res = await fetch("https://sos1920-09.herokuapp.com/api/v2/oil-coal-nuclear-energy-consumption-stats");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -164,21 +159,21 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            consumo de aceite, carbon y energia nuclear en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
     {#await getApi}
-		Loading basket-stats ...
+		Loading ppas ...
 	{:then getApi}
     <Table bordered>
         <thead>
             <tr>
                 <th>Pais</th>
                 <th>Año</th>
-                <th>Puntos</th>
-                <th>triples</th>
-                <th>rebotes</th>
+                <th>Consumo aceite</th>
+                <th>Consumo Carbon</th>
+                <th>Consumo Energia Nuclear</th>
             </tr>
         </thead>
         <tbody>
@@ -186,9 +181,9 @@
 				<tr>
                     <td>{datoApi.country}</td>
                     <td>{datoApi.year}</td>
-                    <td>{datoApi['points']}</td>
-                    <td>{datoApi['threepoints']}</td>
-                    <td>{datoApi['rebounds']}</td>
+                    <td>{datoApi['oil-consumption']}</td>
+                    <td>{datoApi['coal-consumption']}</td>
+                    <td>{datoApi['nuclear-energy-consumption']}</td>
 				</tr>
 				{/each}
 			</tbody>

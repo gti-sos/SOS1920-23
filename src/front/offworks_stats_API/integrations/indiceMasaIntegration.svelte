@@ -13,7 +13,6 @@
         let enfermos = [];
         let numZonas = [];
         let cont=0;
-
         const resData = await fetch("api/v2/offworks-stats");
         MyData = await resData.json();
 
@@ -24,7 +23,7 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007&&cont<5) {
+            if (data.year == 2007&& cont<5) {// && cont<5
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
@@ -33,32 +32,28 @@
             }
         });
         let dataExt = [];
-        let countries = [];
+        let countrys = [];
         let years = [];
-        let points = [];
-        let threepoints = [];
-        let rebounds = [];
-        const resDataExt = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        let indice_de_masa_corporals = [];
+        let alturas = [];
+        let tasa_obesidads = [];
+        const resDataExt = await fetch("https://sos1920-30.herokuapp.com/api/v2/indice_de_masa_corporal");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            /*let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
+            let country = data.place;
+            let yearss = data.year;
+            let indice_de_masa_corporal = data["indice_de_masa_corporal"];
+            let altura = data["altura"];
+            let tasa_obesidad = data["tasa_obesidad"];
             
-            if (data.year == 2007) {
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-            }*/
-            countries.push(data.country);
-            years.push(data.year);
-            points.push(data["points"]);
-            threepoints.push(data["threepoints"]);
-            rebounds.push(data["rebounds"]);
+            if (data.year == 2019) {
+                countrys.push(country);
+                indice_de_masa_corporals.push(indice_de_masa_corporal);
+                alturas.push(altura);
+                tasa_obesidads.push(tasa_obesidad);
+            }
+            
         });
 
         Highcharts.chart('container', {
@@ -66,18 +61,18 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermedades-Puntos-Triples-Rebotes'
+                text: 'Comunidades-Enfermos-Indice-Altura-Tasa'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y BasketApi',
+                text: 'Integracion offworksApi y indiceMasaApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
 
             yAxis: {
                 title: {
-                    text: 'Numero en decenas'
+                    text: 'Numero de en decenas'
 
                 },
 
@@ -103,14 +98,14 @@
             },
 
             series: [{
-                name: 'puntos',
-                data: points
+                name: 'Indice masa corporal',
+                data: indice_de_masa_corporals
             }, {
-                name: "triples",
-                data: threepoints
+                name: "Alturas",
+                data: alturas
             }, {
-                name: "rebotes",
-                data: rebounds
+                name: "Tasa obesidad",
+                data: tasa_obesidads
             }, {
                 name: "baja por enfermedad",
                 data: enfermos
@@ -136,7 +131,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        const res = await fetch("https://sos1920-30.herokuapp.com/api/v2/indice_de_masa_corporal");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -164,31 +159,31 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            indice masa,altura y tasa obesidad en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
     {#await getApi}
-		Loading basket-stats ...
+		Loading ppas ...
 	{:then getApi}
     <Table bordered>
         <thead>
             <tr>
                 <th>Pais</th>
                 <th>Año</th>
-                <th>Puntos</th>
-                <th>triples</th>
-                <th>rebotes</th>
+                <th>Indice masa corporal</th>
+                <th>Altura</th>
+                <th>Tasa Obesidad</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
-                    <td>{datoApi.country}</td>
+                    <td>{datoApi.place}</td>
                     <td>{datoApi.year}</td>
-                    <td>{datoApi['points']}</td>
-                    <td>{datoApi['threepoints']}</td>
-                    <td>{datoApi['rebounds']}</td>
+                    <td>{datoApi['indice_de_masa_corporal']}</td>
+                    <td>{datoApi['altura']}</td>
+                    <td>{datoApi['tasa_obesidad']}</td>
 				</tr>
 				{/each}
 			</tbody>

@@ -13,7 +13,6 @@
         let enfermos = [];
         let numZonas = [];
         let cont=0;
-
         const resData = await fetch("api/v2/offworks-stats");
         MyData = await resData.json();
 
@@ -24,7 +23,7 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007&&cont<5) {
+            if (data.year == 2007 && cont<5) {
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
@@ -33,32 +32,28 @@
             }
         });
         let dataExt = [];
-        let countries = [];
+        let countrys = [];
         let years = [];
-        let points = [];
-        let threepoints = [];
-        let rebounds = [];
-        const resDataExt = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        let aas_grosss = [];
+        let aas_nets = [];
+        let ppa_per_capitas = [];
+        const resDataExt = await fetch("/api/v1/ppas");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            /*let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
+            let country = data.aut_com;
+            let yearss = data.year;
+            let aas_gross = data["aas_gross"];
+            let aas_net = data["aas_net"];
+            let ppa_per_capita = data["ppa_per_capita"];
             
-            if (data.year == 2007) {
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-            }*/
-            countries.push(data.country);
-            years.push(data.year);
-            points.push(data["points"]);
-            threepoints.push(data["threepoints"]);
-            rebounds.push(data["rebounds"]);
+            if (data.year == 2017) {
+                countrys.push(country);
+                aas_grosss.push(aas_gross);
+                aas_nets.push(aas_net);
+                ppa_per_capitas.push(ppa_per_capita);
+            }
+            
         });
 
         Highcharts.chart('container', {
@@ -66,11 +61,11 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermedades-Puntos-Triples-Rebotes'
+                text: 'Comunidades-Accidentes-aas_gross-aas_net-ppa_per_capitas'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y BasketApi',
+                text: 'Integracion offworksApi y ppasApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -103,17 +98,17 @@
             },
 
             series: [{
-                name: 'puntos',
-                data: points
+                name: 'aas_gross',
+                data: aas_grosss
             }, {
-                name: "triples",
-                data: threepoints
+                name: "aas_nets",
+                data: aas_nets
             }, {
-                name: "rebotes",
-                data: rebounds
+                name: "ppa_per_capitas",
+                data: ppa_per_capitas
             }, {
-                name: "baja por enfermedad",
-                data: enfermos
+                name: "baja por accidente",
+                data: accidentes
             }],
             responsive: {
                 rules: [{
@@ -136,7 +131,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        const res = await fetch("/api/v1/ppas");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -163,22 +158,22 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            Relación de las Comunidades en el año 2007 entre accidentes laborales y
+            aas_gross,aas_nets y ppa_per_capitas en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
     {#await getApi}
-		Loading basket-stats ...
+		Loading ppas ...
 	{:then getApi}
     <Table bordered>
         <thead>
             <tr>
                 <th>Pais</th>
                 <th>Año</th>
-                <th>Puntos</th>
-                <th>triples</th>
-                <th>rebotes</th>
+                <th>aas_gross</th>
+                <th>aas_net</th>
+                <th>ppa_per_capita</th>
             </tr>
         </thead>
         <tbody>
@@ -186,9 +181,9 @@
 				<tr>
                     <td>{datoApi.country}</td>
                     <td>{datoApi.year}</td>
-                    <td>{datoApi['points']}</td>
-                    <td>{datoApi['threepoints']}</td>
-                    <td>{datoApi['rebounds']}</td>
+                    <td>{datoApi['aas_gross']}</td>
+                    <td>{datoApi['aas_net']}</td>
+                    <td>{datoApi['ppa_per_capita']}</td>
 				</tr>
 				{/each}
 			</tbody>

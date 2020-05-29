@@ -6,22 +6,21 @@
     import Button from "sveltestrap/src/Button.svelte";
     
     
-        const url = "api/v1/gce";
+        const url = "https://sos1920-07.herokuapp.com/api/v2/foodsImports";
     
-        onMount(getPluginGCE);
+        onMount(getPluginFoodImports);
         let plugins = [];
-       
         
     
-        async function getPluginGCE(){
+        async function getPluginFoodImports(){
     
-            console.log("Fetching plugin traffic_accidents..");
+            console.log("Fetching plugin food imports..");
             const res = await fetch(url);
             if(res.ok){
                 console.log("ok");
                 const json = await res.json();
                 plugins = json;
-                console.log("Received "+ plugins.length + " plugin GCE");
+                console.log("Received "+ plugins.length + " plugin food imports");
             }
     
             else{
@@ -38,17 +37,17 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Energia hidroeléctrica","Energia solar","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Zumo de frutas","Animales vivos","Venta de paquetes de tabaco","Primera variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
-           
+            if(d.year==2007){
             valor={
-                name: d.country,
-                data: [d.gce_country,d.gce_per_capita,0,0],
+                name: d.name,
+                data: [d.fruitJuice,d.TLiveAnimal,0,0]
             }
             valores.push(valor);
-            
+        }
         });
         datos2.forEach((d2) => {
             if(d2.year==2007){
@@ -68,7 +67,7 @@
         type: 'column'
     },
     title: {
-        text: 'Integración grupo 28'
+        text: 'Integración grupo 7'
     },
     
     xAxis: {
@@ -105,13 +104,13 @@
     
     <main>
     
-        {#await getPluginGCE}
+        {#await getPluginFoodImports}
             Loading plugin-gce.. ...
-        {:then getPluginGCE}
+        {:then getPluginFoodImports}
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre .
+                            Esta API muestra información sobre importaciones de comida a diferentes paises del mundo .
                     </p>	
             </figure>
            
@@ -121,8 +120,8 @@
                     <tr>
                         <th>Pais</th>
                         <th>Año</th>
-                        <th>GCE pais</th>
-                        <th>GCE por capital</th>
+                        <th>Zumo de frutas</th>
+                        <th>Animales vivos</th>
                         
     
                     </tr>
@@ -130,10 +129,10 @@
                 <tbody>
                     {#each plugins as plugin}
                     <tr>
-                        <td>{plugin.country}</td>
+                        <td>{plugin.name}</td>
                         <td>{plugin.year}</td>
-                        <td>{plugin['gce_country']}</td>
-                        <td>{plugin['gce_per_capita']}</td>
+                        <td>{plugin['fruitJuice']}</td>
+                        <td>{plugin['TLiveAnimal']}</td>
                         
     
     

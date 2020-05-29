@@ -3,9 +3,29 @@ module.exports = function(app){
 	const dataStore = require("nedb");
 	const path = require("path");
 const dbFileName =path.join(__dirname,"/cigarretes_sales.db") ;
+const request = require('request');
+//Implementacion de Proxy para acceder a la API Electricity Produced Stats
+    var api1 = 'https://sos1920-08.herokuapp.com'; 
+    var paths1='/api/v2/electricity-produced-stats';
+
+    app.use(paths1, function(req, res) {
+        var url = api1 + req.baseUrl + req.url;
+        console.log('Proxy with: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+	});
+//Implementacion de Proxy para acceder a la API GCE
+var api1 = 'https://sos1920-28.herokuapp.com'; 
+var paths1='/api/v1/gce';
+
+app.use(paths1, function(req, res) {
+	var url = api1 + req.baseUrl + req.url;
+	console.log('Proxy with: ' + req.baseUrl + req.url);
+	req.pipe(request(url)).pipe(res);
+});
 const db = new dataStore({
 filename: dbFileName,
 autoload: true
+	
 });
 db.find({}, (err, cigarretes) =>{
 	if(cigarretes.length == 0){

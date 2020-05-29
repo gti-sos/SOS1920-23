@@ -24,41 +24,41 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007&&cont<5) {
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-                cont++;
-            }
-        });
-        let dataExt = [];
-        let countries = [];
-        let years = [];
-        let points = [];
-        let threepoints = [];
-        let rebounds = [];
-        const resDataExt = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
-        dataExt = await resDataExt.json();
-
-        dataExt.forEach((data) => {
-            /*let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
-            
             if (data.year == 2007) {
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
                 numZonas.push(num);
-            }*/
-            countries.push(data.country);
-            years.push(data.year);
-            points.push(data["points"]);
-            threepoints.push(data["threepoints"]);
-            rebounds.push(data["rebounds"]);
+                //cont++;
+            }
+        });
+        let dataExt = [];
+        let countries = [];
+        let casess = [];
+        let actives = [];
+        let testss = [];
+        //let recovereds = [];
+        const resDataExt = await fetch("/v2/countries");
+        dataExt = await resDataExt.json();
+
+        dataExt.forEach((data) => {
+            let countrie = data.country;
+            let cases = data["cases"];
+            let active = data["active"];
+            let tests = data["tests"];
+            //let recovered = data["recovered"];
+            
+            if (cont<=7) {
+                countries.push(countrie);
+                casess.push(cases);
+                actives.push(active);
+                testss.push(tests);
+                cont++;
+            }
+            //countries.push(data.Id);
+            //years.push(data["Cod_IOE"]);
+            //points.push(data["Nombre"]);
+            //threepoints.push(data["Codigo"]);
         });
 
         Highcharts.chart('container', {
@@ -66,11 +66,11 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermedades-Puntos-Triples-Rebotes'
+                text: 'Comunidades-Accidentes-Casos-Activos-Tests'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y BasketApi',
+                text: 'Integracion offworksApi y CoronalmaoNinjaApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -103,17 +103,17 @@
             },
 
             series: [{
-                name: 'puntos',
-                data: points
+                name: 'Casos',
+                data: casess
             }, {
-                name: "triples",
-                data: threepoints
+                name: "Casos activos",
+                data: actives
             }, {
-                name: "rebotes",
-                data: rebounds
+                name: "Test realizados",
+                data: testss
             }, {
-                name: "baja por enfermedad",
-                data: enfermos
+                name: "baja por accidente",
+                data: accidentes
             }],
             responsive: {
                 rules: [{
@@ -136,7 +136,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        const res = await fetch("/v2/countries");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -164,7 +164,7 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            casos,casos activos y tests en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
@@ -175,20 +175,24 @@
         <thead>
             <tr>
                 <th>Pais</th>
-                <th>Año</th>
-                <th>Puntos</th>
-                <th>triples</th>
-                <th>rebotes</th>
+                <th>Casos</th>
+                <th>Casos hoy</th>
+                <th>tests</th>
+                <th>activos</th>
+                <th>muertes</th>
+                <th>recuperados</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
                     <td>{datoApi.country}</td>
-                    <td>{datoApi.year}</td>
-                    <td>{datoApi['points']}</td>
-                    <td>{datoApi['threepoints']}</td>
-                    <td>{datoApi['rebounds']}</td>
+                    <td>{datoApi['cases']}</td>
+                    <td>{datoApi['todayCases']}</td>
+                    <td>{datoApi['tests']}</td>
+                    <td>{datoApi['active']}</td>
+                    <td>{datoApi['deaths']}</td>
+                    <td>{datoApi['recovered']}</td>
 				</tr>
 				{/each}
 			</tbody>

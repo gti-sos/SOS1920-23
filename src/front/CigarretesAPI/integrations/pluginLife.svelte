@@ -6,22 +6,22 @@
     import Button from "sveltestrap/src/Button.svelte";
     
     
-        const url = "api/v1/gce";
+        const url = "https://sos1920-05.herokuapp.com/api/v1/life_expectancies";
     
-        onMount(getPluginGCE);
+        onMount(getPluginLife);
         let plugins = [];
-       
+        
         
     
-        async function getPluginGCE(){
+        async function getPluginLife(){
     
-            console.log("Fetching plugin traffic_accidents..");
+            console.log("Fetching plugin life..");
             const res = await fetch(url);
             if(res.ok){
                 console.log("ok");
                 const json = await res.json();
                 plugins = json;
-                console.log("Received "+ plugins.length + " plugin GCE");
+                console.log("Received "+ plugins.length + " plugin life");
             }
     
             else{
@@ -34,21 +34,19 @@
     
        
     
-            const res1 = await fetch("api/v2/cigarretes-sales");
+        const res1 = await fetch("api/v2/cigarretes-sales");
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Energia hidroeléctrica","Energia solar","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Esperanza de vida en mujeres","Esperanza de vida en hombres","Venta de paquetes de tabaco","Primera variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
-           
             valor={
                 name: d.country,
-                data: [d.gce_country,d.gce_per_capita,0,0],
+                data: [d.women_life_expectancy,d.men_life_expectancy,0,0]
             }
             valores.push(valor);
-            
         });
         datos2.forEach((d2) => {
             if(d2.year==2007){
@@ -68,7 +66,7 @@
         type: 'column'
     },
     title: {
-        text: 'Integración grupo 28'
+        text: 'Integración grupo 5'
     },
     
     xAxis: {
@@ -93,11 +91,10 @@
     series:valores
 });
         }
-    </script>
+</script>
     
     <svelte:head>
         <script src="https://code.highcharts.com/highcharts.js" on:load={loadGraph} defer></script>
-        <script src="https://code.highcharts.com/modules/series-label.js" on:load={loadGraph} defer></script>
         <script src="https://code.highcharts.com/modules/exporting.js" on:load={loadGraph} defer></script>
         <script src="https://code.highcharts.com/modules/export-data.js" on:load={loadGraph} defer></script>
         <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}" defer></script>
@@ -105,13 +102,13 @@
     
     <main>
     
-        {#await getPluginGCE}
-            Loading plugin-gce.. ...
-        {:then getPluginGCE}
+        {#await getPluginLife}
+            Loading plugin-natality ...
+        {:then getPluginLife}
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre .
+                            Esta API muestra información sobre la esperanza de vida en diversos paises del mundo.
                     </p>	
             </figure>
            
@@ -121,8 +118,8 @@
                     <tr>
                         <th>Pais</th>
                         <th>Año</th>
-                        <th>GCE pais</th>
-                        <th>GCE por capital</th>
+                        <th>Esperanza de vida en mujeres</th>
+                        <th>Esperanza de vida en hombres</th>
                         
     
                     </tr>
@@ -132,8 +129,8 @@
                     <tr>
                         <td>{plugin.country}</td>
                         <td>{plugin.year}</td>
-                        <td>{plugin['gce_country']}</td>
-                        <td>{plugin['gce_per_capita']}</td>
+                        <td>{plugin['women_life_expectancy']}</td>
+                        <td>{plugin['men_life_expectancy']}</td>
                         
     
     
@@ -142,7 +139,7 @@
                 </tbody>
             </Table>
         {/await}
-        
+        <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>   
     </main>
     
-     <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
+   

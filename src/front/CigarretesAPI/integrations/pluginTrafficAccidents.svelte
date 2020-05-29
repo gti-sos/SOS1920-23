@@ -10,10 +10,6 @@ import Button from "sveltestrap/src/Button.svelte";
 
     onMount(getPluginAccidents);
     let plugins = [];
-    let province = [];
-    let year = [];
-    let AccidentWithVictims = [];
-    let MortalAccident = [];
     
 
     async function getPluginAccidents(){
@@ -37,49 +33,63 @@ import Button from "sveltestrap/src/Button.svelte";
 
    
 
-    const res1 = await fetch("api/v2/cigarretes-sales");
-    let datos2 = await res1.json();
-    let comunidad = datos2.filter((datos2)=> datos2.year===2007).map((datos2) => datos2.community);
-    let venta_de_cigarros = datos2.filter((datos2) => datos2.year===2007).map((datos2) => datos2.cigarrete_sale);
-    let primera_variacion = datos2.filter((datos2) => datos2.year===2007).map((datos2) => datos2.first_variation);
-    let segunda_variacion = datos2.filter((datos2) => datos2.year===2007).map((datos2) => datos2.second_variation);
-    const res = await fetch(url);
-    let datos = await res.json();
-    let provincias = datos.filter((datos) => datos.community === datos.province).map((datos) => datos.province);
-    let accidentesV = datos.filter((datos) => datos.community === datos.province).map((datos) => datos.accidentWithVictims);
-    let accidentesM = datos.filter((datos) => datos.community === datos.province).map((datos) => datos.mortalAccident);
+        const res1 = await fetch("api/v2/cigarretes-sales");
+        let datos2 = await res1.json();
+        const res = await fetch(url);
+        let datos = await res.json();
+        let ejeX = ["Accidentes con víctimas","Accidentes mortales","Venta de paquetes de tabaco","Primera variacion"];
+        let valores = [];
+        let valor = {};
+        datos.forEach((d) => {
+            valor={
+                name: d.province,
+                data: [d.accidentWithVictims,d.mortalAccident,0,0]
+            }
+            valores.push(valor);
+        });
+        datos2.forEach((d2) => {
+            if(d2.year==2007){
+            valor={
+                name: d2.community,
+                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+            }
+            valores.push(valor);
+        }
+        });
     
-    console.log("Graph_NONO");
-    Highcharts.chart('container', {
-        title: {
-            text: 'Accidentes de tráfico'
-        },
-        xAxis: {
-            categories: comunidad
-        },
         
         
-        series: [{
-            type: 'column',
-            name: 'Accidentes con víctimas',
-            data: accidentesV
-        }, {
-            type: 'column',
-            name: 'Accidentes mortales',
-            data: accidentesM
-        },{
-            type: 'column',
-            name: 'Venta de cigarros',
-            data: venta_de_cigarros
-        },
-        {
-            type: 'column',
-            name: 'Primera variacion ',
-            data: primera_variacion
-        }]
-    });
-
-    }
+        console.log("Graph_NONO");
+        Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Integración grupo 4'
+    },
+    
+    xAxis: {
+        categories:ejeX,
+        crosshair: true
+    },
+    
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series:valores
+});
+        }
 </script>
 
 <svelte:head>

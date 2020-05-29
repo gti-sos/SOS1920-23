@@ -13,7 +13,6 @@
         let enfermos = [];
         let numZonas = [];
         let cont=0;
-
         const resData = await fetch("api/v2/offworks-stats");
         MyData = await resData.json();
 
@@ -24,7 +23,7 @@
             let enfermo = data["sick"];
             let num = data["numberzone"];
 
-            if (data.year == 2007&&cont<5) {
+            if (data.year == 2007) {// && cont<5
                 comunidades.push(comunidad);
                 accidentes.push(accidente);
                 enfermos.push(enfermo);
@@ -33,32 +32,31 @@
             }
         });
         let dataExt = [];
-        let countries = [];
-        let years = [];
-        let points = [];
-        let threepoints = [];
-        let rebounds = [];
-        const resDataExt = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        let countrys = [];
+        let names = [];
+        let debut = [];
+        let goals = [];
+        let matches = [];
+        let teams = [];
+        const resDataExt = await fetch("/api/v3/goalscorers");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            /*let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
+            let country = data.place;
+            let debut = data.debut;
+            let name = data["name"];
+            let goal = data["goals"];
+            let matche = data["matches"];
+            let team = data["teams"];
             
-            if (data.year == 2007) {
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-            }*/
-            countries.push(data.country);
-            years.push(data.year);
-            points.push(data["points"]);
-            threepoints.push(data["threepoints"]);
-            rebounds.push(data["rebounds"]);
+            //if (data.year == 2019) {
+                countrys.push(country);
+                names.push(name);
+                goals.push(goal);
+                matches.push(matche);
+                teams.push(team);
+            //}
+            
         });
 
         Highcharts.chart('container', {
@@ -66,18 +64,18 @@
                 type: 'line'
             },
             title: {
-                text: 'Comunidades-Enfermedades-Puntos-Triples-Rebotes'
+                text: 'Comunidades-Enfermos-Goles-Partidos-Equipos'
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y BasketApi',
+                text: 'Integracion offworksApi y goalscoreApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
 
             yAxis: {
                 title: {
-                    text: 'Numero en decenas'
+                    text: 'Numero de en decenas'
 
                 },
 
@@ -103,14 +101,14 @@
             },
 
             series: [{
-                name: 'puntos',
-                data: points
+                name: 'Goles',
+                data: goals
             }, {
-                name: "triples",
-                data: threepoints
+                name: "Partidos",
+                data: matches
             }, {
-                name: "rebotes",
-                data: rebounds
+                name: "Equipos",
+                data: teams
             }, {
                 name: "baja por enfermedad",
                 data: enfermos
@@ -136,7 +134,7 @@
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-22.herokuapp.com/api/v1/og-basket-stats");
+        const res = await fetch("/api/v3/goalscorers");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -164,31 +162,33 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            goles,partidos y equipos en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
     {#await getApi}
-		Loading basket-stats ...
+		Loading ppas ...
 	{:then getApi}
     <Table bordered>
         <thead>
             <tr>
+                <th>Nombre</th>
                 <th>Pais</th>
-                <th>Año</th>
-                <th>Puntos</th>
-                <th>triples</th>
-                <th>rebotes</th>
+                <th>Debut</th>
+                <th>Goles</th>
+                <th>Partidos</th>
+                <th>Equipos</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
+                    <td>{datoApi.name}</td>
                     <td>{datoApi.country}</td>
-                    <td>{datoApi.year}</td>
-                    <td>{datoApi['points']}</td>
-                    <td>{datoApi['threepoints']}</td>
-                    <td>{datoApi['rebounds']}</td>
+                    <td>{datoApi.debut}</td>
+                    <td>{datoApi['goals']}</td>
+                    <td>{datoApi['matches']}</td>
+                    <td>{datoApi['teams']}</td>
 				</tr>
 				{/each}
 			</tbody>

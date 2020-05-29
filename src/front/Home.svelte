@@ -26,6 +26,7 @@
 <p><Button type="button" color="white" style="color:rgb(40, 83, 53);border-color:brown;" onclick="window.location.href='#/Rgraph-offworks-stats'"> Grafica Rgraph de bajas laborales en España </Button></p>
 
 
+
 <h4>Integraciones:</h4>
 
 <p><Button type="button" color="info" onclick="window.location.href='#/Integrations'"> Integraciones</Button></p>

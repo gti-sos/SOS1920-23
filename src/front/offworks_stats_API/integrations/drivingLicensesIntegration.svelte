@@ -73,7 +73,7 @@
 
             yAxis: {
                 title: {
-                    text: 'Numero de accidentes y zonas'
+                    text: 'Numero en decenas'
 
                 },
 
@@ -159,8 +159,8 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            puntos,triples y rebotes en Comunidades Autonomas.
+            Relación de las Comunidades en el año 2007 entre accidentes laborales y
+            hombres y mujeres en moto en Comunidades Autonomas. 
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
