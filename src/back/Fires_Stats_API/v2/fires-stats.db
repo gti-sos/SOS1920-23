@@ -3,10 +3,10 @@
 {"community":"ceuta","year":2007,"total_fire":0,"forest_area":0,"non_forest_area":0,"_id":"3Il263wr4c0LjjgM"}
 {"community":"la-rioja","year":2007,"total_fire":93,"forest_area":69.49,"non_forest_area":44.49,"_id":"AUkjzFMA68JnuN4p"}
 {"community":"canarias","year":2008,"total_fire":133,"forest_area":426.05,"non_forest_area":1815.86,"_id":"B5hZzgIbr3uJ2QAf"}
-{"community":"cataluna","year":2007,"total_fire":579,"forest_area":1612.25,"non_forest_area":436.37,"_id":"E2Eq9bVJYYZOYjId"}
+{"community":"cataluña","year":2007,"total_fire":579,"forest_area":1612.25,"non_forest_area":436.37,"_id":"E2Eq9bVJYYZOYjId"}
 {"community":"cantabria","year":2007,"total_fire":296,"forest_area":3452.83,"non_forest_area":0,"_id":"JoxA3GOHxiilEpdw"}
 {"community":"comunidad-valenciana","year":2007,"total_fire":375,"forest_area":8224.69,"non_forest_area":1847.42,"_id":"JpMuNjiF0OmuXgDB"}
-{"community":"castilla-leon","year":2007,"total_fire":1511,"forest_area":9760.29,"non_forest_area":2221.99,"_id":"P9WN2NKxFJ7fcvLC"}
+{"community":"castilla-y-leon","year":2007,"total_fire":1511,"forest_area":9760.29,"non_forest_area":2221.99,"_id":"P9WN2NKxFJ7fcvLC"}
 {"community":"castilla-la-mancha","year":2007,"total_fire":694,"forest_area":2026.46,"non_forest_area":1068.96,"_id":"QVZH9Dm6G6VYUjJd"}
 {"community":"pais-vasco","year":2007,"total_fire":67,"forest_area":105.61,"non_forest_area":4.7,"_id":"dYqhhR3IFMDp1Qbo"}
 {"community":"asturias","year":2008,"total_fire":1083,"forest_area":2690.31,"non_forest_area":0,"_id":"ebmhuesWWSUvcbMW"}

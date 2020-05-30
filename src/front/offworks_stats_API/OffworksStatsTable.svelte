@@ -241,7 +241,7 @@
 			<tbody>
 				{#each offworks as off}
 					<tr>
-						<td><a style="text-align: center;" href="#/offworks-stats/{off.community}/{off.year}">{off.community}</a></td>
+						<td><a style="text-align: center;" href="#/offworks-stats/{off.community}/{off.year}">{off.community.replace(/-/g, " ")}</a></td>
 						<td>{off.year}</td>
 						<td>{off.accident}</td>
 						<td>{off.sick}</td>

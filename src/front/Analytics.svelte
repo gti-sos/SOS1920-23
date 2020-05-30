@@ -10,80 +10,74 @@
   } from 'sveltestrap';
 
   let isOpen = false;
+
   async function loadGraph() {
         let MyData = [];
-        let comunidades = [];
+        let comunidades1 = [];
         let accidentes = [];
         let enfermos = [];
         let numZonas = [];
-        let cont=0;
-        const resData = await fetch("api/v2/offworks-stats");
-        MyData = await resData.json();
-
-        MyData.forEach((data) => {
-            let comunidad = data.community;
-            let year = data.year;
-            let accidente = data["accident"];
-            let enfermo = data["sick"];
-            let num = data["numberzone"];
-
-            if (data.year == 2007) {// && cont<5
-                comunidades.push(comunidad);
-                accidentes.push(accidente);
-                enfermos.push(enfermo);
-                numZonas.push(num);
-                cont++;
-            }
-        });
 
         let MyData1 = [];
-        //let comunidades = [];
+        let comunidades2 = [];
         let total_fires = [];
         let forest_areas = [];
         let non_forest_areas = [];
-        cont=0;
-        const resData1 = await fetch("api/v2/fires-stats");
-        MyData1 = await resData1.json();
-
-        MyData1.forEach((data) => {
-            //let comunidad = data.community;
-            let year = data.year;
-            let total_fire = data["total_fire"];
-            let forest_area = data["forest_area"];
-            let non_forest_area = data["non_forest_area"];
-
-            if (data.year == 2007&& data.community!="islas-baleares"&& cont<=7) {// && cont<5
-                //comunidades.push(comunidad);
-                total_fires.push(total_fire);
-                forest_areas.push(forest_area);
-                non_forest_areas.push(non_forest_area);
-                cont++;
-            }
-        });
 
         let MyData2 = [];
-        //let comunidades = [];
+        let comunidades3 = [];
         let cigarrete_sales = [];
         let first_variations = [];
         let second_variations = [];
-        cont=0;
+
+        const resData = await fetch("api/v2/offworks-stats");
+        MyData = await resData.json();
+        const resData1 = await fetch("api/v2/fires-stats");
+        MyData1 = await resData1.json();
         const resData2 = await fetch("api/v2/cigarretes-sales");
         MyData2 = await resData2.json();
 
-        MyData2.forEach((data) => {
-            //let comunidad = data.community;
-            let year = data.year;
-            let cigarrete_sale = data["cigarrete_sale"];
-            let first_variation = data["first_variation"];
-            let second_variation = data["second_variation"];
+        MyData.forEach((data1) => {
+            MyData1.forEach((data2) => {
+                MyData2.forEach((data3) => {
+                    let comunidad1 = data1.community;
+                    let year1 = data1.year;
+                    let accidente = data1["accident"];
+                    let enfermo = data1["sick"];
+                    let num = data1["numberzone"];
 
-            if (data.year == 2007&& data.community!="Islas Baleares"&& cont<=7) {// && cont<5
-                //comunidades.push(comunidad);
-                cigarrete_sales.push(cigarrete_sale);
-                first_variations.push(first_variation);
-                second_variations.push(second_variation);
-                cont++;
-            }
+                    let comunidad2 = data2.community;
+                    let year2 = data2.year;
+                    let total_fire = data2["total_fire"];
+                    let forest_area = data2["forest_area"];
+                    let non_forest_area = data2["non_forest_area"];
+
+                    let comunidad3 = data3.community;
+                    let year3 = data3.year;
+                    let cigarrete_sale = data3["cigarrete_sale"];
+                    let first_variation = data3["first_variation"];
+                    let second_variation = data3["second_variation"];
+
+                    let comunidadRes = "";
+                    //console.log(comunidad1.toLowerCase().replace(/-/g, " ")+" "+comunidad2.toLowerCase().replace(/-/g, " ")+" "+comunidad3.toLowerCase().replace(/-/g, " "));
+                    if (comunidad1.toLowerCase().replace(/-/g, " ") == comunidad2.toLowerCase().replace(/-/g, " ") && 
+                            comunidad1.toLowerCase().replace(/-/g, " ") == comunidad3.toLowerCase().replace(/-/g, " ")&&
+                            
+                                year1 == 2007 && year2 == 2007 && year3 == 2007) {// .replace("-", " ")  .toLowerCase() .replace(/^-+/, " ") .replace(/-/g, " ")
+                                console.log(comunidad1.toLowerCase().replace(/-/g, " ")+" "+comunidad2.toLowerCase().replace(/-/g, " ")+" "+comunidad3.toLowerCase().replace(/-/g, " "));
+                        comunidades1.push(comunidad1.replace(/-/g, " "));
+                        accidentes.push(accidente);
+                        enfermos.push(enfermo);
+                        numZonas.push(num);
+                        total_fires.push(total_fire);
+                        forest_areas.push(forest_area);
+                        non_forest_areas.push(non_forest_area);
+                        cigarrete_sales.push(cigarrete_sale);
+                        first_variations.push(first_variation);
+                        second_variations.push(second_variation);
+                    }
+                });
+            });
         });
         
 
@@ -96,7 +90,7 @@
             },
 
             subtitle: {
-                text: 'Integracion offworksApi y ruralTourismApi',
+                text: 'Integracion offworksApi, firesApi y cigarretesApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -110,7 +104,7 @@
             },
 
             xAxis: {
-                categories: comunidades
+                categories: comunidades1
             },
 
             legend: {
@@ -190,7 +184,7 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Relación de las Comunidades en el año 2007 entre las Apis de bajas laborales
+            Relación de las Comunidades en el año 2007 entre las Apis de bajas laborales,
             incendios forestales y consumo de cigarros en Comunidades Autonomas de España.
         </p>
     </figure>

@@ -64,7 +64,7 @@ import {onMount} from "svelte";
 	
 	</script>
 	<main>
-		<h3 style="text-align: center;">Editar: <strong>{params.community.replace("-", " ")} - {params.year}</strong></h3>
+		<h3 style="text-align: center;">Editar: <strong>{params.community.replace(/-/g, " ")} - {params.year}</strong></h3>
 	{#await offwork}
 		Loading offworks...
 	{:then offwork}
@@ -81,7 +81,7 @@ import {onMount} from "svelte";
 				</thead>
 				<tbody>
 					<tr>
-						<td>{updatedCommunity.replace("-", " ")}</td>
+						<td>{updatedCommunity.replace(/-/g, " ")}</td>
 						<td>{updatedYear}</td>                    
 						<td><Input type="number" bind:value="{updatedAccident}"/></td>
 						<td><Input type="number" bind:value="{updatedSick}"/></td>
