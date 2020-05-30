@@ -76,7 +76,7 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
             non_forest_area: 0
         },
         {
-            community: 'castilla-leon',
+            community: 'castilla-y-leon',
             year: 2007,
             total_fire: 1511,
             forest_area: 9760.29,
@@ -90,7 +90,7 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
             non_forest_area: 1068.96
         },
         {
-            community: 'cataluna',
+            community: 'cataluña',
             year: 2007,
             total_fire: 579,
             forest_area: 1612.25,
@@ -245,7 +245,7 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
             non_forest_area: 0
         },
         {
-            community: 'castilla-leon',
+            community: 'castilla-y-leon',
             year: 2007,
             total_fire: 1511,
             forest_area: 9760.29,
@@ -259,7 +259,7 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
             non_forest_area: 1068.96
         },
         {
-            community: 'cataluna',
+            community: 'cataluña',
             year: 2007,
             total_fire: 579,
             forest_area: 1612.25,
