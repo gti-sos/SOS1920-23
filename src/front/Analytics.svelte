@@ -55,7 +55,7 @@
                     let comunidad3 = data3.community;
                     let year3 = data3.year;
                     let cigarrete_sale = data3["cigarrete_sale"];
-                    let first_variation = data3["first_variation"];
+                    let first_variation =data3["first_variation"];
                     let second_variation = data3["second_variation"];
 
                     let comunidadRes = "";
@@ -79,54 +79,57 @@
                 });
             });
         });
-        
-
+        //console.log(first_variations);  //parseFloat(
+            console.log(second_variations);
         Highcharts.chart('container', {
             chart: {
+                polar: true,
                 type: 'line'
             },
-            title: {
-                text: 'Comunidades Autonomas'
+            accessibility: {
+                description: '.'
             },
-
+            title: {
+                text: 'Comunidades Autonomas',
+                x: -80
+            },
             subtitle: {
                 text: 'Integracion offworksApi, firesApi y cigarretesApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
-
-            yAxis: {
-                title: {
-                    text: 'Numero en decenas'
-
-                },
-
+            pane: {
+                size: '80%'
             },
-
             xAxis: {
                 categories: comunidades1
+                
             },
-
+            yAxis: {
+                text: 'Numero en decenas'
+            },
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y}</b><br/>'
+            },
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'middle',
+                layout: 'vertical'
             },
-
             plotOptions: {
                 series: {
                     label: {
-                        connectorAllowed: false
-                    },
-                    enableMouseTracking: false
+                        connectorAllowed: true
+                    }
                 }
             },
-
             series: [{
                 name: 'accidentes',
                 data: accidentes
             }, {
                 name: "enfermos",
+                allowDecimals: true,
                 data: enfermos
             }, {
                 name: "numZonas",
@@ -145,9 +148,11 @@
                 data: cigarrete_sales
             }, {
                 name: "first_variations",
+                allowDecimals: true,
                 data: first_variations
             }, {
                 name: "second_variations",
+                allowDecimals: true,
                 data: second_variations
             }],
             responsive: {
@@ -157,15 +162,19 @@
                     },
                     chartOptions: {
                         legend: {
-                            layout: 'horizontal',
                             align: 'center',
-                            verticalAlign: 'bottom'
+                            verticalAlign: 'bottom',
+                            layout: 'horizontal'
+                        },
+                        pane: {
+                            size: '70%'
                         }
                     }
                 }]
             }
-
         });
+
+        
 
     };
     

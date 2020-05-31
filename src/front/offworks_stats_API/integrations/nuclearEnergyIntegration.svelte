@@ -37,7 +37,7 @@
         let oilconsumptions = [];
         let ocoalconsumptions = [];
         let nuclearenergyconsumptions = [];
-        const resDataExt = await fetch("https://sos1920-09.herokuapp.com/api/v2/oil-coal-nuclear-energy-consumption-stats");
+        const resDataExt = await fetch("https://sos1920-09.herokuapp.com/api/v3/oil-coal-nuclear-energy-consumption-stats");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
@@ -58,45 +58,42 @@
 
         Highcharts.chart('container', {
             chart: {
+                polar: true,
                 type: 'line'
             },
-            title: {
-                text: 'Comunidades-Enfermos-Aceite-Carbon-Energia Nuclear'
+            accessibility: {
+                description: '.'
             },
-
+            title: {
+                text: 'Comunidades-Enfermos-Aceite-Carbon-Energia Nuclear',
+                x: -80
+            },
             subtitle: {
                 text: 'Integracion offworksApi y nuclearEnergyApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
-
-            yAxis: {
-                title: {
-                    text: 'Numero en decenas'
-
-                },
-
+            pane: {
+                size: '80%'
             },
-
             xAxis: {
                 categories: comunidades
             },
-
+            yAxis: {
+                text: 'Numero en decenas',
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y}</b><br/>'
+            },
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'middle',
+                layout: 'vertical'
             },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    enableMouseTracking: false
-                }
-            },
-
             series: [{
                 name: 'Consumo aceite',
                 data: oilconsumptions
@@ -117,21 +114,25 @@
                     },
                     chartOptions: {
                         legend: {
-                            layout: 'horizontal',
                             align: 'center',
-                            verticalAlign: 'bottom'
+                            verticalAlign: 'bottom',
+                            layout: 'horizontal'
+                        },
+                        pane: {
+                            size: '70%'
                         }
                     }
                 }]
             }
-
         });
+
+        
 
     };
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-09.herokuapp.com/api/v2/oil-coal-nuclear-energy-consumption-stats");
+        const res = await fetch("https://sos1920-09.herokuapp.com/api/v3/oil-coal-nuclear-energy-consumption-stats");
         if(res.ok){
             console.log("ok");
             const json = await res.json();

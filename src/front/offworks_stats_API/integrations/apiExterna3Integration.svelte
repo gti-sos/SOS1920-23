@@ -6,6 +6,7 @@
 
     onMount(getApi);
 
+
     async function loadGraph() {
         let MyData = [];
         let comunidades = [];
@@ -38,15 +39,14 @@
         let actives = [];
         let testss = [];
         //let recovereds = [];
-        const resDataExt = await fetch("/v2/countries");
+        const resDataExt = await fetch("https://disease.sh/v2/gov/italy");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            let countrie = data.country;
-            let cases = data["cases"];
-            let active = data["active"];
-            let tests = data["tests"];
-            //let recovered = data["recovered"];
+            let countrie = data.region;
+            let cases = data["hospitalizedWithSymptoms"];
+            let active = data["totalCases"];
+            let tests = data["recovered"];
             
             if (cont<=7) {
                 countries.push(countrie);
@@ -55,10 +55,6 @@
                 testss.push(tests);
                 cont++;
             }
-            //countries.push(data.Id);
-            //years.push(data["Cod_IOE"]);
-            //points.push(data["Nombre"]);
-            //threepoints.push(data["Codigo"]);
         });
 
         Highcharts.chart('container', {
@@ -70,11 +66,11 @@
                 description: '.'
             },
             title: {
-                text: 'Comunidades-Accidentes-Casos-Activos-Tests',
+                text: 'Comunidades-Accidentes-Hospitalizados-Casos-Recuperados',
                 x: -80
             },
             subtitle: {
-                text: 'Integracion offworksApi y CoronalmaoNinjaApi',
+                text: 'Integracion offworksApi y DiseaseApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -100,13 +96,13 @@
                 layout: 'vertical'
             },
             series: [{
-                name: 'Casos',
+                name: 'Hospitalizados',
                 data: casess
             }, {
-                name: "Casos activos",
+                name: "Total Casos",
                 data: actives
             }, {
-                name: "Test realizados",
+                name: "Recuperados",
                 data: testss
             }, {
                 name: "baja por accidente",
@@ -131,12 +127,12 @@
             }
         });
 
-        
+
     };
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("/v2/countries");
+        const res = await fetch("https://disease.sh/v2/gov/italy");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -164,7 +160,7 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            casos,casos activos y tests en Comunidades Autonomas.
+            hospitalizados,casos activos y recuperdos en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
@@ -174,25 +170,21 @@
     <Table bordered>
         <thead>
             <tr>
-                <th>Pais</th>
-                <th>Casos</th>
-                <th>Casos hoy</th>
-                <th>tests</th>
-                <th>activos</th>
-                <th>muertes</th>
-                <th>recuperados</th>
+                <th>Region</th>
+                <th>Hospitalizados con sintomas</th>
+                <th>Casos totales</th>
+                <th>Recuperados</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
-                    <td>{datoApi.country}</td>
-                    <td>{datoApi['cases']}</td>
-                    <td>{datoApi['todayCases']}</td>
-                    <td>{datoApi['tests']}</td>
-                    <td>{datoApi['active']}</td>
-                    <td>{datoApi['deaths']}</td>
+                    <td>{datoApi.region}</td>  <!-- datoApi.fields  -->
+                    <td>{datoApi['hospitalizedWithSymptoms']}</td>
+                    <td>{datoApi['totalCases']}</td>
                     <td>{datoApi['recovered']}</td>
+                    <!--<td>{datoApi['Precio_gas_natural_comprimido']}</td>
+                    <td>{datoApi['Precio_gasolina_95']}</td-->
 				</tr>
 				{/each}
 			</tbody>

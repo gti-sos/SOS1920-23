@@ -36,6 +36,8 @@
 	import indiceMasaIntegration from './offworks_stats_API/integrations/indiceMasaIntegration.svelte';
 	import goalscorersIntegration from './offworks_stats_API/integrations/goalscorersIntegration.svelte';
 	import apiExterna1Integration from './offworks_stats_API/integrations/apiExterna1Integration.svelte';
+	import apiExterna2Integration from './offworks_stats_API/integrations/apiExterna2Integration.svelte';
+	import apiExterna3Integration from './offworks_stats_API/integrations/apiExterna3Integration.svelte';
 	//Import archivos API Cigarretes Sales
 	import CigarretesTable from './CigarretesAPI/CigarretesTable.svelte';
 	import GraphCigarretesSales from './CigarretesAPI/analytics/GraphCigarretesSales.svelte';
@@ -84,6 +86,8 @@
 		"/offworks-stats-integrations/integrations/indiceMasaIntegration" : indiceMasaIntegration,
 		"/offworks-stats-integrations/integrations/goalscorersIntegration" : goalscorersIntegration,
 		"/offworks-stats-integrations/integrations/apiExterna1Integration" : apiExterna1Integration,
+		"/offworks-stats-integrations/integrations/apiExterna2Integration" : apiExterna2Integration,
+		"/offworks-stats-integrations/integrations/apiExterna3Integration" : apiExterna3Integration,
 		
 		"/cigarretes-sales" : CigarretesTable,
 		"/cigarretes-sales/:community/:year" : EditCigarretesSales,
