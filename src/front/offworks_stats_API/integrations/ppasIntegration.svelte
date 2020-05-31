@@ -58,45 +58,42 @@
 
         Highcharts.chart('container', {
             chart: {
+                polar: true,
                 type: 'line'
             },
-            title: {
-                text: 'Comunidades-Accidentes-aas_gross-aas_net-ppa_per_capitas'
+            accessibility: {
+                description: '.'
             },
-
+            title: {
+                text: 'Comunidades-Accidentes-aas_gross-aas_net-ppa_per_capitas',
+                x: -80
+            },
             subtitle: {
                 text: 'Integracion offworksApi y ppasApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
-
-            yAxis: {
-                title: {
-                    text: 'Numero en decenas'
-
-                },
-
+            pane: {
+                size: '80%'
             },
-
             xAxis: {
                 categories: comunidades
             },
-
+            yAxis: {
+                text: 'Numero de accidentes y zonas',
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y}</b><br/>'
+            },
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'middle',
+                layout: 'vertical'
             },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    enableMouseTracking: false
-                }
-            },
-
             series: [{
                 name: 'aas_gross',
                 data: aas_grosss
@@ -117,16 +114,19 @@
                     },
                     chartOptions: {
                         legend: {
-                            layout: 'horizontal',
                             align: 'center',
-                            verticalAlign: 'bottom'
+                            verticalAlign: 'bottom',
+                            layout: 'horizontal'
+                        },
+                        pane: {
+                            size: '70%'
                         }
                     }
                 }]
             }
-
         });
 
+        
     };
     let datosApi=[];
     async function getApi(){

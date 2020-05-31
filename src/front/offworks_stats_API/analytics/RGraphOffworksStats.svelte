@@ -66,8 +66,8 @@
 
 <main>
     <p style="z-index: 0;">Relación de las Comunidades en el año 2007 por enfermedades laborales y Comunidad Autonoma.</p>
-    <div style="z-index: 1;;width: 950px; height: 400px; background-color: black; box-shadow: 3px 3px 3px #ccc" id="chart-container"></div>
+    <div style="z-index: 1;;width: 950px; height: 400px; background-color: black; box-shadow: 3px 3px 3px #ccc" id="chart-container"></div><br><br/>
     
-    <Button style="margin-top:17%;margin-left: -39%;" outline color="secondary" on:click="{pop}">Atrás</Button>
+    <Button style="margin-top:27%;margin-left: -39%;" outline color="secondary" on:click="{pop}">Atrás</Button>
         
 </main>

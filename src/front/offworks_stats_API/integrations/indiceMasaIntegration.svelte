@@ -37,7 +37,7 @@
         let indice_de_masa_corporals = [];
         let alturas = [];
         let tasa_obesidads = [];
-        const resDataExt = await fetch("https://sos1920-30.herokuapp.com/api/v2/indice_de_masa_corporal");
+        const resDataExt = await fetch("https://sos1920-30.herokuapp.com/api/v3/indice_de_masa_corporal");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
@@ -58,45 +58,42 @@
 
         Highcharts.chart('container', {
             chart: {
+                polar: true,
                 type: 'line'
             },
-            title: {
-                text: 'Comunidades-Enfermos-Indice-Altura-Tasa'
+            accessibility: {
+                description: '.'
             },
-
+            title: {
+                text: 'Comunidades-Enfermos-Indice-Altura-Tasa',
+                x: -80
+            },
             subtitle: {
                 text: 'Integracion offworksApi y indiceMasaApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
-
-            yAxis: {
-                title: {
-                    text: 'Numero de en decenas'
-
-                },
-
+            pane: {
+                size: '80%'
             },
-
             xAxis: {
                 categories: comunidades
             },
-
+            yAxis: {
+                text: 'Numero de en decenas',
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y}</b><br/>'
+            },
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'middle',
+                layout: 'vertical'
             },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    enableMouseTracking: false
-                }
-            },
-
             series: [{
                 name: 'Indice masa corporal',
                 data: indice_de_masa_corporals
@@ -117,21 +114,24 @@
                     },
                     chartOptions: {
                         legend: {
-                            layout: 'horizontal',
                             align: 'center',
-                            verticalAlign: 'bottom'
+                            verticalAlign: 'bottom',
+                            layout: 'horizontal'
+                        },
+                        pane: {
+                            size: '70%'
                         }
                     }
                 }]
             }
-
         });
 
+    
     };
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("https://sos1920-30.herokuapp.com/api/v2/indice_de_masa_corporal");
+        const res = await fetch("https://sos1920-30.herokuapp.com/api/v3/indice_de_masa_corporal");
         if(res.ok){
             console.log("ok");
             const json = await res.json();

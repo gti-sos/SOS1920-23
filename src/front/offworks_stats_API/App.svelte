@@ -11,6 +11,8 @@
 	import indiceMasaIntegration from './offworks_stats_API/integrations/indiceMasaIntegration.svelte';
 	import goalscorersIntegration from './offworks_stats_API/integrations/goalscorersIntegration.svelte';
 	import apiExterna1Integration from './offworks_stats_API/integrations/apiExterna1Integration.svelte';
+	import apiExterna2Integration from './offworks_stats_API/integrations/apiExterna2Integration.svelte';
+	import apiExterna3Integration from './offworks_stats_API/integrations/apiExterna3Integration.svelte';
 </script>
 
 <main>
@@ -26,4 +28,6 @@
 	<indiceMasaIntegration/>
 	<goalscorersIntegration/>
 	<apiExterna1Integration/>
+	<apiExterna2Integration/>
+	<apiExterna3Integration/>
 </main>

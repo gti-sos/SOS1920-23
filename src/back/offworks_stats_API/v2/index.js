@@ -25,8 +25,8 @@ module.exports = function(app) {
         req.pipe(request(url)).pipe(res);
 	});
 
-	var api3 = 'https://sos1920-26.herokuapp.com'; 
-	var paths3='/api/v3/goalscorers';
+	var api3 = 'https://corona.lmao.ninja'; 
+	var paths3='/v2/countries';
 	
 	app.use(paths3, function(req, res) {
         var url = api3 + req.baseUrl + req.url;
@@ -34,11 +34,20 @@ module.exports = function(app) {
         req.pipe(request(url)).pipe(res);
 	});
 
-	var api3 = 'https://corona.lmao.ninja'; 
-	var paths3='/v2/countries';
+	var api4 = 'https://services1.arcgis.com'; 
+	var paths4='/nCKYwcSONQTkPA4K/arcgis/rest/services/Gasolinerasv2/FeatureServer/0/query?where=1%3D1&outFields=Precio_gasolina_95,Provincia,Precio_gasolina_98,Precio_gas_natural_comprimido&outSR=4326&f=json';
 	
-	app.use(paths3, function(req, res) {
-        var url = api3 + req.baseUrl + req.url;
+	app.use(paths4, function(req, res) {
+        var url = api4 + req.baseUrl + req.url;
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+	});
+
+	var api5 = 'https://disease.sh'; 
+	var paths5='/v2/gov/italy';
+	
+	app.use(paths5, function(req, res) {
+        var url = api5 + req.baseUrl + req.url;
         console.log('piped: ' + req.baseUrl + req.url);
         req.pipe(request(url)).pipe(res);
 	});

@@ -10411,7 +10411,7 @@ var app = (function () {
     const { console: console_1$2 } = globals;
     const file$f = "src\\front\\Analytics.svelte";
 
-    // (191:4) <Button outline color = "secondary" on:click="{pop}">
+    // (200:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot$3(ctx) {
     	let t;
 
@@ -10431,7 +10431,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(191:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(200:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -10489,22 +10489,22 @@ var app = (function () {
     			t3 = space();
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$f, 175, 4, 6028);
+    			add_location(script0, file$f, 184, 4, 6621);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$f, 176, 4, 6099);
+    			add_location(script1, file$f, 185, 4, 6692);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$f, 177, 4, 6180);
+    			add_location(script2, file$f, 186, 4, 6773);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$f, 178, 4, 6258);
+    			add_location(script3, file$f, 187, 4, 6851);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$f, 179, 4, 6338);
+    			add_location(script4, file$f, 188, 4, 6931);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$f, 184, 8, 6512);
+    			add_location(div, file$f, 193, 8, 7105);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$f, 185, 8, 6548);
+    			add_location(p, file$f, 194, 8, 7141);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$f, 183, 4, 6468);
-    			add_location(main, file$f, 182, 0, 6456);
+    			add_location(figure, file$f, 192, 4, 7061);
+    			add_location(main, file$f, 191, 0, 7049);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10633,30 +10633,40 @@ var app = (function () {
     		});
     	});
 
+    	//console.log(first_variations);  //parseFloat(
+    	console.log(second_variations);
+
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
-    		title: { text: "Comunidades Autonomas" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
+    		title: { text: "Comunidades Autonomas", x: -80 },
     		subtitle: {
     			text: "Integracion offworksApi, firesApi y cigarretesApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades1 },
+    		yAxis: { text: "Numero en decenas" },
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
     		legend: {
-    			layout: "vertical",
     			align: "right",
-    			verticalAlign: "middle"
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    			series: { label: { connectorAllowed: true } }
     		},
     		series: [
     			{ name: "accidentes", data: accidentes },
-    			{ name: "enfermos", data: enfermos },
+    			{
+    				name: "enfermos",
+    				allowDecimals: true,
+    				data: enfermos
+    			},
     			{ name: "numZonas", data: numZonas },
     			{ name: "total_fires", data: total_fires },
     			{ name: "forest_areas", data: forest_areas },
@@ -10670,10 +10680,12 @@ var app = (function () {
     			},
     			{
     				name: "first_variations",
+    				allowDecimals: true,
     				data: first_variations
     			},
     			{
     				name: "second_variations",
+    				allowDecimals: true,
     				data: second_variations
     			}
     		],
@@ -10683,10 +10695,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -24239,7 +24252,7 @@ var app = (function () {
     /* src\front\offworks_stats_API\analytics\GraphOffworksStats.svelte generated by Svelte v3.23.0 */
     const file$v = "src\\front\\offworks_stats_API\\analytics\\GraphOffworksStats.svelte";
 
-    // (119:4) <Button outline color = "secondary" on:click="{pop}">
+    // (121:4) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$j(ctx) {
     	let t;
 
@@ -24259,7 +24272,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$j.name,
     		type: "slot",
-    		source: "(119:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(121:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -24313,26 +24326,26 @@ var app = (function () {
     			div = element("div");
     			t1 = space();
     			p = element("p");
-    			p.textContent = "Relación de las Comunidades en el año 2007 entre accidentes laborales,\r\n          enfermedades laborales y numero de zonas de esa Comunidad Autonoma.";
+    			p.textContent = "Relación de las Comunidades en el año 2007 entre accidentes laborales,\r\n            enfermedades laborales y numero de zonas de esa Comunidad Autonoma.";
     			t3 = space();
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$v, 101, 4, 2107);
+    			add_location(script0, file$v, 103, 4, 3077);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$v, 102, 4, 2178);
+    			add_location(script1, file$v, 104, 4, 3148);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$v, 103, 4, 2259);
+    			add_location(script2, file$v, 105, 4, 3229);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$v, 104, 4, 2337);
+    			add_location(script3, file$v, 106, 4, 3307);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$v, 105, 4, 2417);
+    			add_location(script4, file$v, 107, 4, 3387);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$v, 110, 8, 2591);
+    			add_location(div, file$v, 112, 8, 3561);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$v, 111, 8, 2627);
+    			add_location(p, file$v, 113, 8, 3597);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$v, 109, 4, 2547);
-    			add_location(main, file$v, 108, 0, 2535);
+    			add_location(figure, file$v, 111, 4, 3517);
+    			add_location(main, file$v, 110, 0, 3505);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -24426,37 +24439,46 @@ var app = (function () {
     	});
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
-    		title: { text: "Comunidades-Accidentes" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
+    		title: { text: "Comunidades-Accidentes", x: -80 },
     		subtitle: {
-    			text: "Comunidades",
+    			text: "OffworksApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: {
-    			title: { text: "Numero de accidentes y zonas" }
-    		},
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero de accidentes y zonas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
-    			{ name: "numero de zonas", data: numZonas },
+    			{
+    				name: "numero de zonas",
+    				data: numZonas,
+    				pointPlacement: "on"
+    			},
     			{
     				name: "baja por accidente",
-    				data: accidentes
+    				data: accidentes,
+    				pointPlacement: "on"
     			},
     			{
     				name: "baja por enfermedad",
-    				data: enfermos
+    				data: enfermos,
+    				pointPlacement: "on"
     			}
     		],
     		responsive: {
@@ -24465,10 +24487,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -24507,7 +24530,7 @@ var app = (function () {
     /* src\front\offworks_stats_API\analytics\RGraphOffworksStats.svelte generated by Svelte v3.23.0 */
     const file$w = "src\\front\\offworks_stats_API\\analytics\\RGraphOffworksStats.svelte";
 
-    // (71:4) <Button style="margin-top:17%;margin-left: -39%;" outline color="secondary" on:click="{pop}">
+    // (71:4) <Button style="margin-top:27%;margin-left: -39%;" outline color="secondary" on:click="{pop}">
     function create_default_slot$k(ctx) {
     	let t;
 
@@ -24527,7 +24550,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$k.name,
     		type: "slot",
-    		source: "(71:4) <Button style=\\\"margin-top:17%;margin-left: -39%;\\\" outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(71:4) <Button style=\\\"margin-top:27%;margin-left: -39%;\\\" outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -24544,6 +24567,8 @@ var app = (function () {
     	let p;
     	let t2;
     	let div;
+    	let br0;
+    	let br1;
     	let t3;
     	let current;
     	let mounted;
@@ -24551,7 +24576,7 @@ var app = (function () {
 
     	const button = new Button({
     			props: {
-    				style: "margin-top:17%;margin-left: -39%;",
+    				style: "margin-top:27%;margin-left: -39%;",
     				outline: true,
     				color: "secondary",
     				$$slots: { default: [create_default_slot$k] },
@@ -24572,6 +24597,8 @@ var app = (function () {
     			p.textContent = "Relación de las Comunidades en el año 2007 por enfermedades laborales y Comunidad Autonoma.";
     			t2 = space();
     			div = element("div");
+    			br0 = element("br");
+    			br1 = element("br");
     			t3 = space();
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "lib/RGraph.svg.common.core.js")) attr_dev(script0, "src", script0_src_value);
@@ -24587,6 +24614,8 @@ var app = (function () {
     			set_style(div, "box-shadow", "3px 3px 3px #ccc");
     			attr_dev(div, "id", "chart-container");
     			add_location(div, file$w, 68, 4, 2445);
+    			add_location(br0, file$w, 68, 139, 2580);
+    			add_location(br1, file$w, 68, 143, 2584);
     			add_location(main, file$w, 66, 0, 2309);
     		},
     		l: function claim(nodes) {
@@ -24600,6 +24629,8 @@ var app = (function () {
     			append_dev(main, p);
     			append_dev(main, t2);
     			append_dev(main, div);
+    			append_dev(main, br0);
+    			append_dev(main, br1);
     			append_dev(main, t3);
     			mount_component(button, main, null);
     			current = true;
@@ -24759,7 +24790,7 @@ var app = (function () {
     const file$x = "src\\front\\offworks_stats_API\\integrations\\integrations.svelte";
 
     // (11:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/apiExterna1Integration'">
-    function create_default_slot_9$4(ctx) {
+    function create_default_slot_10$3(ctx) {
     	let t;
 
     	const block = {
@@ -24776,7 +24807,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_9$4.name,
+    		id: create_default_slot_10$3.name,
     		type: "slot",
     		source: "(11:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/apiExterna1Integration'\\\">",
     		ctx
@@ -24785,13 +24816,40 @@ var app = (function () {
     	return block;
     }
 
-    // (13:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats'">
+    // (13:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/apiExterna2Integration'">
+    function create_default_slot_9$4(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("API 2 Externa(Ine)");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_9$4.name,
+    		type: "slot",
+    		source: "(13:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/apiExterna2Integration'\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (15:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/apiExterna3Integration'">
     function create_default_slot_8$4(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("API 2 Externa");
+    			t = text("API 3 Externa(govItaly)");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -24805,14 +24863,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_8$4.name,
     		type: "slot",
-    		source: "(13:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats'\\\">",
+    		source: "(15:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/apiExterna3Integration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (16:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/basketIntegration'">
+    // (18:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/basketIntegration'">
     function create_default_slot_7$4(ctx) {
     	let t;
 
@@ -24832,14 +24890,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_7$4.name,
     		type: "slot",
-    		source: "(16:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/basketIntegration'\\\">",
+    		source: "(18:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/basketIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (17:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/drivingLicensesIntegration'">
+    // (19:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/drivingLicensesIntegration'">
     function create_default_slot_6$4(ctx) {
     	let t;
 
@@ -24859,14 +24917,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_6$4.name,
     		type: "slot",
-    		source: "(17:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/drivingLicensesIntegration'\\\">",
+    		source: "(19:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/drivingLicensesIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (18:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/ppasIntegration'">
+    // (20:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/ppasIntegration'">
     function create_default_slot_5$4(ctx) {
     	let t;
 
@@ -24886,14 +24944,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5$4.name,
     		type: "slot",
-    		source: "(18:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/ppasIntegration'\\\">",
+    		source: "(20:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/ppasIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (19:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/ruralTourismIntegration'">
+    // (21:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/ruralTourismIntegration'">
     function create_default_slot_4$4(ctx) {
     	let t;
 
@@ -24913,14 +24971,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4$4.name,
     		type: "slot",
-    		source: "(19:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/ruralTourismIntegration'\\\">",
+    		source: "(21:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/ruralTourismIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (20:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/nuclearEnergyIntegration'">
+    // (22:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/nuclearEnergyIntegration'">
     function create_default_slot_3$5(ctx) {
     	let t;
 
@@ -24940,14 +24998,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$5.name,
     		type: "slot",
-    		source: "(20:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/nuclearEnergyIntegration'\\\">",
+    		source: "(22:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/nuclearEnergyIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (21:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/indiceMasaIntegration'">
+    // (23:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/indiceMasaIntegration'">
     function create_default_slot_2$f(ctx) {
     	let t;
 
@@ -24967,14 +25025,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$f.name,
     		type: "slot",
-    		source: "(21:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/indiceMasaIntegration'\\\">",
+    		source: "(23:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/indiceMasaIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (22:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/goalscorersIntegration'">
+    // (24:7) <Button type="button" color="success" onclick="window.location.href='#/offworks-stats-integrations/integrations/goalscorersIntegration'">
     function create_default_slot_1$f(ctx) {
     	let t;
 
@@ -24994,14 +25052,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$f.name,
     		type: "slot",
-    		source: "(22:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/goalscorersIntegration'\\\">",
+    		source: "(24:7) <Button type=\\\"button\\\" color=\\\"success\\\" onclick=\\\"window.location.href='#/offworks-stats-integrations/integrations/goalscorersIntegration'\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (24:4) <Button outline color="secondary" on:click="{pop}">
+    // (26:4) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$l(ctx) {
     	let t;
 
@@ -25021,7 +25079,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$l.name,
     		type: "slot",
-    		source: "(24:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(26:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -25037,9 +25095,9 @@ var app = (function () {
     	let t4;
     	let p1;
     	let t5;
-    	let h41;
-    	let t7;
     	let p2;
+    	let t6;
+    	let h41;
     	let t8;
     	let p3;
     	let t9;
@@ -25053,6 +25111,8 @@ var app = (function () {
     	let t13;
     	let p8;
     	let t14;
+    	let p9;
+    	let t15;
     	let current;
 
     	const button0 = new Button({
@@ -25060,7 +25120,7 @@ var app = (function () {
     				type: "button",
     				color: "success",
     				onclick: "window.location.href='#/offworks-stats-integrations/integrations/apiExterna1Integration'",
-    				$$slots: { default: [create_default_slot_9$4] },
+    				$$slots: { default: [create_default_slot_10$3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -25070,14 +25130,25 @@ var app = (function () {
     			props: {
     				type: "button",
     				color: "success",
-    				onclick: "window.location.href='#/offworks-stats'",
-    				$$slots: { default: [create_default_slot_8$4] },
+    				onclick: "window.location.href='#/offworks-stats-integrations/integrations/apiExterna2Integration'",
+    				$$slots: { default: [create_default_slot_9$4] },
     				$$scope: { ctx }
     			},
     			$$inline: true
     		});
 
     	const button2 = new Button({
+    			props: {
+    				type: "button",
+    				color: "success",
+    				onclick: "window.location.href='#/offworks-stats-integrations/integrations/apiExterna3Integration'",
+    				$$slots: { default: [create_default_slot_8$4] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const button3 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25088,7 +25159,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button3 = new Button({
+    	const button4 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25099,7 +25170,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button4 = new Button({
+    	const button5 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25110,7 +25181,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button5 = new Button({
+    	const button6 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25121,7 +25192,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button6 = new Button({
+    	const button7 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25132,7 +25203,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button7 = new Button({
+    	const button8 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25143,7 +25214,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button8 = new Button({
+    	const button9 = new Button({
     			props: {
     				type: "button",
     				color: "success",
@@ -25154,7 +25225,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button9 = new Button({
+    	const button10 = new Button({
     			props: {
     				outline: true,
     				color: "secondary",
@@ -25164,7 +25235,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button9.$on("click", pop);
+    	button10.$on("click", pop);
 
     	const block = {
     		c: function create() {
@@ -25180,11 +25251,11 @@ var app = (function () {
     			p1 = element("p");
     			create_component(button1.$$.fragment);
     			t5 = space();
-    			h41 = element("h4");
-    			h41.textContent = "Apis de Compañeros:";
-    			t7 = space();
     			p2 = element("p");
     			create_component(button2.$$.fragment);
+    			t6 = space();
+    			h41 = element("h4");
+    			h41.textContent = "Apis de Compañeros:";
     			t8 = space();
     			p3 = element("p");
     			create_component(button3.$$.fragment);
@@ -25204,19 +25275,23 @@ var app = (function () {
     			p8 = element("p");
     			create_component(button8.$$.fragment);
     			t14 = space();
+    			p9 = element("p");
     			create_component(button9.$$.fragment);
+    			t15 = space();
+    			create_component(button10.$$.fragment);
     			add_location(h3, file$x, 8, 0, 142);
     			add_location(h40, file$x, 9, 0, 167);
     			add_location(p0, file$x, 10, 4, 197);
     			add_location(p1, file$x, 12, 4, 382);
-    			add_location(h41, file$x, 13, 0, 502);
-    			add_location(p2, file$x, 15, 4, 539);
-    			add_location(p3, file$x, 16, 4, 716);
-    			add_location(p4, file$x, 17, 4, 913);
-    			add_location(p5, file$x, 18, 4, 1082);
-    			add_location(p6, file$x, 19, 4, 1268);
-    			add_location(p7, file$x, 20, 4, 1457);
-    			add_location(p8, file$x, 21, 4, 1641);
+    			add_location(p2, file$x, 14, 4, 562);
+    			add_location(h41, file$x, 15, 0, 741);
+    			add_location(p3, file$x, 17, 4, 778);
+    			add_location(p4, file$x, 18, 4, 955);
+    			add_location(p5, file$x, 19, 4, 1152);
+    			add_location(p6, file$x, 20, 4, 1321);
+    			add_location(p7, file$x, 21, 4, 1507);
+    			add_location(p8, file$x, 22, 4, 1696);
+    			add_location(p9, file$x, 23, 4, 1880);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25232,10 +25307,10 @@ var app = (function () {
     			insert_dev(target, p1, anchor);
     			mount_component(button1, p1, null);
     			insert_dev(target, t5, anchor);
-    			insert_dev(target, h41, anchor);
-    			insert_dev(target, t7, anchor);
     			insert_dev(target, p2, anchor);
     			mount_component(button2, p2, null);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, h41, anchor);
     			insert_dev(target, t8, anchor);
     			insert_dev(target, p3, anchor);
     			mount_component(button3, p3, null);
@@ -25255,7 +25330,10 @@ var app = (function () {
     			insert_dev(target, p8, anchor);
     			mount_component(button8, p8, null);
     			insert_dev(target, t14, anchor);
-    			mount_component(button9, target, anchor);
+    			insert_dev(target, p9, anchor);
+    			mount_component(button9, p9, null);
+    			insert_dev(target, t15, anchor);
+    			mount_component(button10, target, anchor);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
@@ -25329,6 +25407,13 @@ var app = (function () {
     			}
 
     			button9.$set(button9_changes);
+    			const button10_changes = {};
+
+    			if (dirty & /*$$scope*/ 1) {
+    				button10_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button10.$set(button10_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -25342,6 +25427,7 @@ var app = (function () {
     			transition_in(button7.$$.fragment, local);
     			transition_in(button8.$$.fragment, local);
     			transition_in(button9.$$.fragment, local);
+    			transition_in(button10.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
@@ -25355,6 +25441,7 @@ var app = (function () {
     			transition_out(button7.$$.fragment, local);
     			transition_out(button8.$$.fragment, local);
     			transition_out(button9.$$.fragment, local);
+    			transition_out(button10.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -25368,10 +25455,10 @@ var app = (function () {
     			if (detaching) detach_dev(p1);
     			destroy_component(button1);
     			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(h41);
-    			if (detaching) detach_dev(t7);
     			if (detaching) detach_dev(p2);
     			destroy_component(button2);
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(h41);
     			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(p3);
     			destroy_component(button3);
@@ -25391,7 +25478,10 @@ var app = (function () {
     			if (detaching) detach_dev(p8);
     			destroy_component(button8);
     			if (detaching) detach_dev(t14);
-    			destroy_component(button9, detaching);
+    			if (detaching) detach_dev(p9);
+    			destroy_component(button9);
+    			if (detaching) detach_dev(t15);
+    			destroy_component(button10, detaching);
     		}
     	};
 
@@ -25590,12 +25680,12 @@ var app = (function () {
     			td4 = element("td");
     			t8 = text(t8_value);
     			t9 = space();
-    			add_location(td0, file$y, 186, 20, 5697);
-    			add_location(td1, file$y, 187, 20, 5745);
-    			add_location(td2, file$y, 188, 20, 5790);
-    			add_location(td3, file$y, 189, 20, 5840);
-    			add_location(td4, file$y, 190, 20, 5895);
-    			add_location(tr, file$y, 185, 4, 5671);
+    			add_location(td0, file$y, 186, 20, 5960);
+    			add_location(td1, file$y, 187, 20, 6008);
+    			add_location(td2, file$y, 188, 20, 6053);
+    			add_location(td3, file$y, 189, 20, 6103);
+    			add_location(td4, file$y, 190, 20, 6158);
+    			add_location(tr, file$y, 185, 4, 5934);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -25686,14 +25776,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$y, 176, 16, 5426);
-    			add_location(th1, file$y, 177, 16, 5457);
-    			add_location(th2, file$y, 178, 16, 5487);
-    			add_location(th3, file$y, 179, 16, 5520);
-    			add_location(th4, file$y, 180, 16, 5554);
-    			add_location(tr, file$y, 175, 12, 5404);
-    			add_location(thead, file$y, 174, 8, 5383);
-    			add_location(tbody, file$y, 183, 8, 5617);
+    			add_location(th0, file$y, 176, 16, 5689);
+    			add_location(th1, file$y, 177, 16, 5720);
+    			add_location(th2, file$y, 178, 16, 5750);
+    			add_location(th3, file$y, 179, 16, 5783);
+    			add_location(th4, file$y, 180, 16, 5817);
+    			add_location(tr, file$y, 175, 12, 5667);
+    			add_location(thead, file$y, 174, 8, 5646);
+    			add_location(tbody, file$y, 183, 8, 5880);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -25898,22 +25988,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$y, 154, 4, 4477);
+    			add_location(script0, file$y, 154, 4, 4740);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$y, 155, 4, 4548);
+    			add_location(script1, file$y, 155, 4, 4811);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$y, 156, 4, 4629);
+    			add_location(script2, file$y, 156, 4, 4892);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$y, 157, 4, 4707);
+    			add_location(script3, file$y, 157, 4, 4970);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$y, 158, 4, 4787);
+    			add_location(script4, file$y, 158, 4, 5050);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$y, 163, 8, 4961);
+    			add_location(div, file$y, 163, 8, 5224);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$y, 164, 8, 4997);
+    			add_location(p, file$y, 164, 8, 5260);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$y, 162, 4, 4917);
-    			add_location(main, file$y, 161, 0, 4905);
+    			add_location(figure, file$y, 162, 4, 5180);
+    			add_location(main, file$y, 161, 0, 5168);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -26069,7 +26159,8 @@ var app = (function () {
     	});
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
     			text: "Comunidades-Enfermedades-Puntos-Triples-Rebotes"
     		},
@@ -26078,18 +26169,22 @@ var app = (function () {
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{ name: "puntos", data: points },
@@ -26106,10 +26201,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -26190,7 +26286,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (166:4) <Button outline color = "secondary" on:click="{pop}">
+    // (167:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot_2$h(ctx) {
     	let t;
 
@@ -26210,7 +26306,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$h.name,
     		type: "slot",
-    		source: "(166:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(167:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -26239,7 +26335,7 @@ var app = (function () {
     	return block;
     }
 
-    // (169:1) {:then getApi}
+    // (170:1) {:then getApi}
     function create_then_block$c(ctx) {
     	let current;
 
@@ -26287,14 +26383,14 @@ var app = (function () {
     		block,
     		id: create_then_block$c.name,
     		type: "then",
-    		source: "(169:1) {:then getApi}",
+    		source: "(170:1) {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (186:12) {#each datosApi as datoApi}
+    // (187:12) {#each datosApi as datoApi}
     function create_each_block$a(ctx) {
     	let tr;
     	let td0;
@@ -26371,17 +26467,17 @@ var app = (function () {
     			td9 = element("td");
     			t18 = text(t18_value);
     			t19 = space();
-    			add_location(td0, file$z, 187, 20, 5776);
-    			add_location(td1, file$z, 188, 20, 5824);
-    			add_location(td2, file$z, 189, 20, 5869);
-    			add_location(td3, file$z, 190, 20, 5921);
-    			add_location(td4, file$z, 191, 20, 5975);
-    			add_location(td5, file$z, 192, 20, 6026);
-    			add_location(td6, file$z, 193, 20, 6079);
-    			add_location(td7, file$z, 194, 20, 6133);
-    			add_location(td8, file$z, 195, 20, 6186);
-    			add_location(td9, file$z, 196, 20, 6238);
-    			add_location(tr, file$z, 186, 4, 5750);
+    			add_location(td0, file$z, 188, 20, 6019);
+    			add_location(td1, file$z, 189, 20, 6067);
+    			add_location(td2, file$z, 190, 20, 6112);
+    			add_location(td3, file$z, 191, 20, 6164);
+    			add_location(td4, file$z, 192, 20, 6218);
+    			add_location(td5, file$z, 193, 20, 6269);
+    			add_location(td6, file$z, 194, 20, 6322);
+    			add_location(td7, file$z, 195, 20, 6376);
+    			add_location(td8, file$z, 196, 20, 6429);
+    			add_location(td9, file$z, 197, 20, 6481);
+    			add_location(tr, file$z, 187, 4, 5993);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -26437,14 +26533,14 @@ var app = (function () {
     		block,
     		id: create_each_block$a.name,
     		type: "each",
-    		source: "(186:12) {#each datosApi as datoApi}",
+    		source: "(187:12) {#each datosApi as datoApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (170:4) <Table bordered>
+    // (171:4) <Table bordered>
     function create_default_slot_1$h(ctx) {
     	let thead;
     	let tr;
@@ -26517,19 +26613,19 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$z, 172, 16, 5273);
-    			add_location(th1, file$z, 173, 16, 5309);
-    			add_location(th2, file$z, 174, 16, 5339);
-    			add_location(th3, file$z, 175, 16, 5380);
-    			add_location(th4, file$z, 176, 16, 5421);
-    			add_location(th5, file$z, 177, 16, 5461);
-    			add_location(th6, file$z, 178, 16, 5501);
-    			add_location(th7, file$z, 179, 16, 5543);
-    			add_location(th8, file$z, 180, 16, 5584);
-    			add_location(th9, file$z, 181, 16, 5626);
-    			add_location(tr, file$z, 171, 12, 5251);
-    			add_location(thead, file$z, 170, 8, 5230);
-    			add_location(tbody, file$z, 184, 8, 5696);
+    			add_location(th0, file$z, 173, 16, 5516);
+    			add_location(th1, file$z, 174, 16, 5552);
+    			add_location(th2, file$z, 175, 16, 5582);
+    			add_location(th3, file$z, 176, 16, 5623);
+    			add_location(th4, file$z, 177, 16, 5664);
+    			add_location(th5, file$z, 178, 16, 5704);
+    			add_location(th6, file$z, 179, 16, 5744);
+    			add_location(th7, file$z, 180, 16, 5786);
+    			add_location(th8, file$z, 181, 16, 5827);
+    			add_location(th9, file$z, 182, 16, 5869);
+    			add_location(tr, file$z, 172, 12, 5494);
+    			add_location(thead, file$z, 171, 8, 5473);
+    			add_location(tbody, file$z, 185, 8, 5939);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -26597,14 +26693,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$h.name,
     		type: "slot",
-    		source: "(170:4) <Table bordered>",
+    		source: "(171:4) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (167:19)     Loading driving-licenses ...   {:then getApi}
+    // (168:19)     Loading driving-licenses ...   {:then getApi}
     function create_pending_block$c(ctx) {
     	let t;
 
@@ -26627,14 +26723,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$c.name,
     		type: "pending",
-    		source: "(167:19)     Loading driving-licenses ...   {:then getApi}",
+    		source: "(168:19)     Loading driving-licenses ...   {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (203:4) <Button outline color = "secondary" on:click="{pop}">
+    // (204:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot$n(ctx) {
     	let t;
 
@@ -26654,7 +26750,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$n.name,
     		type: "slot",
-    		source: "(203:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(204:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -26744,22 +26840,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$z, 150, 4, 4320);
+    			add_location(script0, file$z, 151, 4, 4563);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$z, 151, 4, 4391);
+    			add_location(script1, file$z, 152, 4, 4634);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$z, 152, 4, 4472);
+    			add_location(script2, file$z, 153, 4, 4715);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$z, 153, 4, 4550);
+    			add_location(script3, file$z, 154, 4, 4793);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$z, 154, 4, 4630);
+    			add_location(script4, file$z, 155, 4, 4873);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$z, 159, 8, 4804);
+    			add_location(div, file$z, 160, 8, 5047);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$z, 160, 8, 4840);
+    			add_location(p, file$z, 161, 8, 5083);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$z, 158, 4, 4760);
-    			add_location(main, file$z, 157, 0, 4748);
+    			add_location(figure, file$z, 159, 4, 5003);
+    			add_location(main, file$z, 158, 0, 4991);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -26909,29 +27005,34 @@ var app = (function () {
     		}
     	});
 
-    	//console.log(mot_mens+" "+mot_mens.length);
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Accidentes-Hombres y Mujeres en moto"
+    			text: "Comunidades-Accidentes-Hombres y Mujeres en moto",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y DrivingLicenseApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{ name: "Hombres en moto", data: mot_mens },
@@ -26951,10 +27052,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -27181,12 +27283,12 @@ var app = (function () {
     			td4 = element("td");
     			t8 = text(t8_value);
     			t9 = space();
-    			add_location(td0, file$A, 181, 20, 5479);
-    			add_location(td1, file$A, 182, 20, 5527);
-    			add_location(td2, file$A, 183, 20, 5572);
-    			add_location(td3, file$A, 184, 20, 5625);
-    			add_location(td4, file$A, 185, 20, 5676);
-    			add_location(tr, file$A, 180, 4, 5453);
+    			add_location(td0, file$A, 181, 20, 5776);
+    			add_location(td1, file$A, 182, 20, 5824);
+    			add_location(td2, file$A, 183, 20, 5869);
+    			add_location(td3, file$A, 184, 20, 5922);
+    			add_location(td4, file$A, 185, 20, 5973);
+    			add_location(tr, file$A, 180, 4, 5750);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -27277,14 +27379,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$A, 171, 16, 5198);
-    			add_location(th1, file$A, 172, 16, 5229);
-    			add_location(th2, file$A, 173, 16, 5259);
-    			add_location(th3, file$A, 174, 16, 5295);
-    			add_location(th4, file$A, 175, 16, 5329);
-    			add_location(tr, file$A, 170, 12, 5176);
-    			add_location(thead, file$A, 169, 8, 5155);
-    			add_location(tbody, file$A, 178, 8, 5399);
+    			add_location(th0, file$A, 171, 16, 5495);
+    			add_location(th1, file$A, 172, 16, 5526);
+    			add_location(th2, file$A, 173, 16, 5556);
+    			add_location(th3, file$A, 174, 16, 5592);
+    			add_location(th4, file$A, 175, 16, 5626);
+    			add_location(tr, file$A, 170, 12, 5473);
+    			add_location(thead, file$A, 169, 8, 5452);
+    			add_location(tbody, file$A, 178, 8, 5696);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -27489,22 +27591,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$A, 149, 4, 4247);
+    			add_location(script0, file$A, 149, 4, 4544);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$A, 150, 4, 4318);
+    			add_location(script1, file$A, 150, 4, 4615);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$A, 151, 4, 4399);
+    			add_location(script2, file$A, 151, 4, 4696);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$A, 152, 4, 4477);
+    			add_location(script3, file$A, 152, 4, 4774);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$A, 153, 4, 4557);
+    			add_location(script4, file$A, 153, 4, 4854);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$A, 158, 8, 4731);
+    			add_location(div, file$A, 158, 8, 5028);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$A, 159, 8, 4767);
+    			add_location(p, file$A, 159, 8, 5064);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$A, 157, 4, 4687);
-    			add_location(main, file$A, 156, 0, 4675);
+    			add_location(figure, file$A, 157, 4, 4984);
+    			add_location(main, file$A, 156, 0, 4972);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -27651,27 +27753,33 @@ var app = (function () {
     	});
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Accidentes-aas_gross-aas_net-ppa_per_capitas"
+    			text: "Comunidades-Accidentes-aas_gross-aas_net-ppa_per_capitas",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y ppasApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero de accidentes y zonas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{ name: "aas_gross", data: aas_grosss },
@@ -27691,10 +27799,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -27775,7 +27884,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (165:4) <Button outline color = "secondary" on:click="{pop}">
+    // (166:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot_2$j(ctx) {
     	let t;
 
@@ -27795,7 +27904,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$j.name,
     		type: "slot",
-    		source: "(165:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(166:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -27824,7 +27933,7 @@ var app = (function () {
     	return block;
     }
 
-    // (168:1) {:then getApi}
+    // (169:1) {:then getApi}
     function create_then_block$e(ctx) {
     	let current;
 
@@ -27872,14 +27981,14 @@ var app = (function () {
     		block,
     		id: create_then_block$e.name,
     		type: "then",
-    		source: "(168:1) {:then getApi}",
+    		source: "(169:1) {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (180:12) {#each datosApi as datoApi}
+    // (181:12) {#each datosApi as datoApi}
     function create_each_block$c(ctx) {
     	let tr;
     	let td0;
@@ -27921,12 +28030,12 @@ var app = (function () {
     			td4 = element("td");
     			t8 = text(t8_value);
     			t9 = space();
-    			add_location(td0, file$B, 181, 20, 5608);
-    			add_location(td1, file$B, 182, 20, 5657);
-    			add_location(td2, file$B, 183, 20, 5702);
-    			add_location(td3, file$B, 184, 20, 5755);
-    			add_location(td4, file$B, 185, 20, 5812);
-    			add_location(tr, file$B, 180, 4, 5582);
+    			add_location(td0, file$B, 182, 20, 5896);
+    			add_location(td1, file$B, 183, 20, 5945);
+    			add_location(td2, file$B, 184, 20, 5990);
+    			add_location(td3, file$B, 185, 20, 6043);
+    			add_location(td4, file$B, 186, 20, 6100);
+    			add_location(tr, file$B, 181, 4, 5870);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -27962,14 +28071,14 @@ var app = (function () {
     		block,
     		id: create_each_block$c.name,
     		type: "each",
-    		source: "(180:12) {#each datosApi as datoApi}",
+    		source: "(181:12) {#each datosApi as datoApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:4) <Table bordered>
+    // (170:4) <Table bordered>
     function create_default_slot_1$j(ctx) {
     	let thead;
     	let tr;
@@ -28017,14 +28126,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$B, 171, 16, 5319);
-    			add_location(th1, file$B, 172, 16, 5355);
-    			add_location(th2, file$B, 173, 16, 5385);
-    			add_location(th3, file$B, 174, 16, 5420);
-    			add_location(th4, file$B, 175, 16, 5453);
-    			add_location(tr, file$B, 170, 12, 5297);
-    			add_location(thead, file$B, 169, 8, 5276);
-    			add_location(tbody, file$B, 178, 8, 5528);
+    			add_location(th0, file$B, 172, 16, 5607);
+    			add_location(th1, file$B, 173, 16, 5643);
+    			add_location(th2, file$B, 174, 16, 5673);
+    			add_location(th3, file$B, 175, 16, 5708);
+    			add_location(th4, file$B, 176, 16, 5741);
+    			add_location(tr, file$B, 171, 12, 5585);
+    			add_location(thead, file$B, 170, 8, 5564);
+    			add_location(tbody, file$B, 179, 8, 5816);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -28082,14 +28191,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$j.name,
     		type: "slot",
-    		source: "(169:4) <Table bordered>",
+    		source: "(170:4) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (166:19)     Loading ppas ...   {:then getApi}
+    // (167:19)     Loading ppas ...   {:then getApi}
     function create_pending_block$e(ctx) {
     	let t;
 
@@ -28112,14 +28221,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$e.name,
     		type: "pending",
-    		source: "(166:19)     Loading ppas ...   {:then getApi}",
+    		source: "(167:19)     Loading ppas ...   {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (192:4) <Button outline color = "secondary" on:click="{pop}">
+    // (193:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot$p(ctx) {
     	let t;
 
@@ -28139,7 +28248,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$p.name,
     		type: "slot",
-    		source: "(192:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(193:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -28229,22 +28338,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$B, 149, 4, 4368);
+    			add_location(script0, file$B, 150, 4, 4656);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$B, 150, 4, 4439);
+    			add_location(script1, file$B, 151, 4, 4727);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$B, 151, 4, 4520);
+    			add_location(script2, file$B, 152, 4, 4808);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$B, 152, 4, 4598);
+    			add_location(script3, file$B, 153, 4, 4886);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$B, 153, 4, 4678);
+    			add_location(script4, file$B, 154, 4, 4966);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$B, 158, 8, 4852);
+    			add_location(div, file$B, 159, 8, 5140);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$B, 159, 8, 4888);
+    			add_location(p, file$B, 160, 8, 5176);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$B, 157, 4, 4808);
-    			add_location(main, file$B, 156, 0, 4796);
+    			add_location(figure, file$B, 158, 4, 5096);
+    			add_location(main, file$B, 157, 0, 5084);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28391,27 +28500,33 @@ var app = (function () {
     	});
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Accidentes-Viajeros-Noches-Porcentaje"
+    			text: "Comunidades-Accidentes-Viajeros-Noches-Porcentaje",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y ruralTourismApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{ name: "viajeros", data: travellers },
@@ -28431,10 +28546,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -28515,7 +28631,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (165:4) <Button outline color = "secondary" on:click="{pop}">
+    // (166:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot_2$k(ctx) {
     	let t;
 
@@ -28535,7 +28651,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$k.name,
     		type: "slot",
-    		source: "(165:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(166:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -28564,7 +28680,7 @@ var app = (function () {
     	return block;
     }
 
-    // (168:1) {:then getApi}
+    // (169:1) {:then getApi}
     function create_then_block$f(ctx) {
     	let current;
 
@@ -28612,14 +28728,14 @@ var app = (function () {
     		block,
     		id: create_then_block$f.name,
     		type: "then",
-    		source: "(168:1) {:then getApi}",
+    		source: "(169:1) {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (180:12) {#each datosApi as datoApi}
+    // (181:12) {#each datosApi as datoApi}
     function create_each_block$d(ctx) {
     	let tr;
     	let td0;
@@ -28661,12 +28777,12 @@ var app = (function () {
     			td4 = element("td");
     			t8 = text(t8_value);
     			t9 = space();
-    			add_location(td0, file$C, 181, 20, 5826);
-    			add_location(td1, file$C, 182, 20, 5874);
-    			add_location(td2, file$C, 183, 20, 5919);
-    			add_location(td3, file$C, 184, 20, 5978);
-    			add_location(td4, file$C, 185, 20, 6038);
-    			add_location(tr, file$C, 180, 4, 5800);
+    			add_location(td0, file$C, 182, 20, 6114);
+    			add_location(td1, file$C, 183, 20, 6162);
+    			add_location(td2, file$C, 184, 20, 6207);
+    			add_location(td3, file$C, 185, 20, 6266);
+    			add_location(td4, file$C, 186, 20, 6326);
+    			add_location(tr, file$C, 181, 4, 6088);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -28702,14 +28818,14 @@ var app = (function () {
     		block,
     		id: create_each_block$d.name,
     		type: "each",
-    		source: "(180:12) {#each datosApi as datoApi}",
+    		source: "(181:12) {#each datosApi as datoApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:4) <Table bordered>
+    // (170:4) <Table bordered>
     function create_default_slot_1$k(ctx) {
     	let thead;
     	let tr;
@@ -28757,14 +28873,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$C, 171, 16, 5524);
-    			add_location(th1, file$C, 172, 16, 5555);
-    			add_location(th2, file$C, 173, 16, 5585);
-    			add_location(th3, file$C, 174, 16, 5626);
-    			add_location(th4, file$C, 175, 16, 5667);
-    			add_location(tr, file$C, 170, 12, 5502);
-    			add_location(thead, file$C, 169, 8, 5481);
-    			add_location(tbody, file$C, 178, 8, 5746);
+    			add_location(th0, file$C, 172, 16, 5812);
+    			add_location(th1, file$C, 173, 16, 5843);
+    			add_location(th2, file$C, 174, 16, 5873);
+    			add_location(th3, file$C, 175, 16, 5914);
+    			add_location(th4, file$C, 176, 16, 5955);
+    			add_location(tr, file$C, 171, 12, 5790);
+    			add_location(thead, file$C, 170, 8, 5769);
+    			add_location(tbody, file$C, 179, 8, 6034);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -28822,14 +28938,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$k.name,
     		type: "slot",
-    		source: "(169:4) <Table bordered>",
+    		source: "(170:4) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (166:19)     Loading ppas ...   {:then getApi}
+    // (167:19)     Loading ppas ...   {:then getApi}
     function create_pending_block$f(ctx) {
     	let t;
 
@@ -28852,14 +28968,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$f.name,
     		type: "pending",
-    		source: "(166:19)     Loading ppas ...   {:then getApi}",
+    		source: "(167:19)     Loading ppas ...   {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (192:4) <Button outline color = "secondary" on:click="{pop}">
+    // (193:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot$q(ctx) {
     	let t;
 
@@ -28879,7 +28995,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$q.name,
     		type: "slot",
-    		source: "(192:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(193:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -28969,22 +29085,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$C, 149, 4, 4564);
+    			add_location(script0, file$C, 150, 4, 4852);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$C, 150, 4, 4635);
+    			add_location(script1, file$C, 151, 4, 4923);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$C, 151, 4, 4716);
+    			add_location(script2, file$C, 152, 4, 5004);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$C, 152, 4, 4794);
+    			add_location(script3, file$C, 153, 4, 5082);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$C, 153, 4, 4874);
+    			add_location(script4, file$C, 154, 4, 5162);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$C, 158, 8, 5048);
+    			add_location(div, file$C, 159, 8, 5336);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$C, 159, 8, 5084);
+    			add_location(p, file$C, 160, 8, 5372);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$C, 157, 4, 5004);
-    			add_location(main, file$C, 156, 0, 4992);
+    			add_location(figure, file$C, 158, 4, 5292);
+    			add_location(main, file$C, 157, 0, 5280);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -29114,7 +29230,7 @@ var app = (function () {
     	let oilconsumptions = [];
     	let ocoalconsumptions = [];
     	let nuclearenergyconsumptions = [];
-    	const resDataExt = await fetch("https://sos1920-09.herokuapp.com/api/v2/oil-coal-nuclear-energy-consumption-stats");
+    	const resDataExt = await fetch("https://sos1920-09.herokuapp.com/api/v3/oil-coal-nuclear-energy-consumption-stats");
     	dataExt = await resDataExt.json();
 
     	dataExt.forEach(data => {
@@ -29132,27 +29248,33 @@ var app = (function () {
     	});
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Enfermos-Aceite-Carbon-Energia Nuclear"
+    			text: "Comunidades-Enfermos-Aceite-Carbon-Energia Nuclear",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y nuclearEnergyApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{
@@ -29178,10 +29300,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -29196,7 +29319,7 @@ var app = (function () {
 
     	async function getApi() {
     		//console.log("Fetching plugin vehicles..");
-    		const res = await fetch("https://sos1920-09.herokuapp.com/api/v2/oil-coal-nuclear-energy-consumption-stats");
+    		const res = await fetch("https://sos1920-09.herokuapp.com/api/v3/oil-coal-nuclear-energy-consumption-stats");
 
     		if (res.ok) {
     			console.log("ok");
@@ -29408,12 +29531,12 @@ var app = (function () {
     			td4 = element("td");
     			t8 = text(t8_value);
     			t9 = space();
-    			add_location(td0, file$D, 181, 20, 5670);
-    			add_location(td1, file$D, 182, 20, 5716);
-    			add_location(td2, file$D, 183, 20, 5761);
-    			add_location(td3, file$D, 184, 20, 5828);
-    			add_location(td4, file$D, 185, 20, 5878);
-    			add_location(tr, file$D, 180, 4, 5644);
+    			add_location(td0, file$D, 181, 20, 5952);
+    			add_location(td1, file$D, 182, 20, 5998);
+    			add_location(td2, file$D, 183, 20, 6043);
+    			add_location(td3, file$D, 184, 20, 6110);
+    			add_location(td4, file$D, 185, 20, 6160);
+    			add_location(tr, file$D, 180, 4, 5926);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -29504,14 +29627,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$D, 171, 16, 5380);
-    			add_location(th1, file$D, 172, 16, 5411);
-    			add_location(th2, file$D, 173, 16, 5441);
-    			add_location(th3, file$D, 174, 16, 5488);
-    			add_location(th4, file$D, 175, 16, 5521);
-    			add_location(tr, file$D, 170, 12, 5358);
-    			add_location(thead, file$D, 169, 8, 5337);
-    			add_location(tbody, file$D, 178, 8, 5590);
+    			add_location(th0, file$D, 171, 16, 5662);
+    			add_location(th1, file$D, 172, 16, 5693);
+    			add_location(th2, file$D, 173, 16, 5723);
+    			add_location(th3, file$D, 174, 16, 5770);
+    			add_location(th4, file$D, 175, 16, 5803);
+    			add_location(tr, file$D, 170, 12, 5640);
+    			add_location(thead, file$D, 169, 8, 5619);
+    			add_location(tbody, file$D, 178, 8, 5872);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -29716,22 +29839,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$D, 149, 4, 4429);
+    			add_location(script0, file$D, 149, 4, 4711);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$D, 150, 4, 4500);
+    			add_location(script1, file$D, 150, 4, 4782);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$D, 151, 4, 4581);
+    			add_location(script2, file$D, 151, 4, 4863);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$D, 152, 4, 4659);
+    			add_location(script3, file$D, 152, 4, 4941);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$D, 153, 4, 4739);
+    			add_location(script4, file$D, 153, 4, 5021);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$D, 158, 8, 4913);
+    			add_location(div, file$D, 158, 8, 5195);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$D, 159, 8, 4949);
+    			add_location(p, file$D, 159, 8, 5231);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$D, 157, 4, 4869);
-    			add_location(main, file$D, 156, 0, 4857);
+    			add_location(figure, file$D, 157, 4, 5151);
+    			add_location(main, file$D, 156, 0, 5139);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -29861,7 +29984,7 @@ var app = (function () {
     	let indice_de_masa_corporals = [];
     	let alturas = [];
     	let tasa_obesidads = [];
-    	const resDataExt = await fetch("https://sos1920-30.herokuapp.com/api/v2/indice_de_masa_corporal");
+    	const resDataExt = await fetch("https://sos1920-30.herokuapp.com/api/v3/indice_de_masa_corporal");
     	dataExt = await resDataExt.json();
 
     	dataExt.forEach(data => {
@@ -29879,27 +30002,33 @@ var app = (function () {
     	});
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Enfermos-Indice-Altura-Tasa"
+    			text: "Comunidades-Enfermos-Indice-Altura-Tasa",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y indiceMasaApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero de en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero de en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{
@@ -29922,10 +30051,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -29940,7 +30070,7 @@ var app = (function () {
 
     	async function getApi() {
     		//console.log("Fetching plugin vehicles..");
-    		const res = await fetch("https://sos1920-30.herokuapp.com/api/v2/indice_de_masa_corporal");
+    		const res = await fetch("https://sos1920-30.herokuapp.com/api/v3/indice_de_masa_corporal");
 
     		if (res.ok) {
     			console.log("ok");
@@ -30006,7 +30136,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (168:4) <Button outline color = "secondary" on:click="{pop}">
+    // (169:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot_2$m(ctx) {
     	let t;
 
@@ -30026,7 +30156,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$m.name,
     		type: "slot",
-    		source: "(168:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(169:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -30055,7 +30185,7 @@ var app = (function () {
     	return block;
     }
 
-    // (171:1) {:then getApi}
+    // (172:1) {:then getApi}
     function create_then_block$h(ctx) {
     	let current;
 
@@ -30103,14 +30233,14 @@ var app = (function () {
     		block,
     		id: create_then_block$h.name,
     		type: "then",
-    		source: "(171:1) {:then getApi}",
+    		source: "(172:1) {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (184:12) {#each datosApi as datoApi}
+    // (185:12) {#each datosApi as datoApi}
     function create_each_block$f(ctx) {
     	let tr;
     	let td0;
@@ -30159,13 +30289,13 @@ var app = (function () {
     			td5 = element("td");
     			t10 = text(t10_value);
     			t11 = space();
-    			add_location(td0, file$E, 185, 20, 5499);
-    			add_location(td1, file$E, 186, 20, 5544);
-    			add_location(td2, file$E, 187, 20, 5592);
-    			add_location(td3, file$E, 188, 20, 5638);
-    			add_location(td4, file$E, 189, 20, 5687);
-    			add_location(td5, file$E, 190, 20, 5738);
-    			add_location(tr, file$E, 184, 4, 5473);
+    			add_location(td0, file$E, 186, 20, 5859);
+    			add_location(td1, file$E, 187, 20, 5904);
+    			add_location(td2, file$E, 188, 20, 5952);
+    			add_location(td3, file$E, 189, 20, 5998);
+    			add_location(td4, file$E, 190, 20, 6047);
+    			add_location(td5, file$E, 191, 20, 6098);
+    			add_location(tr, file$E, 185, 4, 5833);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -30205,14 +30335,14 @@ var app = (function () {
     		block,
     		id: create_each_block$f.name,
     		type: "each",
-    		source: "(184:12) {#each datosApi as datoApi}",
+    		source: "(185:12) {#each datosApi as datoApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (172:4) <Table bordered>
+    // (173:4) <Table bordered>
     function create_default_slot_1$m(ctx) {
     	let thead;
     	let tr;
@@ -30265,15 +30395,15 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$E, 174, 16, 5193);
-    			add_location(th1, file$E, 175, 16, 5226);
-    			add_location(th2, file$E, 176, 16, 5257);
-    			add_location(th3, file$E, 177, 16, 5289);
-    			add_location(th4, file$E, 178, 16, 5321);
-    			add_location(th5, file$E, 179, 16, 5356);
-    			add_location(tr, file$E, 173, 12, 5171);
-    			add_location(thead, file$E, 172, 8, 5150);
-    			add_location(tbody, file$E, 182, 8, 5419);
+    			add_location(th0, file$E, 175, 16, 5553);
+    			add_location(th1, file$E, 176, 16, 5586);
+    			add_location(th2, file$E, 177, 16, 5617);
+    			add_location(th3, file$E, 178, 16, 5649);
+    			add_location(th4, file$E, 179, 16, 5681);
+    			add_location(th5, file$E, 180, 16, 5716);
+    			add_location(tr, file$E, 174, 12, 5531);
+    			add_location(thead, file$E, 173, 8, 5510);
+    			add_location(tbody, file$E, 183, 8, 5779);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -30333,14 +30463,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$m.name,
     		type: "slot",
-    		source: "(172:4) <Table bordered>",
+    		source: "(173:4) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:19)     Loading ppas ...   {:then getApi}
+    // (170:19)     Loading ppas ...   {:then getApi}
     function create_pending_block$h(ctx) {
     	let t;
 
@@ -30363,14 +30493,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$h.name,
     		type: "pending",
-    		source: "(169:19)     Loading ppas ...   {:then getApi}",
+    		source: "(170:19)     Loading ppas ...   {:then getApi}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (197:4) <Button outline color = "secondary" on:click="{pop}">
+    // (198:4) <Button outline color = "secondary" on:click="{pop}">
     function create_default_slot$s(ctx) {
     	let t;
 
@@ -30390,7 +30520,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$s.name,
     		type: "slot",
-    		source: "(197:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(198:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -30480,22 +30610,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$E, 152, 4, 4252);
+    			add_location(script0, file$E, 153, 4, 4612);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$E, 153, 4, 4323);
+    			add_location(script1, file$E, 154, 4, 4683);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$E, 154, 4, 4404);
+    			add_location(script2, file$E, 155, 4, 4764);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$E, 155, 4, 4482);
+    			add_location(script3, file$E, 156, 4, 4842);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$E, 156, 4, 4562);
+    			add_location(script4, file$E, 157, 4, 4922);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$E, 161, 8, 4736);
+    			add_location(div, file$E, 162, 8, 5096);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$E, 162, 8, 4772);
+    			add_location(p, file$E, 163, 8, 5132);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$E, 160, 4, 4692);
-    			add_location(main, file$E, 159, 0, 4680);
+    			add_location(figure, file$E, 161, 4, 5052);
+    			add_location(main, file$E, 160, 0, 5040);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -30623,7 +30753,7 @@ var app = (function () {
     	let goals = [];
     	let matches = [];
     	let teams = [];
-    	const resDataExt = await fetch("/api/v3/goalscorers");
+    	const resDataExt = await fetch("https://sos1920-26.herokuapp.com/api/v3/goalscorers");
     	dataExt = await resDataExt.json();
 
     	dataExt.forEach(data => {
@@ -30639,27 +30769,33 @@ var app = (function () {
     	}); //}
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Enfermos-Goles-Partidos-Equipos"
+    			text: "Comunidades-Enfermos-Goles-Partidos-Equipos",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y goalscoreApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero de en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero de accidentes y zonas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{ name: "Goles", data: goals },
@@ -30676,10 +30812,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -30694,7 +30831,7 @@ var app = (function () {
 
     	async function getApi() {
     		//console.log("Fetching plugin vehicles..");
-    		const res = await fetch("/api/v3/goalscorers");
+    		const res = await fetch("https://sos1920-26.herokuapp.com/api/v3/goalscorers");
 
     		if (res.ok) {
     			console.log("ok");
@@ -30920,14 +31057,14 @@ var app = (function () {
     			td6 = element("td");
     			t12 = text(t12_value);
     			t13 = space();
-    			add_location(td0, file$F, 188, 20, 5657);
-    			add_location(td1, file$F, 189, 20, 5705);
-    			add_location(td2, file$F, 190, 20, 5754);
-    			add_location(td3, file$F, 191, 20, 5808);
-    			add_location(td4, file$F, 192, 20, 5857);
-    			add_location(td5, file$F, 193, 20, 5907);
-    			add_location(td6, file$F, 194, 20, 5957);
-    			add_location(tr, file$F, 187, 4, 5631);
+    			add_location(td0, file$F, 188, 20, 5943);
+    			add_location(td1, file$F, 189, 20, 5991);
+    			add_location(td2, file$F, 190, 20, 6040);
+    			add_location(td3, file$F, 191, 20, 6094);
+    			add_location(td4, file$F, 192, 20, 6143);
+    			add_location(td5, file$F, 193, 20, 6193);
+    			add_location(td6, file$F, 194, 20, 6243);
+    			add_location(tr, file$F, 187, 4, 5917);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -31036,16 +31173,16 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$F, 176, 16, 5311);
-    			add_location(th1, file$F, 177, 16, 5342);
-    			add_location(th2, file$F, 178, 16, 5374);
-    			add_location(th3, file$F, 179, 16, 5410);
-    			add_location(th4, file$F, 180, 16, 5442);
-    			add_location(th5, file$F, 181, 16, 5476);
-    			add_location(th6, file$F, 182, 16, 5510);
-    			add_location(tr, file$F, 175, 12, 5289);
-    			add_location(thead, file$F, 174, 8, 5268);
-    			add_location(tbody, file$F, 185, 8, 5577);
+    			add_location(th0, file$F, 176, 16, 5597);
+    			add_location(th1, file$F, 177, 16, 5628);
+    			add_location(th2, file$F, 178, 16, 5660);
+    			add_location(th3, file$F, 179, 16, 5696);
+    			add_location(th4, file$F, 180, 16, 5728);
+    			add_location(th5, file$F, 181, 16, 5762);
+    			add_location(th6, file$F, 182, 16, 5796);
+    			add_location(tr, file$F, 175, 12, 5575);
+    			add_location(thead, file$F, 174, 8, 5554);
+    			add_location(tbody, file$F, 185, 8, 5863);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -31254,22 +31391,22 @@ var app = (function () {
     			t5 = space();
     			create_component(button1.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			add_location(script0, file$F, 154, 4, 4359);
+    			add_location(script0, file$F, 154, 4, 4645);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			add_location(script1, file$F, 155, 4, 4430);
+    			add_location(script1, file$F, 155, 4, 4716);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			add_location(script2, file$F, 156, 4, 4511);
+    			add_location(script2, file$F, 156, 4, 4797);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			add_location(script3, file$F, 157, 4, 4589);
+    			add_location(script3, file$F, 157, 4, 4875);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			add_location(script4, file$F, 158, 4, 4669);
+    			add_location(script4, file$F, 158, 4, 4955);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$F, 163, 8, 4843);
+    			add_location(div, file$F, 163, 8, 5129);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$F, 164, 8, 4879);
+    			add_location(p, file$F, 164, 8, 5165);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$F, 162, 4, 4799);
-    			add_location(main, file$F, 161, 0, 4787);
+    			add_location(figure, file$F, 162, 4, 5085);
+    			add_location(main, file$F, 161, 0, 5073);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -31422,27 +31559,33 @@ var app = (function () {
     	//threepoints.push(data["Codigo"]);
 
     	Highcharts.chart("container", {
-    		chart: { type: "line" },
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
     		title: {
-    			text: "Comunidades-Accidentes-Casos-Activos-Tests"
+    			text: "Comunidades-Accidentes-Casos-Activos-Tests",
+    			x: -80
     		},
     		subtitle: {
     			text: "Integracion offworksApi y CoronalmaoNinjaApi",
     			align: "right",
     			verticalAlign: "bottom"
     		},
-    		yAxis: { title: { text: "Numero en decenas" } },
+    		pane: { size: "80%" },
     		xAxis: { categories: comunidades },
-    		legend: {
-    			layout: "vertical",
-    			align: "right",
-    			verticalAlign: "middle"
+    		yAxis: {
+    			text: "Numero en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
     		},
-    		plotOptions: {
-    			series: {
-    				label: { connectorAllowed: false },
-    				enableMouseTracking: false
-    			}
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
     		},
     		series: [
     			{ name: "Casos", data: casess },
@@ -31459,10 +31602,11 @@ var app = (function () {
     					condition: { maxWidth: 500 },
     					chartOptions: {
     						legend: {
-    							layout: "horizontal",
     							align: "center",
-    							verticalAlign: "bottom"
-    						}
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
     					}
     				}
     			]
@@ -31532,12 +31676,1466 @@ var app = (function () {
     	}
     }
 
-    /* src\front\CigarretesAPI\CigarretesTable.svelte generated by Svelte v3.23.0 */
+    /* src\front\offworks_stats_API\integrations\apiExterna2Integration.svelte generated by Svelte v3.23.0 */
 
     const { console: console_1$m } = globals;
-    const file$G = "src\\front\\CigarretesAPI\\CigarretesTable.svelte";
+    const file$G = "src\\front\\offworks_stats_API\\integrations\\apiExterna2Integration.svelte";
 
     function get_each_context$h(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[2] = list[i];
+    	return child_ctx;
+    }
+
+    // (169:4) <Button outline color = "secondary" on:click="{pop}">
+    function create_default_slot_2$o(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Volver");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_2$o.name,
+    		type: "slot",
+    		source: "(169:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (1:0) <script>      import Button from "sveltestrap/src/Button.svelte";      import { pop }
+    function create_catch_block$j(ctx) {
+    	const block = {
+    		c: noop,
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block$j.name,
+    		type: "catch",
+    		source: "(1:0) <script>      import Button from \\\"sveltestrap/src/Button.svelte\\\";      import { pop }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (172:1) {:then getApi}
+    function create_then_block$j(ctx) {
+    	let current;
+
+    	const table = new Table({
+    			props: {
+    				bordered: true,
+    				$$slots: { default: [create_default_slot_1$o] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(table.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(table, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const table_changes = {};
+
+    			if (dirty & /*$$scope, datosApi*/ 33) {
+    				table_changes.$$scope = { dirty, ctx };
+    			}
+
+    			table.$set(table_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(table.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(table.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(table, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block$j.name,
+    		type: "then",
+    		source: "(172:1) {:then getApi}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (183:12) {#each datosApi as datoApi}
+    function create_each_block$h(ctx) {
+    	let tr;
+    	let td0;
+    	let t0_value = /*datoApi*/ ctx[2]["Id"] + "";
+    	let t0;
+    	let t1;
+    	let td1;
+    	let t2_value = /*datoApi*/ ctx[2].Nombre + "";
+    	let t2;
+    	let t3;
+    	let td2;
+    	let t4_value = /*datoApi*/ ctx[2]["Cod_IOE"] + "";
+    	let t4;
+    	let t5;
+    	let td3;
+    	let t6_value = /*datoApi*/ ctx[2]["Codigo"] + "";
+    	let t6;
+    	let t7;
+
+    	const block = {
+    		c: function create() {
+    			tr = element("tr");
+    			td0 = element("td");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			td1 = element("td");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			td2 = element("td");
+    			t4 = text(t4_value);
+    			t5 = space();
+    			td3 = element("td");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			add_location(td0, file$G, 184, 20, 5845);
+    			add_location(td1, file$G, 185, 20, 5917);
+    			add_location(td2, file$G, 186, 20, 5964);
+    			add_location(td3, file$G, 187, 20, 6015);
+    			add_location(tr, file$G, 183, 4, 5819);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, t0);
+    			append_dev(tr, t1);
+    			append_dev(tr, td1);
+    			append_dev(td1, t2);
+    			append_dev(tr, t3);
+    			append_dev(tr, td2);
+    			append_dev(td2, t4);
+    			append_dev(tr, t5);
+    			append_dev(tr, td3);
+    			append_dev(td3, t6);
+    			append_dev(tr, t7);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*datosApi*/ 1 && t0_value !== (t0_value = /*datoApi*/ ctx[2]["Id"] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*datosApi*/ 1 && t2_value !== (t2_value = /*datoApi*/ ctx[2].Nombre + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*datosApi*/ 1 && t4_value !== (t4_value = /*datoApi*/ ctx[2]["Cod_IOE"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*datosApi*/ 1 && t6_value !== (t6_value = /*datoApi*/ ctx[2]["Codigo"] + "")) set_data_dev(t6, t6_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$h.name,
+    		type: "each",
+    		source: "(183:12) {#each datosApi as datoApi}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (173:4) <Table bordered>
+    function create_default_slot_1$o(ctx) {
+    	let thead;
+    	let tr;
+    	let th0;
+    	let t1;
+    	let th1;
+    	let t3;
+    	let th2;
+    	let t5;
+    	let th3;
+    	let t7;
+    	let tbody;
+    	let each_value = /*datosApi*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$h(get_each_context$h(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			thead = element("thead");
+    			tr = element("tr");
+    			th0 = element("th");
+    			th0.textContent = "Id";
+    			t1 = space();
+    			th1 = element("th");
+    			th1.textContent = "Nombre";
+    			t3 = space();
+    			th2 = element("th");
+    			th2.textContent = "Cod_IOE";
+    			t5 = space();
+    			th3 = element("th");
+    			th3.textContent = "Codigo";
+    			t7 = space();
+    			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(th0, file$G, 175, 16, 5607);
+    			add_location(th1, file$G, 176, 16, 5636);
+    			add_location(th2, file$G, 177, 16, 5669);
+    			add_location(th3, file$G, 178, 16, 5703);
+    			add_location(tr, file$G, 174, 12, 5585);
+    			add_location(thead, file$G, 173, 8, 5564);
+    			add_location(tbody, file$G, 181, 8, 5765);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, thead, anchor);
+    			append_dev(thead, tr);
+    			append_dev(tr, th0);
+    			append_dev(tr, t1);
+    			append_dev(tr, th1);
+    			append_dev(tr, t3);
+    			append_dev(tr, th2);
+    			append_dev(tr, t5);
+    			append_dev(tr, th3);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, tbody, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*datosApi*/ 1) {
+    				each_value = /*datosApi*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$h(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$h(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(thead);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(tbody);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1$o.name,
+    		type: "slot",
+    		source: "(173:4) <Table bordered>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (170:19)     Loading basket-stats ...   {:then getApi}
+    function create_pending_block$j(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Loading basket-stats ...");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block$j.name,
+    		type: "pending",
+    		source: "(170:19)     Loading basket-stats ...   {:then getApi}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (194:4) <Button outline color = "secondary" on:click="{pop}">
+    function create_default_slot$u(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Volver");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot$u.name,
+    		type: "slot",
+    		source: "(194:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$H(ctx) {
+    	let script0;
+    	let script0_src_value;
+    	let script1;
+    	let script1_src_value;
+    	let script2;
+    	let script2_src_value;
+    	let script3;
+    	let script3_src_value;
+    	let script4;
+    	let script4_src_value;
+    	let t0;
+    	let main;
+    	let figure;
+    	let div;
+    	let t1;
+    	let p;
+    	let t3;
+    	let t4;
+    	let promise;
+    	let t5;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	const button0 = new Button({
+    			props: {
+    				outline: true,
+    				color: "secondary",
+    				$$slots: { default: [create_default_slot_2$o] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button0.$on("click", pop);
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		pending: create_pending_block$j,
+    		then: create_then_block$j,
+    		catch: create_catch_block$j,
+    		value: 1,
+    		blocks: [,,,]
+    	};
+
+    	handle_promise(promise = /*getApi*/ ctx[1], info);
+
+    	const button1 = new Button({
+    			props: {
+    				outline: true,
+    				color: "secondary",
+    				$$slots: { default: [create_default_slot$u] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button1.$on("click", pop);
+
+    	const block = {
+    		c: function create() {
+    			script0 = element("script");
+    			script1 = element("script");
+    			script2 = element("script");
+    			script3 = element("script");
+    			script4 = element("script");
+    			t0 = space();
+    			main = element("main");
+    			figure = element("figure");
+    			div = element("div");
+    			t1 = space();
+    			p = element("p");
+    			p.textContent = "Relación de las Comunidades en el año 2007 entre enfermedades laborales y\r\n            las id en Comunidades Autonomas.";
+    			t3 = space();
+    			create_component(button0.$$.fragment);
+    			t4 = space();
+    			info.block.c();
+    			t5 = space();
+    			create_component(button1.$$.fragment);
+    			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
+    			add_location(script0, file$G, 153, 4, 4676);
+    			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
+    			add_location(script1, file$G, 154, 4, 4747);
+    			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
+    			add_location(script2, file$G, 155, 4, 4828);
+    			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
+    			add_location(script3, file$G, 156, 4, 4906);
+    			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
+    			add_location(script4, file$G, 157, 4, 4986);
+    			attr_dev(div, "id", "container");
+    			add_location(div, file$G, 162, 8, 5160);
+    			attr_dev(p, "class", "highcharts-description");
+    			add_location(p, file$G, 163, 8, 5196);
+    			attr_dev(figure, "class", "highcharts-figure");
+    			add_location(figure, file$G, 161, 4, 5116);
+    			add_location(main, file$G, 160, 0, 5104);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			append_dev(document.head, script0);
+    			append_dev(document.head, script1);
+    			append_dev(document.head, script2);
+    			append_dev(document.head, script3);
+    			append_dev(document.head, script4);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, main, anchor);
+    			append_dev(main, figure);
+    			append_dev(figure, div);
+    			append_dev(figure, t1);
+    			append_dev(figure, p);
+    			append_dev(main, t3);
+    			mount_component(button0, main, null);
+    			append_dev(main, t4);
+    			info.block.m(main, info.anchor = null);
+    			info.mount = () => main;
+    			info.anchor = t5;
+    			append_dev(main, t5);
+    			mount_component(button1, main, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(script4, "load", loadGraph$k, false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
+    			const button0_changes = {};
+
+    			if (dirty & /*$$scope*/ 32) {
+    				button0_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button0.$set(button0_changes);
+
+    			{
+    				const child_ctx = ctx.slice();
+    				child_ctx[1] = info.resolved;
+    				info.block.p(child_ctx, dirty);
+    			}
+
+    			const button1_changes = {};
+
+    			if (dirty & /*$$scope*/ 32) {
+    				button1_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button1.$set(button1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(button0.$$.fragment, local);
+    			transition_in(info.block);
+    			transition_in(button1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(button0.$$.fragment, local);
+
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
+    			transition_out(button1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			detach_dev(script0);
+    			detach_dev(script1);
+    			detach_dev(script2);
+    			detach_dev(script3);
+    			detach_dev(script4);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(main);
+    			destroy_component(button0);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
+    			destroy_component(button1);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$H.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    async function loadGraph$k() {
+    	let MyData = [];
+    	let comunidades = [];
+    	let enfermos = [];
+    	let cont = 0;
+    	const resData = await fetch("api/v2/offworks-stats");
+    	MyData = await resData.json();
+
+    	MyData.forEach(data => {
+    		let comunidad = data.community;
+    		let year = data.year;
+    		let accidente = data["accident"];
+    		let enfermo = data["sick"];
+    		let num = data["numberzone"];
+
+    		if (data.year == 2007) {
+    			comunidades.push(comunidad);
+    			enfermos.push(enfermo);
+    		} //cont++;
+    	});
+
+    	let dataExt = [];
+    	let casess = [];
+
+    	//let recovereds = [];
+    	const resDataExt = await fetch("https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES");
+
+    	dataExt = await resDataExt.json();
+
+    	dataExt.forEach(data => {
+    		let countrie = data.Nombre;
+    		let cases = data["Id"];
+    		let active = data["Cod_IOE"];
+    		let tests = data["Codigo"];
+
+    		//let recovered = data["recovered"];
+    		if (cont <= 7) {
+    			casess.push(cases);
+    			cont++;
+    		}
+    	}); //countries.push(data.Id);
+    	//years.push(data["Cod_IOE"]);
+    	//points.push(data["Nombre"]);
+    	//threepoints.push(data["Codigo"]);
+
+    	Highcharts.chart("container", {
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
+    		title: {
+    			text: "Comunidades-Enfermedades-Id",
+    			x: -80
+    		},
+    		subtitle: {
+    			text: "Integracion offworksApi y serviciosIneApi",
+    			align: "right",
+    			verticalAlign: "bottom"
+    		},
+    		pane: { size: "80%" },
+    		xAxis: { categories: comunidades },
+    		yAxis: {
+    			text: "Numero de enfermedades y zonas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
+    		},
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
+    		},
+    		series: [
+    			{ name: "Id", data: casess },
+    			//, {
+    			//    name: "Cod_IOE",
+    			//    data: actives
+    			// }
+    			{
+    				name: "baja por enfermedad",
+    				data: enfermos
+    			}
+    		],
+    		responsive: {
+    			rules: [
+    				{
+    					condition: { maxWidth: 500 },
+    					chartOptions: {
+    						legend: {
+    							align: "center",
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
+    					}
+    				}
+    			]
+    		}
+    	});
+    }
+
+    function instance$H($$self, $$props, $$invalidate) {
+    	onMount(getApi);
+    	
+    	let datosApi = [];
+
+    	async function getApi() {
+    		//console.log("Fetching plugin vehicles..");
+    		const res = await fetch("https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES");
+
+    		if (res.ok) {
+    			console.log("ok");
+    			const json = await res.json();
+    			$$invalidate(0, datosApi = json);
+    		} else {
+    			console.log("Error"); //console.log("Received "+ plugins.length + " plugin vehicles");
+    		}
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$m.warn(`<ApiExterna2Integration> was created with unknown prop '${key}'`);
+    	});
+
+    	let { $$slots = {}, $$scope } = $$props;
+    	validate_slots("ApiExterna2Integration", $$slots, []);
+
+    	$$self.$capture_state = () => ({
+    		Button,
+    		pop,
+    		onMount,
+    		Table,
+    		loadGraph: loadGraph$k,
+    		datosApi,
+    		getApi
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("datosApi" in $$props) $$invalidate(0, datosApi = $$props.datosApi);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [datosApi, getApi];
+    }
+
+    class ApiExterna2Integration extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$H, create_fragment$H, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "ApiExterna2Integration",
+    			options,
+    			id: create_fragment$H.name
+    		});
+    	}
+    }
+
+    /* src\front\offworks_stats_API\integrations\apiExterna3Integration.svelte generated by Svelte v3.23.0 */
+
+    const { console: console_1$n } = globals;
+    const file$H = "src\\front\\offworks_stats_API\\integrations\\apiExterna3Integration.svelte";
+
+    function get_each_context$i(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[2] = list[i];
+    	return child_ctx;
+    }
+
+    // (166:4) <Button outline color = "secondary" on:click="{pop}">
+    function create_default_slot_2$p(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Volver");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_2$p.name,
+    		type: "slot",
+    		source: "(166:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (1:0) <script>      import Button from "sveltestrap/src/Button.svelte";      import { pop }
+    function create_catch_block$k(ctx) {
+    	const block = {
+    		c: noop,
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block$k.name,
+    		type: "catch",
+    		source: "(1:0) <script>      import Button from \\\"sveltestrap/src/Button.svelte\\\";      import { pop }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (169:1) {:then getApi}
+    function create_then_block$k(ctx) {
+    	let current;
+
+    	const table = new Table({
+    			props: {
+    				bordered: true,
+    				$$slots: { default: [create_default_slot_1$p] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(table.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(table, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const table_changes = {};
+
+    			if (dirty & /*$$scope, datosApi*/ 33) {
+    				table_changes.$$scope = { dirty, ctx };
+    			}
+
+    			table.$set(table_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(table.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(table.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(table, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block$k.name,
+    		type: "then",
+    		source: "(169:1) {:then getApi}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (180:12) {#each datosApi as datoApi}
+    function create_each_block$i(ctx) {
+    	let tr;
+    	let td0;
+    	let t0_value = /*datoApi*/ ctx[2].region + "";
+    	let t0;
+    	let t1;
+    	let td1;
+    	let t2_value = /*datoApi*/ ctx[2]["hospitalizedWithSymptoms"] + "";
+    	let t2;
+    	let t3;
+    	let td2;
+    	let t4_value = /*datoApi*/ ctx[2]["totalCases"] + "";
+    	let t4;
+    	let t5;
+    	let td3;
+    	let t6_value = /*datoApi*/ ctx[2]["recovered"] + "";
+    	let t6;
+    	let t7;
+
+    	const block = {
+    		c: function create() {
+    			tr = element("tr");
+    			td0 = element("td");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			td1 = element("td");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			td2 = element("td");
+    			t4 = text(t4_value);
+    			t5 = space();
+    			td3 = element("td");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			add_location(td0, file$H, 181, 20, 5722);
+    			add_location(td1, file$H, 182, 20, 5795);
+    			add_location(td2, file$H, 183, 20, 5863);
+    			add_location(td3, file$H, 184, 20, 5917);
+    			add_location(tr, file$H, 180, 4, 5696);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, t0);
+    			append_dev(tr, t1);
+    			append_dev(tr, td1);
+    			append_dev(td1, t2);
+    			append_dev(tr, t3);
+    			append_dev(tr, td2);
+    			append_dev(td2, t4);
+    			append_dev(tr, t5);
+    			append_dev(tr, td3);
+    			append_dev(td3, t6);
+    			append_dev(tr, t7);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*datosApi*/ 1 && t0_value !== (t0_value = /*datoApi*/ ctx[2].region + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*datosApi*/ 1 && t2_value !== (t2_value = /*datoApi*/ ctx[2]["hospitalizedWithSymptoms"] + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*datosApi*/ 1 && t4_value !== (t4_value = /*datoApi*/ ctx[2]["totalCases"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*datosApi*/ 1 && t6_value !== (t6_value = /*datoApi*/ ctx[2]["recovered"] + "")) set_data_dev(t6, t6_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$i.name,
+    		type: "each",
+    		source: "(180:12) {#each datosApi as datoApi}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (170:4) <Table bordered>
+    function create_default_slot_1$p(ctx) {
+    	let thead;
+    	let tr;
+    	let th0;
+    	let t1;
+    	let th1;
+    	let t3;
+    	let th2;
+    	let t5;
+    	let th3;
+    	let t7;
+    	let tbody;
+    	let each_value = /*datosApi*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$i(get_each_context$i(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			thead = element("thead");
+    			tr = element("tr");
+    			th0 = element("th");
+    			th0.textContent = "Region";
+    			t1 = space();
+    			th1 = element("th");
+    			th1.textContent = "Hospitalizados con sintomas";
+    			t3 = space();
+    			th2 = element("th");
+    			th2.textContent = "Casos totales";
+    			t5 = space();
+    			th3 = element("th");
+    			th3.textContent = "Recuperados";
+    			t7 = space();
+    			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(th0, file$H, 172, 16, 5448);
+    			add_location(th1, file$H, 173, 16, 5481);
+    			add_location(th2, file$H, 174, 16, 5535);
+    			add_location(th3, file$H, 175, 16, 5575);
+    			add_location(tr, file$H, 171, 12, 5426);
+    			add_location(thead, file$H, 170, 8, 5405);
+    			add_location(tbody, file$H, 178, 8, 5642);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, thead, anchor);
+    			append_dev(thead, tr);
+    			append_dev(tr, th0);
+    			append_dev(tr, t1);
+    			append_dev(tr, th1);
+    			append_dev(tr, t3);
+    			append_dev(tr, th2);
+    			append_dev(tr, t5);
+    			append_dev(tr, th3);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, tbody, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*datosApi*/ 1) {
+    				each_value = /*datosApi*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$i(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$i(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(thead);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(tbody);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1$p.name,
+    		type: "slot",
+    		source: "(170:4) <Table bordered>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (167:19)     Loading basket-stats ...   {:then getApi}
+    function create_pending_block$k(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Loading basket-stats ...");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block$k.name,
+    		type: "pending",
+    		source: "(167:19)     Loading basket-stats ...   {:then getApi}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (193:4) <Button outline color = "secondary" on:click="{pop}">
+    function create_default_slot$v(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Volver");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot$v.name,
+    		type: "slot",
+    		source: "(193:4) <Button outline color = \\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$I(ctx) {
+    	let script0;
+    	let script0_src_value;
+    	let script1;
+    	let script1_src_value;
+    	let script2;
+    	let script2_src_value;
+    	let script3;
+    	let script3_src_value;
+    	let script4;
+    	let script4_src_value;
+    	let t0;
+    	let main;
+    	let figure;
+    	let div;
+    	let t1;
+    	let p;
+    	let t3;
+    	let t4;
+    	let promise;
+    	let t5;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	const button0 = new Button({
+    			props: {
+    				outline: true,
+    				color: "secondary",
+    				$$slots: { default: [create_default_slot_2$p] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button0.$on("click", pop);
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		pending: create_pending_block$k,
+    		then: create_then_block$k,
+    		catch: create_catch_block$k,
+    		value: 1,
+    		blocks: [,,,]
+    	};
+
+    	handle_promise(promise = /*getApi*/ ctx[1], info);
+
+    	const button1 = new Button({
+    			props: {
+    				outline: true,
+    				color: "secondary",
+    				$$slots: { default: [create_default_slot$v] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button1.$on("click", pop);
+
+    	const block = {
+    		c: function create() {
+    			script0 = element("script");
+    			script1 = element("script");
+    			script2 = element("script");
+    			script3 = element("script");
+    			script4 = element("script");
+    			t0 = space();
+    			main = element("main");
+    			figure = element("figure");
+    			div = element("div");
+    			t1 = space();
+    			p = element("p");
+    			p.textContent = "Relación de las Comunidades en el año 2007 entre enfermedades laborales y\r\n            hospitalizados,casos activos y recuperdos en Comunidades Autonomas.";
+    			t3 = space();
+    			create_component(button0.$$.fragment);
+    			t4 = space();
+    			info.block.c();
+    			t5 = space();
+    			create_component(button1.$$.fragment);
+    			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
+    			add_location(script0, file$H, 150, 4, 4482);
+    			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
+    			add_location(script1, file$H, 151, 4, 4553);
+    			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
+    			add_location(script2, file$H, 152, 4, 4634);
+    			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
+    			add_location(script3, file$H, 153, 4, 4712);
+    			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
+    			add_location(script4, file$H, 154, 4, 4792);
+    			attr_dev(div, "id", "container");
+    			add_location(div, file$H, 159, 8, 4966);
+    			attr_dev(p, "class", "highcharts-description");
+    			add_location(p, file$H, 160, 8, 5002);
+    			attr_dev(figure, "class", "highcharts-figure");
+    			add_location(figure, file$H, 158, 4, 4922);
+    			add_location(main, file$H, 157, 0, 4910);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			append_dev(document.head, script0);
+    			append_dev(document.head, script1);
+    			append_dev(document.head, script2);
+    			append_dev(document.head, script3);
+    			append_dev(document.head, script4);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, main, anchor);
+    			append_dev(main, figure);
+    			append_dev(figure, div);
+    			append_dev(figure, t1);
+    			append_dev(figure, p);
+    			append_dev(main, t3);
+    			mount_component(button0, main, null);
+    			append_dev(main, t4);
+    			info.block.m(main, info.anchor = null);
+    			info.mount = () => main;
+    			info.anchor = t5;
+    			append_dev(main, t5);
+    			mount_component(button1, main, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(script4, "load", loadGraph$l, false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
+    			const button0_changes = {};
+
+    			if (dirty & /*$$scope*/ 32) {
+    				button0_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button0.$set(button0_changes);
+
+    			{
+    				const child_ctx = ctx.slice();
+    				child_ctx[1] = info.resolved;
+    				info.block.p(child_ctx, dirty);
+    			}
+
+    			const button1_changes = {};
+
+    			if (dirty & /*$$scope*/ 32) {
+    				button1_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button1.$set(button1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(button0.$$.fragment, local);
+    			transition_in(info.block);
+    			transition_in(button1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(button0.$$.fragment, local);
+
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
+    			transition_out(button1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			detach_dev(script0);
+    			detach_dev(script1);
+    			detach_dev(script2);
+    			detach_dev(script3);
+    			detach_dev(script4);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(main);
+    			destroy_component(button0);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
+    			destroy_component(button1);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$I.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    async function loadGraph$l() {
+    	let MyData = [];
+    	let comunidades = [];
+    	let accidentes = [];
+    	let cont = 0;
+    	const resData = await fetch("api/v2/offworks-stats");
+    	MyData = await resData.json();
+
+    	MyData.forEach(data => {
+    		let comunidad = data.community;
+    		let year = data.year;
+    		let accidente = data["accident"];
+    		let enfermo = data["sick"];
+    		let num = data["numberzone"];
+
+    		if (data.year == 2007) {
+    			comunidades.push(comunidad);
+    			accidentes.push(accidente);
+    		} //cont++;
+    	});
+
+    	let dataExt = [];
+    	let casess = [];
+    	let actives = [];
+    	let testss = [];
+
+    	//let recovereds = [];
+    	const resDataExt = await fetch("https://disease.sh/v2/gov/italy");
+
+    	dataExt = await resDataExt.json();
+
+    	dataExt.forEach(data => {
+    		let countrie = data.region;
+    		let cases = data["hospitalizedWithSymptoms"];
+    		let active = data["totalCases"];
+    		let tests = data["recovered"];
+
+    		if (cont <= 7) {
+    			casess.push(cases);
+    			actives.push(active);
+    			testss.push(tests);
+    			cont++;
+    		}
+    	});
+
+    	Highcharts.chart("container", {
+    		chart: { polar: true, type: "line" },
+    		accessibility: { description: "." },
+    		title: {
+    			text: "Comunidades-Accidentes-Hospitalizados-Casos-Recuperados",
+    			x: -80
+    		},
+    		subtitle: {
+    			text: "Integracion offworksApi y DiseaseApi",
+    			align: "right",
+    			verticalAlign: "bottom"
+    		},
+    		pane: { size: "80%" },
+    		xAxis: { categories: comunidades },
+    		yAxis: {
+    			text: "Numero en decenas",
+    			gridLineInterpolation: "polygon",
+    			lineWidth: 0,
+    			min: 0
+    		},
+    		tooltip: {
+    			shared: true,
+    			pointFormat: "<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>"
+    		},
+    		legend: {
+    			align: "right",
+    			verticalAlign: "middle",
+    			layout: "vertical"
+    		},
+    		series: [
+    			{ name: "Hospitalizados", data: casess },
+    			{ name: "Total Casos", data: actives },
+    			{ name: "Recuperados", data: testss },
+    			{
+    				name: "baja por accidente",
+    				data: accidentes
+    			}
+    		],
+    		responsive: {
+    			rules: [
+    				{
+    					condition: { maxWidth: 500 },
+    					chartOptions: {
+    						legend: {
+    							align: "center",
+    							verticalAlign: "bottom",
+    							layout: "horizontal"
+    						},
+    						pane: { size: "70%" }
+    					}
+    				}
+    			]
+    		}
+    	});
+    }
+
+    function instance$I($$self, $$props, $$invalidate) {
+    	onMount(getApi);
+    	
+    	let datosApi = [];
+
+    	async function getApi() {
+    		//console.log("Fetching plugin vehicles..");
+    		const res = await fetch("https://disease.sh/v2/gov/italy");
+
+    		if (res.ok) {
+    			console.log("ok");
+    			const json = await res.json();
+    			$$invalidate(0, datosApi = json);
+    		} else {
+    			console.log("Error"); //console.log("Received "+ plugins.length + " plugin vehicles");
+    		}
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$n.warn(`<ApiExterna3Integration> was created with unknown prop '${key}'`);
+    	});
+
+    	let { $$slots = {}, $$scope } = $$props;
+    	validate_slots("ApiExterna3Integration", $$slots, []);
+
+    	$$self.$capture_state = () => ({
+    		Button,
+    		pop,
+    		onMount,
+    		Table,
+    		loadGraph: loadGraph$l,
+    		datosApi,
+    		getApi
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("datosApi" in $$props) $$invalidate(0, datosApi = $$props.datosApi);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [datosApi, getApi];
+    }
+
+    class ApiExterna3Integration extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$I, create_fragment$I, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "ApiExterna3Integration",
+    			options,
+    			id: create_fragment$I.name
+    		});
+    	}
+    }
+
+    /* src\front\CigarretesAPI\CigarretesTable.svelte generated by Svelte v3.23.0 */
+
+    const { console: console_1$o } = globals;
+    const file$I = "src\\front\\CigarretesAPI\\CigarretesTable.svelte";
+
+    function get_each_context$j(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[35] = list[i];
     	return child_ctx;
@@ -31555,7 +33153,7 @@ var app = (function () {
     			t0 = text("Error: ");
     			t1 = text(/*errorMsg*/ ctx[0]);
     			set_style(p, "color", "red");
-    			add_location(p, file$G, 200, 2, 5115);
+    			add_location(p, file$I, 200, 2, 5115);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -31593,7 +33191,7 @@ var app = (function () {
     			t0 = text("Éxito: ");
     			t1 = text(/*exitoMsg*/ ctx[1]);
     			set_style(p, "color", "blue");
-    			add_location(p, file$G, 203, 2, 5190);
+    			add_location(p, file$I, 203, 2, 5190);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -31620,7 +33218,7 @@ var app = (function () {
     }
 
     // (1:0) <script>   import { onMount }
-    function create_catch_block$j(ctx) {
+    function create_catch_block$l(ctx) {
     	const block = {
     		c: noop,
     		m: noop,
@@ -31632,7 +33230,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_catch_block$j.name,
+    		id: create_catch_block$l.name,
     		type: "catch",
     		source: "(1:0) <script>   import { onMount }",
     		ctx
@@ -31642,7 +33240,7 @@ var app = (function () {
     }
 
     // (209:2) {:then cigarretes}
-    function create_then_block$j(ctx) {
+    function create_then_block$l(ctx) {
     	let p;
     	let t0;
     	let t1;
@@ -31707,7 +33305,7 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			t5 = space();
     			create_component(table.$$.fragment);
-    			add_location(p, file$G, 209, 2, 5329);
+    			add_location(p, file$I, 209, 2, 5329);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -31785,7 +33383,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_then_block$j.name,
+    		id: create_then_block$l.name,
     		type: "then",
     		source: "(209:2) {:then cigarretes}",
     		ctx
@@ -32257,7 +33855,7 @@ var app = (function () {
     }
 
     // (262:4) {#each cigarretes as cigarrete}
-    function create_each_block$h(ctx) {
+    function create_each_block$j(ctx) {
     	let tr;
     	let td0;
     	let a;
@@ -32320,14 +33918,14 @@ var app = (function () {
     			td5 = element("td");
     			create_component(button.$$.fragment);
     			attr_dev(a, "href", a_href_value = "#/cigarretes-sales/" + /*cigarrete*/ ctx[35].community + "/" + /*cigarrete*/ ctx[35].year);
-    			add_location(a, file$G, 268, 6, 7092);
-    			add_location(td0, file$G, 267, 5, 7080);
-    			add_location(td1, file$G, 270, 5, 7204);
-    			add_location(td2, file$G, 271, 5, 7236);
-    			add_location(td3, file$G, 272, 5, 7278);
-    			add_location(td4, file$G, 273, 5, 7321);
-    			add_location(td5, file$G, 274, 5, 7365);
-    			add_location(tr, file$G, 264, 4, 7060);
+    			add_location(a, file$I, 268, 6, 7092);
+    			add_location(td0, file$I, 267, 5, 7080);
+    			add_location(td1, file$I, 270, 5, 7204);
+    			add_location(td2, file$I, 271, 5, 7236);
+    			add_location(td3, file$I, 272, 5, 7278);
+    			add_location(td4, file$I, 273, 5, 7321);
+    			add_location(td5, file$I, 274, 5, 7365);
+    			add_location(tr, file$I, 264, 4, 7060);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -32388,7 +33986,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$h.name,
+    		id: create_each_block$j.name,
     		type: "each",
     		source: "(262:4) {#each cigarretes as cigarrete}",
     		ctx
@@ -32425,7 +34023,7 @@ var app = (function () {
     }
 
     // (285:9) <Button  outline color = "danger" onclick="location.reload()" on:click="{deleteAllCigarretes}">
-    function create_default_slot_10$3(ctx) {
+    function create_default_slot_10$4(ctx) {
     	let i;
     	let t;
 
@@ -32435,7 +34033,7 @@ var app = (function () {
     			t = text("Borrar todo");
     			attr_dev(i, "class", "fa fa-trash");
     			attr_dev(i, "aria-hidden", "true");
-    			add_location(i, file$G, 284, 104, 7879);
+    			add_location(i, file$I, 284, 104, 7879);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -32449,7 +34047,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_10$3.name,
+    		id: create_default_slot_10$4.name,
     		type: "slot",
     		source: "(285:9) <Button  outline color = \\\"danger\\\" onclick=\\\"location.reload()\\\" on:click=\\\"{deleteAllCigarretes}\\\">",
     		ctx
@@ -32537,7 +34135,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$h(get_each_context$h(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$j(get_each_context$j(ctx, each_value, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -32562,7 +34160,7 @@ var app = (function () {
     				outline: true,
     				color: "danger",
     				onclick: "location.reload()",
-    				$$slots: { default: [create_default_slot_10$3] },
+    				$$slots: { default: [create_default_slot_10$4] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -32632,40 +34230,40 @@ var app = (function () {
     			t22 = space();
     			td11 = element("td");
     			create_component(button2.$$.fragment);
-    			add_location(th0, file$G, 229, 5, 5914);
-    			add_location(th1, file$G, 230, 5, 5939);
-    			add_location(th2, file$G, 231, 5, 5958);
-    			add_location(th3, file$G, 232, 5, 5991);
-    			add_location(th4, file$G, 233, 5, 6024);
-    			add_location(th5, file$G, 234, 5, 6057);
-    			add_location(tr0, file$G, 227, 4, 5901);
-    			add_location(thead, file$G, 226, 3, 5888);
+    			add_location(th0, file$I, 229, 5, 5914);
+    			add_location(th1, file$I, 230, 5, 5939);
+    			add_location(th2, file$I, 231, 5, 5958);
+    			add_location(th3, file$I, 232, 5, 5991);
+    			add_location(th4, file$I, 233, 5, 6024);
+    			add_location(th5, file$I, 234, 5, 6057);
+    			add_location(tr0, file$I, 227, 4, 5901);
+    			add_location(thead, file$I, 226, 3, 5888);
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "pattern", input0_pattern_value = "[A-Za-z]" + (2 - 60));
-    			add_location(input0, file$G, 253, 9, 6505);
-    			add_location(td0, file$G, 253, 5, 6501);
+    			add_location(input0, file$I, 253, 9, 6505);
+    			add_location(td0, file$I, 253, 5, 6501);
     			attr_dev(input1, "type", "number");
-    			add_location(input1, file$G, 254, 9, 6604);
-    			add_location(td1, file$G, 254, 5, 6600);
+    			add_location(input1, file$I, 254, 9, 6604);
+    			add_location(td1, file$I, 254, 5, 6600);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$G, 255, 9, 6674);
-    			add_location(td2, file$G, 255, 5, 6670);
+    			add_location(input2, file$I, 255, 9, 6674);
+    			add_location(td2, file$I, 255, 5, 6670);
     			attr_dev(input3, "type", "number");
-    			add_location(input3, file$G, 256, 9, 6754);
-    			add_location(td3, file$G, 256, 5, 6750);
+    			add_location(input3, file$I, 256, 9, 6754);
+    			add_location(td3, file$I, 256, 5, 6750);
     			attr_dev(input4, "type", "number");
-    			add_location(input4, file$G, 257, 9, 6835);
-    			add_location(td4, file$G, 257, 5, 6831);
-    			add_location(td5, file$G, 258, 5, 6913);
-    			add_location(tr1, file$G, 251, 4, 6488);
-    			add_location(td6, file$G, 279, 5, 7533);
-    			add_location(td7, file$G, 280, 20, 7671);
-    			add_location(td8, file$G, 281, 20, 7702);
-    			add_location(td9, file$G, 282, 20, 7733);
-    			add_location(td10, file$G, 283, 20, 7764);
-    			add_location(td11, file$G, 284, 5, 7780);
-    			add_location(tr2, file$G, 278, 4, 7522);
-    			add_location(tbody, file$G, 249, 3, 6473);
+    			add_location(input4, file$I, 257, 9, 6835);
+    			add_location(td4, file$I, 257, 5, 6831);
+    			add_location(td5, file$I, 258, 5, 6913);
+    			add_location(tr1, file$I, 251, 4, 6488);
+    			add_location(td6, file$I, 279, 5, 7533);
+    			add_location(td7, file$I, 280, 20, 7671);
+    			add_location(td8, file$I, 281, 20, 7702);
+    			add_location(td9, file$I, 282, 20, 7733);
+    			add_location(td10, file$I, 283, 20, 7764);
+    			add_location(td11, file$I, 284, 5, 7780);
+    			add_location(tr2, file$I, 278, 4, 7522);
+    			add_location(tbody, file$I, 249, 3, 6473);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -32787,13 +34385,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$h(ctx, each_value, i);
+    					const child_ctx = get_each_context$j(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block$h(child_ctx);
+    						each_blocks[i] = create_each_block$j(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(tbody, t17);
@@ -32876,7 +34474,7 @@ var app = (function () {
     }
 
     // (207:21)       Loading cigarretes-sales ...    {:then cigarretes}
-    function create_pending_block$j(ctx) {
+    function create_pending_block$l(ctx) {
     	let t;
 
     	const block = {
@@ -32896,7 +34494,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_pending_block$j.name,
+    		id: create_pending_block$l.name,
     		type: "pending",
     		source: "(207:21)       Loading cigarretes-sales ...    {:then cigarretes}",
     		ctx
@@ -33213,7 +34811,7 @@ var app = (function () {
 
     	const paginationitem0 = new PaginationItem({
     			props: {
-    				$$slots: { default: [create_default_slot_2$o] },
+    				$$slots: { default: [create_default_slot_2$q] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -33222,7 +34820,7 @@ var app = (function () {
     	const paginationitem1 = new PaginationItem({
     			props: {
     				class: /*paginaSiguiente*/ ctx[6] ? "" : "disabled",
-    				$$slots: { default: [create_default_slot_1$o] },
+    				$$slots: { default: [create_default_slot_1$q] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -33318,7 +34916,7 @@ var app = (function () {
     }
 
     // (313:2) <PaginationItem>
-    function create_default_slot_2$o(ctx) {
+    function create_default_slot_2$q(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
@@ -33365,7 +34963,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_2$o.name,
+    		id: create_default_slot_2$q.name,
     		type: "slot",
     		source: "(313:2) <PaginationItem>",
     		ctx
@@ -33375,7 +34973,7 @@ var app = (function () {
     }
 
     // (318:2) <PaginationItem class="{paginaSiguiente ? '' : 'disabled'}">
-    function create_default_slot_1$o(ctx) {
+    function create_default_slot_1$q(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
@@ -33410,7 +35008,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_1$o.name,
+    		id: create_default_slot_1$q.name,
     		type: "slot",
     		source: "(318:2) <PaginationItem class=\\\"{paginaSiguiente ? '' : 'disabled'}\\\">",
     		ctx
@@ -33420,7 +35018,7 @@ var app = (function () {
     }
 
     // (296:1) <Pagination float="center">
-    function create_default_slot$u(ctx) {
+    function create_default_slot$w(ctx) {
     	let t0;
     	let t1;
     	let if_block1_anchor;
@@ -33536,7 +35134,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$u.name,
+    		id: create_default_slot$w.name,
     		type: "slot",
     		source: "(296:1) <Pagination float=\\\"center\\\">",
     		ctx
@@ -33545,7 +35143,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$H(ctx) {
+    function create_fragment$J(ctx) {
     	let main;
     	let t0;
     	let t1;
@@ -33559,9 +35157,9 @@ var app = (function () {
     		ctx,
     		current: null,
     		token: null,
-    		pending: create_pending_block$j,
-    		then: create_then_block$j,
-    		catch: create_catch_block$j,
+    		pending: create_pending_block$l,
+    		then: create_then_block$l,
+    		catch: create_catch_block$l,
     		value: 9,
     		blocks: [,,,]
     	};
@@ -33571,7 +35169,7 @@ var app = (function () {
     	const pagination = new Pagination({
     			props: {
     				float: "center",
-    				$$slots: { default: [create_default_slot$u] },
+    				$$slots: { default: [create_default_slot$w] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -33587,7 +35185,7 @@ var app = (function () {
     			info.block.c();
     			t2 = space();
     			create_component(pagination.$$.fragment);
-    			add_location(main, file$G, 198, 0, 5086);
+    			add_location(main, file$I, 198, 0, 5086);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33678,7 +35276,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$H.name,
+    		id: create_fragment$J.name,
     		type: "component",
     		source: "",
     		ctx
@@ -33687,7 +35285,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$H($$self, $$props, $$invalidate) {
+    function instance$J($$self, $$props, $$invalidate) {
     	let errorMsg = "";
     	let exitoMsg = "";
     	let cigarretes = [];
@@ -33840,7 +35438,7 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$m.warn(`<CigarretesTable> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$o.warn(`<CigarretesTable> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
@@ -33991,24 +35589,24 @@ var app = (function () {
     class CigarretesTable extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$H, create_fragment$H, safe_not_equal, {}, [-1, -1]);
+    		init(this, options, instance$J, create_fragment$J, safe_not_equal, {}, [-1, -1]);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "CigarretesTable",
     			options,
-    			id: create_fragment$H.name
+    			id: create_fragment$J.name
     		});
     	}
     }
 
     /* src\front\CigarretesAPI\analytics\GraphCigarretesSales.svelte generated by Svelte v3.23.0 */
 
-    const { console: console_1$n } = globals;
-    const file$H = "src\\front\\CigarretesAPI\\analytics\\GraphCigarretesSales.svelte";
+    const { console: console_1$p } = globals;
+    const file$J = "src\\front\\CigarretesAPI\\analytics\\GraphCigarretesSales.svelte";
 
     // (51:4) <Button outline color="secondary" on:click="{pop}">
-    function create_default_slot$v(ctx) {
+    function create_default_slot$x(ctx) {
     	let t;
 
     	const block = {
@@ -34025,7 +35623,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$v.name,
+    		id: create_default_slot$x.name,
     		type: "slot",
     		source: "(51:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
@@ -34034,7 +35632,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$I(ctx) {
+    function create_fragment$K(ctx) {
     	let script0;
     	let script0_src_value;
     	let script1;
@@ -34061,7 +35659,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "secondary",
-    				$$slots: { default: [create_default_slot$v] },
+    				$$slots: { default: [create_default_slot$x] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -34088,28 +35686,28 @@ var app = (function () {
     			p.textContent = "El gráfico de barras muestra un estudio de millones de paquetes de tabaco comprados en el año 2007 , comparando este año con 2003 (primera variacion) \r\n            y con 2012 (segunda variacion).";
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
     			script0.defer = true;
-    			add_location(script0, file$H, 42, 4, 1231);
+    			add_location(script0, file$J, 42, 4, 1231);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
     			script1.defer = true;
-    			add_location(script1, file$H, 43, 4, 1328);
+    			add_location(script1, file$J, 43, 4, 1328);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
     			script2.defer = true;
-    			add_location(script2, file$H, 44, 4, 1435);
+    			add_location(script2, file$J, 44, 4, 1435);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
     			script3.defer = true;
-    			add_location(script3, file$H, 45, 4, 1539);
+    			add_location(script3, file$J, 45, 4, 1539);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
     			script4.defer = true;
-    			add_location(script4, file$H, 46, 4, 1645);
-    			add_location(br, file$H, 50, 70, 1847);
+    			add_location(script4, file$J, 46, 4, 1645);
+    			add_location(br, file$J, 50, 70, 1847);
     			attr_dev(div, "id", "container");
     			attr_dev(div, "class", "svelte-1i4g1d8");
-    			add_location(div, file$H, 53, 8, 1906);
+    			add_location(div, file$J, 53, 8, 1906);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$H, 54, 8, 1942);
+    			add_location(p, file$J, 54, 8, 1942);
     			attr_dev(figure, "class", "highcharts-figure svelte-1i4g1d8");
-    			add_location(figure, file$H, 52, 4, 1862);
-    			add_location(main, file$H, 49, 0, 1769);
+    			add_location(figure, file$J, 52, 4, 1862);
+    			add_location(main, file$J, 49, 0, 1769);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -34133,11 +35731,11 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(script0, "load", loadGraph$k, false, false, false),
-    					listen_dev(script1, "load", loadGraph$k, false, false, false),
-    					listen_dev(script2, "load", loadGraph$k, false, false, false),
-    					listen_dev(script3, "load", loadGraph$k, false, false, false),
-    					listen_dev(script4, "load", loadGraph$k, false, false, false)
+    					listen_dev(script0, "load", loadGraph$m, false, false, false),
+    					listen_dev(script1, "load", loadGraph$m, false, false, false),
+    					listen_dev(script2, "load", loadGraph$m, false, false, false),
+    					listen_dev(script3, "load", loadGraph$m, false, false, false),
+    					listen_dev(script4, "load", loadGraph$m, false, false, false)
     				];
 
     				mounted = true;
@@ -34177,7 +35775,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$I.name,
+    		id: create_fragment$K.name,
     		type: "component",
     		source: "",
     		ctx
@@ -34186,7 +35784,7 @@ var app = (function () {
     	return block;
     }
 
-    async function loadGraph$k() {
+    async function loadGraph$m() {
     	const res = await fetch("api/v2/cigarretes-sales");
     	let datos = await res.json();
     	let comunidad = datos.filter(datos => datos.year === 2007).map(datos => datos.community);
@@ -34220,40 +35818,40 @@ var app = (function () {
     	});
     }
 
-    function instance$I($$self, $$props, $$invalidate) {
+    function instance$K($$self, $$props, $$invalidate) {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$n.warn(`<GraphCigarretesSales> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$p.warn(`<GraphCigarretesSales> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("GraphCigarretesSales", $$slots, []);
-    	$$self.$capture_state = () => ({ pop, Button, loadGraph: loadGraph$k });
+    	$$self.$capture_state = () => ({ pop, Button, loadGraph: loadGraph$m });
     	return [];
     }
 
     class GraphCigarretesSales extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$I, create_fragment$I, safe_not_equal, {});
+    		init(this, options, instance$K, create_fragment$K, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "GraphCigarretesSales",
     			options,
-    			id: create_fragment$I.name
+    			id: create_fragment$K.name
     		});
     	}
     }
 
     /* src\front\CigarretesAPI\EditCigarretesSales.svelte generated by Svelte v3.23.0 */
 
-    const { console: console_1$o } = globals;
-    const file$I = "src\\front\\CigarretesAPI\\EditCigarretesSales.svelte";
+    const { console: console_1$q } = globals;
+    const file$K = "src\\front\\CigarretesAPI\\EditCigarretesSales.svelte";
 
     // (1:0) <script>      import Table from "sveltestrap/src/Table.svelte";      import Button from  "sveltestrap/src/Button.svelte";        import { pop }
-    function create_catch_block$k(ctx) {
+    function create_catch_block$m(ctx) {
     	const block = {
     		c: noop,
     		m: noop,
@@ -34265,7 +35863,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_catch_block$k.name,
+    		id: create_catch_block$m.name,
     		type: "catch",
     		source: "(1:0) <script>      import Table from \\\"sveltestrap/src/Table.svelte\\\";      import Button from  \\\"sveltestrap/src/Button.svelte\\\";        import { pop }",
     		ctx
@@ -34275,13 +35873,13 @@ var app = (function () {
     }
 
     // (89:0) {:then cigarrete}
-    function create_then_block$k(ctx) {
+    function create_then_block$m(ctx) {
     	let current;
 
     	const table = new Table({
     			props: {
     				bordered: true,
-    				$$slots: { default: [create_default_slot_1$p] },
+    				$$slots: { default: [create_default_slot_1$r] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -34320,7 +35918,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_then_block$k.name,
+    		id: create_then_block$m.name,
     		type: "then",
     		source: "(89:0) {:then cigarrete}",
     		ctx
@@ -34330,7 +35928,7 @@ var app = (function () {
     }
 
     // (111:9) <Button color="primary" outline on:click={updateCigarretes}>
-    function create_default_slot_2$p(ctx) {
+    function create_default_slot_2$r(ctx) {
     	let t;
 
     	const block = {
@@ -34347,7 +35945,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_2$p.name,
+    		id: create_default_slot_2$r.name,
     		type: "slot",
     		source: "(111:9) <Button color=\\\"primary\\\" outline on:click={updateCigarretes}>",
     		ctx
@@ -34357,7 +35955,7 @@ var app = (function () {
     }
 
     // (90:2) <Table bordered>
-    function create_default_slot_1$p(ctx) {
+    function create_default_slot_1$r(ctx) {
     	let thead;
     	let tr0;
     	let th0;
@@ -34396,7 +35994,7 @@ var app = (function () {
     			props: {
     				color: "primary",
     				outline: true,
-    				$$slots: { default: [create_default_slot_2$p] },
+    				$$slots: { default: [create_default_slot_2$r] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -34442,27 +36040,27 @@ var app = (function () {
     			t16 = space();
     			td5 = element("td");
     			create_component(button.$$.fragment);
-    			add_location(th0, file$I, 93, 5, 2636);
-    			add_location(th1, file$I, 94, 5, 2661);
-    			add_location(th2, file$I, 95, 5, 2680);
-    			add_location(th3, file$I, 96, 5, 2713);
-    			add_location(th4, file$I, 97, 5, 2746);
-    			add_location(tr0, file$I, 91, 4, 2623);
-    			add_location(thead, file$I, 90, 3, 2610);
-    			add_location(td0, file$I, 105, 5, 2831);
-    			add_location(td1, file$I, 106, 5, 2865);
+    			add_location(th0, file$K, 93, 5, 2636);
+    			add_location(th1, file$K, 94, 5, 2661);
+    			add_location(th2, file$K, 95, 5, 2680);
+    			add_location(th3, file$K, 96, 5, 2713);
+    			add_location(th4, file$K, 97, 5, 2746);
+    			add_location(tr0, file$K, 91, 4, 2623);
+    			add_location(thead, file$K, 90, 3, 2610);
+    			add_location(td0, file$K, 105, 5, 2831);
+    			add_location(td1, file$K, 106, 5, 2865);
     			attr_dev(input0, "type", "number");
-    			add_location(input0, file$I, 107, 9, 2898);
-    			add_location(td2, file$I, 107, 5, 2894);
+    			add_location(input0, file$K, 107, 9, 2898);
+    			add_location(td2, file$K, 107, 5, 2894);
     			attr_dev(input1, "type", "number");
-    			add_location(input1, file$I, 108, 9, 2972);
-    			add_location(td3, file$I, 108, 5, 2968);
+    			add_location(input1, file$K, 108, 9, 2972);
+    			add_location(td3, file$K, 108, 5, 2968);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$I, 109, 9, 3047);
-    			add_location(td4, file$I, 109, 5, 3043);
-    			add_location(td5, file$I, 110, 5, 3119);
-    			add_location(tr1, file$I, 103, 4, 2818);
-    			add_location(tbody, file$I, 101, 3, 2803);
+    			add_location(input2, file$K, 109, 9, 3047);
+    			add_location(td4, file$K, 109, 5, 3043);
+    			add_location(td5, file$K, 110, 5, 3119);
+    			add_location(tr1, file$K, 103, 4, 2818);
+    			add_location(tbody, file$K, 101, 3, 2803);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -34556,7 +36154,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_1$p.name,
+    		id: create_default_slot_1$r.name,
     		type: "slot",
     		source: "(90:2) <Table bordered>",
     		ctx
@@ -34566,7 +36164,7 @@ var app = (function () {
     }
 
     // (87:18)      Loading cigarrete ...  {:then cigarrete}
-    function create_pending_block$k(ctx) {
+    function create_pending_block$m(ctx) {
     	let t;
 
     	const block = {
@@ -34586,7 +36184,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_pending_block$k.name,
+    		id: create_pending_block$m.name,
     		type: "pending",
     		source: "(87:18)      Loading cigarrete ...  {:then cigarrete}",
     		ctx
@@ -34607,7 +36205,7 @@ var app = (function () {
     			t0 = text("Error: ");
     			t1 = text(/*errorMsg*/ ctx[6]);
     			set_style(p, "color", "red");
-    			add_location(p, file$I, 120, 4, 3301);
+    			add_location(p, file$K, 120, 4, 3301);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -34645,7 +36243,7 @@ var app = (function () {
     			t0 = text("Éxito: ");
     			t1 = text(/*exitoMsg*/ ctx[7]);
     			set_style(p, "color", "blue");
-    			add_location(p, file$I, 123, 4, 3382);
+    			add_location(p, file$K, 123, 4, 3382);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -34672,7 +36270,7 @@ var app = (function () {
     }
 
     // (126:8) <Button outline color="secondary" on:click="{pop}">
-    function create_default_slot$w(ctx) {
+    function create_default_slot$y(ctx) {
     	let t;
 
     	const block = {
@@ -34689,7 +36287,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$w.name,
+    		id: create_default_slot$y.name,
     		type: "slot",
     		source: "(126:8) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
@@ -34698,7 +36296,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$J(ctx) {
+    function create_fragment$L(ctx) {
     	let main;
     	let h3;
     	let t0;
@@ -34720,9 +36318,9 @@ var app = (function () {
     		ctx,
     		current: null,
     		token: null,
-    		pending: create_pending_block$k,
-    		then: create_then_block$k,
-    		catch: create_catch_block$k,
+    		pending: create_pending_block$m,
+    		then: create_then_block$m,
+    		catch: create_catch_block$m,
     		value: 8,
     		blocks: [,,,]
     	};
@@ -34735,7 +36333,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "secondary",
-    				$$slots: { default: [create_default_slot$w] },
+    				$$slots: { default: [create_default_slot$y] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -34761,10 +36359,10 @@ var app = (function () {
     			if (if_block1) if_block1.c();
     			t7 = space();
     			create_component(button.$$.fragment);
-    			add_location(strong0, file$I, 84, 39, 2437);
-    			add_location(strong1, file$I, 84, 85, 2483);
-    			add_location(h3, file$I, 84, 4, 2402);
-    			add_location(main, file$I, 83, 0, 2389);
+    			add_location(strong0, file$K, 84, 39, 2437);
+    			add_location(strong1, file$K, 84, 85, 2483);
+    			add_location(h3, file$K, 84, 4, 2402);
+    			add_location(main, file$K, 83, 0, 2389);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -34864,7 +36462,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$J.name,
+    		id: create_fragment$L.name,
     		type: "component",
     		source: "",
     		ctx
@@ -34873,7 +36471,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$J($$self, $$props, $$invalidate) {
+    function instance$L($$self, $$props, $$invalidate) {
     	let { params = {} } = $$props; //Para los parametro en la url de cada recurso
     	let cigarrete = {};
     	let updatedCommunity = "";
@@ -34933,7 +36531,7 @@ var app = (function () {
     	const writable_props = ["params"];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$o.warn(`<EditCigarretesSales> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$q.warn(`<EditCigarretesSales> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
@@ -35013,13 +36611,13 @@ var app = (function () {
     class EditCigarretesSales extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$J, create_fragment$J, safe_not_equal, { params: 0 });
+    		init(this, options, instance$L, create_fragment$L, safe_not_equal, { params: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "EditCigarretesSales",
     			options,
-    			id: create_fragment$J.name
+    			id: create_fragment$L.name
     		});
     	}
 
@@ -35033,10 +36631,10 @@ var app = (function () {
     }
 
     /* src\front\CigarretesAPI\analytics\ChartCigarretesSales.svelte generated by Svelte v3.23.0 */
-    const file$J = "src\\front\\CigarretesAPI\\analytics\\ChartCigarretesSales.svelte";
+    const file$L = "src\\front\\CigarretesAPI\\analytics\\ChartCigarretesSales.svelte";
 
     // (83:4) <Button outline color="secondary" on:click="{pop}">
-    function create_default_slot$x(ctx) {
+    function create_default_slot$z(ctx) {
     	let t;
 
     	const block = {
@@ -35053,7 +36651,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$x.name,
+    		id: create_default_slot$z.name,
     		type: "slot",
     		source: "(83:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
@@ -35062,7 +36660,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$K(ctx) {
+    function create_fragment$M(ctx) {
     	let script;
     	let script_src_value;
     	let t0;
@@ -35084,7 +36682,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "secondary",
-    				$$slots: { default: [create_default_slot$x] },
+    				$$slots: { default: [create_default_slot$z] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -35109,16 +36707,16 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "El gráfico de barras muestra un estudio de millones de paquetes de tabaco comprados en el año 2007 , comparando este año con 2003 (primera variacion) \r\n        y con 2012 (segunda variacion).";
     			if (script.src !== (script_src_value = "https://cdn.plot.ly/plotly-latest.min.js")) attr_dev(script, "src", script_src_value);
-    			add_location(script, file$J, 76, 4, 2850);
+    			add_location(script, file$L, 76, 4, 2850);
     			attr_dev(i, "class", "fas fa-car");
-    			add_location(i, file$J, 80, 37, 3001);
+    			add_location(i, file$L, 80, 37, 3001);
     			set_style(h2, "text-align", "center");
-    			add_location(h2, file$J, 80, 4, 2968);
-    			add_location(br, file$J, 82, 70, 3156);
+    			add_location(h2, file$L, 80, 4, 2968);
+    			add_location(br, file$L, 82, 70, 3156);
     			attr_dev(div, "id", "graph");
-    			add_location(div, file$J, 84, 4, 3168);
-    			add_location(p, file$J, 85, 4, 3196);
-    			add_location(main, file$J, 79, 0, 2956);
+    			add_location(div, file$L, 84, 4, 3168);
+    			add_location(p, file$L, 85, 4, 3196);
+    			add_location(main, file$L, 79, 0, 2956);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -35140,7 +36738,7 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(script, "load", loadGraph$l, false, false, false);
+    				dispose = listen_dev(script, "load", loadGraph$n, false, false, false);
     				mounted = true;
     			}
     		},
@@ -35174,7 +36772,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$K.name,
+    		id: create_fragment$M.name,
     		type: "component",
     		source: "",
     		ctx
@@ -35183,7 +36781,7 @@ var app = (function () {
     	return block;
     }
 
-    async function loadGraph$l() {
+    async function loadGraph$n() {
     	const res = await fetch("api/v2/cigarretes-sales");
     	let datos = await res.json();
     	let comunidad = datos.filter(datos => datos.year === 2007).map(datos => datos.community);
@@ -35247,7 +36845,7 @@ var app = (function () {
     	});
     }
 
-    function instance$K($$self, $$props, $$invalidate) {
+    function instance$M($$self, $$props, $$invalidate) {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -35256,1316 +36854,28 @@ var app = (function () {
 
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("ChartCigarretesSales", $$slots, []);
-    	$$self.$capture_state = () => ({ pop, Button, loadGraph: loadGraph$l });
+    	$$self.$capture_state = () => ({ pop, Button, loadGraph: loadGraph$n });
     	return [];
     }
 
     class ChartCigarretesSales extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$K, create_fragment$K, safe_not_equal, {});
-
-    		dispatch_dev("SvelteRegisterComponent", {
-    			component: this,
-    			tagName: "ChartCigarretesSales",
-    			options,
-    			id: create_fragment$K.name
-    		});
-    	}
-    }
-
-    /* src\front\CigarretesAPI\integrations\pluginTrafficAccidents.svelte generated by Svelte v3.23.0 */
-
-    const { console: console_1$p } = globals;
-    const file$K = "src\\front\\CigarretesAPI\\integrations\\pluginTrafficAccidents.svelte";
-
-    function get_each_context$i(ctx, list, i) {
-    	const child_ctx = ctx.slice();
-    	child_ctx[2] = list[i];
-    	return child_ctx;
-    }
-
-    // (1:0) <script>    import  { onMount }
-    function create_catch_block$l(ctx) {
-    	const block = {
-    		c: noop,
-    		m: noop,
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: noop
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_catch_block$l.name,
-    		type: "catch",
-    		source: "(1:0) <script>    import  { onMount }",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (107:1) {:then getPluginAccidents}
-    function create_then_block$l(ctx) {
-    	let figure;
-    	let div;
-    	let t0;
-    	let p;
-    	let t2;
-    	let current;
-
-    	const table = new Table({
-    			props: {
-    				bordered: true,
-    				$$slots: { default: [create_default_slot_1$q] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			figure = element("figure");
-    			div = element("div");
-    			t0 = space();
-    			p = element("p");
-    			p.textContent = "Esta API muestra información sobre los diversos accidentes en provincias españolas.";
-    			t2 = space();
-    			create_component(table.$$.fragment);
-    			attr_dev(div, "id", "container");
-    			add_location(div, file$K, 108, 12, 3179);
-    			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$K, 109, 16, 3223);
-    			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$K, 107, 2, 3131);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, figure, anchor);
-    			append_dev(figure, div);
-    			append_dev(figure, t0);
-    			append_dev(figure, p);
-    			insert_dev(target, t2, anchor);
-    			mount_component(table, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const table_changes = {};
-
-    			if (dirty & /*$$scope, plugins*/ 33) {
-    				table_changes.$$scope = { dirty, ctx };
-    			}
-
-    			table.$set(table_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(table.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(table.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(figure);
-    			if (detaching) detach_dev(t2);
-    			destroy_component(table, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_then_block$l.name,
-    		type: "then",
-    		source: "(107:1) {:then getPluginAccidents}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (128:4) {#each plugins as plugin}
-    function create_each_block$i(ctx) {
-    	let tr;
-    	let td0;
-    	let t0_value = /*plugin*/ ctx[2].province + "";
-    	let t0;
-    	let t1;
-    	let td1;
-    	let t2_value = /*plugin*/ ctx[2].year + "";
-    	let t2;
-    	let t3;
-    	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["accidentWithVictims"] + "";
-    	let t4;
-    	let t5;
-    	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["mortalAccident"] + "";
-    	let t6;
-    	let t7;
-
-    	const block = {
-    		c: function create() {
-    			tr = element("tr");
-    			td0 = element("td");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			td1 = element("td");
-    			t2 = text(t2_value);
-    			t3 = space();
-    			td2 = element("td");
-    			t4 = text(t4_value);
-    			t5 = space();
-    			td3 = element("td");
-    			t6 = text(t6_value);
-    			t7 = space();
-    			add_location(td0, file$K, 129, 20, 3725);
-    			add_location(td1, file$K, 130, 20, 3773);
-    			add_location(td2, file$K, 131, 20, 3817);
-    			add_location(td3, file$K, 132, 20, 3879);
-    			add_location(tr, file$K, 128, 4, 3699);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, tr, anchor);
-    			append_dev(tr, td0);
-    			append_dev(td0, t0);
-    			append_dev(tr, t1);
-    			append_dev(tr, td1);
-    			append_dev(td1, t2);
-    			append_dev(tr, t3);
-    			append_dev(tr, td2);
-    			append_dev(td2, t4);
-    			append_dev(tr, t5);
-    			append_dev(tr, td3);
-    			append_dev(td3, t6);
-    			append_dev(tr, t7);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].province + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["accidentWithVictims"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["mortalAccident"] + "")) set_data_dev(t6, t6_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(tr);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block$i.name,
-    		type: "each",
-    		source: "(128:4) {#each plugins as plugin}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (116:2) <Table bordered>
-    function create_default_slot_1$q(ctx) {
-    	let thead;
-    	let tr;
-    	let th0;
-    	let t1;
-    	let th1;
-    	let t3;
-    	let th2;
-    	let t5;
-    	let th3;
-    	let t7;
-    	let tbody;
-    	let each_value = /*plugins*/ ctx[0];
-    	validate_each_argument(each_value);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$i(get_each_context$i(ctx, each_value, i));
-    	}
-
-    	const block = {
-    		c: function create() {
-    			thead = element("thead");
-    			tr = element("tr");
-    			th0 = element("th");
-    			th0.textContent = "Provincia";
-    			t1 = space();
-    			th1 = element("th");
-    			th1.textContent = "Año";
-    			t3 = space();
-    			th2 = element("th");
-    			th2.textContent = "Accidentes con víctimas";
-    			t5 = space();
-    			th3 = element("th");
-    			th3.textContent = "Accidentes mortales";
-    			t7 = space();
-    			tbody = element("tbody");
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			add_location(th0, file$K, 118, 5, 3476);
-    			add_location(th1, file$K, 119, 5, 3501);
-    			add_location(th2, file$K, 120, 5, 3520);
-    			add_location(th3, file$K, 121, 20, 3574);
-    			add_location(tr, file$K, 117, 4, 3465);
-    			add_location(thead, file$K, 116, 3, 3452);
-    			add_location(tbody, file$K, 126, 3, 3655);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, thead, anchor);
-    			append_dev(thead, tr);
-    			append_dev(tr, th0);
-    			append_dev(tr, t1);
-    			append_dev(tr, th1);
-    			append_dev(tr, t3);
-    			append_dev(tr, th2);
-    			append_dev(tr, t5);
-    			append_dev(tr, th3);
-    			insert_dev(target, t7, anchor);
-    			insert_dev(target, tbody, anchor);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(tbody, null);
-    			}
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1) {
-    				each_value = /*plugins*/ ctx[0];
-    				validate_each_argument(each_value);
-    				let i;
-
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$i(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block$i(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(tbody, null);
-    					}
-    				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value.length;
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(thead);
-    			if (detaching) detach_dev(t7);
-    			if (detaching) detach_dev(tbody);
-    			destroy_each(each_blocks, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_1$q.name,
-    		type: "slot",
-    		source: "(116:2) <Table bordered>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (105:28)     Loading plugin-accidents-stats ...   {:then getPluginAccidents}
-    function create_pending_block$l(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text("Loading plugin-accidents-stats ...");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_pending_block$l.name,
-    		type: "pending",
-    		source: "(105:28)     Loading plugin-accidents-stats ...   {:then getPluginAccidents}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (145:1) <Button outline color="secondary" on:click="{pop}">
-    function create_default_slot$y(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text("Atrás ↩");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot$y.name,
-    		type: "slot",
-    		source: "(145:1) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment$L(ctx) {
-    	let script0;
-    	let script0_src_value;
-    	let script1;
-    	let script1_src_value;
-    	let script2;
-    	let script2_src_value;
-    	let script3;
-    	let script3_src_value;
-    	let script4;
-    	let script4_src_value;
-    	let t0;
-    	let main;
-    	let promise;
-    	let t1;
-    	let current;
-    	let mounted;
-    	let dispose;
-
-    	let info = {
-    		ctx,
-    		current: null,
-    		token: null,
-    		pending: create_pending_block$l,
-    		then: create_then_block$l,
-    		catch: create_catch_block$l,
-    		value: 1,
-    		blocks: [,,,]
-    	};
-
-    	handle_promise(promise = /*getPluginAccidents*/ ctx[1], info);
-
-    	const button = new Button({
-    			props: {
-    				outline: true,
-    				color: "secondary",
-    				$$slots: { default: [create_default_slot$y] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	button.$on("click", pop);
-
-    	const block = {
-    		c: function create() {
-    			script0 = element("script");
-    			script1 = element("script");
-    			script2 = element("script");
-    			script3 = element("script");
-    			script4 = element("script");
-    			t0 = space();
-    			main = element("main");
-    			info.block.c();
-    			t1 = space();
-    			create_component(button.$$.fragment);
-    			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			script0.defer = true;
-    			add_location(script0, file$K, 95, 4, 2484);
-    			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			script1.defer = true;
-    			add_location(script1, file$K, 96, 4, 2581);
-    			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			script2.defer = true;
-    			add_location(script2, file$K, 97, 4, 2688);
-    			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			script3.defer = true;
-    			add_location(script3, file$K, 98, 4, 2792);
-    			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			script4.defer = true;
-    			add_location(script4, file$K, 99, 4, 2898);
-    			add_location(main, file$K, 102, 0, 3022);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-    		m: function mount(target, anchor) {
-    			append_dev(document.head, script0);
-    			append_dev(document.head, script1);
-    			append_dev(document.head, script2);
-    			append_dev(document.head, script3);
-    			append_dev(document.head, script4);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, main, anchor);
-    			info.block.m(main, info.anchor = null);
-    			info.mount = () => main;
-    			info.anchor = null;
-    			insert_dev(target, t1, anchor);
-    			mount_component(button, target, anchor);
-    			current = true;
-
-    			if (!mounted) {
-    				dispose = [
-    					listen_dev(script0, "load", loadGraph$m, false, false, false),
-    					listen_dev(script1, "load", loadGraph$m, false, false, false),
-    					listen_dev(script2, "load", loadGraph$m, false, false, false),
-    					listen_dev(script3, "load", loadGraph$m, false, false, false),
-    					listen_dev(script4, "load", loadGraph$m, false, false, false)
-    				];
-
-    				mounted = true;
-    			}
-    		},
-    		p: function update(new_ctx, [dirty]) {
-    			ctx = new_ctx;
-
-    			{
-    				const child_ctx = ctx.slice();
-    				child_ctx[1] = info.resolved;
-    				info.block.p(child_ctx, dirty);
-    			}
-
-    			const button_changes = {};
-
-    			if (dirty & /*$$scope*/ 32) {
-    				button_changes.$$scope = { dirty, ctx };
-    			}
-
-    			button.$set(button_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(info.block);
-    			transition_in(button.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			for (let i = 0; i < 3; i += 1) {
-    				const block = info.blocks[i];
-    				transition_out(block);
-    			}
-
-    			transition_out(button.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			detach_dev(script0);
-    			detach_dev(script1);
-    			detach_dev(script2);
-    			detach_dev(script3);
-    			detach_dev(script4);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(main);
-    			info.block.d();
-    			info.token = null;
-    			info = null;
-    			if (detaching) detach_dev(t1);
-    			destroy_component(button, detaching);
-    			mounted = false;
-    			run_all(dispose);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_fragment$L.name,
-    		type: "component",
-    		source: "",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    const url$5 = "https://sos1920-04.herokuapp.com/api/v1/traffic_accidents";
-
-    async function loadGraph$m() {
-    	const res1 = await fetch("api/v2/cigarretes-sales");
-    	let datos2 = await res1.json();
-    	const res = await fetch(url$5);
-    	let datos = await res.json();
-
-    	let ejeX = [
-    		"Accidentes con víctimas",
-    		"Accidentes mortales",
-    		"Venta de paquetes de tabaco",
-    		"Primera variacion"
-    	];
-
-    	let valores = [];
-    	let valor = {};
-
-    	datos.forEach(d => {
-    		valor = {
-    			name: d.province,
-    			data: [d.accidentWithVictims, d.mortalAccident, 0, 0]
-    		};
-
-    		valores.push(valor);
-    	});
-
-    	datos2.forEach(d2 => {
-    		if (d2.year == 2007) {
-    			valor = {
-    				name: d2.community,
-    				data: [0, 0, d2.cigarrete_sale, d2.first_variation]
-    			};
-
-    			valores.push(valor);
-    		}
-    	});
-
-    	console.log("Graph_NONO");
-
-    	Highcharts.chart("container", {
-    		chart: { type: "column" },
-    		title: { text: "Integración grupo 4" },
-    		xAxis: { categories: ejeX, crosshair: true },
-    		tooltip: {
-    			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
-    			pointFormat: "<tr><td style=\"color:{series.color};padding:0\">{series.name}: </td>" + "<td style=\"padding:0\"><b>{point.y:.1f} </b></td></tr>",
-    			footerFormat: "</table>",
-    			shared: true,
-    			useHTML: true
-    		},
-    		plotOptions: {
-    			column: { pointPadding: 0.2, borderWidth: 0 }
-    		},
-    		series: valores
-    	});
-    }
-
-    function instance$L($$self, $$props, $$invalidate) {
-    	onMount(getPluginAccidents);
-    	let plugins = [];
-
-    	async function getPluginAccidents() {
-    		console.log("Fetching plugin traffic_accidents..");
-    		const res = await fetch(url$5);
-
-    		if (res.ok) {
-    			console.log("ok");
-    			const json = await res.json();
-    			$$invalidate(0, plugins = json);
-    			console.log("Received " + plugins.length + " plugin accidents");
-    		} else {
-    			console.log("Error");
-    		}
-    	}
-
-    	const writable_props = [];
-
-    	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$p.warn(`<PluginTrafficAccidents> was created with unknown prop '${key}'`);
-    	});
-
-    	let { $$slots = {}, $$scope } = $$props;
-    	validate_slots("PluginTrafficAccidents", $$slots, []);
-
-    	$$self.$capture_state = () => ({
-    		onMount,
-    		pop,
-    		Table,
-    		Button,
-    		url: url$5,
-    		plugins,
-    		getPluginAccidents,
-    		loadGraph: loadGraph$m
-    	});
-
-    	$$self.$inject_state = $$props => {
-    		if ("plugins" in $$props) $$invalidate(0, plugins = $$props.plugins);
-    	};
-
-    	if ($$props && "$$inject" in $$props) {
-    		$$self.$inject_state($$props.$$inject);
-    	}
-
-    	return [plugins, getPluginAccidents];
-    }
-
-    class PluginTrafficAccidents extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$L, create_fragment$L, safe_not_equal, {});
-
-    		dispatch_dev("SvelteRegisterComponent", {
-    			component: this,
-    			tagName: "PluginTrafficAccidents",
-    			options,
-    			id: create_fragment$L.name
-    		});
-    	}
-    }
-
-    /* src\front\CigarretesAPI\integrations\pluginGCE.svelte generated by Svelte v3.23.0 */
-
-    const { console: console_1$q } = globals;
-    const file$L = "src\\front\\CigarretesAPI\\integrations\\pluginGCE.svelte";
-
-    function get_each_context$j(ctx, list, i) {
-    	const child_ctx = ctx.slice();
-    	child_ctx[2] = list[i];
-    	return child_ctx;
-    }
-
-    // (1:0) <script>        import  { onMount }
-    function create_catch_block$m(ctx) {
-    	const block = {
-    		c: noop,
-    		m: noop,
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: noop
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_catch_block$m.name,
-    		type: "catch",
-    		source: "(1:0) <script>        import  { onMount }",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (110:8) {:then getPluginGCE}
-    function create_then_block$m(ctx) {
-    	let figure;
-    	let div;
-    	let t0;
-    	let p;
-    	let t2;
-    	let current;
-
-    	const table = new Table({
-    			props: {
-    				bordered: true,
-    				$$slots: { default: [create_default_slot_1$r] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			figure = element("figure");
-    			div = element("div");
-    			t0 = space();
-    			p = element("p");
-    			p.textContent = "Esta API muestra información sobre .";
-    			t2 = space();
-    			create_component(table.$$.fragment);
-    			attr_dev(div, "id", "container");
-    			add_location(div, file$L, 111, 16, 3336);
-    			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$L, 112, 20, 3384);
-    			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$L, 110, 12, 3284);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, figure, anchor);
-    			append_dev(figure, div);
-    			append_dev(figure, t0);
-    			append_dev(figure, p);
-    			insert_dev(target, t2, anchor);
-    			mount_component(table, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const table_changes = {};
-
-    			if (dirty & /*$$scope, plugins*/ 33) {
-    				table_changes.$$scope = { dirty, ctx };
-    			}
-
-    			table.$set(table_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(table.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(table.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(figure);
-    			if (detaching) detach_dev(t2);
-    			destroy_component(table, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_then_block$m.name,
-    		type: "then",
-    		source: "(110:8) {:then getPluginGCE}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (131:20) {#each plugins as plugin}
-    function create_each_block$j(ctx) {
-    	let tr;
-    	let td0;
-    	let t0_value = /*plugin*/ ctx[2].country + "";
-    	let t0;
-    	let t1;
-    	let td1;
-    	let t2_value = /*plugin*/ ctx[2].year + "";
-    	let t2;
-    	let t3;
-    	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["gce_country"] + "";
-    	let t4;
-    	let t5;
-    	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["gce_per_capita"] + "";
-    	let t6;
-    	let t7;
-
-    	const block = {
-    		c: function create() {
-    			tr = element("tr");
-    			td0 = element("td");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			td1 = element("td");
-    			t2 = text(t2_value);
-    			t3 = space();
-    			td2 = element("td");
-    			t4 = text(t4_value);
-    			t5 = space();
-    			td3 = element("td");
-    			t6 = text(t6_value);
-    			t7 = space();
-    			add_location(td0, file$L, 132, 24, 4021);
-    			add_location(td1, file$L, 133, 24, 4072);
-    			add_location(td2, file$L, 134, 24, 4120);
-    			add_location(td3, file$L, 135, 24, 4178);
-    			add_location(tr, file$L, 131, 20, 3991);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, tr, anchor);
-    			append_dev(tr, td0);
-    			append_dev(td0, t0);
-    			append_dev(tr, t1);
-    			append_dev(tr, td1);
-    			append_dev(td1, t2);
-    			append_dev(tr, t3);
-    			append_dev(tr, td2);
-    			append_dev(td2, t4);
-    			append_dev(tr, t5);
-    			append_dev(tr, td3);
-    			append_dev(td3, t6);
-    			append_dev(tr, t7);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["gce_country"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["gce_per_capita"] + "")) set_data_dev(t6, t6_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(tr);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block$j.name,
-    		type: "each",
-    		source: "(131:20) {#each plugins as plugin}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (119:12) <Table bordered>
-    function create_default_slot_1$r(ctx) {
-    	let thead;
-    	let tr;
-    	let th0;
-    	let t1;
-    	let th1;
-    	let t3;
-    	let th2;
-    	let t5;
-    	let th3;
-    	let t7;
-    	let tbody;
-    	let each_value = /*plugins*/ ctx[0];
-    	validate_each_argument(each_value);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$j(get_each_context$j(ctx, each_value, i));
-    	}
-
-    	const block = {
-    		c: function create() {
-    			thead = element("thead");
-    			tr = element("tr");
-    			th0 = element("th");
-    			th0.textContent = "Pais";
-    			t1 = space();
-    			th1 = element("th");
-    			th1.textContent = "Año";
-    			t3 = space();
-    			th2 = element("th");
-    			th2.textContent = "GCE pais";
-    			t5 = space();
-    			th3 = element("th");
-    			th3.textContent = "GCE por capital";
-    			t7 = space();
-    			tbody = element("tbody");
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			add_location(th0, file$L, 121, 24, 3668);
-    			add_location(th1, file$L, 122, 24, 3707);
-    			add_location(th2, file$L, 123, 24, 3745);
-    			add_location(th3, file$L, 124, 24, 3788);
-    			add_location(tr, file$L, 120, 20, 3638);
-    			add_location(thead, file$L, 119, 16, 3609);
-    			add_location(tbody, file$L, 129, 16, 3915);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, thead, anchor);
-    			append_dev(thead, tr);
-    			append_dev(tr, th0);
-    			append_dev(tr, t1);
-    			append_dev(tr, th1);
-    			append_dev(tr, t3);
-    			append_dev(tr, th2);
-    			append_dev(tr, t5);
-    			append_dev(tr, th3);
-    			insert_dev(target, t7, anchor);
-    			insert_dev(target, tbody, anchor);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(tbody, null);
-    			}
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1) {
-    				each_value = /*plugins*/ ctx[0];
-    				validate_each_argument(each_value);
-    				let i;
-
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$j(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block$j(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(tbody, null);
-    					}
-    				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value.length;
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(thead);
-    			if (detaching) detach_dev(t7);
-    			if (detaching) detach_dev(tbody);
-    			destroy_each(each_blocks, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_1$r.name,
-    		type: "slot",
-    		source: "(119:12) <Table bordered>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (108:29)               Loading plugin-gce.. ...          {:then getPluginGCE}
-    function create_pending_block$m(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text("Loading plugin-gce.. ...");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_pending_block$m.name,
-    		type: "pending",
-    		source: "(108:29)               Loading plugin-gce.. ...          {:then getPluginGCE}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (148:5) <Button outline color="secondary" on:click="{pop}">
-    function create_default_slot$z(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text("Atrás ↩");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot$z.name,
-    		type: "slot",
-    		source: "(148:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment$M(ctx) {
-    	let script0;
-    	let script0_src_value;
-    	let script1;
-    	let script1_src_value;
-    	let script2;
-    	let script2_src_value;
-    	let script3;
-    	let script3_src_value;
-    	let script4;
-    	let script4_src_value;
-    	let t0;
-    	let main;
-    	let promise;
-    	let t1;
-    	let current;
-    	let mounted;
-    	let dispose;
-
-    	let info = {
-    		ctx,
-    		current: null,
-    		token: null,
-    		pending: create_pending_block$m,
-    		then: create_then_block$m,
-    		catch: create_catch_block$m,
-    		value: 1,
-    		blocks: [,,,]
-    	};
-
-    	handle_promise(promise = /*getPluginGCE*/ ctx[1], info);
-
-    	const button = new Button({
-    			props: {
-    				outline: true,
-    				color: "secondary",
-    				$$slots: { default: [create_default_slot$z] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	button.$on("click", pop);
-
-    	const block = {
-    		c: function create() {
-    			script0 = element("script");
-    			script1 = element("script");
-    			script2 = element("script");
-    			script3 = element("script");
-    			script4 = element("script");
-    			t0 = space();
-    			main = element("main");
-    			info.block.c();
-    			t1 = space();
-    			create_component(button.$$.fragment);
-    			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
-    			script0.defer = true;
-    			add_location(script0, file$L, 98, 8, 2593);
-    			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
-    			script1.defer = true;
-    			add_location(script1, file$L, 99, 8, 2694);
-    			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
-    			script2.defer = true;
-    			add_location(script2, file$L, 100, 8, 2805);
-    			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
-    			script3.defer = true;
-    			add_location(script3, file$L, 101, 8, 2913);
-    			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
-    			script4.defer = true;
-    			add_location(script4, file$L, 102, 8, 3023);
-    			add_location(main, file$L, 105, 4, 3159);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-    		m: function mount(target, anchor) {
-    			append_dev(document.head, script0);
-    			append_dev(document.head, script1);
-    			append_dev(document.head, script2);
-    			append_dev(document.head, script3);
-    			append_dev(document.head, script4);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, main, anchor);
-    			info.block.m(main, info.anchor = null);
-    			info.mount = () => main;
-    			info.anchor = null;
-    			insert_dev(target, t1, anchor);
-    			mount_component(button, target, anchor);
-    			current = true;
-
-    			if (!mounted) {
-    				dispose = [
-    					listen_dev(script0, "load", loadGraph$n, false, false, false),
-    					listen_dev(script1, "load", loadGraph$n, false, false, false),
-    					listen_dev(script2, "load", loadGraph$n, false, false, false),
-    					listen_dev(script3, "load", loadGraph$n, false, false, false),
-    					listen_dev(script4, "load", loadGraph$n, false, false, false)
-    				];
-
-    				mounted = true;
-    			}
-    		},
-    		p: function update(new_ctx, [dirty]) {
-    			ctx = new_ctx;
-
-    			{
-    				const child_ctx = ctx.slice();
-    				child_ctx[1] = info.resolved;
-    				info.block.p(child_ctx, dirty);
-    			}
-
-    			const button_changes = {};
-
-    			if (dirty & /*$$scope*/ 32) {
-    				button_changes.$$scope = { dirty, ctx };
-    			}
-
-    			button.$set(button_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(info.block);
-    			transition_in(button.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			for (let i = 0; i < 3; i += 1) {
-    				const block = info.blocks[i];
-    				transition_out(block);
-    			}
-
-    			transition_out(button.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			detach_dev(script0);
-    			detach_dev(script1);
-    			detach_dev(script2);
-    			detach_dev(script3);
-    			detach_dev(script4);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(main);
-    			info.block.d();
-    			info.token = null;
-    			info = null;
-    			if (detaching) detach_dev(t1);
-    			destroy_component(button, detaching);
-    			mounted = false;
-    			run_all(dispose);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_fragment$M.name,
-    		type: "component",
-    		source: "",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    const url$6 = "api/v1/gce";
-
-    async function loadGraph$n() {
-    	const res1 = await fetch("api/v2/cigarretes-sales");
-    	let datos2 = await res1.json();
-    	const res = await fetch(url$6);
-    	let datos = await res.json();
-
-    	let ejeX = [
-    		"Energia hidroeléctrica",
-    		"Energia solar",
-    		"Venta de paquetes de tabaco",
-    		"Primera variacion"
-    	];
-
-    	let valores = [];
-    	let valor = {};
-
-    	datos.forEach(d => {
-    		valor = {
-    			name: d.country,
-    			data: [d.gce_country, d.gce_per_capita, 0, 0]
-    		};
-
-    		valores.push(valor);
-    	});
-
-    	datos2.forEach(d2 => {
-    		if (d2.year == 2007) {
-    			valor = {
-    				name: d2.community,
-    				data: [0, 0, d2.cigarrete_sale, d2.first_variation]
-    			};
-
-    			valores.push(valor);
-    		}
-    	});
-
-    	console.log("Graph_NONO");
-
-    	Highcharts.chart("container", {
-    		chart: { type: "column" },
-    		title: { text: "Integración grupo 28" },
-    		xAxis: { categories: ejeX, crosshair: true },
-    		tooltip: {
-    			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
-    			pointFormat: "<tr><td style=\"color:{series.color};padding:0\">{series.name}: </td>" + "<td style=\"padding:0\"><b>{point.y:.1f} </b></td></tr>",
-    			footerFormat: "</table>",
-    			shared: true,
-    			useHTML: true
-    		},
-    		plotOptions: {
-    			column: { pointPadding: 0.2, borderWidth: 0 }
-    		},
-    		series: valores
-    	});
-    }
-
-    function instance$M($$self, $$props, $$invalidate) {
-    	onMount(getPluginGCE);
-    	let plugins = [];
-
-    	async function getPluginGCE() {
-    		console.log("Fetching plugin traffic_accidents..");
-    		const res = await fetch(url$6);
-
-    		if (res.ok) {
-    			console.log("ok");
-    			const json = await res.json();
-    			$$invalidate(0, plugins = json);
-    			console.log("Received " + plugins.length + " plugin GCE");
-    		} else {
-    			console.log("Error");
-    		}
-    	}
-
-    	const writable_props = [];
-
-    	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$q.warn(`<PluginGCE> was created with unknown prop '${key}'`);
-    	});
-
-    	let { $$slots = {}, $$scope } = $$props;
-    	validate_slots("PluginGCE", $$slots, []);
-
-    	$$self.$capture_state = () => ({
-    		onMount,
-    		pop,
-    		Table,
-    		Button,
-    		url: url$6,
-    		plugins,
-    		getPluginGCE,
-    		loadGraph: loadGraph$n
-    	});
-
-    	$$self.$inject_state = $$props => {
-    		if ("plugins" in $$props) $$invalidate(0, plugins = $$props.plugins);
-    	};
-
-    	if ($$props && "$$inject" in $$props) {
-    		$$self.$inject_state($$props.$$inject);
-    	}
-
-    	return [plugins, getPluginGCE];
-    }
-
-    class PluginGCE extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
     		init(this, options, instance$M, create_fragment$M, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "PluginGCE",
+    			tagName: "ChartCigarretesSales",
     			options,
     			id: create_fragment$M.name
     		});
     	}
     }
 
-    /* src\front\CigarretesAPI\integrations\pluginFoodImports.svelte generated by Svelte v3.23.0 */
+    /* src\front\CigarretesAPI\integrations\pluginTrafficAccidents.svelte generated by Svelte v3.23.0 */
 
     const { console: console_1$r } = globals;
-    const file$M = "src\\front\\CigarretesAPI\\integrations\\pluginFoodImports.svelte";
+    const file$M = "src\\front\\CigarretesAPI\\integrations\\pluginTrafficAccidents.svelte";
 
     function get_each_context$k(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -36573,7 +36883,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (1:0) <script>        import  { onMount }
+    // (1:0) <script>    import  { onMount }
     function create_catch_block$n(ctx) {
     	const block = {
     		c: noop,
@@ -36588,14 +36898,14 @@ var app = (function () {
     		block,
     		id: create_catch_block$n.name,
     		type: "catch",
-    		source: "(1:0) <script>        import  { onMount }",
+    		source: "(1:0) <script>    import  { onMount }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (109:8) {:then getPluginFoodImports}
+    // (107:1) {:then getPluginAccidents}
     function create_then_block$n(ctx) {
     	let figure;
     	let div;
@@ -36619,15 +36929,15 @@ var app = (function () {
     			div = element("div");
     			t0 = space();
     			p = element("p");
-    			p.textContent = "Esta API muestra información sobre importaciones de comida a diferentes paises del mundo .";
+    			p.textContent = "Esta API muestra información sobre los diversos accidentes en provincias españolas.";
     			t2 = space();
     			create_component(table.$$.fragment);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$M, 110, 16, 3404);
+    			add_location(div, file$M, 108, 12, 3179);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$M, 111, 20, 3452);
+    			add_location(p, file$M, 109, 16, 3223);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$M, 109, 12, 3352);
+    			add_location(figure, file$M, 107, 2, 3131);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, figure, anchor);
@@ -36667,18 +36977,18 @@ var app = (function () {
     		block,
     		id: create_then_block$n.name,
     		type: "then",
-    		source: "(109:8) {:then getPluginFoodImports}",
+    		source: "(107:1) {:then getPluginAccidents}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (130:20) {#each plugins as plugin}
+    // (128:4) {#each plugins as plugin}
     function create_each_block$k(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*plugin*/ ctx[2].name + "";
+    	let t0_value = /*plugin*/ ctx[2].province + "";
     	let t0;
     	let t1;
     	let td1;
@@ -36686,11 +36996,11 @@ var app = (function () {
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["fruitJuice"] + "";
+    	let t4_value = /*plugin*/ ctx[2]["accidentWithVictims"] + "";
     	let t4;
     	let t5;
     	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["TLiveAnimal"] + "";
+    	let t6_value = /*plugin*/ ctx[2]["mortalAccident"] + "";
     	let t6;
     	let t7;
 
@@ -36709,11 +37019,11 @@ var app = (function () {
     			td3 = element("td");
     			t6 = text(t6_value);
     			t7 = space();
-    			add_location(td0, file$M, 131, 24, 4148);
-    			add_location(td1, file$M, 132, 24, 4196);
-    			add_location(td2, file$M, 133, 24, 4244);
-    			add_location(td3, file$M, 134, 24, 4301);
-    			add_location(tr, file$M, 130, 20, 4118);
+    			add_location(td0, file$M, 129, 20, 3725);
+    			add_location(td1, file$M, 130, 20, 3773);
+    			add_location(td2, file$M, 131, 20, 3817);
+    			add_location(td3, file$M, 132, 20, 3879);
+    			add_location(tr, file$M, 128, 4, 3699);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -36731,10 +37041,10 @@ var app = (function () {
     			append_dev(tr, t7);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].province + "")) set_data_dev(t0, t0_value);
     			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["fruitJuice"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["TLiveAnimal"] + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["accidentWithVictims"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["mortalAccident"] + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -36745,14 +37055,14 @@ var app = (function () {
     		block,
     		id: create_each_block$k.name,
     		type: "each",
-    		source: "(130:20) {#each plugins as plugin}",
+    		source: "(128:4) {#each plugins as plugin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:12) <Table bordered>
+    // (116:2) <Table bordered>
     function create_default_slot_1$s(ctx) {
     	let thead;
     	let tr;
@@ -36778,16 +37088,16 @@ var app = (function () {
     			thead = element("thead");
     			tr = element("tr");
     			th0 = element("th");
-    			th0.textContent = "Pais";
+    			th0.textContent = "Provincia";
     			t1 = space();
     			th1 = element("th");
     			th1.textContent = "Año";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Zumo de frutas";
+    			th2.textContent = "Accidentes con víctimas";
     			t5 = space();
     			th3 = element("th");
-    			th3.textContent = "Animales vivos";
+    			th3.textContent = "Accidentes mortales";
     			t7 = space();
     			tbody = element("tbody");
 
@@ -36795,13 +37105,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$M, 120, 24, 3790);
-    			add_location(th1, file$M, 121, 24, 3829);
-    			add_location(th2, file$M, 122, 24, 3867);
-    			add_location(th3, file$M, 123, 24, 3916);
-    			add_location(tr, file$M, 119, 20, 3760);
-    			add_location(thead, file$M, 118, 16, 3731);
-    			add_location(tbody, file$M, 128, 16, 4042);
+    			add_location(th0, file$M, 118, 5, 3476);
+    			add_location(th1, file$M, 119, 5, 3501);
+    			add_location(th2, file$M, 120, 5, 3520);
+    			add_location(th3, file$M, 121, 20, 3574);
+    			add_location(tr, file$M, 117, 4, 3465);
+    			add_location(thead, file$M, 116, 3, 3452);
+    			add_location(tbody, file$M, 126, 3, 3655);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -36857,20 +37167,20 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$s.name,
     		type: "slot",
-    		source: "(118:12) <Table bordered>",
+    		source: "(116:2) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (107:37)               Loading plugin-gce.. ...          {:then getPluginFoodImports}
+    // (105:28)     Loading plugin-accidents-stats ...   {:then getPluginAccidents}
     function create_pending_block$n(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("Loading plugin-gce.. ...");
+    			t = text("Loading plugin-accidents-stats ...");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -36887,14 +37197,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$n.name,
     		type: "pending",
-    		source: "(107:37)               Loading plugin-gce.. ...          {:then getPluginFoodImports}",
+    		source: "(105:28)     Loading plugin-accidents-stats ...   {:then getPluginAccidents}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (147:5) <Button outline color="secondary" on:click="{pop}">
+    // (145:1) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$A(ctx) {
     	let t;
 
@@ -36914,7 +37224,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$A.name,
     		type: "slot",
-    		source: "(147:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(145:1) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -36951,7 +37261,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*getPluginFoodImports*/ ctx[1], info);
+    	handle_promise(promise = /*getPluginAccidents*/ ctx[1], info);
 
     	const button = new Button({
     			props: {
@@ -36979,20 +37289,20 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
     			script0.defer = true;
-    			add_location(script0, file$M, 97, 8, 2645);
+    			add_location(script0, file$M, 95, 4, 2484);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
     			script1.defer = true;
-    			add_location(script1, file$M, 98, 8, 2746);
+    			add_location(script1, file$M, 96, 4, 2581);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
     			script2.defer = true;
-    			add_location(script2, file$M, 99, 8, 2857);
+    			add_location(script2, file$M, 97, 4, 2688);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
     			script3.defer = true;
-    			add_location(script3, file$M, 100, 8, 2965);
+    			add_location(script3, file$M, 98, 4, 2792);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
     			script4.defer = true;
-    			add_location(script4, file$M, 101, 8, 3075);
-    			add_location(main, file$M, 104, 4, 3211);
+    			add_location(script4, file$M, 99, 4, 2898);
+    			add_location(main, file$M, 102, 0, 3022);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -37085,17 +37395,17 @@ var app = (function () {
     	return block;
     }
 
-    const url$7 = "https://sos1920-07.herokuapp.com/api/v2/foodsImports";
+    const url$5 = "https://sos1920-04.herokuapp.com/api/v1/traffic_accidents";
 
     async function loadGraph$o() {
     	const res1 = await fetch("api/v2/cigarretes-sales");
     	let datos2 = await res1.json();
-    	const res = await fetch(url$7);
+    	const res = await fetch(url$5);
     	let datos = await res.json();
 
     	let ejeX = [
-    		"Zumo de frutas",
-    		"Animales vivos",
+    		"Accidentes con víctimas",
+    		"Accidentes mortales",
     		"Venta de paquetes de tabaco",
     		"Primera variacion"
     	];
@@ -37104,14 +37414,12 @@ var app = (function () {
     	let valor = {};
 
     	datos.forEach(d => {
-    		if (d.year == 2007) {
-    			valor = {
-    				name: d.name,
-    				data: [d.fruitJuice, d.TLiveAnimal, 0, 0]
-    			};
+    		valor = {
+    			name: d.province,
+    			data: [d.accidentWithVictims, d.mortalAccident, 0, 0]
+    		};
 
-    			valores.push(valor);
-    		}
+    		valores.push(valor);
     	});
 
     	datos2.forEach(d2 => {
@@ -37129,7 +37437,7 @@ var app = (function () {
 
     	Highcharts.chart("container", {
     		chart: { type: "column" },
-    		title: { text: "Integración grupo 7" },
+    		title: { text: "Integración grupo 4" },
     		xAxis: { categories: ejeX, crosshair: true },
     		tooltip: {
     			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
@@ -37146,18 +37454,18 @@ var app = (function () {
     }
 
     function instance$N($$self, $$props, $$invalidate) {
-    	onMount(getPluginFoodImports);
+    	onMount(getPluginAccidents);
     	let plugins = [];
 
-    	async function getPluginFoodImports() {
-    		console.log("Fetching plugin food imports..");
-    		const res = await fetch(url$7);
+    	async function getPluginAccidents() {
+    		console.log("Fetching plugin traffic_accidents..");
+    		const res = await fetch(url$5);
 
     		if (res.ok) {
     			console.log("ok");
     			const json = await res.json();
     			$$invalidate(0, plugins = json);
-    			console.log("Received " + plugins.length + " plugin food imports");
+    			console.log("Received " + plugins.length + " plugin accidents");
     		} else {
     			console.log("Error");
     		}
@@ -37166,20 +37474,20 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$r.warn(`<PluginFoodImports> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$r.warn(`<PluginTrafficAccidents> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
-    	validate_slots("PluginFoodImports", $$slots, []);
+    	validate_slots("PluginTrafficAccidents", $$slots, []);
 
     	$$self.$capture_state = () => ({
     		onMount,
     		pop,
     		Table,
     		Button,
-    		url: url$7,
+    		url: url$5,
     		plugins,
-    		getPluginFoodImports,
+    		getPluginAccidents,
     		loadGraph: loadGraph$o
     	});
 
@@ -37191,27 +37499,27 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [plugins, getPluginFoodImports];
+    	return [plugins, getPluginAccidents];
     }
 
-    class PluginFoodImports extends SvelteComponentDev {
+    class PluginTrafficAccidents extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$N, create_fragment$N, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "PluginFoodImports",
+    			tagName: "PluginTrafficAccidents",
     			options,
     			id: create_fragment$N.name
     		});
     	}
     }
 
-    /* src\front\CigarretesAPI\integrations\pluginElectricity.svelte generated by Svelte v3.23.0 */
+    /* src\front\CigarretesAPI\integrations\pluginGCE.svelte generated by Svelte v3.23.0 */
 
     const { console: console_1$s } = globals;
-    const file$N = "src\\front\\CigarretesAPI\\integrations\\pluginElectricity.svelte";
+    const file$N = "src\\front\\CigarretesAPI\\integrations\\pluginGCE.svelte";
 
     function get_each_context$l(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -37241,7 +37549,7 @@ var app = (function () {
     	return block;
     }
 
-    // (110:8) {:then getPluginElectricity}
+    // (110:8) {:then getPluginGCE}
     function create_then_block$o(ctx) {
     	let figure;
     	let div;
@@ -37265,15 +37573,15 @@ var app = (function () {
     			div = element("div");
     			t0 = space();
     			p = element("p");
-    			p.textContent = "Esta API muestra información sobre las diferentes fuentes de energía en estados de EEUU.";
+    			p.textContent = "Esta API muestra información sobre .";
     			t2 = space();
     			create_component(table.$$.fragment);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$N, 111, 16, 3388);
+    			add_location(div, file$N, 111, 16, 3336);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$N, 112, 20, 3436);
+    			add_location(p, file$N, 112, 20, 3384);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$N, 110, 12, 3336);
+    			add_location(figure, file$N, 110, 12, 3284);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, figure, anchor);
@@ -37313,7 +37621,7 @@ var app = (function () {
     		block,
     		id: create_then_block$o.name,
     		type: "then",
-    		source: "(110:8) {:then getPluginElectricity}",
+    		source: "(110:8) {:then getPluginGCE}",
     		ctx
     	});
 
@@ -37324,7 +37632,7 @@ var app = (function () {
     function create_each_block$l(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*plugin*/ ctx[2].state + "";
+    	let t0_value = /*plugin*/ ctx[2].country + "";
     	let t0;
     	let t1;
     	let td1;
@@ -37332,11 +37640,11 @@ var app = (function () {
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["hydro"] + "";
+    	let t4_value = /*plugin*/ ctx[2]["gce_country"] + "";
     	let t4;
     	let t5;
     	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["solar"] + "";
+    	let t6_value = /*plugin*/ ctx[2]["gce_per_capita"] + "";
     	let t6;
     	let t7;
 
@@ -37355,11 +37663,11 @@ var app = (function () {
     			td3 = element("td");
     			t6 = text(t6_value);
     			t7 = space();
-    			add_location(td0, file$N, 132, 24, 4139);
-    			add_location(td1, file$N, 133, 24, 4188);
-    			add_location(td2, file$N, 134, 24, 4236);
-    			add_location(td3, file$N, 135, 24, 4288);
-    			add_location(tr, file$N, 131, 20, 4109);
+    			add_location(td0, file$N, 132, 24, 4021);
+    			add_location(td1, file$N, 133, 24, 4072);
+    			add_location(td2, file$N, 134, 24, 4120);
+    			add_location(td3, file$N, 135, 24, 4178);
+    			add_location(tr, file$N, 131, 20, 3991);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -37377,10 +37685,10 @@ var app = (function () {
     			append_dev(tr, t7);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].state + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
     			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["hydro"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["solar"] + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["gce_country"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["gce_per_capita"] + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -37424,16 +37732,16 @@ var app = (function () {
     			thead = element("thead");
     			tr = element("tr");
     			th0 = element("th");
-    			th0.textContent = "Estado";
+    			th0.textContent = "Pais";
     			t1 = space();
     			th1 = element("th");
     			th1.textContent = "Año";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Energia hidroeléctrica";
+    			th2.textContent = "GCE pais";
     			t5 = space();
     			th3 = element("th");
-    			th3.textContent = "Energia solar";
+    			th3.textContent = "GCE por capital";
     			t7 = space();
     			tbody = element("tbody");
 
@@ -37441,13 +37749,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$N, 121, 24, 3772);
-    			add_location(th1, file$N, 122, 24, 3813);
-    			add_location(th2, file$N, 123, 24, 3851);
-    			add_location(th3, file$N, 124, 24, 3908);
-    			add_location(tr, file$N, 120, 20, 3742);
-    			add_location(thead, file$N, 119, 16, 3713);
-    			add_location(tbody, file$N, 129, 16, 4033);
+    			add_location(th0, file$N, 121, 24, 3668);
+    			add_location(th1, file$N, 122, 24, 3707);
+    			add_location(th2, file$N, 123, 24, 3745);
+    			add_location(th3, file$N, 124, 24, 3788);
+    			add_location(tr, file$N, 120, 20, 3638);
+    			add_location(thead, file$N, 119, 16, 3609);
+    			add_location(tbody, file$N, 129, 16, 3915);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -37510,13 +37818,13 @@ var app = (function () {
     	return block;
     }
 
-    // (108:37)               Loading plugin-electricity ...          {:then getPluginElectricity}
+    // (108:29)               Loading plugin-gce.. ...          {:then getPluginGCE}
     function create_pending_block$o(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("Loading plugin-electricity ...");
+    			t = text("Loading plugin-gce.. ...");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -37533,7 +37841,7 @@ var app = (function () {
     		block,
     		id: create_pending_block$o.name,
     		type: "pending",
-    		source: "(108:37)               Loading plugin-electricity ...          {:then getPluginElectricity}",
+    		source: "(108:29)               Loading plugin-gce.. ...          {:then getPluginGCE}",
     		ctx
     	});
 
@@ -37597,7 +37905,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*getPluginElectricity*/ ctx[1], info);
+    	handle_promise(promise = /*getPluginGCE*/ ctx[1], info);
 
     	const button = new Button({
     			props: {
@@ -37625,20 +37933,20 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
     			script0.defer = true;
-    			add_location(script0, file$N, 98, 8, 2623);
+    			add_location(script0, file$N, 98, 8, 2593);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
     			script1.defer = true;
-    			add_location(script1, file$N, 99, 8, 2724);
+    			add_location(script1, file$N, 99, 8, 2694);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
     			script2.defer = true;
-    			add_location(script2, file$N, 100, 8, 2835);
+    			add_location(script2, file$N, 100, 8, 2805);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
     			script3.defer = true;
-    			add_location(script3, file$N, 101, 8, 2943);
+    			add_location(script3, file$N, 101, 8, 2913);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
     			script4.defer = true;
-    			add_location(script4, file$N, 102, 8, 3053);
-    			add_location(main, file$N, 105, 4, 3189);
+    			add_location(script4, file$N, 102, 8, 3023);
+    			add_location(main, file$N, 105, 4, 3159);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -37731,12 +38039,12 @@ var app = (function () {
     	return block;
     }
 
-    const url$8 = "api/v2/electricity-produced-stats";
+    const url$6 = "api/v1/gce";
 
     async function loadGraph$p() {
     	const res1 = await fetch("api/v2/cigarretes-sales");
     	let datos2 = await res1.json();
-    	const res = await fetch(url$8);
+    	const res = await fetch(url$6);
     	let datos = await res.json();
 
     	let ejeX = [
@@ -37751,8 +38059,8 @@ var app = (function () {
 
     	datos.forEach(d => {
     		valor = {
-    			name: d.state,
-    			data: [d.hydro, d.coal, 0, 0]
+    			name: d.country,
+    			data: [d.gce_country, d.gce_per_capita, 0, 0]
     		};
 
     		valores.push(valor);
@@ -37773,7 +38081,7 @@ var app = (function () {
 
     	Highcharts.chart("container", {
     		chart: { type: "column" },
-    		title: { text: "Integración grupo 8" },
+    		title: { text: "Integración grupo 28" },
     		xAxis: { categories: ejeX, crosshair: true },
     		tooltip: {
     			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
@@ -37790,18 +38098,18 @@ var app = (function () {
     }
 
     function instance$O($$self, $$props, $$invalidate) {
-    	onMount(getPluginElectricity);
+    	onMount(getPluginGCE);
     	let plugins = [];
 
-    	async function getPluginElectricity() {
+    	async function getPluginGCE() {
     		console.log("Fetching plugin traffic_accidents..");
-    		const res = await fetch(url$8);
+    		const res = await fetch(url$6);
 
     		if (res.ok) {
     			console.log("ok");
     			const json = await res.json();
     			$$invalidate(0, plugins = json);
-    			console.log("Received " + plugins.length + " plugins electricitys");
+    			console.log("Received " + plugins.length + " plugin GCE");
     		} else {
     			console.log("Error");
     		}
@@ -37810,20 +38118,20 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$s.warn(`<PluginElectricity> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$s.warn(`<PluginGCE> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
-    	validate_slots("PluginElectricity", $$slots, []);
+    	validate_slots("PluginGCE", $$slots, []);
 
     	$$self.$capture_state = () => ({
     		onMount,
     		pop,
     		Table,
     		Button,
-    		url: url$8,
+    		url: url$6,
     		plugins,
-    		getPluginElectricity,
+    		getPluginGCE,
     		loadGraph: loadGraph$p
     	});
 
@@ -37835,27 +38143,27 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [plugins, getPluginElectricity];
+    	return [plugins, getPluginGCE];
     }
 
-    class PluginElectricity extends SvelteComponentDev {
+    class PluginGCE extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$O, create_fragment$O, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "PluginElectricity",
+    			tagName: "PluginGCE",
     			options,
     			id: create_fragment$O.name
     		});
     	}
     }
 
-    /* src\front\CigarretesAPI\integrations\pluginNatality.svelte generated by Svelte v3.23.0 */
+    /* src\front\CigarretesAPI\integrations\pluginFoodImports.svelte generated by Svelte v3.23.0 */
 
     const { console: console_1$t } = globals;
-    const file$O = "src\\front\\CigarretesAPI\\integrations\\pluginNatality.svelte";
+    const file$O = "src\\front\\CigarretesAPI\\integrations\\pluginFoodImports.svelte";
 
     function get_each_context$m(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -37885,7 +38193,7 @@ var app = (function () {
     	return block;
     }
 
-    // (110:8) {:then getPluginNatality}
+    // (109:8) {:then getPluginFoodImports}
     function create_then_block$p(ctx) {
     	let figure;
     	let div;
@@ -37909,15 +38217,15 @@ var app = (function () {
     			div = element("div");
     			t0 = space();
     			p = element("p");
-    			p.textContent = "Esta API muestra información sobre la natalidad en diversos paises europeos.";
+    			p.textContent = "Esta API muestra información sobre importaciones de comida a diferentes paises del mundo .";
     			t2 = space();
     			create_component(table.$$.fragment);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$O, 111, 16, 3399);
+    			add_location(div, file$O, 110, 16, 3404);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$O, 112, 20, 3447);
+    			add_location(p, file$O, 111, 20, 3452);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$O, 110, 12, 3347);
+    			add_location(figure, file$O, 109, 12, 3352);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, figure, anchor);
@@ -37957,18 +38265,18 @@ var app = (function () {
     		block,
     		id: create_then_block$p.name,
     		type: "then",
-    		source: "(110:8) {:then getPluginNatality}",
+    		source: "(109:8) {:then getPluginFoodImports}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (131:20) {#each plugins as plugin}
+    // (130:20) {#each plugins as plugin}
     function create_each_block$m(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*plugin*/ ctx[2].country + "";
+    	let t0_value = /*plugin*/ ctx[2].name + "";
     	let t0;
     	let t1;
     	let td1;
@@ -37976,11 +38284,11 @@ var app = (function () {
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["natality_totals"] + "";
+    	let t4_value = /*plugin*/ ctx[2]["fruitJuice"] + "";
     	let t4;
     	let t5;
     	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["natality_men"] + "";
+    	let t6_value = /*plugin*/ ctx[2]["TLiveAnimal"] + "";
     	let t6;
     	let t7;
 
@@ -37999,11 +38307,11 @@ var app = (function () {
     			td3 = element("td");
     			t6 = text(t6_value);
     			t7 = space();
-    			add_location(td0, file$O, 132, 24, 4142);
-    			add_location(td1, file$O, 133, 24, 4193);
-    			add_location(td2, file$O, 134, 24, 4241);
-    			add_location(td3, file$O, 135, 24, 4303);
-    			add_location(tr, file$O, 131, 20, 4112);
+    			add_location(td0, file$O, 131, 24, 4148);
+    			add_location(td1, file$O, 132, 24, 4196);
+    			add_location(td2, file$O, 133, 24, 4244);
+    			add_location(td3, file$O, 134, 24, 4301);
+    			add_location(tr, file$O, 130, 20, 4118);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -38021,10 +38329,10 @@ var app = (function () {
     			append_dev(tr, t7);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].name + "")) set_data_dev(t0, t0_value);
     			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["natality_totals"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["natality_men"] + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["fruitJuice"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["TLiveAnimal"] + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -38035,14 +38343,14 @@ var app = (function () {
     		block,
     		id: create_each_block$m.name,
     		type: "each",
-    		source: "(131:20) {#each plugins as plugin}",
+    		source: "(130:20) {#each plugins as plugin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (119:12) <Table bordered>
+    // (118:12) <Table bordered>
     function create_default_slot_1$u(ctx) {
     	let thead;
     	let tr;
@@ -38074,10 +38382,10 @@ var app = (function () {
     			th1.textContent = "Año";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Nacimientos totales";
+    			th2.textContent = "Zumo de frutas";
     			t5 = space();
     			th3 = element("th");
-    			th3.textContent = "Nacimientos de hombres";
+    			th3.textContent = "Animales vivos";
     			t7 = space();
     			tbody = element("tbody");
 
@@ -38085,13 +38393,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$O, 121, 24, 3771);
-    			add_location(th1, file$O, 122, 24, 3810);
-    			add_location(th2, file$O, 123, 24, 3848);
-    			add_location(th3, file$O, 124, 24, 3902);
-    			add_location(tr, file$O, 120, 20, 3741);
-    			add_location(thead, file$O, 119, 16, 3712);
-    			add_location(tbody, file$O, 129, 16, 4036);
+    			add_location(th0, file$O, 120, 24, 3790);
+    			add_location(th1, file$O, 121, 24, 3829);
+    			add_location(th2, file$O, 122, 24, 3867);
+    			add_location(th3, file$O, 123, 24, 3916);
+    			add_location(tr, file$O, 119, 20, 3760);
+    			add_location(thead, file$O, 118, 16, 3731);
+    			add_location(tbody, file$O, 128, 16, 4042);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -38147,20 +38455,20 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$u.name,
     		type: "slot",
-    		source: "(119:12) <Table bordered>",
+    		source: "(118:12) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:34)               Loading plugin-natality ...          {:then getPluginNatality}
+    // (107:37)               Loading plugin-gce.. ...          {:then getPluginFoodImports}
     function create_pending_block$p(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("Loading plugin-natality ...");
+    			t = text("Loading plugin-gce.. ...");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -38177,14 +38485,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$p.name,
     		type: "pending",
-    		source: "(108:34)               Loading plugin-natality ...          {:then getPluginNatality}",
+    		source: "(107:37)               Loading plugin-gce.. ...          {:then getPluginFoodImports}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (148:5) <Button outline color="secondary" on:click="{pop}">
+    // (147:5) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$C(ctx) {
     	let t;
 
@@ -38204,7 +38512,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$C.name,
     		type: "slot",
-    		source: "(148:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(147:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -38241,7 +38549,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*getPluginNatality*/ ctx[1], info);
+    	handle_promise(promise = /*getPluginFoodImports*/ ctx[1], info);
 
     	const button = new Button({
     			props: {
@@ -38269,20 +38577,20 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
     			script0.defer = true;
-    			add_location(script0, file$O, 98, 8, 2643);
+    			add_location(script0, file$O, 97, 8, 2645);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
     			script1.defer = true;
-    			add_location(script1, file$O, 99, 8, 2744);
+    			add_location(script1, file$O, 98, 8, 2746);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
     			script2.defer = true;
-    			add_location(script2, file$O, 100, 8, 2855);
+    			add_location(script2, file$O, 99, 8, 2857);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
     			script3.defer = true;
-    			add_location(script3, file$O, 101, 8, 2963);
+    			add_location(script3, file$O, 100, 8, 2965);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
     			script4.defer = true;
-    			add_location(script4, file$O, 102, 8, 3073);
-    			add_location(main, file$O, 105, 4, 3209);
+    			add_location(script4, file$O, 101, 8, 3075);
+    			add_location(main, file$O, 104, 4, 3211);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38375,17 +38683,17 @@ var app = (function () {
     	return block;
     }
 
-    const url$9 = "https://sos1920-01.herokuapp.com/api/v2/natality-stats";
+    const url$7 = "https://sos1920-07.herokuapp.com/api/v2/foodsImports";
 
     async function loadGraph$q() {
     	const res1 = await fetch("api/v2/cigarretes-sales");
     	let datos2 = await res1.json();
-    	const res = await fetch(url$9);
+    	const res = await fetch(url$7);
     	let datos = await res.json();
 
     	let ejeX = [
-    		"Nacimientos totales",
-    		"Nacimientos de hombres",
+    		"Zumo de frutas",
+    		"Animales vivos",
     		"Venta de paquetes de tabaco",
     		"Primera variacion"
     	];
@@ -38394,12 +38702,14 @@ var app = (function () {
     	let valor = {};
 
     	datos.forEach(d => {
-    		valor = {
-    			name: d.country,
-    			data: [d.natality_totals, d.natality_men, 0, 0]
-    		};
+    		if (d.year == 2007) {
+    			valor = {
+    				name: d.name,
+    				data: [d.fruitJuice, d.TLiveAnimal, 0, 0]
+    			};
 
-    		valores.push(valor);
+    			valores.push(valor);
+    		}
     	});
 
     	datos2.forEach(d2 => {
@@ -38417,7 +38727,7 @@ var app = (function () {
 
     	Highcharts.chart("container", {
     		chart: { type: "column" },
-    		title: { text: "Integración grupo 1" },
+    		title: { text: "Integración grupo 7" },
     		xAxis: { categories: ejeX, crosshair: true },
     		tooltip: {
     			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
@@ -38434,18 +38744,18 @@ var app = (function () {
     }
 
     function instance$P($$self, $$props, $$invalidate) {
-    	onMount(getPluginNatality);
+    	onMount(getPluginFoodImports);
     	let plugins = [];
 
-    	async function getPluginNatality() {
-    		console.log("Fetching plugin natality..");
-    		const res = await fetch(url$9);
+    	async function getPluginFoodImports() {
+    		console.log("Fetching plugin food imports..");
+    		const res = await fetch(url$7);
 
     		if (res.ok) {
     			console.log("ok");
     			const json = await res.json();
     			$$invalidate(0, plugins = json);
-    			console.log("Received " + plugins.length + " plugin natality");
+    			console.log("Received " + plugins.length + " plugin food imports");
     		} else {
     			console.log("Error");
     		}
@@ -38454,20 +38764,20 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$t.warn(`<PluginNatality> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$t.warn(`<PluginFoodImports> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
-    	validate_slots("PluginNatality", $$slots, []);
+    	validate_slots("PluginFoodImports", $$slots, []);
 
     	$$self.$capture_state = () => ({
     		onMount,
     		pop,
     		Table,
     		Button,
-    		url: url$9,
+    		url: url$7,
     		plugins,
-    		getPluginNatality,
+    		getPluginFoodImports,
     		loadGraph: loadGraph$q
     	});
 
@@ -38479,27 +38789,27 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [plugins, getPluginNatality];
+    	return [plugins, getPluginFoodImports];
     }
 
-    class PluginNatality extends SvelteComponentDev {
+    class PluginFoodImports extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$P, create_fragment$P, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "PluginNatality",
+    			tagName: "PluginFoodImports",
     			options,
     			id: create_fragment$P.name
     		});
     	}
     }
 
-    /* src\front\CigarretesAPI\integrations\pluginRenewable.svelte generated by Svelte v3.23.0 */
+    /* src\front\CigarretesAPI\integrations\pluginElectricity.svelte generated by Svelte v3.23.0 */
 
     const { console: console_1$u } = globals;
-    const file$P = "src\\front\\CigarretesAPI\\integrations\\pluginRenewable.svelte";
+    const file$P = "src\\front\\CigarretesAPI\\integrations\\pluginElectricity.svelte";
 
     function get_each_context$n(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -38529,7 +38839,7 @@ var app = (function () {
     	return block;
     }
 
-    // (107:8) {:then getPluginRenewable}
+    // (110:8) {:then getPluginElectricity}
     function create_then_block$q(ctx) {
     	let figure;
     	let div;
@@ -38553,15 +38863,15 @@ var app = (function () {
     			div = element("div");
     			t0 = space();
     			p = element("p");
-    			p.textContent = "Esta API muestra información sobre las diferentes fuentes de energías renovables en diversos paises del mundo.";
+    			p.textContent = "Esta API muestra información sobre las diferentes fuentes de energía en estados de EEUU.";
     			t2 = space();
     			create_component(table.$$.fragment);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$P, 108, 16, 3437);
+    			add_location(div, file$P, 111, 16, 3388);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$P, 109, 20, 3485);
+    			add_location(p, file$P, 112, 20, 3436);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$P, 107, 12, 3385);
+    			add_location(figure, file$P, 110, 12, 3336);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, figure, anchor);
@@ -38601,18 +38911,18 @@ var app = (function () {
     		block,
     		id: create_then_block$q.name,
     		type: "then",
-    		source: "(107:8) {:then getPluginRenewable}",
+    		source: "(110:8) {:then getPluginElectricity}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (128:20) {#each plugins as plugin}
+    // (131:20) {#each plugins as plugin}
     function create_each_block$n(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*plugin*/ ctx[2].country + "";
+    	let t0_value = /*plugin*/ ctx[2].state + "";
     	let t0;
     	let t1;
     	let td1;
@@ -38620,11 +38930,11 @@ var app = (function () {
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["percentage-re-total"] + "";
+    	let t4_value = /*plugin*/ ctx[2]["hydro"] + "";
     	let t4;
     	let t5;
     	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["percentage-hydropower-total"] + "";
+    	let t6_value = /*plugin*/ ctx[2]["solar"] + "";
     	let t6;
     	let t7;
 
@@ -38643,11 +38953,11 @@ var app = (function () {
     			td3 = element("td");
     			t6 = text(t6_value);
     			t7 = space();
-    			add_location(td0, file$P, 129, 24, 4222);
-    			add_location(td1, file$P, 130, 24, 4273);
-    			add_location(td2, file$P, 131, 24, 4321);
-    			add_location(td3, file$P, 132, 24, 4387);
-    			add_location(tr, file$P, 128, 20, 4192);
+    			add_location(td0, file$P, 132, 24, 4139);
+    			add_location(td1, file$P, 133, 24, 4188);
+    			add_location(td2, file$P, 134, 24, 4236);
+    			add_location(td3, file$P, 135, 24, 4288);
+    			add_location(tr, file$P, 131, 20, 4109);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -38665,10 +38975,10 @@ var app = (function () {
     			append_dev(tr, t7);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].state + "")) set_data_dev(t0, t0_value);
     			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["percentage-re-total"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["percentage-hydropower-total"] + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["hydro"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["solar"] + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -38679,14 +38989,14 @@ var app = (function () {
     		block,
     		id: create_each_block$n.name,
     		type: "each",
-    		source: "(128:20) {#each plugins as plugin}",
+    		source: "(131:20) {#each plugins as plugin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (116:12) <Table bordered>
+    // (119:12) <Table bordered>
     function create_default_slot_1$v(ctx) {
     	let thead;
     	let tr;
@@ -38712,16 +39022,16 @@ var app = (function () {
     			thead = element("thead");
     			tr = element("tr");
     			th0 = element("th");
-    			th0.textContent = "Pais";
+    			th0.textContent = "Estado";
     			t1 = space();
     			th1 = element("th");
     			th1.textContent = "Año";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Porcentaje total";
+    			th2.textContent = "Energia hidroeléctrica";
     			t5 = space();
     			th3 = element("th");
-    			th3.textContent = "Porcentaje energía hidroeléctrica";
+    			th3.textContent = "Energia solar";
     			t7 = space();
     			tbody = element("tbody");
 
@@ -38729,13 +39039,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$P, 118, 24, 3843);
-    			add_location(th1, file$P, 119, 24, 3882);
-    			add_location(th2, file$P, 120, 24, 3920);
-    			add_location(th3, file$P, 121, 24, 3971);
-    			add_location(tr, file$P, 117, 20, 3813);
-    			add_location(thead, file$P, 116, 16, 3784);
-    			add_location(tbody, file$P, 126, 16, 4116);
+    			add_location(th0, file$P, 121, 24, 3772);
+    			add_location(th1, file$P, 122, 24, 3813);
+    			add_location(th2, file$P, 123, 24, 3851);
+    			add_location(th3, file$P, 124, 24, 3908);
+    			add_location(tr, file$P, 120, 20, 3742);
+    			add_location(thead, file$P, 119, 16, 3713);
+    			add_location(tbody, file$P, 129, 16, 4033);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -38791,20 +39101,20 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$v.name,
     		type: "slot",
-    		source: "(116:12) <Table bordered>",
+    		source: "(119:12) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:35)               Loading plugin-natality ...          {:then getPluginRenewable}
+    // (108:37)               Loading plugin-electricity ...          {:then getPluginElectricity}
     function create_pending_block$q(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("Loading plugin-natality ...");
+    			t = text("Loading plugin-electricity ...");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -38821,14 +39131,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$q.name,
     		type: "pending",
-    		source: "(105:35)               Loading plugin-natality ...          {:then getPluginRenewable}",
+    		source: "(108:37)               Loading plugin-electricity ...          {:then getPluginElectricity}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (145:5) <Button outline color="secondary" on:click="{pop}">
+    // (148:5) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$D(ctx) {
     	let t;
 
@@ -38848,7 +39158,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$D.name,
     		type: "slot",
-    		source: "(145:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(148:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -38885,7 +39195,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*getPluginRenewable*/ ctx[1], info);
+    	handle_promise(promise = /*getPluginElectricity*/ ctx[1], info);
 
     	const button = new Button({
     			props: {
@@ -38913,20 +39223,20 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
     			script0.defer = true;
-    			add_location(script0, file$P, 95, 8, 2679);
+    			add_location(script0, file$P, 98, 8, 2623);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
     			script1.defer = true;
-    			add_location(script1, file$P, 96, 8, 2780);
+    			add_location(script1, file$P, 99, 8, 2724);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
     			script2.defer = true;
-    			add_location(script2, file$P, 97, 8, 2891);
+    			add_location(script2, file$P, 100, 8, 2835);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
     			script3.defer = true;
-    			add_location(script3, file$P, 98, 8, 2999);
+    			add_location(script3, file$P, 101, 8, 2943);
     			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
     			script4.defer = true;
-    			add_location(script4, file$P, 99, 8, 3109);
-    			add_location(main, file$P, 102, 4, 3245);
+    			add_location(script4, file$P, 102, 8, 3053);
+    			add_location(main, file$P, 105, 4, 3189);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39019,17 +39329,17 @@ var app = (function () {
     	return block;
     }
 
-    const url$a = "https://sos1920-09.herokuapp.com/api/v2/renewable-sources-stats";
+    const url$8 = "api/v2/electricity-produced-stats";
 
     async function loadGraph$r() {
     	const res1 = await fetch("api/v2/cigarretes-sales");
     	let datos2 = await res1.json();
-    	const res = await fetch(url$a);
+    	const res = await fetch(url$8);
     	let datos = await res.json();
 
     	let ejeX = [
-    		"Porcentaje total",
-    		"Porcentaje energía hidroeléctrica",
+    		"Energia hidroeléctrica",
+    		"Energia solar",
     		"Venta de paquetes de tabaco",
     		"Primera variacion"
     	];
@@ -39039,8 +39349,8 @@ var app = (function () {
 
     	datos.forEach(d => {
     		valor = {
-    			name: d.country,
-    			data: [d["percentage-hydropower-total"], d["percentage-hydropower-total"], 0, 0]
+    			name: d.state,
+    			data: [d.hydro, d.coal, 0, 0]
     		};
 
     		valores.push(valor);
@@ -39061,7 +39371,7 @@ var app = (function () {
 
     	Highcharts.chart("container", {
     		chart: { type: "column" },
-    		title: { text: "Integración grupo 9" },
+    		title: { text: "Integración grupo 8" },
     		xAxis: { categories: ejeX, crosshair: true },
     		tooltip: {
     			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
@@ -39078,18 +39388,18 @@ var app = (function () {
     }
 
     function instance$Q($$self, $$props, $$invalidate) {
-    	onMount(getPluginRenewable);
+    	onMount(getPluginElectricity);
     	let plugins = [];
 
-    	async function getPluginRenewable() {
-    		console.log("Fetching plugin renewable..");
-    		const res = await fetch(url$a);
+    	async function getPluginElectricity() {
+    		console.log("Fetching plugin traffic_accidents..");
+    		const res = await fetch(url$8);
 
     		if (res.ok) {
     			console.log("ok");
     			const json = await res.json();
     			$$invalidate(0, plugins = json);
-    			console.log("Received " + plugins.length + " plugin renewable");
+    			console.log("Received " + plugins.length + " plugins electricitys");
     		} else {
     			console.log("Error");
     		}
@@ -39098,20 +39408,20 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$u.warn(`<PluginRenewable> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$u.warn(`<PluginElectricity> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
-    	validate_slots("PluginRenewable", $$slots, []);
+    	validate_slots("PluginElectricity", $$slots, []);
 
     	$$self.$capture_state = () => ({
     		onMount,
     		pop,
     		Table,
     		Button,
-    		url: url$a,
+    		url: url$8,
     		plugins,
-    		getPluginRenewable,
+    		getPluginElectricity,
     		loadGraph: loadGraph$r
     	});
 
@@ -39123,27 +39433,27 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [plugins, getPluginRenewable];
+    	return [plugins, getPluginElectricity];
     }
 
-    class PluginRenewable extends SvelteComponentDev {
+    class PluginElectricity extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance$Q, create_fragment$Q, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
-    			tagName: "PluginRenewable",
+    			tagName: "PluginElectricity",
     			options,
     			id: create_fragment$Q.name
     		});
     	}
     }
 
-    /* src\front\CigarretesAPI\integrations\pluginLife.svelte generated by Svelte v3.23.0 */
+    /* src\front\CigarretesAPI\integrations\pluginNatality.svelte generated by Svelte v3.23.0 */
 
     const { console: console_1$v } = globals;
-    const file$Q = "src\\front\\CigarretesAPI\\integrations\\pluginLife.svelte";
+    const file$Q = "src\\front\\CigarretesAPI\\integrations\\pluginNatality.svelte";
 
     function get_each_context$o(ctx, list, i) {
     	const child_ctx = ctx.slice();
@@ -39173,7 +39483,7 @@ var app = (function () {
     	return block;
     }
 
-    // (107:8) {:then getPluginLife}
+    // (110:8) {:then getPluginNatality}
     function create_then_block$r(ctx) {
     	let figure;
     	let div;
@@ -39197,15 +39507,15 @@ var app = (function () {
     			div = element("div");
     			t0 = space();
     			p = element("p");
-    			p.textContent = "Esta API muestra información sobre la esperanza de vida en diversos paises del mundo.";
+    			p.textContent = "Esta API muestra información sobre la natalidad en diversos paises europeos.";
     			t2 = space();
     			create_component(table.$$.fragment);
     			attr_dev(div, "id", "container");
-    			add_location(div, file$Q, 108, 16, 3267);
+    			add_location(div, file$Q, 111, 16, 3399);
     			attr_dev(p, "class", "highcharts-description");
-    			add_location(p, file$Q, 109, 20, 3315);
+    			add_location(p, file$Q, 112, 20, 3447);
     			attr_dev(figure, "class", "highcharts-figure");
-    			add_location(figure, file$Q, 107, 12, 3215);
+    			add_location(figure, file$Q, 110, 12, 3347);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, figure, anchor);
@@ -39245,14 +39555,14 @@ var app = (function () {
     		block,
     		id: create_then_block$r.name,
     		type: "then",
-    		source: "(107:8) {:then getPluginLife}",
+    		source: "(110:8) {:then getPluginNatality}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (128:20) {#each plugins as plugin}
+    // (131:20) {#each plugins as plugin}
     function create_each_block$o(ctx) {
     	let tr;
     	let td0;
@@ -39264,11 +39574,11 @@ var app = (function () {
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*plugin*/ ctx[2]["women_life_expectancy"] + "";
+    	let t4_value = /*plugin*/ ctx[2]["natality_totals"] + "";
     	let t4;
     	let t5;
     	let td3;
-    	let t6_value = /*plugin*/ ctx[2]["men_life_expectancy"] + "";
+    	let t6_value = /*plugin*/ ctx[2]["natality_men"] + "";
     	let t6;
     	let t7;
 
@@ -39287,11 +39597,11 @@ var app = (function () {
     			td3 = element("td");
     			t6 = text(t6_value);
     			t7 = space();
-    			add_location(td0, file$Q, 129, 24, 4034);
-    			add_location(td1, file$Q, 130, 24, 4085);
-    			add_location(td2, file$Q, 131, 24, 4133);
-    			add_location(td3, file$Q, 132, 24, 4201);
-    			add_location(tr, file$Q, 128, 20, 4004);
+    			add_location(td0, file$Q, 132, 24, 4142);
+    			add_location(td1, file$Q, 133, 24, 4193);
+    			add_location(td2, file$Q, 134, 24, 4241);
+    			add_location(td3, file$Q, 135, 24, 4303);
+    			add_location(tr, file$Q, 131, 20, 4112);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -39311,8 +39621,8 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
     			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["women_life_expectancy"] + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["men_life_expectancy"] + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["natality_totals"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["natality_men"] + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -39323,14 +39633,14 @@ var app = (function () {
     		block,
     		id: create_each_block$o.name,
     		type: "each",
-    		source: "(128:20) {#each plugins as plugin}",
+    		source: "(131:20) {#each plugins as plugin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (116:12) <Table bordered>
+    // (119:12) <Table bordered>
     function create_default_slot_1$w(ctx) {
     	let thead;
     	let tr;
@@ -39362,10 +39672,10 @@ var app = (function () {
     			th1.textContent = "Año";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Esperanza de vida en mujeres";
+    			th2.textContent = "Nacimientos totales";
     			t5 = space();
     			th3 = element("th");
-    			th3.textContent = "Esperanza de vida en hombres";
+    			th3.textContent = "Nacimientos de hombres";
     			t7 = space();
     			tbody = element("tbody");
 
@@ -39373,13 +39683,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$Q, 118, 24, 3648);
-    			add_location(th1, file$Q, 119, 24, 3687);
-    			add_location(th2, file$Q, 120, 24, 3725);
-    			add_location(th3, file$Q, 121, 24, 3788);
-    			add_location(tr, file$Q, 117, 20, 3618);
-    			add_location(thead, file$Q, 116, 16, 3589);
-    			add_location(tbody, file$Q, 126, 16, 3928);
+    			add_location(th0, file$Q, 121, 24, 3771);
+    			add_location(th1, file$Q, 122, 24, 3810);
+    			add_location(th2, file$Q, 123, 24, 3848);
+    			add_location(th3, file$Q, 124, 24, 3902);
+    			add_location(tr, file$Q, 120, 20, 3741);
+    			add_location(thead, file$Q, 119, 16, 3712);
+    			add_location(tbody, file$Q, 129, 16, 4036);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -39435,14 +39745,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$w.name,
     		type: "slot",
-    		source: "(116:12) <Table bordered>",
+    		source: "(119:12) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:30)               Loading plugin-natality ...          {:then getPluginLife}
+    // (108:34)               Loading plugin-natality ...          {:then getPluginNatality}
     function create_pending_block$r(ctx) {
     	let t;
 
@@ -39465,14 +39775,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$r.name,
     		type: "pending",
-    		source: "(105:30)               Loading plugin-natality ...          {:then getPluginLife}",
+    		source: "(108:34)               Loading plugin-natality ...          {:then getPluginNatality}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (142:8) <Button outline color="secondary" on:click="{pop}">
+    // (148:5) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$E(ctx) {
     	let t;
 
@@ -39492,7 +39802,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$E.name,
     		type: "slot",
-    		source: "(142:8) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(148:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -39500,6 +39810,1294 @@ var app = (function () {
     }
 
     function create_fragment$R(ctx) {
+    	let script0;
+    	let script0_src_value;
+    	let script1;
+    	let script1_src_value;
+    	let script2;
+    	let script2_src_value;
+    	let script3;
+    	let script3_src_value;
+    	let script4;
+    	let script4_src_value;
+    	let t0;
+    	let main;
+    	let promise;
+    	let t1;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		pending: create_pending_block$r,
+    		then: create_then_block$r,
+    		catch: create_catch_block$r,
+    		value: 1,
+    		blocks: [,,,]
+    	};
+
+    	handle_promise(promise = /*getPluginNatality*/ ctx[1], info);
+
+    	const button = new Button({
+    			props: {
+    				outline: true,
+    				color: "secondary",
+    				$$slots: { default: [create_default_slot$E] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button.$on("click", pop);
+
+    	const block = {
+    		c: function create() {
+    			script0 = element("script");
+    			script1 = element("script");
+    			script2 = element("script");
+    			script3 = element("script");
+    			script4 = element("script");
+    			t0 = space();
+    			main = element("main");
+    			info.block.c();
+    			t1 = space();
+    			create_component(button.$$.fragment);
+    			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
+    			script0.defer = true;
+    			add_location(script0, file$Q, 98, 8, 2643);
+    			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
+    			script1.defer = true;
+    			add_location(script1, file$Q, 99, 8, 2744);
+    			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
+    			script2.defer = true;
+    			add_location(script2, file$Q, 100, 8, 2855);
+    			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
+    			script3.defer = true;
+    			add_location(script3, file$Q, 101, 8, 2963);
+    			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
+    			script4.defer = true;
+    			add_location(script4, file$Q, 102, 8, 3073);
+    			add_location(main, file$Q, 105, 4, 3209);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			append_dev(document.head, script0);
+    			append_dev(document.head, script1);
+    			append_dev(document.head, script2);
+    			append_dev(document.head, script3);
+    			append_dev(document.head, script4);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, main, anchor);
+    			info.block.m(main, info.anchor = null);
+    			info.mount = () => main;
+    			info.anchor = null;
+    			insert_dev(target, t1, anchor);
+    			mount_component(button, target, anchor);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(script0, "load", loadGraph$s, false, false, false),
+    					listen_dev(script1, "load", loadGraph$s, false, false, false),
+    					listen_dev(script2, "load", loadGraph$s, false, false, false),
+    					listen_dev(script3, "load", loadGraph$s, false, false, false),
+    					listen_dev(script4, "load", loadGraph$s, false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
+
+    			{
+    				const child_ctx = ctx.slice();
+    				child_ctx[1] = info.resolved;
+    				info.block.p(child_ctx, dirty);
+    			}
+
+    			const button_changes = {};
+
+    			if (dirty & /*$$scope*/ 32) {
+    				button_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button.$set(button_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(info.block);
+    			transition_in(button.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
+    			transition_out(button.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			detach_dev(script0);
+    			detach_dev(script1);
+    			detach_dev(script2);
+    			detach_dev(script3);
+    			detach_dev(script4);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(main);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
+    			if (detaching) detach_dev(t1);
+    			destroy_component(button, detaching);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$R.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const url$9 = "https://sos1920-01.herokuapp.com/api/v2/natality-stats";
+
+    async function loadGraph$s() {
+    	const res1 = await fetch("api/v2/cigarretes-sales");
+    	let datos2 = await res1.json();
+    	const res = await fetch(url$9);
+    	let datos = await res.json();
+
+    	let ejeX = [
+    		"Nacimientos totales",
+    		"Nacimientos de hombres",
+    		"Venta de paquetes de tabaco",
+    		"Primera variacion"
+    	];
+
+    	let valores = [];
+    	let valor = {};
+
+    	datos.forEach(d => {
+    		valor = {
+    			name: d.country,
+    			data: [d.natality_totals, d.natality_men, 0, 0]
+    		};
+
+    		valores.push(valor);
+    	});
+
+    	datos2.forEach(d2 => {
+    		if (d2.year == 2007) {
+    			valor = {
+    				name: d2.community,
+    				data: [0, 0, d2.cigarrete_sale, d2.first_variation]
+    			};
+
+    			valores.push(valor);
+    		}
+    	});
+
+    	console.log("Graph_NONO");
+
+    	Highcharts.chart("container", {
+    		chart: { type: "column" },
+    		title: { text: "Integración grupo 1" },
+    		xAxis: { categories: ejeX, crosshair: true },
+    		tooltip: {
+    			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
+    			pointFormat: "<tr><td style=\"color:{series.color};padding:0\">{series.name}: </td>" + "<td style=\"padding:0\"><b>{point.y:.1f} </b></td></tr>",
+    			footerFormat: "</table>",
+    			shared: true,
+    			useHTML: true
+    		},
+    		plotOptions: {
+    			column: { pointPadding: 0.2, borderWidth: 0 }
+    		},
+    		series: valores
+    	});
+    }
+
+    function instance$R($$self, $$props, $$invalidate) {
+    	onMount(getPluginNatality);
+    	let plugins = [];
+
+    	async function getPluginNatality() {
+    		console.log("Fetching plugin natality..");
+    		const res = await fetch(url$9);
+
+    		if (res.ok) {
+    			console.log("ok");
+    			const json = await res.json();
+    			$$invalidate(0, plugins = json);
+    			console.log("Received " + plugins.length + " plugin natality");
+    		} else {
+    			console.log("Error");
+    		}
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$v.warn(`<PluginNatality> was created with unknown prop '${key}'`);
+    	});
+
+    	let { $$slots = {}, $$scope } = $$props;
+    	validate_slots("PluginNatality", $$slots, []);
+
+    	$$self.$capture_state = () => ({
+    		onMount,
+    		pop,
+    		Table,
+    		Button,
+    		url: url$9,
+    		plugins,
+    		getPluginNatality,
+    		loadGraph: loadGraph$s
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("plugins" in $$props) $$invalidate(0, plugins = $$props.plugins);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [plugins, getPluginNatality];
+    }
+
+    class PluginNatality extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$R, create_fragment$R, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "PluginNatality",
+    			options,
+    			id: create_fragment$R.name
+    		});
+    	}
+    }
+
+    /* src\front\CigarretesAPI\integrations\pluginRenewable.svelte generated by Svelte v3.23.0 */
+
+    const { console: console_1$w } = globals;
+    const file$R = "src\\front\\CigarretesAPI\\integrations\\pluginRenewable.svelte";
+
+    function get_each_context$p(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[2] = list[i];
+    	return child_ctx;
+    }
+
+    // (1:0) <script>        import  { onMount }
+    function create_catch_block$s(ctx) {
+    	const block = {
+    		c: noop,
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block$s.name,
+    		type: "catch",
+    		source: "(1:0) <script>        import  { onMount }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (107:8) {:then getPluginRenewable}
+    function create_then_block$s(ctx) {
+    	let figure;
+    	let div;
+    	let t0;
+    	let p;
+    	let t2;
+    	let current;
+
+    	const table = new Table({
+    			props: {
+    				bordered: true,
+    				$$slots: { default: [create_default_slot_1$x] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			figure = element("figure");
+    			div = element("div");
+    			t0 = space();
+    			p = element("p");
+    			p.textContent = "Esta API muestra información sobre las diferentes fuentes de energías renovables en diversos paises del mundo.";
+    			t2 = space();
+    			create_component(table.$$.fragment);
+    			attr_dev(div, "id", "container");
+    			add_location(div, file$R, 108, 16, 3437);
+    			attr_dev(p, "class", "highcharts-description");
+    			add_location(p, file$R, 109, 20, 3485);
+    			attr_dev(figure, "class", "highcharts-figure");
+    			add_location(figure, file$R, 107, 12, 3385);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, figure, anchor);
+    			append_dev(figure, div);
+    			append_dev(figure, t0);
+    			append_dev(figure, p);
+    			insert_dev(target, t2, anchor);
+    			mount_component(table, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const table_changes = {};
+
+    			if (dirty & /*$$scope, plugins*/ 33) {
+    				table_changes.$$scope = { dirty, ctx };
+    			}
+
+    			table.$set(table_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(table.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(table.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(figure);
+    			if (detaching) detach_dev(t2);
+    			destroy_component(table, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block$s.name,
+    		type: "then",
+    		source: "(107:8) {:then getPluginRenewable}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (128:20) {#each plugins as plugin}
+    function create_each_block$p(ctx) {
+    	let tr;
+    	let td0;
+    	let t0_value = /*plugin*/ ctx[2].country + "";
+    	let t0;
+    	let t1;
+    	let td1;
+    	let t2_value = /*plugin*/ ctx[2].year + "";
+    	let t2;
+    	let t3;
+    	let td2;
+    	let t4_value = /*plugin*/ ctx[2]["percentage-re-total"] + "";
+    	let t4;
+    	let t5;
+    	let td3;
+    	let t6_value = /*plugin*/ ctx[2]["percentage-hydropower-total"] + "";
+    	let t6;
+    	let t7;
+
+    	const block = {
+    		c: function create() {
+    			tr = element("tr");
+    			td0 = element("td");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			td1 = element("td");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			td2 = element("td");
+    			t4 = text(t4_value);
+    			t5 = space();
+    			td3 = element("td");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			add_location(td0, file$R, 129, 24, 4222);
+    			add_location(td1, file$R, 130, 24, 4273);
+    			add_location(td2, file$R, 131, 24, 4321);
+    			add_location(td3, file$R, 132, 24, 4387);
+    			add_location(tr, file$R, 128, 20, 4192);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, t0);
+    			append_dev(tr, t1);
+    			append_dev(tr, td1);
+    			append_dev(td1, t2);
+    			append_dev(tr, t3);
+    			append_dev(tr, td2);
+    			append_dev(td2, t4);
+    			append_dev(tr, t5);
+    			append_dev(tr, td3);
+    			append_dev(td3, t6);
+    			append_dev(tr, t7);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["percentage-re-total"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["percentage-hydropower-total"] + "")) set_data_dev(t6, t6_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$p.name,
+    		type: "each",
+    		source: "(128:20) {#each plugins as plugin}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (116:12) <Table bordered>
+    function create_default_slot_1$x(ctx) {
+    	let thead;
+    	let tr;
+    	let th0;
+    	let t1;
+    	let th1;
+    	let t3;
+    	let th2;
+    	let t5;
+    	let th3;
+    	let t7;
+    	let tbody;
+    	let each_value = /*plugins*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$p(get_each_context$p(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			thead = element("thead");
+    			tr = element("tr");
+    			th0 = element("th");
+    			th0.textContent = "Pais";
+    			t1 = space();
+    			th1 = element("th");
+    			th1.textContent = "Año";
+    			t3 = space();
+    			th2 = element("th");
+    			th2.textContent = "Porcentaje total";
+    			t5 = space();
+    			th3 = element("th");
+    			th3.textContent = "Porcentaje energía hidroeléctrica";
+    			t7 = space();
+    			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(th0, file$R, 118, 24, 3843);
+    			add_location(th1, file$R, 119, 24, 3882);
+    			add_location(th2, file$R, 120, 24, 3920);
+    			add_location(th3, file$R, 121, 24, 3971);
+    			add_location(tr, file$R, 117, 20, 3813);
+    			add_location(thead, file$R, 116, 16, 3784);
+    			add_location(tbody, file$R, 126, 16, 4116);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, thead, anchor);
+    			append_dev(thead, tr);
+    			append_dev(tr, th0);
+    			append_dev(tr, t1);
+    			append_dev(tr, th1);
+    			append_dev(tr, t3);
+    			append_dev(tr, th2);
+    			append_dev(tr, t5);
+    			append_dev(tr, th3);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, tbody, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*plugins*/ 1) {
+    				each_value = /*plugins*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$p(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$p(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(thead);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(tbody);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1$x.name,
+    		type: "slot",
+    		source: "(116:12) <Table bordered>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (105:35)               Loading plugin-natality ...          {:then getPluginRenewable}
+    function create_pending_block$s(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Loading plugin-natality ...");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block$s.name,
+    		type: "pending",
+    		source: "(105:35)               Loading plugin-natality ...          {:then getPluginRenewable}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (145:5) <Button outline color="secondary" on:click="{pop}">
+    function create_default_slot$F(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Atrás ↩");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot$F.name,
+    		type: "slot",
+    		source: "(145:5) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$S(ctx) {
+    	let script0;
+    	let script0_src_value;
+    	let script1;
+    	let script1_src_value;
+    	let script2;
+    	let script2_src_value;
+    	let script3;
+    	let script3_src_value;
+    	let script4;
+    	let script4_src_value;
+    	let t0;
+    	let main;
+    	let promise;
+    	let t1;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		pending: create_pending_block$s,
+    		then: create_then_block$s,
+    		catch: create_catch_block$s,
+    		value: 1,
+    		blocks: [,,,]
+    	};
+
+    	handle_promise(promise = /*getPluginRenewable*/ ctx[1], info);
+
+    	const button = new Button({
+    			props: {
+    				outline: true,
+    				color: "secondary",
+    				$$slots: { default: [create_default_slot$F] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button.$on("click", pop);
+
+    	const block = {
+    		c: function create() {
+    			script0 = element("script");
+    			script1 = element("script");
+    			script2 = element("script");
+    			script3 = element("script");
+    			script4 = element("script");
+    			t0 = space();
+    			main = element("main");
+    			info.block.c();
+    			t1 = space();
+    			create_component(button.$$.fragment);
+    			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
+    			script0.defer = true;
+    			add_location(script0, file$R, 95, 8, 2679);
+    			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/series-label.js")) attr_dev(script1, "src", script1_src_value);
+    			script1.defer = true;
+    			add_location(script1, file$R, 96, 8, 2780);
+    			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script2, "src", script2_src_value);
+    			script2.defer = true;
+    			add_location(script2, file$R, 97, 8, 2891);
+    			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script3, "src", script3_src_value);
+    			script3.defer = true;
+    			add_location(script3, file$R, 98, 8, 2999);
+    			if (script4.src !== (script4_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script4, "src", script4_src_value);
+    			script4.defer = true;
+    			add_location(script4, file$R, 99, 8, 3109);
+    			add_location(main, file$R, 102, 4, 3245);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			append_dev(document.head, script0);
+    			append_dev(document.head, script1);
+    			append_dev(document.head, script2);
+    			append_dev(document.head, script3);
+    			append_dev(document.head, script4);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, main, anchor);
+    			info.block.m(main, info.anchor = null);
+    			info.mount = () => main;
+    			info.anchor = null;
+    			insert_dev(target, t1, anchor);
+    			mount_component(button, target, anchor);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(script0, "load", loadGraph$t, false, false, false),
+    					listen_dev(script1, "load", loadGraph$t, false, false, false),
+    					listen_dev(script2, "load", loadGraph$t, false, false, false),
+    					listen_dev(script3, "load", loadGraph$t, false, false, false),
+    					listen_dev(script4, "load", loadGraph$t, false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
+
+    			{
+    				const child_ctx = ctx.slice();
+    				child_ctx[1] = info.resolved;
+    				info.block.p(child_ctx, dirty);
+    			}
+
+    			const button_changes = {};
+
+    			if (dirty & /*$$scope*/ 32) {
+    				button_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button.$set(button_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(info.block);
+    			transition_in(button.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
+    			transition_out(button.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			detach_dev(script0);
+    			detach_dev(script1);
+    			detach_dev(script2);
+    			detach_dev(script3);
+    			detach_dev(script4);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(main);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
+    			if (detaching) detach_dev(t1);
+    			destroy_component(button, detaching);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$S.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const url$a = "https://sos1920-09.herokuapp.com/api/v2/renewable-sources-stats";
+
+    async function loadGraph$t() {
+    	const res1 = await fetch("api/v2/cigarretes-sales");
+    	let datos2 = await res1.json();
+    	const res = await fetch(url$a);
+    	let datos = await res.json();
+
+    	let ejeX = [
+    		"Porcentaje total",
+    		"Porcentaje energía hidroeléctrica",
+    		"Venta de paquetes de tabaco",
+    		"Primera variacion"
+    	];
+
+    	let valores = [];
+    	let valor = {};
+
+    	datos.forEach(d => {
+    		valor = {
+    			name: d.country,
+    			data: [d["percentage-hydropower-total"], d["percentage-hydropower-total"], 0, 0]
+    		};
+
+    		valores.push(valor);
+    	});
+
+    	datos2.forEach(d2 => {
+    		if (d2.year == 2007) {
+    			valor = {
+    				name: d2.community,
+    				data: [0, 0, d2.cigarrete_sale, d2.first_variation]
+    			};
+
+    			valores.push(valor);
+    		}
+    	});
+
+    	console.log("Graph_NONO");
+
+    	Highcharts.chart("container", {
+    		chart: { type: "column" },
+    		title: { text: "Integración grupo 9" },
+    		xAxis: { categories: ejeX, crosshair: true },
+    		tooltip: {
+    			headerFormat: "<span style=\"font-size:10px\">{point.key}</span><table>",
+    			pointFormat: "<tr><td style=\"color:{series.color};padding:0\">{series.name}: </td>" + "<td style=\"padding:0\"><b>{point.y:.1f} </b></td></tr>",
+    			footerFormat: "</table>",
+    			shared: true,
+    			useHTML: true
+    		},
+    		plotOptions: {
+    			column: { pointPadding: 0.2, borderWidth: 0 }
+    		},
+    		series: valores
+    	});
+    }
+
+    function instance$S($$self, $$props, $$invalidate) {
+    	onMount(getPluginRenewable);
+    	let plugins = [];
+
+    	async function getPluginRenewable() {
+    		console.log("Fetching plugin renewable..");
+    		const res = await fetch(url$a);
+
+    		if (res.ok) {
+    			console.log("ok");
+    			const json = await res.json();
+    			$$invalidate(0, plugins = json);
+    			console.log("Received " + plugins.length + " plugin renewable");
+    		} else {
+    			console.log("Error");
+    		}
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$w.warn(`<PluginRenewable> was created with unknown prop '${key}'`);
+    	});
+
+    	let { $$slots = {}, $$scope } = $$props;
+    	validate_slots("PluginRenewable", $$slots, []);
+
+    	$$self.$capture_state = () => ({
+    		onMount,
+    		pop,
+    		Table,
+    		Button,
+    		url: url$a,
+    		plugins,
+    		getPluginRenewable,
+    		loadGraph: loadGraph$t
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("plugins" in $$props) $$invalidate(0, plugins = $$props.plugins);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [plugins, getPluginRenewable];
+    }
+
+    class PluginRenewable extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$S, create_fragment$S, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "PluginRenewable",
+    			options,
+    			id: create_fragment$S.name
+    		});
+    	}
+    }
+
+    /* src\front\CigarretesAPI\integrations\pluginLife.svelte generated by Svelte v3.23.0 */
+
+    const { console: console_1$x } = globals;
+    const file$S = "src\\front\\CigarretesAPI\\integrations\\pluginLife.svelte";
+
+    function get_each_context$q(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[2] = list[i];
+    	return child_ctx;
+    }
+
+    // (1:0) <script>        import  { onMount }
+    function create_catch_block$t(ctx) {
+    	const block = {
+    		c: noop,
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block$t.name,
+    		type: "catch",
+    		source: "(1:0) <script>        import  { onMount }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (107:8) {:then getPluginLife}
+    function create_then_block$t(ctx) {
+    	let figure;
+    	let div;
+    	let t0;
+    	let p;
+    	let t2;
+    	let current;
+
+    	const table = new Table({
+    			props: {
+    				bordered: true,
+    				$$slots: { default: [create_default_slot_1$y] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			figure = element("figure");
+    			div = element("div");
+    			t0 = space();
+    			p = element("p");
+    			p.textContent = "Esta API muestra información sobre la esperanza de vida en diversos paises del mundo.";
+    			t2 = space();
+    			create_component(table.$$.fragment);
+    			attr_dev(div, "id", "container");
+    			add_location(div, file$S, 108, 16, 3267);
+    			attr_dev(p, "class", "highcharts-description");
+    			add_location(p, file$S, 109, 20, 3315);
+    			attr_dev(figure, "class", "highcharts-figure");
+    			add_location(figure, file$S, 107, 12, 3215);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, figure, anchor);
+    			append_dev(figure, div);
+    			append_dev(figure, t0);
+    			append_dev(figure, p);
+    			insert_dev(target, t2, anchor);
+    			mount_component(table, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const table_changes = {};
+
+    			if (dirty & /*$$scope, plugins*/ 33) {
+    				table_changes.$$scope = { dirty, ctx };
+    			}
+
+    			table.$set(table_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(table.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(table.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(figure);
+    			if (detaching) detach_dev(t2);
+    			destroy_component(table, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block$t.name,
+    		type: "then",
+    		source: "(107:8) {:then getPluginLife}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (128:20) {#each plugins as plugin}
+    function create_each_block$q(ctx) {
+    	let tr;
+    	let td0;
+    	let t0_value = /*plugin*/ ctx[2].country + "";
+    	let t0;
+    	let t1;
+    	let td1;
+    	let t2_value = /*plugin*/ ctx[2].year + "";
+    	let t2;
+    	let t3;
+    	let td2;
+    	let t4_value = /*plugin*/ ctx[2]["women_life_expectancy"] + "";
+    	let t4;
+    	let t5;
+    	let td3;
+    	let t6_value = /*plugin*/ ctx[2]["men_life_expectancy"] + "";
+    	let t6;
+    	let t7;
+
+    	const block = {
+    		c: function create() {
+    			tr = element("tr");
+    			td0 = element("td");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			td1 = element("td");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			td2 = element("td");
+    			t4 = text(t4_value);
+    			t5 = space();
+    			td3 = element("td");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			add_location(td0, file$S, 129, 24, 4034);
+    			add_location(td1, file$S, 130, 24, 4085);
+    			add_location(td2, file$S, 131, 24, 4133);
+    			add_location(td3, file$S, 132, 24, 4201);
+    			add_location(tr, file$S, 128, 20, 4004);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, t0);
+    			append_dev(tr, t1);
+    			append_dev(tr, td1);
+    			append_dev(td1, t2);
+    			append_dev(tr, t3);
+    			append_dev(tr, td2);
+    			append_dev(td2, t4);
+    			append_dev(tr, t5);
+    			append_dev(tr, td3);
+    			append_dev(td3, t6);
+    			append_dev(tr, t7);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*plugins*/ 1 && t0_value !== (t0_value = /*plugin*/ ctx[2].country + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*plugins*/ 1 && t2_value !== (t2_value = /*plugin*/ ctx[2].year + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*plugins*/ 1 && t4_value !== (t4_value = /*plugin*/ ctx[2]["women_life_expectancy"] + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*plugins*/ 1 && t6_value !== (t6_value = /*plugin*/ ctx[2]["men_life_expectancy"] + "")) set_data_dev(t6, t6_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$q.name,
+    		type: "each",
+    		source: "(128:20) {#each plugins as plugin}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (116:12) <Table bordered>
+    function create_default_slot_1$y(ctx) {
+    	let thead;
+    	let tr;
+    	let th0;
+    	let t1;
+    	let th1;
+    	let t3;
+    	let th2;
+    	let t5;
+    	let th3;
+    	let t7;
+    	let tbody;
+    	let each_value = /*plugins*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$q(get_each_context$q(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			thead = element("thead");
+    			tr = element("tr");
+    			th0 = element("th");
+    			th0.textContent = "Pais";
+    			t1 = space();
+    			th1 = element("th");
+    			th1.textContent = "Año";
+    			t3 = space();
+    			th2 = element("th");
+    			th2.textContent = "Esperanza de vida en mujeres";
+    			t5 = space();
+    			th3 = element("th");
+    			th3.textContent = "Esperanza de vida en hombres";
+    			t7 = space();
+    			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(th0, file$S, 118, 24, 3648);
+    			add_location(th1, file$S, 119, 24, 3687);
+    			add_location(th2, file$S, 120, 24, 3725);
+    			add_location(th3, file$S, 121, 24, 3788);
+    			add_location(tr, file$S, 117, 20, 3618);
+    			add_location(thead, file$S, 116, 16, 3589);
+    			add_location(tbody, file$S, 126, 16, 3928);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, thead, anchor);
+    			append_dev(thead, tr);
+    			append_dev(tr, th0);
+    			append_dev(tr, t1);
+    			append_dev(tr, th1);
+    			append_dev(tr, t3);
+    			append_dev(tr, th2);
+    			append_dev(tr, t5);
+    			append_dev(tr, th3);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, tbody, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*plugins*/ 1) {
+    				each_value = /*plugins*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$q(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$q(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(thead);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(tbody);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1$y.name,
+    		type: "slot",
+    		source: "(116:12) <Table bordered>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (105:30)               Loading plugin-natality ...          {:then getPluginLife}
+    function create_pending_block$t(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Loading plugin-natality ...");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block$t.name,
+    		type: "pending",
+    		source: "(105:30)               Loading plugin-natality ...          {:then getPluginLife}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (142:8) <Button outline color="secondary" on:click="{pop}">
+    function create_default_slot$G(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Atrás ↩");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot$G.name,
+    		type: "slot",
+    		source: "(142:8) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$T(ctx) {
     	let script0;
     	let script0_src_value;
     	let script1;
@@ -39520,9 +41118,9 @@ var app = (function () {
     		ctx,
     		current: null,
     		token: null,
-    		pending: create_pending_block$r,
-    		then: create_then_block$r,
-    		catch: create_catch_block$r,
+    		pending: create_pending_block$t,
+    		then: create_then_block$t,
+    		catch: create_catch_block$t,
     		value: 1,
     		blocks: [,,,]
     	};
@@ -39533,7 +41131,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "secondary",
-    				$$slots: { default: [create_default_slot$E] },
+    				$$slots: { default: [create_default_slot$G] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -39554,17 +41152,17 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			if (script0.src !== (script0_src_value = "https://code.highcharts.com/highcharts.js")) attr_dev(script0, "src", script0_src_value);
     			script0.defer = true;
-    			add_location(script0, file$Q, 96, 8, 2630);
+    			add_location(script0, file$S, 96, 8, 2630);
     			if (script1.src !== (script1_src_value = "https://code.highcharts.com/modules/exporting.js")) attr_dev(script1, "src", script1_src_value);
     			script1.defer = true;
-    			add_location(script1, file$Q, 97, 8, 2731);
+    			add_location(script1, file$S, 97, 8, 2731);
     			if (script2.src !== (script2_src_value = "https://code.highcharts.com/modules/export-data.js")) attr_dev(script2, "src", script2_src_value);
     			script2.defer = true;
-    			add_location(script2, file$Q, 98, 8, 2839);
+    			add_location(script2, file$S, 98, 8, 2839);
     			if (script3.src !== (script3_src_value = "https://code.highcharts.com/modules/accessibility.js")) attr_dev(script3, "src", script3_src_value);
     			script3.defer = true;
-    			add_location(script3, file$Q, 99, 8, 2949);
-    			add_location(main, file$Q, 102, 4, 3085);
+    			add_location(script3, file$S, 99, 8, 2949);
+    			add_location(main, file$S, 102, 4, 3085);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39585,10 +41183,10 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(script0, "load", loadGraph$s, false, false, false),
-    					listen_dev(script1, "load", loadGraph$s, false, false, false),
-    					listen_dev(script2, "load", loadGraph$s, false, false, false),
-    					listen_dev(script3, "load", loadGraph$s, false, false, false)
+    					listen_dev(script0, "load", loadGraph$u, false, false, false),
+    					listen_dev(script1, "load", loadGraph$u, false, false, false),
+    					listen_dev(script2, "load", loadGraph$u, false, false, false),
+    					listen_dev(script3, "load", loadGraph$u, false, false, false)
     				];
 
     				mounted = true;
@@ -39644,7 +41242,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$R.name,
+    		id: create_fragment$T.name,
     		type: "component",
     		source: "",
     		ctx
@@ -39655,7 +41253,7 @@ var app = (function () {
 
     const url$b = "https://sos1920-05.herokuapp.com/api/v1/life_expectancies";
 
-    async function loadGraph$s() {
+    async function loadGraph$u() {
     	const res1 = await fetch("api/v2/cigarretes-sales");
     	let datos2 = await res1.json();
     	const res = await fetch(url$b);
@@ -39711,7 +41309,7 @@ var app = (function () {
     	});
     }
 
-    function instance$R($$self, $$props, $$invalidate) {
+    function instance$T($$self, $$props, $$invalidate) {
     	onMount(getPluginLife);
     	let plugins = [];
 
@@ -39732,7 +41330,7 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$v.warn(`<PluginLife> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$x.warn(`<PluginLife> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
@@ -39746,7 +41344,7 @@ var app = (function () {
     		url: url$b,
     		plugins,
     		getPluginLife,
-    		loadGraph: loadGraph$s
+    		loadGraph: loadGraph$u
     	});
 
     	$$self.$inject_state = $$props => {
@@ -39763,21 +41361,21 @@ var app = (function () {
     class PluginLife extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$R, create_fragment$R, safe_not_equal, {});
+    		init(this, options, instance$T, create_fragment$T, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "PluginLife",
     			options,
-    			id: create_fragment$R.name
+    			id: create_fragment$T.name
     		});
     	}
     }
 
     /* src\front\App.svelte generated by Svelte v3.23.0 */
-    const file$R = "src\\front\\App.svelte";
+    const file$T = "src\\front\\App.svelte";
 
-    function create_fragment$S(ctx) {
+    function create_fragment$U(ctx) {
     	let main;
     	let current;
 
@@ -39790,7 +41388,7 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			create_component(router.$$.fragment);
-    			add_location(main, file$R, 105, 0, 6327);
+    			add_location(main, file$T, 109, 0, 6727);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39818,7 +41416,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$S.name,
+    		id: create_fragment$U.name,
     		type: "component",
     		source: "",
     		ctx
@@ -39827,7 +41425,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$S($$self, $$props, $$invalidate) {
+    function instance$U($$self, $$props, $$invalidate) {
     	const routes = {
     		"/": Home,
     		"/analytics": Analytics,
@@ -39858,6 +41456,8 @@ var app = (function () {
     		"/offworks-stats-integrations/integrations/indiceMasaIntegration": IndiceMasaIntegration,
     		"/offworks-stats-integrations/integrations/goalscorersIntegration": GoalscorersIntegration,
     		"/offworks-stats-integrations/integrations/apiExterna1Integration": ApiExterna1Integration,
+    		"/offworks-stats-integrations/integrations/apiExterna2Integration": ApiExterna2Integration,
+    		"/offworks-stats-integrations/integrations/apiExterna3Integration": ApiExterna3Integration,
     		"/cigarretes-sales": CigarretesTable,
     		"/cigarretes-sales/:community/:year": EditCigarretesSales,
     		"/graph-cigarretes-sales": GraphCigarretesSales,
@@ -39913,6 +41513,8 @@ var app = (function () {
     		indiceMasaIntegration: IndiceMasaIntegration,
     		goalscorersIntegration: GoalscorersIntegration,
     		apiExterna1Integration: ApiExterna1Integration,
+    		apiExterna2Integration: ApiExterna2Integration,
+    		apiExterna3Integration: ApiExterna3Integration,
     		CigarretesTable,
     		GraphCigarretesSales,
     		EditCigarretesSales,
@@ -39933,13 +41535,13 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$S, create_fragment$S, safe_not_equal, {});
+    		init(this, options, instance$U, create_fragment$U, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "App",
     			options,
-    			id: create_fragment$S.name
+    			id: create_fragment$U.name
     		});
     	}
     }

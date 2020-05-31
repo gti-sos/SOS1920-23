@@ -56,48 +56,45 @@
             }
             
         });
-        //console.log(mot_mens+" "+mot_mens.length);
+        
         Highcharts.chart('container', {
             chart: {
+                polar: true,
                 type: 'line'
             },
-            title: {
-                text: 'Comunidades-Accidentes-Hombres y Mujeres en moto'
+            accessibility: {
+                description: '.'
             },
-
+            title: {
+                text: 'Comunidades-Accidentes-Hombres y Mujeres en moto',
+                x: -80
+            },
             subtitle: {
                 text: 'Integracion offworksApi y DrivingLicenseApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
-
-            yAxis: {
-                title: {
-                    text: 'Numero en decenas'
-
-                },
-
+            pane: {
+                size: '80%'
             },
-
             xAxis: {
                 categories: comunidades
             },
-
+            yAxis: {
+                text: 'Numero en decenas',
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+            },
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y}</b><br/>'
+            },
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'middle',
+                layout: 'vertical'
             },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    enableMouseTracking: false
-                }
-            },
-
             series: [{
                 name: 'Hombres en moto',
                 data: mot_mens
@@ -118,15 +115,19 @@
                     },
                     chartOptions: {
                         legend: {
-                            layout: 'horizontal',
                             align: 'center',
-                            verticalAlign: 'bottom'
+                            verticalAlign: 'bottom',
+                            layout: 'horizontal'
+                        },
+                        pane: {
+                            size: '70%'
                         }
                     }
                 }]
             }
-
         });
+
+       
 
     };
     let datosApi=[];

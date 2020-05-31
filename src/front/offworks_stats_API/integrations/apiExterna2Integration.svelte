@@ -6,6 +6,7 @@
 
     onMount(getApi);
 
+
     async function loadGraph() {
         let MyData = [];
         let comunidades = [];
@@ -38,20 +39,20 @@
         let actives = [];
         let testss = [];
         //let recovereds = [];
-        const resDataExt = await fetch("/v2/countries");
+        const resDataExt = await fetch("https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES");
         dataExt = await resDataExt.json();
 
         dataExt.forEach((data) => {
-            let countrie = data.country;
-            let cases = data["cases"];
-            let active = data["active"];
-            let tests = data["tests"];
+            let countrie = data.Nombre;
+            let cases = data["Id"];
+            let active = data["Cod_IOE"];
+            let tests = data["Codigo"];
             //let recovered = data["recovered"];
             
             if (cont<=7) {
                 countries.push(countrie);
                 casess.push(cases);
-                actives.push(active);
+                actives.push(parseInt(active));
                 testss.push(tests);
                 cont++;
             }
@@ -70,11 +71,11 @@
                 description: '.'
             },
             title: {
-                text: 'Comunidades-Accidentes-Casos-Activos-Tests',
+                text: 'Comunidades-Enfermedades-Id',
                 x: -80
             },
             subtitle: {
-                text: 'Integracion offworksApi y CoronalmaoNinjaApi',
+                text: 'Integracion offworksApi y serviciosIneApi',
                 align: 'right',
                 verticalAlign: 'bottom'
             },
@@ -85,7 +86,7 @@
                 categories: comunidades
             },
             yAxis: {
-                text: 'Numero en decenas',
+                text: 'Numero de enfermedades y zonas',
                 gridLineInterpolation: 'polygon',
                 lineWidth: 0,
                 min: 0
@@ -100,17 +101,16 @@
                 layout: 'vertical'
             },
             series: [{
-                name: 'Casos',
+                name: 'Id',
                 data: casess
-            }, {
-                name: "Casos activos",
-                data: actives
-            }, {
-                name: "Test realizados",
-                data: testss
-            }, {
-                name: "baja por accidente",
-                data: accidentes
+            }
+            //, {
+            //    name: "Cod_IOE",
+            //    data: actives
+           // }
+            , {
+                name: "baja por enfermedad",
+                data: enfermos
             }],
             responsive: {
                 rules: [{
@@ -131,12 +131,11 @@
             }
         });
 
-        
     };
     let datosApi=[];
     async function getApi(){
         //console.log("Fetching plugin vehicles..");
-        const res = await fetch("/v2/countries");
+        const res = await fetch("https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES");
         if(res.ok){
             console.log("ok");
             const json = await res.json();
@@ -164,7 +163,7 @@
         <div id="container"></div>
         <p class="highcharts-description">
             Relación de las Comunidades en el año 2007 entre enfermedades laborales y
-            casos,casos activos y tests en Comunidades Autonomas.
+            las id en Comunidades Autonomas.
         </p>
     </figure>
     <Button outline color = "secondary" on:click="{pop}">Volver</Button>
@@ -174,25 +173,19 @@
     <Table bordered>
         <thead>
             <tr>
-                <th>Pais</th>
-                <th>Casos</th>
-                <th>Casos hoy</th>
-                <th>tests</th>
-                <th>activos</th>
-                <th>muertes</th>
-                <th>recuperados</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Cod_IOE</th>
+                <th>Codigo</th>
             </tr>
         </thead>
         <tbody>
             {#each datosApi as datoApi}
 				<tr>
-                    <td>{datoApi.country}</td>
-                    <td>{datoApi['cases']}</td>
-                    <td>{datoApi['todayCases']}</td>
-                    <td>{datoApi['tests']}</td>
-                    <td>{datoApi['active']}</td>
-                    <td>{datoApi['deaths']}</td>
-                    <td>{datoApi['recovered']}</td>
+                    <td>{datoApi['Id']}</td>  <!-- datoApi.fields  -->
+                    <td>{datoApi.Nombre}</td>
+                    <td>{datoApi['Cod_IOE']}</td>
+                    <td>{datoApi['Codigo']}</td>
 				</tr>
 				{/each}
 			</tbody>
