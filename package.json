@@ -35,6 +35,7 @@
     "node-modules": "^1.0.1",
     "request": "^2.88.2",
     "svelte-spa-router": "^2.1.0",
-    "sveltestrap": "^3.3.3"
+    "sveltestrap": "^3.3.3",
+    "unirest": "^0.6.0"
   }
 }

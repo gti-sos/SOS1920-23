@@ -29,7 +29,40 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
         var url = api2 + req.baseUrl + req.url;
         console.log('Proxy with: ' + req.baseUrl + req.url);
         req.pipe(request(url)).pipe(res);
-	});
+    });
+
+    //Llamada API Externa
+    var api3 = 'https://deezerdevs-deezer.p.rapidapi.com';
+    var path3 = '/search';
+
+    app.use(path3, function(req, res){
+        var url = api3 + req.baseUrl + req.url;
+        console.log("Proxy with: "+ req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+    });
+
+
+    var unirest = require("unirest");
+
+    var req = unirest("GET", "https://deezerdevs-deezer.p.rapidapi.com/search");
+
+    req.query({
+        "q": "eminem"
+    });
+
+    req.headers({
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        "x-rapidapi-key": "1ffb76c03dmsh3fb87e4dcd08115p1d9482jsn63e6275c09b1",
+        "useQueryString": true
+    });
+
+
+    req.end(function (res) {
+        if (res.error) throw new Error(res.error);
+        console.log("Hola, mostrando api externa");
+        console.log(res.body);
+    });
+
         
     app.use(bodyParser.json()); //Par cuando llegan datos transformarlos automรกticamente
         //API Antonio

@@ -10,6 +10,7 @@
 	import bookExportsStats from './Fires_Stats_API/integrations/bookExportsStats.svelte';
 	import sugarConsumeStats from './Fires_Stats_API/integrations/sugarConsumeStats.svelte';
 	import drugOffencesStats from './Fires_Stats_API/integrations/drugOffencesStats.svelte';
+	import apiExterna1 from './Fires_Stats_API/integrations/apiExterna1.svelte';
 </script>
 
 <main>
@@ -24,4 +25,5 @@
 	<bookExportsStats/>
 	<sugarConsumeStats/>
 	<drugOffencesStats/>
+	<apiExterna1/>
 </main>
