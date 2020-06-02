@@ -37,6 +37,7 @@
         let indice_de_masa_corporals = [];
         let alturas = [];
         let tasa_obesidads = [];
+	cont=0;
         const resDataExt = await fetch("https://sos1920-30.herokuapp.com/api/v3/indice_de_masa_corporal");
         dataExt = await resDataExt.json();
 
@@ -47,11 +48,12 @@
             let altura = data["altura"];
             let tasa_obesidad = data["tasa_obesidad"];
             
-            if (data.year == 2019) {
+            if (data.year == 2019&& cont<5) {
                 countrys.push(country);
                 indice_de_masa_corporals.push(indice_de_masa_corporal);
                 alturas.push(altura);
                 tasa_obesidads.push(tasa_obesidad);
+		cont++;
             }
             
         });
