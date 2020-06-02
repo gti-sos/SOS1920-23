@@ -38,23 +38,23 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Nacimientos totales","Nacimientos de hombres","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Nacimientos totales","Nacimientos de hombres","Nacimientos de mujeres","Venta de paquetes de tabaco","Primera variacion","Segunda variación"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
-            
+            if(d.year==2017){
             valor={
                 name: d.country,
-                data: [d.natality_totals,d.natality_men,0,0]
+                data: [d.natality_totals,d.natality_men,d.natality_women,0,0]
             }
             valores.push(valor);
-        
+            }
         });
         datos2.forEach((d2) => {
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -111,7 +111,7 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre la natalidad en diversos paises europeos.
+                            Esta gráfica muestra información sobre la venta de paquetes de tabaco en 2007 y la natalidad en 2017.
                     </p>	
             </figure>
            
@@ -123,6 +123,8 @@
                         <th>Año</th>
                         <th>Nacimientos totales</th>
                         <th>Nacimientos de hombres</th>
+                        <th>Nacimientos de mujeres</th>
+
                         
     
                     </tr>
@@ -134,6 +136,8 @@
                         <td>{plugin.year}</td>
                         <td>{plugin['natality_totals']}</td>
                         <td>{plugin['natality_men']}</td>
+                        <td>{plugin['natality_women']}</td>
+
                         
     
     

@@ -38,13 +38,13 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Esperanza de vida en mujeres","Esperanza de vida en hombres","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Esperanza de vida en mujeres","Esperanza de vida en hombres","Esperanza de vida media","Venta de paquetes de tabaco","Primera variacion","Segunda variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
             valor={
                 name: d.country,
-                data: [d.women_life_expectancy,d.men_life_expectancy,0,0]
+                data: [d.women_life_expectancy,d.men_life_expectancy,d.average_life_expectancy,0,0,0]
             }
             valores.push(valor);
         });
@@ -52,7 +52,7 @@
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -108,7 +108,7 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre la esperanza de vida en diversos paises del mundo.
+                            Esta gráfica muestra información sobre la venta de paquetes de tabaco en 2007 y las esperanza de vida en diversos paises.
                     </p>	
             </figure>
            
@@ -120,6 +120,7 @@
                         <th>Año</th>
                         <th>Esperanza de vida en mujeres</th>
                         <th>Esperanza de vida en hombres</th>
+                        <th>Esperanza de vida media</th>
                         
     
                     </tr>
@@ -131,6 +132,8 @@
                         <td>{plugin.year}</td>
                         <td>{plugin['women_life_expectancy']}</td>
                         <td>{plugin['men_life_expectancy']}</td>
+                        <td>{plugin['average_life_expectancy']}</td>
+
                         
     
     

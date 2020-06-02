@@ -43,6 +43,9 @@
 	import pluginNatality from './CigarretesAPI/integrations/pluginNatality.svelte';
 	import pluginRenewable from './CigarretesAPI/integrations/pluginRenewable.svelte';
 	import pluginLife from './CigarretesAPI/integrations/pluginLife.svelte';
+	import pluginExterna1 from './CigarretesAPI/integrations/pluginExterna1.svelte';
+	import integrationsCigarretes from './CigarretesAPI/integrations/integrations.svelte';
+	import pluginExterna2 from './CigarretesAPI/integrations/pluginExterna2.svelte';
 
 
 
@@ -88,6 +91,11 @@
 		"/cigarretes-sales-integrations/integrations/pluginNatality" : pluginNatality,
 		"/cigarretes-sales-integrations/integrations/pluginRenewable" : pluginRenewable,
 		"/cigarretes-sales-integrations/integrations/pluginLife" : pluginLife,
+		"/cigarretes-sales-integrations/integrations/pluginExterna1" : pluginExterna1,
+		"/cigarretes-sales-integrations/integrations" : integrationsCigarretes,
+		"/cigarretes-sales-integrations/integrations/pluginExterna2" : pluginExterna2,
+
+
 		"*" : NotFound
 	};
 
