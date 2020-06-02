@@ -6,7 +6,7 @@
     import Button from "sveltestrap/src/Button.svelte";
     
     
-        const url = "api/v2/electricity-produced-stats";
+    const url = "https://sos1920-08.herokuapp.com/api/v2/electricity-produced-stats";
     
         onMount(getPluginElectricity);
         let plugins = [];
@@ -38,14 +38,14 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Energia hidroeléctrica","Energia solar","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Energia hidroeléctrica","Energia solar","Energía con carbón","Venta de paquetes de tabaco","Primera variacion","Segunda variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
            
             valor={
                 name: d.state,
-                data: [d.hydro,d.coal,0,0],
+                data: [d.hydro,d.solar,d.coal,0,0,0]
             }
             valores.push(valor);
             
@@ -54,7 +54,7 @@
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -111,7 +111,8 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre las diferentes fuentes de energía en estados de EEUU.
+                            Esta gráfica muestra información sobre la venta de paquetes de tabaco en diferentes comunidades
+                            de España en 2007 y las diferentes fuentes de energía en estados de EEUU.
                     </p>	
             </figure>
            
@@ -119,10 +120,12 @@
             <Table bordered>
                 <thead>
                     <tr>
+                        <th>Pais</th>
                         <th>Estado</th>
                         <th>Año</th>
                         <th>Energia hidroeléctrica</th>
                         <th>Energia solar</th>
+                        <th>Energia con carbon</th>
                         
     
                     </tr>
@@ -130,11 +133,13 @@
                 <tbody>
                     {#each plugins as plugin}
                     <tr>
+                        <td>{plugin.country}</td>
                         <td>{plugin.state}</td>
                         <td>{plugin.year}</td>
                         <td>{plugin['hydro']}</td>
                         <td>{plugin['solar']}</td>
-                        
+                        <td>{plugin['coal']}</td>
+   
     
     
                     </tr>

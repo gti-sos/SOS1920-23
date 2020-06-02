@@ -37,14 +37,14 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Zumo de frutas","Animales vivos","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Verduras","Zumo de frutas","Bolleria","Animales vivos","Filete de pescado y picadillo","Venta de paquetes de tabaco","Primera variacion","Segunda variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
             if(d.year==2007){
             valor={
                 name: d.name,
-                data: [d.fruitJuice,d.TLiveAnimal,0,0]
+                data: [d.TVegANDPrep,d.fruitJuice,d.TSweANDCndy,d.TLiveAnimal,d.FishFilletANDMince,0,0,0]
             }
             valores.push(valor);
         }
@@ -53,7 +53,7 @@
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -110,7 +110,8 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre importaciones de comida a diferentes paises del mundo .
+                            Esta gráfica muestra información sobre la venta de paquetes de tabaco en 2007 , e importaciones
+                            de comida en diversos paises en 2007
                     </p>	
             </figure>
            
@@ -120,8 +121,11 @@
                     <tr>
                         <th>Pais</th>
                         <th>Año</th>
+                        <th>Verduras</th>
                         <th>Zumo de frutas</th>
+                        <th>Bollería</th>
                         <th>Animales vivos</th>
+                        <th>Filete de pescado y picadillo</th>
                         
     
                     </tr>
@@ -131,9 +135,12 @@
                     <tr>
                         <td>{plugin.name}</td>
                         <td>{plugin.year}</td>
+                        <td>{plugin['TVegANDPrep']}</td>
                         <td>{plugin['fruitJuice']}</td>
+                        <td>{plugin['TSweANDCndy']}</td>
                         <td>{plugin['TLiveAnimal']}</td>
-                        
+                        <td>{plugin['FishFilletANDMince']}</td>
+
     
     
                     </tr>

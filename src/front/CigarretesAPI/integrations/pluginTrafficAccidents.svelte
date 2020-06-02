@@ -37,21 +37,24 @@ import Button from "sveltestrap/src/Button.svelte";
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Accidentes con víctimas","Accidentes mortales","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Accidentes con víctimas","Accidentes mortales","Muertes","Heridos hospitalizados","Heridos no hospitalizados","Venta de paquetes de tabaco","Primera variacion","Segunda variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
+            if(d.year==2018){
             valor={
                 name: d.province,
-                data: [d.accidentWithVictims,d.mortalAccident,0,0]
+                data: [d.accidentWithVictims,d.mortalAccident,d.death,d.hospitalizedWounded,d.notHospitalizedWounded,0,0,0]
             }
+        
             valores.push(valor);
+        }
         });
         datos2.forEach((d2) => {
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -108,7 +111,8 @@ import Button from "sveltestrap/src/Button.svelte";
 		<figure class="highcharts-figure">
             <div id="container"></div>
                 <p class="highcharts-description">
-                        Esta API muestra información sobre los diversos accidentes en provincias españolas.
+                        Esta gráfica muestra una comparativa entre los paquetes de tabaco vendidos en 2007 y los accidentes 
+                        que hubo en 2018.
                 </p>	
         </figure>
        
@@ -120,7 +124,10 @@ import Button from "sveltestrap/src/Button.svelte";
 					<th>Año</th>
 					<th>Accidentes con víctimas</th>
                     <th>Accidentes mortales</th>
-                    
+                    <th>Muertes</th>
+                    <th>Heridos hospitalizados</th>
+                    <th>Heridos no hospitalizados</th>
+
 
 				</tr>
 			</thead>
@@ -131,7 +138,10 @@ import Button from "sveltestrap/src/Button.svelte";
                     <td>{plugin.year}</td>
                     <td>{plugin['accidentWithVictims']}</td>
                     <td>{plugin['mortalAccident']}</td>
-                    
+                    <td>{plugin['death']}</td>
+                    <td>{plugin['hospitalizedWounded']}</td>
+                    <td>{plugin['notHospitalizedWounded']}</td>
+
 
 
 				</tr>

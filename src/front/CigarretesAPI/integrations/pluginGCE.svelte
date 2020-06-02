@@ -38,14 +38,14 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Energia hidroeléctrica","Energia solar","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["GCE por pais","GCE por capital","GCE por coches","Venta de paquetes de tabaco","Primera variacion","Segunda variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
            
             valor={
                 name: d.country,
-                data: [d.gce_country,d.gce_per_capita,0,0],
+                data: [d.gce_country,d.gce_per_capita,d.gce_cars,0,0,0],
             }
             valores.push(valor);
             
@@ -54,7 +54,7 @@
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -111,7 +111,8 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre .
+                            Esta gráfica muestra información sobre paquetes de tabaco vendidos en 2007 , y la contaminación global producida
+                            en diferentes aspectos(por pais,por capital y por coches)
                     </p>	
             </figure>
            
@@ -123,6 +124,8 @@
                         <th>Año</th>
                         <th>GCE pais</th>
                         <th>GCE por capital</th>
+                        <th>GCE coches</th>
+
                         
     
                     </tr>
@@ -134,7 +137,8 @@
                         <td>{plugin.year}</td>
                         <td>{plugin['gce_country']}</td>
                         <td>{plugin['gce_per_capita']}</td>
-                        
+                        <td>{plugin['gce_cars']}</td>
+
     
     
                     </tr>

@@ -8,9 +8,9 @@
 
 <h3>Integraciones </h3>
 <h4>Apis Externas: </h4>
-    <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales'">Api 1 Externa</Button></p>
+<p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginExterna1'">Estadísticas sobre paises</Button></p>
 		
-    <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales'"> API 2 Externa</Button></p>
+<p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginExterna2'">Estadísticas sobre COVID-19 en estados de la India</Button></p>
 <h4>Apis de Compañeros: </h4>
 
     <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginTrafficAccidents'">Análisis del tráfico en España</Button></p>

@@ -35,23 +35,23 @@
         let datos2 = await res1.json();
         const res = await fetch(url);
         let datos = await res.json();
-        let ejeX = ["Porcentaje total","Porcentaje energía hidroeléctrica","Venta de paquetes de tabaco","Primera variacion"];
+        let ejeX = ["Porcentaje total","Porcentaje energía hidroeléctrica","Porcentaje energía eólica","Venta de paquetes de tabaco","Primera variacion","Segunda variacion"];
         let valores = [];
         let valor = {};
         datos.forEach((d) => {
-            
+            if(d.year==2018){
             valor={
                 name: d.country,
-                data: [d['percentage-hydropower-total'],d['percentage-hydropower-total'],0,0]
+                data: [d['percentage-hydropower-total'],d['percentage-hydropower-total'],d['percentage-wind-power-total'],0,0,0]
             }
             valores.push(valor);
-        
+            }
         });
         datos2.forEach((d2) => {
             if(d2.year==2007){
             valor={
                 name: d2.community,
-                data:[0,0,d2.cigarrete_sale,d2.first_variation]
+                data:[0,0,0,d2.cigarrete_sale,d2.first_variation,d2.second_variation]
             }
             valores.push(valor);
         }
@@ -108,7 +108,8 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
                     <p class="highcharts-description">
-                            Esta API muestra información sobre las diferentes fuentes de energías renovables en diversos paises del mundo.
+                            Esta gráfica muestra información sobre los paquetes de tabaco(en millones) vendidos en 2007
+                            y las diversas fuentes de energía renovable en 2018.
                     </p>	
             </figure>
            
@@ -120,6 +121,7 @@
                         <th>Año</th>
                         <th>Porcentaje total</th>
                         <th>Porcentaje energía hidroeléctrica</th>
+                        <th>Porcentaje energía eólica</th>
                         
     
                     </tr>
@@ -131,6 +133,8 @@
                         <td>{plugin.year}</td>
                         <td>{plugin['percentage-re-total']}</td>
                         <td>{plugin['percentage-hydropower-total']}</td>
+                        <td>{plugin['percentage-wind-power-total']}</td>
+
                         
     
     
