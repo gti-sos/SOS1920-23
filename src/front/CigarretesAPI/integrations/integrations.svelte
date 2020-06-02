@@ -10,7 +10,7 @@
 <h4>Apis Externas: </h4>
 <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginExterna1'">Estadísticas sobre paises</Button></p>
 		
-<p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginExterna2'">Estadísticas sobre COVID-19 en estados de la India</Button></p>
+<p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginExterna2'">Información sobre aeropuertos en EEUU</Button></p>
 <h4>Apis de Compañeros: </h4>
 
     <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginTrafficAccidents'">Análisis del tráfico en España</Button></p>
