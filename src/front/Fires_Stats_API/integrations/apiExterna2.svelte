@@ -11,7 +11,7 @@ async function loadGraph(){
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let ejeX = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Ataque", "Defensa", "Estamina"];
+        let items = ["Incendios Totales", "Área Forestal", "Área no Forestal", "Casos", "Muertes", "Recuperados"];
         let valores = [];
         let valor ={};
         
@@ -20,34 +20,29 @@ async function loadGraph(){
             if(data.year==2007){
                 valor = {
                     name: data.community + " (" + data.year + ")",
-                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0,0]
+                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0]
                 }
                 valores.push(valor);
             }
         });
        
-        //Hago el fetch a la API externa, en este caso de RapidAPI
-        const resData = await fetch("https://pokemon-go1.p.rapidapi.com/pokemon_stats.json", {
-        "method" : "GET",
-        "headers":{
-        "x-rapidapi-host": "pokemon-go1.p.rapidapi.com",
-	    "x-rapidapi-key": "1ffb76c03dmsh3fb87e4dcd08115p1d9482jsn63e6275c09b1",
-        }
-        });
-        let DataPokemons = await resData.json();
+        //Extraigo los datos de la API externa, en este caso una api acerca del coronavirus 
+        //realizada por alguien y pública en su repositorio GitHub.
+        const resData = await fetch("https://coronavirus-19-api.herokuapp.com/countries");
+       
+        let DataCanciones = await resData.json();
                 
 
         var cont = 0;
-        DataPokemons.forEach((data2)=>{
-            if(data2.form=="Normal" & cont<=10){//Mostrando solo los pokemons con la forma normal y a un número limitado de 10
+        DataCanciones.forEach((data2)=>{
+            if(cont<=10){//Muestro los 10 primeros, el de la posición 0 es un cúmulo de datos en el mundo
             valor = {
-                name: data2.pokemon_name,
-                data: [0,0,0,data2.base_attack, data2.base_defense, data2.base_stamina]
+                name: data2.country,
+                data: [0,0,0,data2.cases, data2.deaths, data2.recovered]
             }
             valores.push(valor);
             cont++;
             }
-            
         });
 
             console.log("Loading Chart...");
@@ -59,13 +54,13 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API Externa Pokémons con FiresStats'
+            text: 'Integración API Externa coronavirus con Firesstats'
         },
         subtitle: {
-            text: '<a href="https://rapidapi.com/brianiswu/api/pokemon-go1">Fuente</a>'
+            text: '<a href="https://github.com/javieraviles/covidAPI">Fuente</a> '
         },
         xAxis: {
-            categories: ejeX,
+            categories: items,
             crosshair: true,
             tickmarkPlacement: 'on',
             type: 'category',
@@ -74,7 +69,7 @@ async function loadGraph(){
         yAxis: {
             min: 0,
             title: {
-                text: 'Cantidades Incendios, Áreas forestales y Puntos de habilidades'
+                text: 'Cantidades Incendios, Áreas forestales y Cantidad Contagios, Muertes y Recuperaciones'
             },
             labels: {
                 formatter: function(){
@@ -99,10 +94,12 @@ async function loadGraph(){
         legend: {
             enabled: true
         },
-        
+
         series: valores
     });
     
+    
+
     
 }
     
@@ -122,7 +119,7 @@ async function loadGraph(){
 		<figure class="highcharts-figure">
             <div id="container"></div>
                 <p class="highcharts-description">
-                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y acerca de las características de los pokemons en su forma normal(limitado a 10)
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 e información acerca de los casos de coronavirus, recuperaciones y muertes en algunos países del mundo(limitado a 10)
                 </p>	
         </figure>
 </main>

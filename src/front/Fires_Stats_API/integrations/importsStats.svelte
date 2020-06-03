@@ -32,7 +32,7 @@ async function loadGraph(){
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let items = ["Incendios_Totales", "Área Forestal", "Área No forestal", "Malta", "Cebada","Avena", "Residuos", "Alcohol"];
+        let ejeX = ["Incendios_Totales", "Área Forestal", "Área No forestal", "Malta", "Cebada","Avena", "Residuos", "Alcohol"];
         let valores = [];
         let valor ={};
         
@@ -45,7 +45,7 @@ async function loadGraph(){
                 valores.push(valor);
             }
         });
-       
+        //Extraigo los datos de la api Imports Stats MEDIANTE PROXY
         let DatosExt=[];
         const res2 = await fetch("api/v2/imports");
         DatosExt = await res2.json();
@@ -69,13 +69,13 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API Imports EEUU con FiresStats'
+            text: 'Integración API Imports EEUU(Grupo 7) con FiresStats'
         },
         subtitle: {
-            text: ''
+            text: '<a href="https://sos1920-07.herokuapp.com/api/v2/imports">Fuente</a>'
         },
         xAxis: {
-            categories: items,
+            categories: ejeX,
             crosshair: true,
             
             type: 'category',
@@ -91,16 +91,13 @@ async function loadGraph(){
         yAxis: {
             min: 0,
             title: {
-                text: ''
+                text: 'Cantidades Incendios, Áreas forestales y Cantidad Importaciones EEUU'
             },
             labels: {
                 formatter: function(){
                     return this.value;
                 }
             }
-        },
-        legend: {
-            enabled: false
         },
         tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -109,7 +106,17 @@ async function loadGraph(){
         footerFormat: '</table>',
         shared: true,
         useHTML: true
-    },
+        },
+        plotOptions: {
+                column:{
+                    pointPadding: 0.2,
+                    borderWidth: 0
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        
         series: valores
     });
     }
@@ -118,11 +125,11 @@ async function loadGraph(){
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/series-label.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}" defer></script>
 </svelte:head>
 
 <main>
@@ -132,8 +139,8 @@ async function loadGraph(){
 	{:then getImports}
 		<figure class="highcharts-figure">
             <div id="container"></div>
-                <p class="highcharts-description">
-                        Esta gráfica muestra información acerca de los incendios forestales en el territorio español, junto con sus áreas forestales y no forestales y con las importaciones a EEUU de diferentes productos en 2007.
+                <p class="highcharts-description" style="text-align:center;">
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y con las importaciones a EEUU de diferentes productos en 2007.
                 </p>	
         </figure>
         

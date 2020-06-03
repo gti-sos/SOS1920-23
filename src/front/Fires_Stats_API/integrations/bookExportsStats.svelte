@@ -23,17 +23,16 @@ async function getBookExports(){
         console.log("Error");
     }
 }
-/*NO MUESTRA LOS DATOOOS*/
 
 
 async function loadGraph(){
         
         let Datos = [];
-
+        //Extraigo los datos en json de mi API
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Exportación Libros", "Exportación Editorial", "Exportación Sector Gráfico"];
+        let ejeX = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Exportación Libros", "Exportación Editorial", "Exportación Sector Gráfico"];
         let valores = [];
         let valor ={};
         
@@ -46,7 +45,7 @@ async function loadGraph(){
                 valores.push(valor);
             }
         });
-       
+        //Extraigo los datos en Json de la API Book Sports
         let Datos2=[];
         const res2 = await fetch(url);
         Datos2 = await res2.json();
@@ -68,31 +67,17 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API Book Exports con FiresStats'
+            text: 'Integración API Book Exports(Grupo 5) con FiresStats'
         },
         subtitle: {
-            text: ''
+            text: '<a href="https://sos1920-05.herokuapp.com/api/v1/books-exports">Fuente</a>'
         },
         xAxis: {
-            categories: items,
+            categories: ejeX,
             crosshair: true,
             tickmarkPlacement: 'on',
             type: 'category',
             
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: ''
-            },
-            labels: {
-                formatter: function(){
-                    return this.value;
-                }
-            }
-        },
-        legend: {
-            enabled: false
         },
         tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -109,6 +94,21 @@ async function loadGraph(){
             },
           
         },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Cantidad Incendios, Áreas Forestales y Cantidad Libros, Editoriales y Sector Gráfico Exportados'
+            },
+            labels: {
+                formatter: function(){
+                    return this.value;
+                }
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        
         series: valores
     });
     }
@@ -117,10 +117,10 @@ async function loadGraph(){
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/series-label.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}" defer></script>
     <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
@@ -130,10 +130,10 @@ async function loadGraph(){
 	{#await getBookExports}
 		Loading books exports stats ...
 	{:then getBookExports}
-		<figure class="highcharts-figure">
+		<figure class="highcharts-figure" style="text-align:center;">
             <div id="container"></div>
                 <p class="highcharts-description">
-                        Esta API muestra información sobre exportaciones de libros de diferentes paises, exportaciones de libros, de editoriales y del sector gráfico.
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y sobre exportaciones de libros de diferentes paises, exportaciones de libros, de editoriales y del sector gráfico.
                 </p>	
         </figure>
         

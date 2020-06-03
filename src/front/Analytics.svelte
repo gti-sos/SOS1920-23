@@ -192,7 +192,7 @@
 <main>
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <p class="highcharts-description">
+        <p class="highcharts-description" style="text-align:center;">
             Relación de las Comunidades en el año 2007 entre las Apis de bajas laborales,
             incendios forestales y consumo de cigarros en Comunidades Autonomas de España.
         </p>

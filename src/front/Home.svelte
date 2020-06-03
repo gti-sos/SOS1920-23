@@ -3,7 +3,7 @@
 	import Table from "sveltestrap/src/Table.svelte";
 
 </script>
-
+<main style="text-align:center;">
 <h4>Tablas de Estadísticas:</h4>
 
 <p><Button type="button" color="info" onclick="window.location.href='#/fires-stats'"> API de estadísticas de incendios en España</Button></p>
@@ -39,3 +39,4 @@
 <h4>Videos explicativos:</h4>
 
 <p><Button type="button" color="warning" onclick="window.location.href='#/About'"> Videos apis </Button></p>
+</main>

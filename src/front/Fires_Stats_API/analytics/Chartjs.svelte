@@ -27,19 +27,19 @@
         datasets: [
           {
             label: "Nº Incendios 2007",
-            backgroundColor: "rgb(230, 126, 34)",
+            backgroundColor: "rgb(255, 0, 0)",
             borderColor: "rgb(23, 32, 42)",
             data: incendio
           },
           {
             label: "Área Forestal(htras)",
-            backgroundColor: "rgb(120, 126, 4)",
+            backgroundColor: "rgb(0, 146, 234)",
             borderColor: "rgb(23, 32, 42)",
             data: forest
           },
           {
             label: "Área no Forestal(htras)",
-            backgroundColor: "rgb(20, 90, 50)",
+            backgroundColor: "rgb(0, 58, 255)",
             borderColor: "rgb(23, 32, 42)",
             data: noForest
           }

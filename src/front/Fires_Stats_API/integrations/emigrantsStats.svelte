@@ -32,10 +32,10 @@
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Emigraciones Hombres", "Emigraciones Mujeres", "Emigraciones Totales"];
+        let ejeX = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Emigraciones Hombres", "Emigraciones Mujeres", "Emigraciones Totales"];
         let valores = [];
         let valor ={};
-        
+        //Extraigo de mi api los datos de cada comunidad autónoma en 2007
         Datos.forEach((data) =>{
             if(data.year==2007){
                 valor = {
@@ -45,7 +45,7 @@
                 valores.push(valor);
             }
         });
-       
+        //Extraigo los datos de la API Emigrants-Stats
         let Datos2=[];
         const res2 = await fetch(url);
         Datos2 = await res2.json();
@@ -67,13 +67,13 @@
             type: 'column'
         },
         title: {
-            text: 'Integración API PluginStatsVehicles con FiresStats'
+            text: 'Integración API Emigrants Stats(Grupo 1) con FiresStats'
         },
         subtitle: {
-            text: ''
+            text: '<a href="https://sos1920-01.herokuapp.com/api/v2/emigrants-stats">Fuente</a>'
         },
         xAxis: {
-            categories: items,
+            categories: ejeX,
             crosshair: true,
             tickmarkPlacement: 'on',
             type: 'category',
@@ -82,16 +82,13 @@
         yAxis: {
             min: 0,
             title: {
-                text: ''
+                text: 'Cantidades Incendios, Áreas forestales y Número de emigrantes'
             },
             labels: {
                 formatter: function(){
                     return this.value;
                 }
             }
-        },
-        legend: {
-            enabled: false
         },
         tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -107,6 +104,10 @@
                 borderWidth: 0
             }
         },
+        legend: {
+            enabled: true
+        },
+        
         series: valores
     });
     }
@@ -116,11 +117,11 @@
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/series-label.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}" defer></script>
 </svelte:head>
 
 <main>
@@ -130,8 +131,8 @@
 	{:then getEmigrantsStats}
 		<figure class="highcharts-figure">
             <div id="container"></div>
-                <p class="highcharts-description">
-                        Esta API muestra informacion acerca de las migraciones en cada país de hombres y mujeres.
+                <p class="highcharts-description" style="text-align:center;">
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y sobre las migraciones en cada país de hombres y mujeres en diferentes años
                 </p>	
         </figure>
         
