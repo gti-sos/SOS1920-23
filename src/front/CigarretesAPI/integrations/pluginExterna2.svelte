@@ -98,9 +98,7 @@
         <main>
             <figure class="highcharts-figure">
                 <div id="container"></div>
-                    <p class="highcharts-description">
-                            Esta gráfica muestra información sobre aeropuertos de EEUU y ventas de paquete de tabaco en comunidades españolas en 2007.
-                    </p>	
+                   	
             </figure>
         
         </main>

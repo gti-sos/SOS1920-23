@@ -3,31 +3,32 @@
     import Button from "sveltestrap/src/Button.svelte";
     import Table from "sveltestrap/src/Table.svelte";
     import  { onMount } from "svelte";
+    
 
-    onMount(getPokemons);
-    let pokemons = [];
+    onMount(getPopulation);
 
-async function getPokemons(){
-    console.log("Fetching pokemoms data...");
-    const resData = await fetch("https://pokemon-go1.p.rapidapi.com/pokemon_stats.json", {
+    let populations = [];
+
+    async function getPopulation(){
+        console.log("Fetching population...");
+        const resData = await fetch("https://restcountries-v1.p.rapidapi.com/all", {
         "method" : "GET",
         "headers":{
-        "x-rapidapi-host": "pokemon-go1.p.rapidapi.com",
+        "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
 	    "x-rapidapi-key": "1ffb76c03dmsh3fb87e4dcd08115p1d9482jsn63e6275c09b1",
         }
-    });
-    if(resData.ok){
-        console.log("OK");
-        const json = await resData.json();
-        pokemons = json;
-        console.log("Received "+ pokemoms.length + " pokemons data")
-    }
-    else{
-        console.log("Error");
-    }
-}
+        });
+        if(resData.ok){
+            console.log("OK");
+            const json = await resData.json();
+            populations = json;
+            console.log("Received " + populations.length + " population data");
+        } 
 
-
+        else{
+            console.log("Error");
+        }
+    }
 async function loadGraph(){
     
 
@@ -36,7 +37,7 @@ async function loadGraph(){
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let ejeX = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Ataque", "Defensa", "Estamina"];
+        let ejeX = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Población", "Área"];
         let valores = [];
         let valor ={};
         
@@ -45,29 +46,29 @@ async function loadGraph(){
             if(data.year==2007){
                 valor = {
                     name: data.community + " (" + data.year + ")",
-                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0,0]
+                    data: [data.total_fire, data.forest_area, data.non_forest_area, 0,0]
                 }
                 valores.push(valor);
             }
         });
        
         //Hago el fetch a la API externa, en este caso de RapidAPI
-        const resData = await fetch("https://pokemon-go1.p.rapidapi.com/pokemon_stats.json", {
+        const resData = await fetch("https://restcountries-v1.p.rapidapi.com/all", {
         "method" : "GET",
         "headers":{
-        "x-rapidapi-host": "pokemon-go1.p.rapidapi.com",
-	    "x-rapidapi-key": "1ffb76c03dmsh3fb87e4dcd08115p1d9482jsn63e6275c09b1",
+        "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
+	"x-rapidapi-key": "1ffb76c03dmsh3fb87e4dcd08115p1d9482jsn63e6275c09b1",
         }
         });
-        let DataPokemons = await resData.json();
-                
+        let DataCiudades = await resData.json();
+          
 
         var cont = 0;
-        DataPokemons.forEach((data2)=>{
-            if(data2.form=="Normal" & cont<=10){//Mostrando solo los pokemons con la forma normal y a un número limitado de 10
+        DataCiudades.forEach((data2)=>{
+            if(cont<=10){//Muestro sólo 10 ciudades para que quepa en la gráfica
             valor = {
-                name: data2.pokemon_name,
-                data: [0,0,0,data2.base_attack, data2.base_defense, data2.base_stamina]
+                name: data2.name,
+                data: [0,0,0,data2.population, data2.area]
             }
             valores.push(valor);
             cont++;
@@ -84,10 +85,10 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API Externa Pokémons con Fires Stats'
+            text: 'Integración API Externa Población Países con Fires Stats'
         },
         subtitle: {
-            text: '<a href="https://rapidapi.com/brianiswu/api/pokemon-go1">Fuente</a>'
+            text: '<a href="https://rapidapi.com/apilayernet/api/rest-countries-v1?endpoint=53aa5a08e4b0a705fcc323a6">Fuente</a>'
         },
         xAxis: {
             categories: ejeX,
@@ -99,7 +100,7 @@ async function loadGraph(){
         yAxis: {
             min: 0,
             title: {
-                text: 'Cantidades Incendios, Áreas forestales y Puntos de habilidades'
+                text: 'Cantidades Incendios, Áreas forestales y Población'
             },
             labels: {
                 formatter: function(){
@@ -144,42 +145,38 @@ async function loadGraph(){
 </svelte:head>
 <main>
 <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
-		{#await getPokemons}
-            Loading pokemons data ...
-        {:then getPokemons}
+		{#await getPopulation}
+            Loading population of countries ...
+        {:then getPopulation}
         <figure class="highcharts-figure">
             <div id="container"></div>
-                <p class="highcharts-description" style="text-align:center;">
-                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y acerca de las características de los pokemons en su forma normal(limitado a 10)
-                </p>
-                <p style="text-align:center;">Consultar todos los pokemons en su forma normal con sus puntos de habilidades</p>	
+                <p class="highcharts-description">
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y la población y área en algunos países.
+                </p>	
         </figure>
-
+        <p>La gráfica sólo muestra 10 de esos países, a continuación puede consultar estos datos en la tabla</p>
         <Table bordered>
 			<thead>
 				<tr>
-					<th>Pokemon</th>
-					<th>Ataque</th>
-					<th>Defensa</th>
-					<th>Estamina</th>
-                    
+					<th>País</th>
+					<th>Población</th>
+					<th>Área</th>
 
 				</tr>
 			</thead>
 			<tbody>
-				{#each pokemons as pokemon}
-				{#if pokemon.form=="Normal"}
-                <tr>
-                    <td>{pokemon.pokemon_name}</td>
-                    <td>{pokemon.base_attack}</td>
-                    <td>{pokemon.base_defense}</td>
-                    <td>{pokemon.base_stamina}</td>
+				{#each populations as population}
+				<tr>
+                    <td>{population.name}</td>
+                    <td>{population.population}</td>
+                    <td>{population.area}</td>
                     
-                
+
 				</tr>
-                {/if}
 				{/each}
 			</tbody>
 		</Table>
 	{/await}
+
 </main>
+<Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>

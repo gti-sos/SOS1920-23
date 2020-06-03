@@ -1,7 +1,27 @@
 <script>
 	import { pop } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
+    import Table from "sveltestrap/src/Table.svelte";
+    import  { onMount } from "svelte";
 
+    onMount(getCovidStats);
+
+    let covids = [];
+
+async function getCovidStats(){
+    console.log("Fetching Covid Stats...");
+    const resData = await fetch("https://coronavirus-19-api.herokuapp.com/countries");
+    if(resData.ok){
+        console.log("OK");
+        const json = await resData.json();
+        covids = json;
+        console.log("Received " + covids.length + " Covid Stats");
+    }
+
+    else{
+        console.log("Error");
+    }
+}
     
 async function loadGraph(){
     
@@ -54,7 +74,7 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API Externa coronavirus con Firesstats'
+            text: 'Integración API Externa coronavirus con Fires Stats'
         },
         subtitle: {
             text: '<a href="https://github.com/javieraviles/covidAPI">Fuente</a> '
@@ -116,10 +136,38 @@ async function loadGraph(){
 </svelte:head>
 <main>
 <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
+        {#await getCovidStats}
+            Loading covid stats ...
+        {:then getCovidStats}
 		<figure class="highcharts-figure">
             <div id="container"></div>
-                <p class="highcharts-description">
+                <p class="highcharts-description" style="text-align:center;">
                         Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 e información acerca de los casos de coronavirus, recuperaciones y muertes en algunos países del mundo(limitado a 10)
-                </p>	
+                </p>
+                <p style="text-align:center;">Consulta toda la información acerca del Covid-19 en todos los países (World=Total en el mundo)</p>	
         </figure>
+        <Table bordered>
+			<thead>
+				<tr>
+					<th>País</th>
+					<th>Casos</th>
+					<th>Muertes</th>
+					<th>Recuperaciones</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{#each covids as covid}
+				<tr>
+                    <td>{covid.country}</td>
+                    <td>{covid.cases}</td>
+                    <td>{covid.deaths}</td>
+                    <td>{covid.recovered}</td>
+
+				</tr>
+				{/each}
+			</tbody>
+		</Table>
+	{/await}
 </main>
+<Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>

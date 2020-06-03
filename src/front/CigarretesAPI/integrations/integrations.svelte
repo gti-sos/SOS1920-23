@@ -5,7 +5,7 @@
     } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
 </script>
-
+<main style="text-align:center;">
 <h3>Integraciones </h3>
 <h4>Apis Externas: </h4>
 <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginExterna1'">Estadísticas sobre paises</Button></p>
@@ -22,4 +22,4 @@
     <p><Button type="button" color="success" onclick="window.location.href='#/cigarretes-sales-integrations/integrations/pluginFoodImports'">Importaciones de comida</Button></p>
 
         <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
-    
+</main>

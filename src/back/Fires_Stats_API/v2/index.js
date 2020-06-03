@@ -40,167 +40,34 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
     
     dbFires.find({}, (err, fires) =>{
         if(fires.length == 0){
-            dbFires.insert([
-        {//En el 2007 falta asturias que se usa para las pruebas del postman
-            community: 'andalucia',
-            year: 2007,
-            total_fire: 819,
-            forest_area: 6296.75,
-            non_forest_area: 3282.53
-        },
-        {
-            community: 'aragon',
-            year: 2007,
-            total_fire: 415,
-            forest_area: 1860.38,
-            non_forest_area: 611.51
-        },
-        {
-            community: 'comunidad-valenciana',
-            year: 2007,
-            total_fire: 375,
-            forest_area: 8224.69,
-            non_forest_area: 1847.42
-        },
-            {
-            community: 'canarias',
-            year: 2007,
-            total_fire: 139,
-            forest_area: 35758.62,
-            non_forest_area: 1815.86
-        },
-        {
-            community: 'cantabria',
-            year: 2007,
-            total_fire: 296,
-            forest_area: 3452.83,
-            non_forest_area: 0
-        },
-        {
-            community: 'castilla-y-leon',
-            year: 2007,
-            total_fire: 1511,
-            forest_area: 9760.29,
-            non_forest_area: 2221.99
-        },
-        {
-            community: 'castilla-la-mancha',
-            year: 2007,
-            total_fire: 694,
-            forest_area: 2026.46,
-            non_forest_area: 1068.96
-        },
-        {
-            community: 'cataluña',
-            year: 2007,
-            total_fire: 579,
-            forest_area: 1612.25,
-            non_forest_area: 436.37
-        },
-        {
-            community: 'ceuta',
-            year: 2007,
-            total_fire: 0,
-            forest_area: 0,
-            non_forest_area: 0
-        },
-        {
-            community: 'extremadura',
-            year: 2007,
-            total_fire: 748,
-            forest_area: 6032.60,
-            non_forest_area: 818.07
-        },
-        {
-            community: 'galicia',
-            year: 2007,
-            total_fire: 3157,
-            forest_area: 7051.06,
-            non_forest_area: 9.93
-        },
-        {
-            community: 'islas-baleares',
-            year: 2007,
-            total_fire: 113,
-            forest_area: 123.90,
-            non_forest_area: 3.50
-        },
-        {
-            community: 'la-rioja',
-            year: 2007,
-            total_fire: 93,
-            forest_area: 69.49,
-            non_forest_area: 44.49
-        },
-        {
-            community: 'madrid',
-            year: 2007,
-            total_fire: 230,
-            forest_area: 449.75,
-            non_forest_area: 143.37
-        },
-        {
-            community: 'murcia',
-            year: 2007,
-            total_fire: 113,
-            forest_area: 160.18,
-            non_forest_area: 23.80
-        },
-        {
-            community: 'navarra',
-            year: 2007,
-            total_fire: 504,
-            forest_area: 473.86,
-            non_forest_area: 260.10
-        },
-        {
-            community: 'pais-vasco',
-            year: 2007,
-            total_fire: 67,
-            forest_area: 105.61,
-            non_forest_area: 4.70
-        },
-        
-        
+            dbFires.insert([//En el 2007 falta asturias que se usa para las pruebas del postman
+        {community: 'andalucia',year: 2007,total_fire: 819,forest_area: 6296.75,non_forest_area: 3282.53},
+        {community: 'aragon',year: 2007,total_fire: 415,forest_area: 1860.38,non_forest_area: 611.51},
+        {community: 'comunidad-valenciana',year: 2007,total_fire: 375,forest_area: 8224.69,non_forest_area: 1847.42},
+        {community: 'canarias',year: 2007,total_fire: 139,forest_area: 35758.62,non_forest_area: 1815.86},
+        {community: 'cantabria',year: 2007,total_fire: 296,forest_area: 3452.83,non_forest_area: 0},
+        {community: 'castilla-y-leon',year: 2007,total_fire: 1511,forest_area: 9760.29,non_forest_area: 2221.99},
+        {community: 'castilla-la-mancha',year: 2007,total_fire: 694,forest_area: 2026.46,non_forest_area: 1068.96},
+        {community: 'cataluña',year: 2007,total_fire: 579,forest_area: 1612.25,non_forest_area: 436.37},
+        {community: 'ceuta',year: 2007,total_fire: 0,forest_area: 0,non_forest_area: 0},
+        {community: 'extremadura',year: 2007,total_fire: 748,forest_area: 6032.60,non_forest_area: 818.07},
+        {community: 'galicia',year: 2007,total_fire: 3157,forest_area: 7051.06,non_forest_area: 9.93},
+        {community: 'islas-baleares',year: 2007,total_fire: 113,forest_area: 123.90,non_forest_area: 3.50},
+        {community: 'la-rioja',year: 2007,total_fire: 93,forest_area: 69.49,non_forest_area: 44.49},
+        {community: 'madrid',year: 2007,total_fire: 230,forest_area: 449.75,non_forest_area: 143.37},
+        {community: 'murcia',year: 2007,total_fire: 113,forest_area: 160.18,non_forest_area: 23.80},
+        {community: 'navarra',year: 2007,total_fire: 504,forest_area: 473.86,non_forest_area: 260.10},
+        {community: 'pais-vasco',year: 2007,total_fire: 67,forest_area: 105.61,non_forest_area: 4.70},
         
         //Datos del 2008 (no estan todas las comunidades, 
         //es solo para la prueba)
-        {
-            community: 'andalucia',
-            year: 2008,
-            total_fire: 776,
-            forest_area: 2895.02,
-            non_forest_area: 675.85
-        },
-        {
-            community:"asturias",
-            year:2008,
-            total_fire:1083,
-            forest_area:2690.31,
-            non_forest_area:0
-        },
-        {
-            community: 'aragon',
-            year: 2008,
-            total_fire: 415,
-            forest_area: 2601.04,
-            non_forest_area: 611.51
-        },
-        {
-            community: 'comunidad-valenciana',
-            year: 2008,
-            total_fire: 375,
-            forest_area: 9861.30,
-            non_forest_area: 1847.42
-        },
-            {
-            community: 'canarias',
-            year: 2008,
-            total_fire: 133,
-            forest_area: 426.05,
-            non_forest_area: 1815.86
-        }
-            ]) 
+        {community: 'andalucia',year: 2008,total_fire: 776,forest_area: 2895.02,non_forest_area: 675.85},
+        {community:"asturias",year:2008,total_fire:1083,forest_area:2690.31,non_forest_area:0},
+        {community: 'aragon',year: 2008,total_fire: 415,forest_area: 2601.04,non_forest_area: 611.51},
+        {community: 'comunidad-valenciana',year: 2008,total_fire: 375,forest_area: 9861.30,non_forest_area: 1847.42},
+        {community: 'canarias',year: 2008,total_fire: 133,forest_area: 426.05,non_forest_area: 1815.86}
+        
+    ]) 
         }
     
         else{
@@ -209,166 +76,33 @@ module.exports = function (app){	//Funcion creada para la exportacion al archivo
     });
     
     
-    var initialFires = [	//Datos iniciales para cargar
-        {//En el 2007 falta asturias que se usa para las pruebas del postman
-            community: 'andalucia',
-            year: 2007,
-            total_fire: 819,
-            forest_area: 6296.75,
-            non_forest_area: 3282.53
-        },
-        {
-            community: 'aragon',
-            year: 2007,
-            total_fire: 415,
-            forest_area: 1860.38,
-            non_forest_area: 611.51
-        },
-        {
-            community: 'comunidad-valenciana',
-            year: 2007,
-            total_fire: 375,
-            forest_area: 8224.69,
-            non_forest_area: 1847.42
-        },
-            {
-            community: 'canarias',
-            year: 2007,
-            total_fire: 139,
-            forest_area: 35758.62,
-            non_forest_area: 1815.86
-        },
-        {
-            community: 'cantabria',
-            year: 2007,
-            total_fire: 296,
-            forest_area: 3452.83,
-            non_forest_area: 0
-        },
-        {
-            community: 'castilla-y-leon',
-            year: 2007,
-            total_fire: 1511,
-            forest_area: 9760.29,
-            non_forest_area: 2221.99
-        },
-        {
-            community: 'castilla-la-mancha',
-            year: 2007,
-            total_fire: 694,
-            forest_area: 2026.46,
-            non_forest_area: 1068.96
-        },
-        {
-            community: 'cataluña',
-            year: 2007,
-            total_fire: 579,
-            forest_area: 1612.25,
-            non_forest_area: 436.37
-        },
-        {
-            community: 'ceuta',
-            year: 2007,
-            total_fire: 0,
-            forest_area: 0,
-            non_forest_area: 0
-        },
-        {
-            community: 'extremadura',
-            year: 2007,
-            total_fire: 748,
-            forest_area: 6032.60,
-            non_forest_area: 818.07
-        },
-        {
-            community: 'galicia',
-            year: 2007,
-            total_fire: 3157,
-            forest_area: 7051.06,
-            non_forest_area: 9.93
-        },
-        {
-            community: 'islas-baleares',
-            year: 2007,
-            total_fire: 113,
-            forest_area: 123.90,
-            non_forest_area: 3.50
-        },
-        {
-            community: 'la-rioja',
-            year: 2007,
-            total_fire: 93,
-            forest_area: 69.49,
-            non_forest_area: 44.49
-        },
-        {
-            community: 'madrid',
-            year: 2007,
-            total_fire: 230,
-            forest_area: 449.75,
-            non_forest_area: 143.37
-        },
-        {
-            community: 'murcia',
-            year: 2007,
-            total_fire: 113,
-            forest_area: 160.18,
-            non_forest_area: 23.80
-        },
-        {
-            community: 'navarra',
-            year: 2007,
-            total_fire: 504,
-            forest_area: 473.86,
-            non_forest_area: 260.10
-        },
-        {
-            community: 'pais-vasco',
-            year: 2007,
-            total_fire: 67,
-            forest_area: 105.61,
-            non_forest_area: 4.70
-        },
-        
-        
+    var initialFires = [	//Datos iniciales para cargar 
+                            //En el 2007 falta asturias que se usa para las pruebas del postman
+        {community: 'andalucia',year: 2007,total_fire: 819,forest_area: 6296.75,non_forest_area: 3282.53},
+        {community: 'aragon',year: 2007,total_fire: 415,forest_area: 1860.38,non_forest_area: 611.51},
+        {community: 'comunidad-valenciana',year: 2007,total_fire: 375,forest_area: 8224.69,non_forest_area: 1847.42},
+        {community: 'canarias',year: 2007,total_fire: 139,forest_area: 35758.62,non_forest_area: 1815.86},
+        {community: 'cantabria',year: 2007,total_fire: 296,forest_area: 3452.83,non_forest_area: 0},
+        {community: 'castilla-y-leon',year: 2007,total_fire: 1511,forest_area: 9760.29,non_forest_area: 2221.99},
+        {community: 'castilla-la-mancha',year: 2007,total_fire: 694,forest_area: 2026.46,non_forest_area: 1068.96},
+        {community: 'cataluña',year: 2007,total_fire: 579,forest_area: 1612.25,non_forest_area: 436.37},
+        {community: 'ceuta',year: 2007,total_fire: 0,forest_area: 0,non_forest_area: 0},
+        {community: 'extremadura',year: 2007,total_fire: 748,forest_area: 6032.60,non_forest_area: 818.07},
+        {community: 'galicia',year: 2007,total_fire: 3157,forest_area: 7051.06,non_forest_area: 9.93},
+        {community: 'islas-baleares',year: 2007,total_fire: 113,forest_area: 123.90,non_forest_area: 3.50},
+        {community: 'la-rioja',year: 2007,total_fire: 93,forest_area: 69.49,non_forest_area: 44.49},
+        {community: 'madrid',year: 2007,total_fire: 230,forest_area: 449.75,non_forest_area: 143.37},
+        {community: 'murcia',year: 2007,total_fire: 113,forest_area: 160.18,non_forest_area: 23.80},
+        {community: 'navarra',year: 2007,total_fire: 504,forest_area: 473.86,non_forest_area: 260.10},
+        {community: 'pais-vasco',year: 2007,total_fire: 67,forest_area: 105.61,non_forest_area: 4.70},
         
         //Datos del 2008 (no estan todas las comunidades, 
         //es solo para la prueba)
-        {
-            community: 'andalucia',
-            year: 2008,
-            total_fire: 776,
-            forest_area: 2895.02,
-            non_forest_area: 675.85
-        },
-        {
-            community:"asturias",
-            year:2008,
-            total_fire:1083,
-            forest_area:2690.31,
-            non_forest_area:0
-        },
-        {
-            community: 'aragon',
-            year: 2008,
-            total_fire: 415,
-            forest_area: 2601.04,
-            non_forest_area: 611.51
-        },
-        {
-            community: 'comunidad-valenciana',
-            year: 2008,
-            total_fire: 375,
-            forest_area: 9861.30,
-            non_forest_area: 1847.42
-        },
-            {
-            community: 'canarias',
-            year: 2008,
-            total_fire: 133,
-            forest_area: 426.05,
-            non_forest_area: 1815.86
-        }
+        {community: 'andalucia',year: 2008,total_fire: 776,forest_area: 2895.02,non_forest_area: 675.85},
+        {community:"asturias",year:2008,total_fire:1083,forest_area:2690.31,non_forest_area:0},
+        {community: 'aragon',year: 2008,total_fire: 415,forest_area: 2601.04,non_forest_area: 611.51},
+        {community: 'comunidad-valenciana',year: 2008,total_fire: 375,forest_area: 9861.30,non_forest_area: 1847.42},
+        {community: 'canarias',year: 2008,total_fire: 133,forest_area: 426.05,non_forest_area: 1815.86}
         
     ];
     

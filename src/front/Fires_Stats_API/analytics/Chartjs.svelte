@@ -49,7 +49,7 @@
     });
   }
 </script>
-<h5 class="titulo">Gráfica que muestra los incendios forestales en España en el año 2006, junto con el área forestal y no forestal de cada comunidad autónoma</h5>
+<h5 class="titulo">Gráfica que muestra los incendios forestales en España en el año 2007, junto con el área forestal y no forestal de cada comunidad autónoma</h5>
 <svelte:head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" on:load="{loadGraph}"></script>
 </svelte:head>
