@@ -28,11 +28,11 @@ async function getNotHospitalized(){
 async function loadGraph(){
         
         let Datos = [];
-
+        //Extraigo los datos de mi API
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Total", "Interurbanos", "Urbanos"];
+        let ejeX = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Total", "Interurbanos", "Urbanos"];
         let valores = [];
         let valor ={};
         
@@ -45,7 +45,7 @@ async function loadGraph(){
                 valores.push(valor);
             }
         });
-       
+        //Extraigo los datos json de la API Not Hospitalized Stats MEDIANTE PROXY
         let Datos2=[];
         const res2 = await fetch("/api/v2/not-hospitalized-stats");
         Datos2 = await res2.json();
@@ -67,13 +67,13 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API Not Hospitalized Stats con FiresStats'
+            text: 'Integración API Not Hospitalized Stats(Grupo 6) con FiresStats'
         },
         subtitle: {
-            text: ''
+            text: '<a href="https://sos1920-06.herokuapp.com/api/v2/not-hospitalized-stats">Fuente</a>'
         },
         xAxis: {
-            categories: items,
+            categories: ejeX,
             crosshair: true,
             tickmarkPlacement: 'on',
             type: 'category',
@@ -82,16 +82,13 @@ async function loadGraph(){
         yAxis: {
             min: 0,
             title: {
-                text: ''
+                text: 'Cantidades Incendios, Áreas forestales y Número Víctimas no Hospitalizadas'
             },
             labels: {
                 formatter: function(){
                     return this.value;
                 }
             }
-        },
-        legend: {
-            enabled: false
         },
         tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -107,6 +104,10 @@ async function loadGraph(){
                 borderWidth: 0
             }
         },
+        legend: {
+            enabled: true
+        },
+
         series: valores
     });
     }
@@ -116,11 +117,11 @@ async function loadGraph(){
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/series-label.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}" defer></script>
 </svelte:head>
 
 <main>
@@ -130,8 +131,8 @@ async function loadGraph(){
 	{:then getNotHospitalized}
 		<figure class="highcharts-figure">
             <div id="container"></div>
-                <p class="highcharts-description">
-                        Esta API muestra información acerca de victimas de accidentes no hospitalizadas en las provincias de España.
+                <p class="highcharts-description" style="text-align:center;">
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y de victimas de accidentes no hospitalizadas en las provincias de España en diferentes años
                 </p>	
         </figure>
         

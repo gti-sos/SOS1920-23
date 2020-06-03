@@ -11,6 +11,7 @@
 	import sugarConsumeStats from './Fires_Stats_API/integrations/sugarConsumeStats.svelte';
 	import drugOffencesStats from './Fires_Stats_API/integrations/drugOffencesStats.svelte';
 	import apiExterna1 from './Fires_Stats_API/integrations/apiExterna1.svelte';
+	import apiExterna2 from './Fires_Stats_API/integrations/apiExterna2.svelte';
 </script>
 
 <main>
@@ -26,4 +27,5 @@
 	<sugarConsumeStats/>
 	<drugOffencesStats/>
 	<apiExterna1/>
+	<apiExterna2/>
 </main>

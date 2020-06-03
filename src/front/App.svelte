@@ -23,6 +23,7 @@
 	import sugarConsumeStats from './Fires_Stats_API/integrations/sugarConsumeStats.svelte';
 	import drugOffencesStats from './Fires_Stats_API/integrations/drugOffencesStats.svelte';
 	import apiExterna1 from './Fires_Stats_API/integrations/apiExterna1.svelte';
+	import apiExterna2 from './Fires_Stats_API/integrations/apiExterna2.svelte';
 	//Import archivos API offworks
 	import OffworksStatsTable from './offworks_stats_API/OffworksStatsTable.svelte';
 	import EditOffworksStats from './offworks_stats_API/EditOffworksStats.svelte';
@@ -77,6 +78,7 @@
 		"/fires-stats-integrations/integrations/sugar-consume":sugarConsumeStats,
 		"/fires-stats-integrations/integrations/drug-offences": drugOffencesStats,
 		"/fires-stats-integrations/integrations/api-externa-1": apiExterna1,
+		"/fires-stats-integrations/integrations/api-externa-2": apiExterna2,
 		
 		"/offworks-stats" : OffworksStatsTable,
 		"/offworks-stats/:community/:year" : EditOffworksStats,

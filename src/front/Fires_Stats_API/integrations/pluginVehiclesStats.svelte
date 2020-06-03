@@ -10,10 +10,6 @@
     onMount(getPluginVehicles);
 
     let plugins=[];
-    let countries = [];
-    let pevStock = [];
-    let annualSale = [];
-    let comunidades = [];
 
 async function getPluginVehicles(){
         console.log("Fetching plugin vehicles..");
@@ -38,7 +34,7 @@ async function loadGraph(){
         const res = await fetch("api/v2/fires-stats");
         Datos = await res.json();
 
-        let items = ["Incendios_Totales", "Área Forestal", "Área no Forestal", "Cumulo de Ventas", "Ventas Anuales"];
+        let ejeX = ["Incendios Totales", "Área Forestal", "Área no Forestal", "Cúmulo de Ventas", "Ventas Anuales"];
         let valores = [];
         let valor ={};
         
@@ -51,7 +47,7 @@ async function loadGraph(){
                 valores.push(valor);
             }
         });
-       
+        //Extraigo los datos en json de la API Plugin Stats Vehicles
         let Datos2=[];
         const res2 = await fetch(url);
         Datos2 = await res2.json();
@@ -73,13 +69,13 @@ async function loadGraph(){
             type: 'column'
         },
         title: {
-            text: 'Integración API PluginStatsVehicles con FiresStats'
+            text: 'Integración API PluginStatsVehicles(Grupo 9) con FiresStats'
         },
         subtitle: {
-            text: ''
+            text: '<a href="https://sos1920-09.herokuapp.com/api/v3/plugin-vehicles-stats/">Fuente</a>'
         },
         xAxis: {
-            categories: items,
+            categories: ejeX,
             crosshair: true,
             tickmarkPlacement: 'on',
             type: 'category',
@@ -88,7 +84,7 @@ async function loadGraph(){
         yAxis: {
             min: 0,
             title: {
-                text: ''
+                text: 'Cantidades Incendios, Áreas forestales y Número de Ventas(Acumulación y Anuales)'
             },
             labels: {
                 formatter: function(){
@@ -96,9 +92,7 @@ async function loadGraph(){
                 }
             }
         },
-        legend: {
-            enabled: false
-        },
+        
         tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -113,6 +107,10 @@ async function loadGraph(){
                 borderWidth: 0
             }
         },
+        legend: {
+            enabled: true
+        },
+
         series: valores
     });
     }
@@ -122,11 +120,11 @@ async function loadGraph(){
 </script>
 
 <svelte:head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+    <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/series-label.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}" defer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}" defer></script>
 </svelte:head>
 <main>
 <Button outline color="secondary" on:click="{pop}">Atrás &#x21a9;</Button>
@@ -135,8 +133,8 @@ async function loadGraph(){
 	{:then getPluginVehicles}
 		<figure class="highcharts-figure">
             <div id="container"></div>
-                <p class="highcharts-description">
-                        Esta API muestra información acerca de las ventas acumuladas por países y ventas anuales de coches eléctricos a nivel internacional
+                <p class="highcharts-description" style="text-align:center;">
+                        Esta gráfica muestra informacion acerca de la cantidad de incendios forestales por ccaa en el territorio español, junto con sus áreas forestales en 2007 y sobre las ventas acumuladas por países y ventas anuales de coches eléctricos
                 </p>	
         </figure>
         

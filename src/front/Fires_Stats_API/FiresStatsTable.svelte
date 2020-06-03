@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-
+	import { pop } from "svelte-spa-router";
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from  "sveltestrap/src/Button.svelte";
 	import Pagination from "sveltestrap/src/Pagination.svelte";
@@ -352,5 +352,5 @@ import {
 		
 		
 	</Pagination>
-	
+	<Button outline color = "secondary" on:click="{pop}">Volver &#x21a9;</Button>
 </main>
