@@ -16,7 +16,7 @@
 <Button color="info" on:click="{pop}">INCENDIOS FORESTALES</Button>
 <div class="card">
   <div class="embed-responsive embed-responsive-16by9 video">
-      <iframe title="cig" width="900" height="506" src="https://www.youtube.com/watch?v=HhXnWtQvIHg&feature=youtu.be" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe title="cig" width="560" height="315" src="https://www.youtube.com/embed/HhXnWtQvIHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 <div class="card-body">
   <h5 class="card-title">Ventas de paquete de tabaco</h5>
