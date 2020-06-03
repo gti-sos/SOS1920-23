@@ -18,5 +18,5 @@
     <p><Button type="button" color="info" onclick="window.location.href='#/fires-stats-integrations/integrations'"> Integraciones Fires Stats </Button></p>
     <p><Button type="button" color="info" onclick="window.location.href='#/offworks-stats-integrations/integrations'"> Integraciones Offworks Stats </Button></p>
     <p><Button type="button" color="info" onclick="window.location.href='#/cigarretes-sales-integrations/integrations'"> Integraciones cigarretes-sales </Button></p>
-    <Button outline color="secondary" on:click="{pop}">Volver &#x21a9;</Button>
+    <Button outline color="secondary" on:click="{pop}">Volver</Button>
 </main>

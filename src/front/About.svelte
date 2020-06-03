@@ -18,6 +18,8 @@
 <iframe title="cig" width="560" height="315" src="https://www.youtube.com/embed/HhXnWtQvIHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <h5>Video explicativo offworkApi:</h5>
 <iframe title="off" width="560" height="315" src="https://www.youtube.com/embed/qKW2lMeceCs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h5>Video explicativo fires-stats-API:</h5>
+<iframe title="off" width="560" height="315" src="https://www.youtube.com/watch?v=ETMqhWTBeF4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   	
 
 <p><Button outline color="secondary" on:click="{pop}">Volver</Button></p>
