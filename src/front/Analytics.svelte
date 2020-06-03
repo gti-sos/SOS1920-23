@@ -65,7 +65,7 @@
                             
                                 year1 == 2007 && year2 == 2007 && year3 == 2007) {// .replace("-", " ")  .toLowerCase() .replace(/^-+/, " ") .replace(/-/g, " ")
                                 console.log(comunidad1.toLowerCase().replace(/-/g, " ")+" "+comunidad2.toLowerCase().replace(/-/g, " ")+" "+comunidad3.toLowerCase().replace(/-/g, " "));
-                        comunidades1.push(comunidad1.replace(/-/g, " "));
+                        comunidades1.push(comunidad1.replace(/-/g, " ") + " "+data1.year);
                         accidentes.push(accidente);
                         enfermos.push(enfermo);
                         numZonas.push(num);

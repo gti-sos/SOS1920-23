@@ -10,6 +10,7 @@
 <h4>Apis Externas: </h4>
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats-integrations/integrations/api-externa-1'">Api 1 Externa</Button></p>	
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats-integrations/integrations/api-externa-2'"> API 2 Externa</Button></p>
+    <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats-integrations/integrations/api-externa-3'"> API 3 Externa</Button></p>
 <h4>Apis de Compañeros: </h4>
 
     <p><Button type="button" color="success" onclick="window.location.href='#/fires-stats-integrations/integrations/emigrant-stats'">Estadísticas Emigración (Grupo 1)</Button></p>
