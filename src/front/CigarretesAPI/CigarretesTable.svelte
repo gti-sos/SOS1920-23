@@ -237,7 +237,7 @@
 							<DropdownToggle outline caret>Gráficas</DropdownToggle>
 							<DropdownMenu>
 								<DropdownItem href="#/graph-cigarretes-sales">HighChart</DropdownItem>
-								<DropdownItem href="#/chart-cigarretes-sales">Chart.js</DropdownItem>
+								<DropdownItem href="#/chart-cigarretes-sales">Plot.ly</DropdownItem>
 			
 			
 							</DropdownMenu>
