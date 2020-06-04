@@ -22,15 +22,15 @@ Highcharts.chart('container', {
     },
     
     series: [{
-        type: 'column',
+        type: 'area',
         name: 'Ventas de paquetes de tabaco',
         data: venta_de_cigarros
     }, {
-        type: 'column',
+        type: 'area',
         name: 'Primera variacion',
         data: primera_variacion
     }, {
-        type: 'column',
+        type: 'area',
         name: 'Segunda variacion',
         data: segunda_variacion
     }]
