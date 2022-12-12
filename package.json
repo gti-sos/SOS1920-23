@@ -29,7 +29,7 @@
     "canvasjs": "^1.8.3",
     "chart.js": "^2.9.3",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nedb": "^1.8.0",
     "newman": "^5.0.1",
     "node-modules": "^1.0.1",
